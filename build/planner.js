@@ -46827,8 +46827,13 @@ class eS {
   viewport = null;
   worldSize = 5e3;
   isDragging = !1;
+  wallTool = null;
+  furnitureTool = null;
   constructor(e) {
-    this.div2d = e, this.assets = new z1(this), this.assets.load().then(this.onLoad.bind(this)), window.addEventListener("resize", this.resize.bind(this)), this.disablePinchToZoomGestureInChrome();
+    this.div2d = e, this.assets = new z1(this), this.assets.load().then(this.onLoad.bind(this)), window.addEventListener("resize", this.resize.bind(this)), this.disablePinchToZoomGestureInChrome(), window.addEventListener("keypress", (t) => {
+      const r = t.code;
+      r === "Digit1" && (this.wallTool.disable(), this.furnitureTool.enable()), r === "Digit2" && (this.wallTool.enable(), this.furnitureTool.disable());
+    });
   }
   async onLoad() {
     await this.init2D(), this.wallTool = new V1(this), this.furnitureTool = new X1(this), new Y1(this, "fitting-room");

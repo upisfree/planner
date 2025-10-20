@@ -20,6 +20,9 @@ class Planner {
 
   isDragging = false;
 
+  wallTool = null;
+  furnitureTool = null;
+
   constructor(div2d) {
     this.div2d = div2d;
 
@@ -30,6 +33,21 @@ class Planner {
 
     window.addEventListener('resize', this.resize.bind(this));
     this.disablePinchToZoomGestureInChrome();
+
+    // tmp dev
+    window.addEventListener('keypress', (event) => {
+      const key = event.code;
+
+      if (key === 'Digit1') {
+        this.wallTool.disable();
+        this.furnitureTool.enable();
+      }
+
+      if (key === 'Digit2') {
+        this.wallTool.enable();
+        this.furnitureTool.disable();
+      }
+    });
   }
 
   async onLoad() {
