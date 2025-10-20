@@ -1,0 +1,5 @@
+.idea
+node_modules/
+build/
+certs/
+.DS_Store

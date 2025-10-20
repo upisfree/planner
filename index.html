@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+
+    <title>Планировщик ПВЗ</title>
+
+    <style>
+body {
+  margin: 0;
+  background: #f0f0f0;
+  overflow: hidden;
+  overscroll-behavior-x: none;
+}
+
+#container-2d {
+  width: 100vw;
+  height: 100vh;
+}
+    </style>
+  </head>
+
+  <body>
+    <div id="container-2d"></div>
+
+    <script type="module">
+// заменяется Vite для локального дев окружения
+const mode = '%MODE%';
+
+let url;
+
+if (mode === 'development') {
+  url = './src/planner.js';
+} else {
+  url = `./build/planner.js`;
+}
+
+// пиздец красивый игнор, но по-другому не работает
+import(/* @vite-ignore */ url).then(module => {
+  const Planner = module.default;
+
+  const container2d = document.querySelector('#container-2d');
+  const planner = new Planner(container2d);
+  window.planner = planner; // for debug
+});
+    </script>
+  </body>
+</html>

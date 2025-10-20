@@ -1,0 +1,24 @@
+{
+  "name": "planner-pvz",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "upisfree",
+  "type": "module",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "@pixi/devtools": "^2.0.1",
+    "pixi-viewport": "^6.0.3",
+    "pixi.js": "^8.14.0",
+    "spatial-controls": "^6.2.1",
+    "three": "^0.180.0",
+    "tweakpane": "^4.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "^2.1.0",
+    "vite": "^7.1.9"
+  }
+}
