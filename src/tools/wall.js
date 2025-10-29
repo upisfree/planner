@@ -219,7 +219,7 @@ class WallTool {
     }
 
     // отключаем перемещение камеры, пока таскаем точку
-    this.planner.enableCameraDragging();
+    this.planner.disableCameraDragging();
 
     this.pointDragTarget = event.currentTarget;
   }

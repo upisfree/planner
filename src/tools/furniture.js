@@ -17,8 +17,17 @@ class FurnitureTool {
     stage.addChild(this.layer);
 
     stage.addEventListener('pointermove', this.onMouseMove.bind(this));
+    window.addEventListener('keyup', this.onKeyUp.bind(this));
 
     this.enable();
+  }
+
+  removeFurniture(furniture) {
+    const index = this.furnitures.indexOf(furniture);
+
+    if (index > -1) {
+      this.furnitures.splice(index, 1);
+    }
   }
 
   enable() {
@@ -54,6 +63,14 @@ class FurnitureTool {
 
     // обновляем спрайт таскаемой мебели
     this.dragTarget.position.copyFrom(worldPoint);
+  }
+
+  onKeyUp(event) {
+    const code = event.code;
+
+    if (code === 'Backspace' && this.dragTarget) {
+      this.dragTarget.dispose();
+    }
   }
 }
 

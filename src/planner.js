@@ -6,6 +6,7 @@ import WallTool from './tools/wall.js';
 import FurnitureTool from './tools/furniture.js';
 import Furniture from './furniture/furniture.js';
 import { furnitureList } from './furniture/list.js';
+import spawnFurnitureList from './furniture/spawn-list.js';
 
 const BACKGROUND_COLOR = '#e5e6e8';
 
@@ -39,13 +40,11 @@ class Planner {
       const key = event.code;
 
       if (key === 'Digit1') {
-        this.wallTool.disable();
-        this.furnitureTool.enable();
+        this.enableFurnitureTool();
       }
 
       if (key === 'Digit2') {
-        this.wallTool.enable();
-        this.furnitureTool.disable();
+        this.enableWallTool();
       }
     });
   }
@@ -57,8 +56,8 @@ class Planner {
     this.wallTool = new WallTool(this);
     this.furnitureTool = new FurnitureTool(this);
 
-    // TODO: tmp
-    const fur = new Furniture(this, 'fitting-room');
+    // TODO: переделать это в реакте
+    spawnFurnitureList(this);
   }
 
   async init2D() {
@@ -170,6 +169,16 @@ class Planner {
 
   disableCameraDragging() {
     this.viewport.interactive = false;
+  }
+
+  enableWallTool() {
+    this.wallTool.enable();
+    this.furnitureTool.disable();
+  }
+
+  enableFurnitureTool() {
+    this.wallTool.disable();
+    this.furnitureTool.enable();
   }
 
   // TODO?: https://pixijs.com/8.x/guides/components/scene-objects/graphics/graphics-pixel-line
