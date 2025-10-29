@@ -5,9 +5,6 @@ export const ASSETS_PATH = './assets';
 
 class Assets {
   files = {
-    grid: `${ ASSETS_PATH }/textures/grid.png`,
-    bunny: `${ ASSETS_PATH }/textures/bunny.png`,
-
     rotateIcon: `${ ASSETS_PATH }/icons/rotate.png`,
     deleteIcon: `${ ASSETS_PATH }/icons/delete.png`,
   };

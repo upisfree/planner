@@ -1,4 +1,4 @@
-import { Application, Sprite, TilingSprite } from 'pixi.js';
+import { Application, Graphics, Sprite, TilingSprite } from 'pixi.js';
 import { initDevtools } from '@pixi/devtools';
 import { Viewport } from 'pixi-viewport';
 import Assets from './assets.js';
@@ -10,6 +10,9 @@ import spawnFurnitureList from './furniture/spawn-list.js';
 
 const BACKGROUND_COLOR = '#e5e6e8';
 
+// сколько нужно pixi.js units чтобы получить один метр
+export const METER = 100;
+
 class Planner {
   div2d = null;
   div2dBounds = null;
@@ -17,7 +20,8 @@ class Planner {
   app = null;
   viewport = null;
 
-  worldSize = 5000;
+  // 50 метров
+  worldSize = 50 * METER;
 
   isDragging = false;
 
@@ -36,14 +40,14 @@ class Planner {
     this.disablePinchToZoomGestureInChrome();
 
     // tmp dev
-    window.addEventListener('keypress', (event) => {
+    window.addEventListener('keyup', (event) => {
       const key = event.code;
 
-      if (key === 'Digit1') {
+      if (key === 'Escape') {
         this.enableFurnitureTool();
       }
 
-      if (key === 'Digit2') {
+      if (key === 'Digit1') {
         this.enableWallTool();
       }
     });
@@ -115,16 +119,6 @@ class Planner {
     // make sure the whole canvas area is interactive
     this.app.stage.hitArea = this.app.screen;
 
-
-    // test bunny
-    for (let i = 0; i < 25; i++) {
-      const bunny = new Sprite(this.assets.textures.bunny);
-
-      bunny.x = (i % 5) * 40;
-      bunny.y = Math.floor(i / 5) * 40;
-      this.viewport.addChild(bunny);
-    }
-
     this.app.ticker.add(this.update.bind(this));
 
     this.initGrid();
@@ -181,20 +175,30 @@ class Planner {
     this.furnitureTool.enable();
   }
 
-  // TODO?: https://pixijs.com/8.x/guides/components/scene-objects/graphics/graphics-pixel-line
   initGrid() {
-    const grid = new TilingSprite({
-      texture: this.assets.textures.grid,
-      width: this.worldSize * 2,
-      height: this.worldSize * 2,
-      tileScale: 0.5,
-      roundPixels: true,
-      applyAnchorToTexture: true
-    });
+    const options = {
+      color: 0x000000,
+      alpha: 0.15,
+      pixelLine: true
+    };
 
-    grid.x = -this.worldSize;
-    grid.y = -this.worldSize;
-    grid.alpha = 0.15;
+    const grid = new Graphics();
+    const size = this.worldSize;
+    const count = size / METER;
+
+    for (let i = 0; i < count * 2; i++) {
+      const j = -size + i * METER;
+
+      // vertical
+      grid.moveTo(-size, j)
+        .lineTo(size, j)
+        .stroke(options);
+
+      // horizontal
+      grid.moveTo(j, -size)
+        .lineTo(j, size)
+        .stroke(options);
+    }
 
     this.viewport.addChild(grid);
   }

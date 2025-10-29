@@ -1,5 +1,5 @@
 var w = /* @__PURE__ */ ((s) => (s.Application = "application", s.WebGLPipes = "webgl-pipes", s.WebGLPipesAdaptor = "webgl-pipes-adaptor", s.WebGLSystem = "webgl-system", s.WebGPUPipes = "webgpu-pipes", s.WebGPUPipesAdaptor = "webgpu-pipes-adaptor", s.WebGPUSystem = "webgpu-system", s.CanvasSystem = "canvas-system", s.CanvasPipesAdaptor = "canvas-pipes-adaptor", s.CanvasPipes = "canvas-pipes", s.Asset = "asset", s.LoadParser = "load-parser", s.ResolveParser = "resolve-parser", s.CacheParser = "cache-parser", s.DetectionParser = "detection-parser", s.MaskEffect = "mask-effect", s.BlendMode = "blend-mode", s.TextureSource = "texture-source", s.Environment = "environment", s.ShapeBuilder = "shape-builder", s.Batcher = "batcher", s))(w || {});
-const Bo = (s) => {
+const Ro = (s) => {
   if (typeof s == "function" || typeof s == "object" && s.extension) {
     if (!s.extension)
       throw new Error("Extension class must have an extension object");
@@ -10,7 +10,7 @@ const Bo = (s) => {
   else
     throw new Error("Invalid extension type");
   return typeof s.type == "string" && (s.type = [s.type]), s;
-}, ms = (s, e) => Bo(s).priority ?? e, Y = {
+}, ms = (s, e) => Ro(s).priority ?? e, Y = {
   /** @ignore */
   _addHandlers: {},
   /** @ignore */
@@ -39,7 +39,7 @@ const Bo = (s) => {
    * @see {@link ExtensionFormat} For extension format details
    */
   remove(...s) {
-    return s.map(Bo).forEach((e) => {
+    return s.map(Ro).forEach((e) => {
       e.type.forEach((t) => this._removeHandlers[t]?.(e));
     }), this;
   },
@@ -69,7 +69,7 @@ const Bo = (s) => {
    * @see {@link extensions.remove} For removing registered extensions
    */
   add(...s) {
-    return s.map(Bo).forEach((e) => {
+    return s.map(Ro).forEach((e) => {
       e.type.forEach((t) => {
         const r = this._addHandlers, i = this._queue;
         r[t] ? r[t]?.(e) : (i[t] = i[t] || [], i[t]?.push(e));
@@ -203,7 +203,7 @@ const Bo = (s) => {
   },
   test: () => !0,
   load: async () => {
-    await Promise.resolve().then(() => J1);
+    await Promise.resolve().then(() => eS);
   }
 }, jc = {
   extension: {
@@ -213,7 +213,7 @@ const Bo = (s) => {
   },
   test: () => typeof self < "u" && self.WorkerGlobalScope !== void 0,
   load: async () => {
-    await Promise.resolve().then(() => eS);
+    await Promise.resolve().then(() => tS);
   }
 };
 class ce {
@@ -390,9 +390,9 @@ class ce {
 function qc(s) {
   return s && s.__esModule && Object.prototype.hasOwnProperty.call(s, "default") ? s.default : s;
 }
-var Vn = { exports: {} }, ph;
-function Yb() {
-  return ph || (ph = 1, (function(s) {
+var Vn = { exports: {} }, fh;
+function $b() {
+  return fh || (fh = 1, (function(s) {
     var e = Object.prototype.hasOwnProperty, t = "~";
     function r() {
     }
@@ -497,8 +497,8 @@ function Yb() {
     }, a.prototype.off = a.prototype.removeListener, a.prototype.addListener = a.prototype.on, a.prefixed = t, a.EventEmitter = a, s.exports = a;
   })(Vn)), Vn.exports;
 }
-var $b = Yb();
-const Qe = /* @__PURE__ */ qc($b), Kc = Math.PI * 2, Zc = 180 / Math.PI, Qc = Math.PI / 180;
+var jb = $b();
+const Qe = /* @__PURE__ */ qc(jb), Kc = Math.PI * 2, Zc = 180 / Math.PI, Qc = Math.PI / 180;
 class $ {
   /**
    * Creates a new `Point`
@@ -1262,7 +1262,7 @@ class W {
    * @see {@link Matrix.identity} For resetting matrices
    */
   static get IDENTITY() {
-    return qb.identity();
+    return Kb.identity();
   }
   /**
    * A static Matrix that can be used to avoid creating new objects.
@@ -1290,16 +1290,16 @@ class W {
    * @see {@link Matrix.identity} For resetting matrices
    */
   static get shared() {
-    return jb.identity();
+    return qb.identity();
   }
 }
-const jb = new W(), qb = new W(), ar = [1, 1, 0, -1, -1, -1, 0, 1, 1, 1, 0, -1, -1, -1, 0, 1], ur = [0, 1, 1, 1, 0, -1, -1, -1, 0, 1, 1, 1, 0, -1, -1, -1], lr = [0, -1, -1, -1, 0, 1, 1, 1, 0, 1, 1, 1, 0, -1, -1, -1], hr = [1, 1, 0, -1, -1, -1, 0, 1, -1, -1, 0, 1, 1, 1, 0, -1], Ro = [], Jc = [], Qs = Math.sign;
-function Kb() {
+const qb = new W(), Kb = new W(), ar = [1, 1, 0, -1, -1, -1, 0, 1, 1, 1, 0, -1, -1, -1, 0, 1], ur = [0, 1, 1, 1, 0, -1, -1, -1, 0, 1, 1, 1, 0, -1, -1, -1], lr = [0, -1, -1, -1, 0, 1, 1, 1, 0, 1, 1, 1, 0, -1, -1, -1], hr = [1, 1, 0, -1, -1, -1, 0, 1, -1, -1, 0, 1, 1, 1, 0, -1], Mo = [], Jc = [], Js = Math.sign;
+function Zb() {
   for (let s = 0; s < 16; s++) {
     const e = [];
-    Ro.push(e);
+    Mo.push(e);
     for (let t = 0; t < 16; t++) {
-      const r = Qs(ar[s] * ar[t] + lr[s] * ur[t]), i = Qs(ur[s] * ar[t] + hr[s] * ur[t]), n = Qs(ar[s] * lr[t] + lr[s] * hr[t]), o = Qs(ur[s] * lr[t] + hr[s] * hr[t]);
+      const r = Js(ar[s] * ar[t] + lr[s] * ur[t]), i = Js(ur[s] * ar[t] + hr[s] * ur[t]), n = Js(ar[s] * lr[t] + lr[s] * hr[t]), o = Js(ur[s] * lr[t] + hr[s] * hr[t]);
       for (let a = 0; a < 16; a++)
         if (ar[a] === r && ur[a] === i && lr[a] === n && hr[a] === o) {
           e.push(a);
@@ -1312,7 +1312,7 @@ function Kb() {
     e.set(ar[s], ur[s], lr[s], hr[s], 0, 0), Jc.push(e);
   }
 }
-Kb();
+Zb();
 const ee = {
   /**
    * | Rotation | Direction |
@@ -1462,7 +1462,7 @@ const ee = {
    *   is the column in the above cayley table.
    * @returns {GD8Symmetry} Composed operation
    */
-  add: (s, e) => Ro[s][e],
+  add: (s, e) => Mo[s][e],
   /**
    * Reverse of `add`.
    * @group groupD8
@@ -1470,7 +1470,7 @@ const ee = {
    * @param {GD8Symmetry} rotationFirst - First operation
    * @returns {GD8Symmetry} Result
    */
-  sub: (s, e) => Ro[s][ee.inv(e)],
+  sub: (s, e) => Mo[s][ee.inv(e)],
   /**
    * Adds 180 degrees to rotation, which is a commutative
    * operation.
@@ -1539,7 +1539,7 @@ const ee = {
       o
     ) : r.set(i + u, n + l, o, a);
   }
-}, Js = [new $(), new $(), new $(), new $()];
+}, ei = [new $(), new $(), new $(), new $()];
 class te {
   /**
    * @param x - The X coordinate of the upper-left corner of the rectangle
@@ -1859,7 +1859,7 @@ class te {
     const r = this.left, i = this.right, n = this.top, o = this.bottom;
     if (i <= r || o <= n)
       return !1;
-    const a = Js[0].set(e.left, e.top), u = Js[1].set(e.left, e.bottom), l = Js[2].set(e.right, e.top), h = Js[3].set(e.right, e.bottom);
+    const a = ei[0].set(e.left, e.top), u = ei[1].set(e.left, e.bottom), l = ei[2].set(e.right, e.top), h = ei[3].set(e.right, e.bottom);
     if (l.x <= a.x || u.y <= a.y)
       return !1;
     const c = Math.sign(t.a * t.d - t.b * t.c);
@@ -2077,15 +2077,15 @@ const xs = {
 function ae(s = "default") {
   return xs[s] === void 0 && (xs[s] = -1), ++xs[s];
 }
-function Zb() {
+function Qb() {
   for (const s in xs)
     delete xs[s];
 }
-const mh = /* @__PURE__ */ new Set(), Z = "8.0.0", ed = "8.3.4", Cr = {
+const ph = /* @__PURE__ */ new Set(), Z = "8.0.0", ed = "8.3.4", Cr = {
   quiet: !1,
   noColor: !1
 }, N = (s, e, t = 3) => {
-  if (Cr.quiet || mh.has(e))
+  if (Cr.quiet || ph.has(e))
     return;
   let r = new Error().stack;
   const i = `${e}
@@ -2097,7 +2097,7 @@ Deprecated since v${s}`, n = typeof console.groupCollapsed == "function" && !Cr.
     "color:#614108;background:#fffbe6",
     "font-weight:normal;color:#614108;background:#fffbe6",
     i
-  ), console.warn(r), console.groupEnd()) : (console.warn("PixiJS Deprecation Warning: ", i), console.warn(r))), mh.add(e);
+  ), console.warn(r), console.groupEnd()) : (console.warn("PixiJS Deprecation Warning: ", i), console.warn(r))), ph.add(e);
 };
 Object.defineProperties(N, {
   quiet: {
@@ -2122,10 +2122,10 @@ const Ba = () => {
 function fr(s) {
   return s += s === 0 ? 1 : 0, --s, s |= s >>> 1, s |= s >>> 2, s |= s >>> 4, s |= s >>> 8, s |= s >>> 16, s + 1;
 }
-function Mo(s) {
+function Do(s) {
   return !(s & s - 1) && !!s;
 }
-function Qb(s) {
+function Jb(s) {
   let e = (s > 65535 ? 1 : 0) << 4;
   s >>>= e;
   let t = (s > 255 ? 1 : 0) << 3;
@@ -2137,10 +2137,10 @@ function gt(s) {
     s[t] !== void 0 && (e[t] = s[t]);
   return e;
 }
-const gh = /* @__PURE__ */ Object.create(null);
-function Jb(s) {
-  const e = gh[s];
-  return e === void 0 && (gh[s] = ae("resource")), e;
+const mh = /* @__PURE__ */ Object.create(null);
+function ex(s) {
+  const e = mh[s];
+  return e === void 0 && (mh[s] = ae("resource")), e;
 }
 const td = class rd extends Qe {
   /**
@@ -2185,7 +2185,7 @@ const td = class rd extends Qe {
   }
   _generateResourceId() {
     const e = `${this.addressModeU}-${this.addressModeV}-${this.addressModeW}-${this.magFilter}-${this.minFilter}-${this.mipmapFilter}-${this.lodMinClamp}-${this.lodMaxClamp}-${this.compare}-${this._maxAnisotropy}`;
-    return this._sharedResourceId = Jb(e), this._resourceId;
+    return this._sharedResourceId = ex(e), this._resourceId;
   }
   /** Destroys the style */
   destroy() {
@@ -2360,7 +2360,7 @@ const sd = class id extends Qe {
    * @private
    */
   _refreshPOT() {
-    this.isPowerOfTwo = Mo(this.pixelWidth) && Mo(this.pixelHeight);
+    this.isPowerOfTwo = Do(this.pixelWidth) && Do(this.pixelHeight);
   }
   static test(e) {
     throw new Error("Unimplemented");
@@ -2393,7 +2393,7 @@ class Ji extends ge {
   }
 }
 Ji.extension = w.TextureSource;
-const _h = new W();
+const gh = new W();
 class Ra {
   /**
    * @param texture - observed texture
@@ -2434,14 +2434,14 @@ class Ra {
     const t = e.uvs;
     this.mapCoord.set(t.x1 - t.x0, t.y1 - t.y0, t.x3 - t.x0, t.y3 - t.y0, t.x0, t.y0);
     const r = e.orig, i = e.trim;
-    i && (_h.set(
+    i && (gh.set(
       r.width / i.width,
       0,
       0,
       r.height / i.height,
       -i.x / i.width,
       -i.y / i.height
-    ), this.mapCoord.append(_h));
+    ), this.mapCoord.append(gh));
     const n = e.source, o = this.uClampFrame, a = this.clampMargin / n._resolution, u = this.clampOffset / n._resolution;
     return o[0] = (e.frame.x + a + u) / n.width, o[1] = (e.frame.y + a + u) / n.height, o[2] = (e.frame.x + e.frame.width - a + u) / n.width, o[3] = (e.frame.y + e.frame.height - a + u) / n.height, this.uClampOffset[0] = this.clampOffset / n.pixelWidth, this.uClampOffset[1] = this.clampOffset / n.pixelHeight, this.isSimple = e.frame.width === n.width && e.frame.height === n.height && e.rotate === 0, !0;
   }
@@ -2544,7 +2544,7 @@ function Ma(s, e, t) {
   } else
     s.minX = -e._x * r, s.maxX = s.minX + r, s.minY = -e._y * i, s.maxY = s.minY + i;
 }
-const bh = new W();
+const _h = new W();
 class Be {
   /**
    * Creates a new Bounds object.
@@ -2554,7 +2554,7 @@ class Be {
    * @param maxY - The maximum Y coordinate of the bounds.
    */
   constructor(e = 1 / 0, t = 1 / 0, r = -1 / 0, i = -1 / 0) {
-    this.minX = 1 / 0, this.minY = 1 / 0, this.maxX = -1 / 0, this.maxY = -1 / 0, this.matrix = bh, this.minX = e, this.minY = t, this.maxX = r, this.maxY = i;
+    this.minX = 1 / 0, this.minY = 1 / 0, this.maxX = -1 / 0, this.maxY = -1 / 0, this.matrix = _h, this.minX = e, this.minY = t, this.maxX = r, this.maxY = i;
   }
   /**
    * Checks if bounds are empty, meaning either width or height is zero or negative.
@@ -2619,7 +2619,7 @@ class Be {
    * @returns This bounds object for chaining
    */
   clear() {
-    return this.minX = 1 / 0, this.minY = 1 / 0, this.maxX = -1 / 0, this.maxY = -1 / 0, this.matrix = bh, this;
+    return this.minX = 1 / 0, this.minY = 1 / 0, this.maxX = -1 / 0, this.maxY = -1 / 0, this.matrix = _h, this;
   }
   /**
    * Sets the bounds directly using coordinate values.
@@ -3157,7 +3157,7 @@ class Be {
     return this.minX = e.minX, this.minY = e.minY, this.maxX = e.maxX, this.maxY = e.maxY, this;
   }
 }
-var ex = { grad: 0.9, turn: 360, rad: 360 / (2 * Math.PI) }, It = function(s) {
+var tx = { grad: 0.9, turn: 360, rad: 360 / (2 * Math.PI) }, It = function(s) {
   return typeof s == "string" ? s.length > 0 : typeof s == "number";
 }, De = function(s, e, t) {
   return e === void 0 && (e = 0), t === void 0 && (t = Math.pow(10, e)), Math.round(t * s) / t + 0;
@@ -3165,11 +3165,11 @@ var ex = { grad: 0.9, turn: 360, rad: 360 / (2 * Math.PI) }, It = function(s) {
   return e === void 0 && (e = 0), t === void 0 && (t = 1), s > t ? t : s > e ? s : e;
 }, nd = function(s) {
   return (s = isFinite(s) ? s % 360 : 0) > 0 ? s : s + 360;
-}, xh = function(s) {
+}, bh = function(s) {
   return { r: ut(s.r, 0, 255), g: ut(s.g, 0, 255), b: ut(s.b, 0, 255), a: ut(s.a) };
 }, Yn = function(s) {
   return { r: De(s.r), g: De(s.g), b: De(s.b), a: De(s.a, 3) };
-}, tx = /^#([0-9a-f]{3,8})$/i, ei = function(s) {
+}, rx = /^#([0-9a-f]{3,8})$/i, ti = function(s) {
   var e = s.toString(16);
   return e.length < 2 ? "0" + e : e;
 }, od = function(s) {
@@ -3180,35 +3180,35 @@ var ex = { grad: 0.9, turn: 360, rad: 360 / (2 * Math.PI) }, It = function(s) {
   e = e / 360 * 6, t /= 100, r /= 100;
   var n = Math.floor(e), o = r * (1 - t), a = r * (1 - (e - n) * t), u = r * (1 - (1 - e + n) * t), l = n % 6;
   return { r: 255 * [r, a, o, o, u, r][l], g: 255 * [u, r, r, a, o, o][l], b: 255 * [o, o, u, r, r, a][l], a: i };
-}, yh = function(s) {
+}, xh = function(s) {
   return { h: nd(s.h), s: ut(s.s, 0, 100), l: ut(s.l, 0, 100), a: ut(s.a) };
-}, vh = function(s) {
+}, yh = function(s) {
   return { h: De(s.h), s: De(s.s), l: De(s.l), a: De(s.a, 3) };
-}, Sh = function(s) {
+}, vh = function(s) {
   return ad((t = (e = s).s, { h: e.h, s: (t *= ((r = e.l) < 50 ? r : 100 - r) / 100) > 0 ? 2 * t / (r + t) * 100 : 0, v: r + t, a: e.a }));
   var e, t, r;
 }, ys = function(s) {
   return { h: (e = od(s)).h, s: (i = (200 - (t = e.s)) * (r = e.v) / 100) > 0 && i < 200 ? t * r / 100 / (i <= 100 ? i : 200 - i) * 100 : 0, l: i / 2, a: e.a };
   var e, t, r, i;
-}, rx = /^hsla?\(\s*([+-]?\d*\.?\d+)(deg|rad|grad|turn)?\s*,\s*([+-]?\d*\.?\d+)%\s*,\s*([+-]?\d*\.?\d+)%\s*(?:,\s*([+-]?\d*\.?\d+)(%)?\s*)?\)$/i, sx = /^hsla?\(\s*([+-]?\d*\.?\d+)(deg|rad|grad|turn)?\s+([+-]?\d*\.?\d+)%\s+([+-]?\d*\.?\d+)%\s*(?:\/\s*([+-]?\d*\.?\d+)(%)?\s*)?\)$/i, ix = /^rgba?\(\s*([+-]?\d*\.?\d+)(%)?\s*,\s*([+-]?\d*\.?\d+)(%)?\s*,\s*([+-]?\d*\.?\d+)(%)?\s*(?:,\s*([+-]?\d*\.?\d+)(%)?\s*)?\)$/i, nx = /^rgba?\(\s*([+-]?\d*\.?\d+)(%)?\s+([+-]?\d*\.?\d+)(%)?\s+([+-]?\d*\.?\d+)(%)?\s*(?:\/\s*([+-]?\d*\.?\d+)(%)?\s*)?\)$/i, Do = { string: [[function(s) {
-  var e = tx.exec(s);
+}, sx = /^hsla?\(\s*([+-]?\d*\.?\d+)(deg|rad|grad|turn)?\s*,\s*([+-]?\d*\.?\d+)%\s*,\s*([+-]?\d*\.?\d+)%\s*(?:,\s*([+-]?\d*\.?\d+)(%)?\s*)?\)$/i, ix = /^hsla?\(\s*([+-]?\d*\.?\d+)(deg|rad|grad|turn)?\s+([+-]?\d*\.?\d+)%\s+([+-]?\d*\.?\d+)%\s*(?:\/\s*([+-]?\d*\.?\d+)(%)?\s*)?\)$/i, nx = /^rgba?\(\s*([+-]?\d*\.?\d+)(%)?\s*,\s*([+-]?\d*\.?\d+)(%)?\s*,\s*([+-]?\d*\.?\d+)(%)?\s*(?:,\s*([+-]?\d*\.?\d+)(%)?\s*)?\)$/i, ox = /^rgba?\(\s*([+-]?\d*\.?\d+)(%)?\s+([+-]?\d*\.?\d+)(%)?\s+([+-]?\d*\.?\d+)(%)?\s*(?:\/\s*([+-]?\d*\.?\d+)(%)?\s*)?\)$/i, Fo = { string: [[function(s) {
+  var e = rx.exec(s);
   return e ? (s = e[1]).length <= 4 ? { r: parseInt(s[0] + s[0], 16), g: parseInt(s[1] + s[1], 16), b: parseInt(s[2] + s[2], 16), a: s.length === 4 ? De(parseInt(s[3] + s[3], 16) / 255, 2) : 1 } : s.length === 6 || s.length === 8 ? { r: parseInt(s.substr(0, 2), 16), g: parseInt(s.substr(2, 2), 16), b: parseInt(s.substr(4, 2), 16), a: s.length === 8 ? De(parseInt(s.substr(6, 2), 16) / 255, 2) : 1 } : null : null;
 }, "hex"], [function(s) {
-  var e = ix.exec(s) || nx.exec(s);
-  return e ? e[2] !== e[4] || e[4] !== e[6] ? null : xh({ r: Number(e[1]) / (e[2] ? 100 / 255 : 1), g: Number(e[3]) / (e[4] ? 100 / 255 : 1), b: Number(e[5]) / (e[6] ? 100 / 255 : 1), a: e[7] === void 0 ? 1 : Number(e[7]) / (e[8] ? 100 : 1) }) : null;
+  var e = nx.exec(s) || ox.exec(s);
+  return e ? e[2] !== e[4] || e[4] !== e[6] ? null : bh({ r: Number(e[1]) / (e[2] ? 100 / 255 : 1), g: Number(e[3]) / (e[4] ? 100 / 255 : 1), b: Number(e[5]) / (e[6] ? 100 / 255 : 1), a: e[7] === void 0 ? 1 : Number(e[7]) / (e[8] ? 100 : 1) }) : null;
 }, "rgb"], [function(s) {
-  var e = rx.exec(s) || sx.exec(s);
+  var e = sx.exec(s) || ix.exec(s);
   if (!e) return null;
-  var t, r, i = yh({ h: (t = e[1], r = e[2], r === void 0 && (r = "deg"), Number(t) * (ex[r] || 1)), s: Number(e[3]), l: Number(e[4]), a: e[5] === void 0 ? 1 : Number(e[5]) / (e[6] ? 100 : 1) });
-  return Sh(i);
+  var t, r, i = xh({ h: (t = e[1], r = e[2], r === void 0 && (r = "deg"), Number(t) * (tx[r] || 1)), s: Number(e[3]), l: Number(e[4]), a: e[5] === void 0 ? 1 : Number(e[5]) / (e[6] ? 100 : 1) });
+  return vh(i);
 }, "hsl"]], object: [[function(s) {
   var e = s.r, t = s.g, r = s.b, i = s.a, n = i === void 0 ? 1 : i;
-  return It(e) && It(t) && It(r) ? xh({ r: Number(e), g: Number(t), b: Number(r), a: Number(n) }) : null;
+  return It(e) && It(t) && It(r) ? bh({ r: Number(e), g: Number(t), b: Number(r), a: Number(n) }) : null;
 }, "rgb"], [function(s) {
   var e = s.h, t = s.s, r = s.l, i = s.a, n = i === void 0 ? 1 : i;
   if (!It(e) || !It(t) || !It(r)) return null;
-  var o = yh({ h: Number(e), s: Number(t), l: Number(r), a: Number(n) });
-  return Sh(o);
+  var o = xh({ h: Number(e), s: Number(t), l: Number(r), a: Number(n) });
+  return vh(o);
 }, "hsl"], [function(s) {
   var e = s.h, t = s.s, r = s.v, i = s.a, n = i === void 0 ? 1 : i;
   if (!It(e) || !It(t) || !It(r)) return null;
@@ -3216,25 +3216,25 @@ var ex = { grad: 0.9, turn: 360, rad: 360 / (2 * Math.PI) }, It = function(s) {
     return { h: nd(a.h), s: ut(a.s, 0, 100), v: ut(a.v, 0, 100), a: ut(a.a) };
   })({ h: Number(e), s: Number(t), v: Number(r), a: Number(n) });
   return ad(o);
-}, "hsv"]] }, wh = function(s, e) {
+}, "hsv"]] }, Sh = function(s, e) {
   for (var t = 0; t < e.length; t++) {
     var r = e[t][0](s);
     if (r) return [r, e[t][1]];
   }
   return [null, void 0];
-}, ox = function(s) {
-  return typeof s == "string" ? wh(s.trim(), Do.string) : typeof s == "object" && s !== null ? wh(s, Do.object) : [null, void 0];
+}, ax = function(s) {
+  return typeof s == "string" ? Sh(s.trim(), Fo.string) : typeof s == "object" && s !== null ? Sh(s, Fo.object) : [null, void 0];
 }, $n = function(s, e) {
   var t = ys(s);
   return { h: t.h, s: ut(t.s + 100 * e, 0, 100), l: t.l, a: t.a };
 }, jn = function(s) {
   return (299 * s.r + 587 * s.g + 114 * s.b) / 1e3 / 255;
-}, Th = function(s, e) {
+}, wh = function(s, e) {
   var t = ys(s);
   return { h: t.h, s: t.s, l: ut(t.l + 100 * e, 0, 100), a: t.a };
-}, Fo = (function() {
+}, Io = (function() {
   function s(e) {
-    this.parsed = ox(e)[0], this.rgba = this.parsed || { r: 0, g: 0, b: 0, a: 1 };
+    this.parsed = ax(e)[0], this.rgba = this.parsed || { r: 0, g: 0, b: 0, a: 1 };
   }
   return s.prototype.isValid = function() {
     return this.parsed !== null;
@@ -3245,7 +3245,7 @@ var ex = { grad: 0.9, turn: 360, rad: 360 / (2 * Math.PI) }, It = function(s) {
   }, s.prototype.isLight = function() {
     return jn(this.rgba) >= 0.5;
   }, s.prototype.toHex = function() {
-    return e = Yn(this.rgba), t = e.r, r = e.g, i = e.b, o = (n = e.a) < 1 ? ei(De(255 * n)) : "", "#" + ei(t) + ei(r) + ei(i) + o;
+    return e = Yn(this.rgba), t = e.r, r = e.g, i = e.b, o = (n = e.a) < 1 ? ti(De(255 * n)) : "", "#" + ti(t) + ti(r) + ti(i) + o;
     var e, t, r, i, n, o;
   }, s.prototype.toRgb = function() {
     return Yn(this.rgba);
@@ -3253,9 +3253,9 @@ var ex = { grad: 0.9, turn: 360, rad: 360 / (2 * Math.PI) }, It = function(s) {
     return e = Yn(this.rgba), t = e.r, r = e.g, i = e.b, (n = e.a) < 1 ? "rgba(" + t + ", " + r + ", " + i + ", " + n + ")" : "rgb(" + t + ", " + r + ", " + i + ")";
     var e, t, r, i, n;
   }, s.prototype.toHsl = function() {
-    return vh(ys(this.rgba));
+    return yh(ys(this.rgba));
   }, s.prototype.toHslString = function() {
-    return e = vh(ys(this.rgba)), t = e.h, r = e.s, i = e.l, (n = e.a) < 1 ? "hsla(" + t + ", " + r + "%, " + i + "%, " + n + ")" : "hsl(" + t + ", " + r + "%, " + i + "%)";
+    return e = yh(ys(this.rgba)), t = e.h, r = e.s, i = e.l, (n = e.a) < 1 ? "hsla(" + t + ", " + r + "%, " + i + "%, " + n + ")" : "hsl(" + t + ", " + r + "%, " + i + "%)";
     var e, t, r, i, n;
   }, s.prototype.toHsv = function() {
     return e = od(this.rgba), { h: De(e.h), s: De(e.s), v: De(e.v), a: De(e.a, 3) };
@@ -3270,9 +3270,9 @@ var ex = { grad: 0.9, turn: 360, rad: 360 / (2 * Math.PI) }, It = function(s) {
   }, s.prototype.grayscale = function() {
     return yt($n(this.rgba, -1));
   }, s.prototype.lighten = function(e) {
-    return e === void 0 && (e = 0.1), yt(Th(this.rgba, e));
+    return e === void 0 && (e = 0.1), yt(wh(this.rgba, e));
   }, s.prototype.darken = function(e) {
-    return e === void 0 && (e = 0.1), yt(Th(this.rgba, -e));
+    return e === void 0 && (e = 0.1), yt(wh(this.rgba, -e));
   }, s.prototype.rotate = function(e) {
     return e === void 0 && (e = 15), this.hue(this.hue() + e);
   }, s.prototype.alpha = function(e) {
@@ -3285,13 +3285,13 @@ var ex = { grad: 0.9, turn: 360, rad: 360 / (2 * Math.PI) }, It = function(s) {
     return this.toHex() === yt(e).toHex();
   }, s;
 })(), yt = function(s) {
-  return s instanceof Fo ? s : new Fo(s);
-}, Eh = [], ax = function(s) {
+  return s instanceof Io ? s : new Io(s);
+}, Th = [], ux = function(s) {
   s.forEach(function(e) {
-    Eh.indexOf(e) < 0 && (e(Fo, Do), Eh.push(e));
+    Th.indexOf(e) < 0 && (e(Io, Fo), Th.push(e));
   });
 };
-function ux(s, e) {
+function lx(s, e) {
   var t = { white: "#ffffff", bisque: "#ffe4c4", blue: "#0000ff", cadetblue: "#5f9ea0", chartreuse: "#7fff00", chocolate: "#d2691e", coral: "#ff7f50", antiquewhite: "#faebd7", aqua: "#00ffff", azure: "#f0ffff", whitesmoke: "#f5f5f5", papayawhip: "#ffefd5", plum: "#dda0dd", blanchedalmond: "#ffebcd", black: "#000000", gold: "#ffd700", goldenrod: "#daa520", gainsboro: "#dcdcdc", cornsilk: "#fff8dc", cornflowerblue: "#6495ed", burlywood: "#deb887", aquamarine: "#7fffd4", beige: "#f5f5dc", crimson: "#dc143c", cyan: "#00ffff", darkblue: "#00008b", darkcyan: "#008b8b", darkgoldenrod: "#b8860b", darkkhaki: "#bdb76b", darkgray: "#a9a9a9", darkgreen: "#006400", darkgrey: "#a9a9a9", peachpuff: "#ffdab9", darkmagenta: "#8b008b", darkred: "#8b0000", darkorchid: "#9932cc", darkorange: "#ff8c00", darkslateblue: "#483d8b", gray: "#808080", darkslategray: "#2f4f4f", darkslategrey: "#2f4f4f", deeppink: "#ff1493", deepskyblue: "#00bfff", wheat: "#f5deb3", firebrick: "#b22222", floralwhite: "#fffaf0", ghostwhite: "#f8f8ff", darkviolet: "#9400d3", magenta: "#ff00ff", green: "#008000", dodgerblue: "#1e90ff", grey: "#808080", honeydew: "#f0fff0", hotpink: "#ff69b4", blueviolet: "#8a2be2", forestgreen: "#228b22", lawngreen: "#7cfc00", indianred: "#cd5c5c", indigo: "#4b0082", fuchsia: "#ff00ff", brown: "#a52a2a", maroon: "#800000", mediumblue: "#0000cd", lightcoral: "#f08080", darkturquoise: "#00ced1", lightcyan: "#e0ffff", ivory: "#fffff0", lightyellow: "#ffffe0", lightsalmon: "#ffa07a", lightseagreen: "#20b2aa", linen: "#faf0e6", mediumaquamarine: "#66cdaa", lemonchiffon: "#fffacd", lime: "#00ff00", khaki: "#f0e68c", mediumseagreen: "#3cb371", limegreen: "#32cd32", mediumspringgreen: "#00fa9a", lightskyblue: "#87cefa", lightblue: "#add8e6", midnightblue: "#191970", lightpink: "#ffb6c1", mistyrose: "#ffe4e1", moccasin: "#ffe4b5", mintcream: "#f5fffa", lightslategray: "#778899", lightslategrey: "#778899", navajowhite: "#ffdead", navy: "#000080", mediumvioletred: "#c71585", powderblue: "#b0e0e6", palegoldenrod: "#eee8aa", oldlace: "#fdf5e6", paleturquoise: "#afeeee", mediumturquoise: "#48d1cc", mediumorchid: "#ba55d3", rebeccapurple: "#663399", lightsteelblue: "#b0c4de", mediumslateblue: "#7b68ee", thistle: "#d8bfd8", tan: "#d2b48c", orchid: "#da70d6", mediumpurple: "#9370db", purple: "#800080", pink: "#ffc0cb", skyblue: "#87ceeb", springgreen: "#00ff7f", palegreen: "#98fb98", red: "#ff0000", yellow: "#ffff00", slateblue: "#6a5acd", lavenderblush: "#fff0f5", peru: "#cd853f", palevioletred: "#db7093", violet: "#ee82ee", teal: "#008080", slategray: "#708090", slategrey: "#708090", aliceblue: "#f0f8ff", darkseagreen: "#8fbc8f", darkolivegreen: "#556b2f", greenyellow: "#adff2f", seagreen: "#2e8b57", seashell: "#fff5ee", tomato: "#ff6347", silver: "#c0c0c0", sienna: "#a0522d", lavender: "#e6e6fa", lightgreen: "#90ee90", orange: "#ffa500", orangered: "#ff4500", steelblue: "#4682b4", royalblue: "#4169e1", turquoise: "#40e0d0", yellowgreen: "#9acd32", salmon: "#fa8072", saddlebrown: "#8b4513", sandybrown: "#f4a460", rosybrown: "#bc8f8f", darksalmon: "#e9967a", lightgoldenrodyellow: "#fafad2", snow: "#fffafa", lightgrey: "#d3d3d3", lightgray: "#d3d3d3", dimgray: "#696969", dimgrey: "#696969", olivedrab: "#6b8e23", olive: "#808000" }, r = {};
   for (var i in t) r[t[i]] = i;
   var n = {};
@@ -3313,7 +3313,7 @@ function ux(s, e) {
     return u ? new s(u).toRgb() : null;
   }, "name"]);
 }
-ax([ux]);
+ux([lx]);
 const Hr = class gs {
   /**
    * @param {ColorSource} value - Optional value to use, if not provided, white is used.
@@ -3995,9 +3995,9 @@ const ud = {
   cullableChildren: !0
 };
 let qn = 0;
-const Ah = 500;
+const Eh = 500;
 function X(...s) {
-  qn !== Ah && (qn++, qn === Ah ? console.warn("PixiJS Warning: too many warnings, no more warnings will be reported to the console by PixiJS.") : console.warn("PixiJS Warning: ", ...s));
+  qn !== Eh && (qn++, qn === Eh ? console.warn("PixiJS Warning: too many warnings, no more warnings will be reported to the console by PixiJS.") : console.warn("PixiJS Warning: ", ...s));
 }
 const gr = {
   /**
@@ -4423,7 +4423,7 @@ const md = {
         r[i].getChildrenByLabel(s, !0, t);
     return t;
   }
-}, Oe = Se.getPool(W), wt = Se.getPool(Be), lx = new W(), _d = {
+}, Oe = Se.getPool(W), wt = Se.getPool(Be), hx = new W(), _d = {
   getFastGlobalBounds(s, e) {
     e || (e = new Be()), e.clear(), this._getGlobalBoundsRecursive(!!s, e, this.parentRenderLayer), e.isValid || e.set(0, 0, 0, 0);
     const t = this.renderGroup || this.parentRenderGroup;
@@ -4456,11 +4456,11 @@ const md = {
       const o = this.renderGroup || this.parentRenderGroup;
       for (let a = 0; a < this.effects.length; a++)
         this.effects[a].addBounds && (n || (n = !0, r.applyMatrix(o.worldTransform)), this.effects[a].addBounds(r, !0));
-      n && r.applyMatrix(o.worldTransform.copyTo(lx).invert()), e.addBounds(r), wt.return(r);
+      n && r.applyMatrix(o.worldTransform.copyTo(hx).invert()), e.addBounds(r), wt.return(r);
     } else this.renderGroup && (e.addBounds(r, this.relativeGroupTransform), wt.return(r));
   }
 };
-function Ns(s, e, t) {
+function Hs(s, e, t) {
   t.clear();
   let r, i;
   return s.parent ? e ? r = s.parent.worldTransform : (i = Oe.get().identity(), r = en(s, i)) : r = W.IDENTITY, bd(s, t, r, e), i && Oe.return(i), t.isValid || t.set(0, 0, 0, 0), t;
@@ -4498,9 +4498,9 @@ function Fa(s, e) {
   const t = s >> 16 & 255, r = s >> 8 & 255, i = s & 255, n = e >> 16 & 255, o = e >> 8 & 255, a = e & 255, u = t * n / 255 | 0, l = r * o / 255 | 0, h = i * a / 255 | 0;
   return (u << 16) + (l << 8) + h;
 }
-const Ch = 16777215;
+const Ah = 16777215;
 function Ps(s, e) {
-  return s === Ch ? e : e === Ch ? s : Fa(s, e);
+  return s === Ah ? e : e === Ah ? s : Fa(s, e);
 }
 function Rr(s) {
   return ((s & 255) << 16) + (s & 65280) + (s >> 16 & 255);
@@ -4570,7 +4570,7 @@ function Ia(s, e) {
   }
   return e.didChange;
 }
-const hx = new W(), vd = {
+const cx = new W(), vd = {
   _localBoundsCacheId: -1,
   _localBoundsCacheData: null,
   _setWidth(s, e) {
@@ -4589,10 +4589,10 @@ const hx = new W(), vd = {
       localBounds: new Be()
     });
     const s = this._localBoundsCacheData;
-    return s.index = 1, s.didChange = !1, s.data[0] !== this._didViewChangeTick && (s.didChange = !0, s.data[0] = this._didViewChangeTick), Ia(this, s), s.didChange && tn(this, s.localBounds, hx), s.localBounds;
+    return s.index = 1, s.didChange = !1, s.data[0] !== this._didViewChangeTick && (s.didChange = !0, s.data[0] = this._didViewChangeTick), Ia(this, s), s.didChange && tn(this, s.localBounds, cx), s.localBounds;
   },
   getBounds(s, e) {
-    return Ns(this, s, e || new Be());
+    return Hs(this, s, e || new Be());
   }
 }, Sd = {
   _onRender: null,
@@ -4621,10 +4621,10 @@ const hx = new W(), vd = {
     this.parent && (this.parent.sortableChildren = !0, this.parent.sortDirty = !0), this.parentRenderGroup && (this.parentRenderGroup.structureDidChange = !0);
   },
   sortChildren() {
-    this.sortDirty && (this.sortDirty = !1, this.children.sort(cx));
+    this.sortDirty && (this.sortDirty = !1, this.children.sort(dx));
   }
 };
-function cx(s, e) {
+function dx(s, e) {
   return s._zIndex - e._zIndex;
 }
 const Td = {
@@ -4671,7 +4671,7 @@ class ka {
     this.instructions.length = this.instructionSize, console.table(this.instructions, ["type", "action"]);
   }
 }
-let dx = 0;
+let fx = 0;
 class Ed {
   /**
    * @param textureOptions - options that will be passed to BaseRenderTexture constructor
@@ -4697,7 +4697,7 @@ class Ed {
     });
     return new O({
       source: i,
-      label: `texturePool_${dx++}`
+      label: `texturePool_${fx++}`
     });
   }
   /**
@@ -4914,10 +4914,10 @@ function Gi(s, e, t = {}) {
   for (const r in e)
     !t[r] && e[r] !== void 0 && (s[r] = e[r]);
 }
-const Kn = new ce(null), ti = new ce(null), Zn = new ce(null, 1, 1), ri = new ce(null), Bs = 1, rn = 2, Mr = 4, fx = 8;
+const Kn = new ce(null), ri = new ce(null), Zn = new ce(null, 1, 1), si = new ce(null), Bs = 1, rn = 2, Mr = 4, px = 8;
 class le extends Qe {
   constructor(e = {}) {
-    super(), this.uid = ae("renderable"), this._updateFlags = 15, this.renderGroup = null, this.parentRenderGroup = null, this.parentRenderGroupIndex = 0, this.didChange = !1, this.didViewUpdate = !1, this.relativeRenderGroupDepth = 0, this.children = [], this.parent = null, this.includeInBuild = !0, this.measurable = !0, this.isSimple = !0, this.parentRenderLayer = null, this.updateTick = -1, this.localTransform = new W(), this.relativeGroupTransform = new W(), this.groupTransform = this.relativeGroupTransform, this.destroyed = !1, this._position = new ce(this, 0, 0), this._scale = Zn, this._pivot = ti, this._origin = ri, this._skew = Kn, this._cx = 1, this._sx = 0, this._cy = 0, this._sy = 1, this._rotation = 0, this.localColor = 16777215, this.localAlpha = 1, this.groupAlpha = 1, this.groupColor = 16777215, this.groupColorAlpha = 4294967295, this.localBlendMode = "inherit", this.groupBlendMode = "normal", this.localDisplayStatus = 7, this.globalDisplayStatus = 7, this._didContainerChangeTick = 0, this._didViewChangeTick = 0, this._didLocalTransformChangeId = -1, this.effects = [], Gi(this, e, {
+    super(), this.uid = ae("renderable"), this._updateFlags = 15, this.renderGroup = null, this.parentRenderGroup = null, this.parentRenderGroupIndex = 0, this.didChange = !1, this.didViewUpdate = !1, this.relativeRenderGroupDepth = 0, this.children = [], this.parent = null, this.includeInBuild = !0, this.measurable = !0, this.isSimple = !0, this.parentRenderLayer = null, this.updateTick = -1, this.localTransform = new W(), this.relativeGroupTransform = new W(), this.groupTransform = this.relativeGroupTransform, this.destroyed = !1, this._position = new ce(this, 0, 0), this._scale = Zn, this._pivot = ri, this._origin = si, this._skew = Kn, this._cx = 1, this._sx = 0, this._cy = 0, this._sy = 1, this._rotation = 0, this.localColor = 16777215, this.localAlpha = 1, this.groupAlpha = 1, this.groupColor = 16777215, this.groupColorAlpha = 4294967295, this.localBlendMode = "inherit", this.groupBlendMode = "normal", this.localDisplayStatus = 7, this.globalDisplayStatus = 7, this._didContainerChangeTick = 0, this._didViewChangeTick = 0, this._didLocalTransformChangeId = -1, this.effects = [], Gi(this, e, {
       children: !0,
       parent: !0,
       effects: !0
@@ -5180,10 +5180,10 @@ class le extends Qe {
    * @since 4.0.0
    */
   get pivot() {
-    return this._pivot === ti && (this._pivot = new ce(this, 0, 0)), this._pivot;
+    return this._pivot === ri && (this._pivot = new ce(this, 0, 0)), this._pivot;
   }
   set pivot(e) {
-    this._pivot === ti && (this._pivot = new ce(this, 0, 0), this._origin !== ri && X("Setting both a pivot and origin on a Container is not recommended. This can lead to unexpected behavior if not handled carefully.")), typeof e == "number" ? this._pivot.set(e) : this._pivot.copyFrom(e);
+    this._pivot === ri && (this._pivot = new ce(this, 0, 0), this._origin !== si && X("Setting both a pivot and origin on a Container is not recommended. This can lead to unexpected behavior if not handled carefully.")), typeof e == "number" ? this._pivot.set(e) : this._pivot.copyFrom(e);
   }
   /**
    * The skew factor for the object in radians. Skewing is a transformation that distorts
@@ -5256,10 +5256,10 @@ class le extends Qe {
    * ```
    */
   get origin() {
-    return this._origin === ri && (this._origin = new ce(this, 0, 0)), this._origin;
+    return this._origin === si && (this._origin = new ce(this, 0, 0)), this._origin;
   }
   set origin(e) {
-    this._origin === ri && (this._origin = new ce(this, 0, 0), this._pivot !== ti && X("Setting both a pivot and origin on a Container is not recommended. This can lead to unexpected behavior if not handled carefully.")), typeof e == "number" ? this._origin.set(e) : this._origin.copyFrom(e);
+    this._origin === si && (this._origin = new ce(this, 0, 0), this._pivot !== ri && X("Setting both a pivot and origin on a Container is not recommended. This can lead to unexpected behavior if not handled carefully.")), typeof e == "number" ? this._origin.set(e) : this._origin.copyFrom(e);
   }
   /**
    * The width of the Container, setting this will actually modify the scale to achieve the value set.
@@ -5705,7 +5705,7 @@ class Bt extends le {
     i.blendMode.popBlendMode(e);
   }
 }
-class Ne extends Bt {
+class je extends Bt {
   /**
    * @param options - The options for creating the sprite.
    */
@@ -5746,7 +5746,7 @@ class Ne extends Bt {
    * @see {@link Assets} For asset loading and management
    */
   static from(e, t = !1) {
-    return e instanceof O ? new Ne(e) : new Ne(O.from(e, t));
+    return e instanceof O ? new je(e) : new je(O.from(e, t));
   }
   set texture(e) {
     e || (e = O.EMPTY);
@@ -5973,10 +5973,10 @@ class Ne extends Bt {
     typeof e == "object" ? (t = e.height ?? e.width, e = e.width) : t ?? (t = e), e !== void 0 && this._setWidth(e, this._texture.orig.width), t !== void 0 && this._setHeight(t, this._texture.orig.height);
   }
 }
-const px = new Be();
+const mx = new Be();
 function sn(s, e, t) {
-  const r = px;
-  s.measurable = !0, Ns(s, t, r), e.addBoundsMask(r), s.measurable = !1;
+  const r = mx;
+  s.measurable = !0, Hs(s, t, r), e.addBoundsMask(r), s.measurable = !1;
 }
 function nn(s, e, t) {
   const r = wt.get();
@@ -5992,7 +5992,7 @@ class Ua {
     this.priority = 0, this.inverse = !1, this.pipe = "alphaMask", e?.mask && this.init(e.mask);
   }
   init(e) {
-    this.mask = e, this.renderMaskToTexture = !(e instanceof Ne), this.mask.renderable = this.renderMaskToTexture, this.mask.includeInBuild = !this.renderMaskToTexture, this.mask.measurable = !1;
+    this.mask = e, this.renderMaskToTexture = !(e instanceof je), this.mask.renderable = this.renderMaskToTexture, this.mask.includeInBuild = !this.renderMaskToTexture, this.mask.measurable = !1;
   }
   reset() {
     this.mask.measurable = !0, this.mask = null;
@@ -6011,7 +6011,7 @@ class Ua {
     this.reset();
   }
   static test(e) {
-    return e instanceof Ne;
+    return e instanceof je;
   }
 }
 Ua.extension = w.MaskEffect;
@@ -6071,21 +6071,21 @@ const Cd = {
   fetch: (s, e) => fetch(s, e),
   parseXML: (s) => new DOMParser().parseFromString(s, "text/xml")
 };
-let Ph = Cd;
+let Ch = Cd;
 const J = {
   /**
    * Returns the current adapter.
    * @returns {environment.Adapter} The current adapter.
    */
   get() {
-    return Ph;
+    return Ch;
   },
   /**
    * Sets the current adapter.
    * @param adapter - The new adapter.
    */
   set(s) {
-    Ph = s;
+    Ch = s;
   }
 };
 class Tt extends ge {
@@ -6112,7 +6112,7 @@ class Tt extends ge {
   }
 }
 Tt.extension = w.TextureSource;
-class jt extends ge {
+class qt extends ge {
   constructor(e) {
     super(e), this.uploadMethodId = "image", this.autoGarbageCollect = !0;
   }
@@ -6120,7 +6120,7 @@ class jt extends ge {
     return globalThis.HTMLImageElement && e instanceof HTMLImageElement || typeof ImageBitmap < "u" && e instanceof ImageBitmap || globalThis.VideoFrame && e instanceof VideoFrame;
   }
 }
-jt.extension = w.TextureSource;
+qt.extension = w.TextureSource;
 var At = /* @__PURE__ */ ((s) => (s[s.INTERACTION = 50] = "INTERACTION", s[s.HIGH = 25] = "HIGH", s[s.NORMAL = 0] = "NORMAL", s[s.LOW = -25] = "LOW", s[s.UTILITY = -50] = "UTILITY", s))(At || {});
 class Ti {
   /**
@@ -6795,7 +6795,7 @@ on.MIME_TYPES = {
 };
 let Dr = on;
 const at = (s, e, t = !1) => (Array.isArray(s) || (s = [s]), e ? s.map((r) => typeof r == "string" || t ? e(r) : r) : s);
-class mx {
+class gx {
   constructor() {
     this._parsers = [], this._cache = /* @__PURE__ */ new Map(), this._cacheMap = /* @__PURE__ */ new Map();
   }
@@ -6874,15 +6874,15 @@ class mx {
     return this._parsers;
   }
 }
-const ne = new mx(), Io = [];
-Y.handleByList(w.TextureSource, Io);
-function gx(s = {}) {
+const ne = new gx(), ko = [];
+Y.handleByList(w.TextureSource, ko);
+function _x(s = {}) {
   return Na(s);
 }
 function Na(s = {}) {
   const e = s && s.resource, t = e ? s.resource : s, r = e ? s : { resource: s };
-  for (let i = 0; i < Io.length; i++) {
-    const n = Io[i];
+  for (let i = 0; i < ko.length; i++) {
+    const n = ko[i];
     if (n.test(t))
       return new n(r);
   }
@@ -6902,7 +6902,7 @@ function Md(s, e = !1) {
 }
 O.from = Md;
 ge.from = Na;
-Y.add(Ua, Oa, Ga, Dr, jt, Tt, Ji);
+Y.add(Ua, Oa, Ga, Dr, qt, Tt, Ji);
 var it = /* @__PURE__ */ ((s) => (s[s.Low = 0] = "Low", s[s.Normal = 1] = "Normal", s[s.High = 2] = "High", s))(it || {});
 function ft(s) {
   if (typeof s != "string")
@@ -6911,13 +6911,13 @@ function ft(s) {
 function ss(s) {
   return s.split("?")[0].split("#")[0];
 }
-function _x(s) {
+function bx(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
-function bx(s, e, t) {
-  return s.replace(new RegExp(_x(e), "g"), t);
+function xx(s, e, t) {
+  return s.replace(new RegExp(bx(e), "g"), t);
 }
-function xx(s, e) {
+function yx(s, e) {
   let t = "", r = 0, i = -1, n = 0, o = -1;
   for (let a = 0; a <= s.length; ++a) {
     if (a < s.length)
@@ -6960,7 +6960,7 @@ const qe = {
    * ```
    */
   toPosix(s) {
-    return bx(s, "\\", "/");
+    return xx(s, "\\", "/");
   },
   /**
    * Checks if the path is a URL e.g. http://, https://
@@ -7084,7 +7084,7 @@ const qe = {
     const t = s.startsWith("/");
     this.hasProtocol(s) && (e = this.rootname(s), s = s.slice(e.length));
     const r = s.endsWith("/");
-    return s = xx(s), s.length > 0 && r && (s += "/"), t ? `/${s}` : e + s;
+    return s = yx(s), s.length > 0 && r && (s += "/"), t ? `/${s}` : e + s;
   },
   /**
    * Determines if path is an absolute path.
@@ -7841,8 +7841,8 @@ const Li = (s, e) => {
   }
 };
 kd.BATCH_SIZE = 1e3;
-let ko = kd;
-const yx = [
+let Uo = kd;
+const vx = [
   "jpg",
   "png",
   "jpeg",
@@ -7879,7 +7879,7 @@ const Od = {
   extension: w.Asset,
   /** Handle the caching of the related Spritesheet Textures */
   cache: {
-    test: (s) => s instanceof ko,
+    test: (s) => s instanceof Uo,
     getCacheableAssets: (s, e) => Ud(s, e, !1)
   },
   /** Resolve the resolution of the asset. */
@@ -7890,7 +7890,7 @@ const Od = {
     },
     test: (s) => {
       const t = s.split("?")[0].split("."), r = t.pop(), i = t.pop();
-      return r === "json" && yx.includes(i);
+      return r === "json" && vx.includes(i);
     },
     parse: (s) => {
       const e = s.split(".");
@@ -7939,7 +7939,7 @@ const Od = {
         const c = Li(a + (i ?? s.meta.image), e.src);
         u = (await t.load([{ src: c, data: n }]))[c];
       }
-      const l = new ko({
+      const l = new Uo({
         texture: u.source,
         data: s,
         cachePrefix: o
@@ -8137,15 +8137,15 @@ class $r {
     this.propagationStopped = !0;
   }
 }
-var Jn = /iPhone/i, Bh = /iPod/i, Rh = /iPad/i, Mh = /\biOS-universal(?:.+)Mac\b/i, eo = /\bAndroid(?:.+)Mobile\b/i, Dh = /Android/i, wr = /(?:SD4930UR|\bSilk(?:.+)Mobile\b)/i, si = /Silk/i, kt = /Windows Phone/i, Fh = /\bWindows(?:.+)ARM\b/i, Ih = /BlackBerry/i, kh = /BB10/i, Uh = /Opera Mini/i, Oh = /\b(CriOS|Chrome)(?:.+)Mobile/i, Gh = /Mobile(?:.+)Firefox\b/i, Lh = function(s) {
+var Jn = /iPhone/i, Ph = /iPod/i, Bh = /iPad/i, Rh = /\biOS-universal(?:.+)Mac\b/i, eo = /\bAndroid(?:.+)Mobile\b/i, Mh = /Android/i, wr = /(?:SD4930UR|\bSilk(?:.+)Mobile\b)/i, ii = /Silk/i, kt = /Windows Phone/i, Dh = /\bWindows(?:.+)ARM\b/i, Fh = /BlackBerry/i, Ih = /BB10/i, kh = /Opera Mini/i, Uh = /\b(CriOS|Chrome)(?:.+)Mobile/i, Oh = /Mobile(?:.+)Firefox\b/i, Gh = function(s) {
   return typeof s < "u" && s.platform === "MacIntel" && typeof s.maxTouchPoints == "number" && s.maxTouchPoints > 1 && typeof MSStream > "u";
 };
-function vx(s) {
+function Sx(s) {
   return function(e) {
     return e.test(s);
   };
 }
-function Nh(s) {
+function Lh(s) {
   var e = {
     userAgent: "",
     platform: "",
@@ -8162,36 +8162,36 @@ function Nh(s) {
   });
   var t = e.userAgent, r = t.split("[FBAN");
   typeof r[1] < "u" && (t = r[0]), r = t.split("Twitter"), typeof r[1] < "u" && (t = r[0]);
-  var i = vx(t), n = {
+  var i = Sx(t), n = {
     apple: {
       phone: i(Jn) && !i(kt),
-      ipod: i(Bh),
-      tablet: !i(Jn) && (i(Rh) || Lh(e)) && !i(kt),
-      universal: i(Mh),
-      device: (i(Jn) || i(Bh) || i(Rh) || i(Mh) || Lh(e)) && !i(kt)
+      ipod: i(Ph),
+      tablet: !i(Jn) && (i(Bh) || Gh(e)) && !i(kt),
+      universal: i(Rh),
+      device: (i(Jn) || i(Ph) || i(Bh) || i(Rh) || Gh(e)) && !i(kt)
     },
     amazon: {
       phone: i(wr),
-      tablet: !i(wr) && i(si),
-      device: i(wr) || i(si)
+      tablet: !i(wr) && i(ii),
+      device: i(wr) || i(ii)
     },
     android: {
       phone: !i(kt) && i(wr) || !i(kt) && i(eo),
-      tablet: !i(kt) && !i(wr) && !i(eo) && (i(si) || i(Dh)),
-      device: !i(kt) && (i(wr) || i(si) || i(eo) || i(Dh)) || i(/\bokhttp\b/i)
+      tablet: !i(kt) && !i(wr) && !i(eo) && (i(ii) || i(Mh)),
+      device: !i(kt) && (i(wr) || i(ii) || i(eo) || i(Mh)) || i(/\bokhttp\b/i)
     },
     windows: {
       phone: i(kt),
-      tablet: i(Fh),
-      device: i(kt) || i(Fh)
+      tablet: i(Dh),
+      device: i(kt) || i(Dh)
     },
     other: {
-      blackberry: i(Ih),
-      blackberry10: i(kh),
-      opera: i(Uh),
-      firefox: i(Gh),
-      chrome: i(Oh),
-      device: i(Ih) || i(kh) || i(Uh) || i(Gh) || i(Oh)
+      blackberry: i(Fh),
+      blackberry10: i(Ih),
+      opera: i(kh),
+      firefox: i(Oh),
+      chrome: i(Uh),
+      device: i(Fh) || i(Ih) || i(kh) || i(Oh) || i(Uh)
     },
     any: !1,
     phone: !1,
@@ -8199,7 +8199,7 @@ function Nh(s) {
   };
   return n.any = n.apple.device || n.android.device || n.windows.device || n.other.device, n.phone = n.apple.phone || n.android.phone || n.windows.phone, n.tablet = n.apple.tablet || n.android.tablet || n.windows.tablet, n;
 }
-const Sx = Nh.default ?? Nh, Gd = Sx(globalThis.navigator), wx = 9, Hh = 100, Tx = 0, Ex = 0, Wh = 2, zh = 1, Ax = -1e3, Cx = -1e3, Px = 2, Wa = class Ld {
+const wx = Lh.default ?? Lh, Gd = wx(globalThis.navigator), Tx = 9, Nh = 100, Ex = 0, Ax = 0, Hh = 2, Wh = 1, Cx = -1e3, Px = -1e3, Bx = 2, Wa = class Ld {
   // eslint-disable-next-line jsdoc/require-param
   /**
    * @param {WebGLRenderer|WebGPURenderer} renderer - A reference to the current renderer
@@ -8243,7 +8243,7 @@ const Sx = Nh.default ?? Nh, Gd = Sx(globalThis.navigator), wx = 9, Hh = 100, Tx
    */
   _createTouchHook() {
     const e = document.createElement("button");
-    e.style.width = `${zh}px`, e.style.height = `${zh}px`, e.style.position = "absolute", e.style.top = `${Ax}px`, e.style.left = `${Cx}px`, e.style.zIndex = Px.toString(), e.style.backgroundColor = "#FF0000", e.title = "select to enable accessibility for this content", e.addEventListener("focus", () => {
+    e.style.width = `${Wh}px`, e.style.height = `${Wh}px`, e.style.position = "absolute", e.style.top = `${Cx}px`, e.style.left = `${Px}px`, e.style.zIndex = Bx.toString(), e.style.backgroundColor = "#FF0000", e.title = "select to enable accessibility for this content", e.addEventListener("focus", () => {
       this._isMobileAccessibility = !0, this._activate(), this._destroyTouchHook();
     }), document.body.appendChild(e), this._hookDiv = e;
   }
@@ -8262,7 +8262,7 @@ const Sx = Nh.default ?? Nh, Gd = Sx(globalThis.navigator), wx = 9, Hh = 100, Tx
   _activate() {
     if (this._isActive)
       return;
-    this._isActive = !0, this._div || (this._div = document.createElement("div"), this._div.style.position = "absolute", this._div.style.top = `${Tx}px`, this._div.style.left = `${Ex}px`, this._div.style.pointerEvents = "none", this._div.style.zIndex = Wh.toString(), this._canvasObserver = new Ha({
+    this._isActive = !0, this._div || (this._div = document.createElement("div"), this._div.style.position = "absolute", this._div.style.top = `${Ex}px`, this._div.style.left = `${Ax}px`, this._div.style.pointerEvents = "none", this._div.style.zIndex = Hh.toString(), this._canvasObserver = new Ha({
       domElement: this._div,
       renderer: this._renderer
     })), this._activateOnTab && globalThis.addEventListener("keydown", this._boundOnKeyDown, !1), this._deactivateOnMouseMove && globalThis.document.addEventListener("mousemove", this._boundOnMouseMove, !0);
@@ -8397,7 +8397,7 @@ const Sx = Nh.default ?? Nh, Gd = Sx(globalThis.navigator), wx = 9, Hh = 100, Tx
                         -webkit-user-select: none;
                         -moz-user-select: none;
                         -ms-user-select: none;
-                    `, e.accessibleText && (r.innerText = e.accessibleText)), r.style.width = `${Hh}px`, r.style.height = `${Hh}px`, r.style.backgroundColor = this.debug ? "rgba(255,255,255,0.5)" : "transparent", r.style.position = "absolute", r.style.zIndex = Wh.toString(), r.style.borderStyle = "none", navigator.userAgent.toLowerCase().includes("chrome") ? r.setAttribute("aria-live", "off") : r.setAttribute("aria-live", "polite"), navigator.userAgent.match(/rv:.*Gecko\//) ? r.setAttribute("aria-relevant", "additions") : r.setAttribute("aria-relevant", "text"), r.addEventListener("click", this._onClick.bind(this)), r.addEventListener("focus", this._onFocus.bind(this)), r.addEventListener("focusout", this._onFocusOut.bind(this))), r.style.pointerEvents = e.accessiblePointerEvents, r.type = e.accessibleType, e.accessibleTitle && e.accessibleTitle !== null ? r.title = e.accessibleTitle : (!e.accessibleHint || e.accessibleHint === null) && (r.title = `container ${e.tabIndex}`), e.accessibleHint && e.accessibleHint !== null && r.setAttribute("aria-label", e.accessibleHint), e.interactive ? r.tabIndex = e.tabIndex : r.tabIndex = 0, this.debug && this._updateDebugHTML(r), e._accessibleActive = !0, e._accessibleDiv = r, r.container = e, this._children.push(e), this._div.appendChild(e._accessibleDiv);
+                    `, e.accessibleText && (r.innerText = e.accessibleText)), r.style.width = `${Nh}px`, r.style.height = `${Nh}px`, r.style.backgroundColor = this.debug ? "rgba(255,255,255,0.5)" : "transparent", r.style.position = "absolute", r.style.zIndex = Hh.toString(), r.style.borderStyle = "none", navigator.userAgent.toLowerCase().includes("chrome") ? r.setAttribute("aria-live", "off") : r.setAttribute("aria-live", "polite"), navigator.userAgent.match(/rv:.*Gecko\//) ? r.setAttribute("aria-relevant", "additions") : r.setAttribute("aria-relevant", "text"), r.addEventListener("click", this._onClick.bind(this)), r.addEventListener("focus", this._onFocus.bind(this)), r.addEventListener("focusout", this._onFocusOut.bind(this))), r.style.pointerEvents = e.accessiblePointerEvents, r.type = e.accessibleType, e.accessibleTitle && e.accessibleTitle !== null ? r.title = e.accessibleTitle : (!e.accessibleHint || e.accessibleHint === null) && (r.title = `container ${e.tabIndex}`), e.accessibleHint && e.accessibleHint !== null && r.setAttribute("aria-label", e.accessibleHint), e.interactive ? r.tabIndex = e.tabIndex : r.tabIndex = 0, this.debug && this._updateDebugHTML(r), e._accessibleActive = !0, e._accessibleDiv = r, r.container = e, this._children.push(e), this._div.appendChild(e._accessibleDiv);
   }
   /**
    * Dispatch events with the EventSystem.
@@ -8439,7 +8439,7 @@ const Sx = Nh.default ?? Nh, Gd = Sx(globalThis.navigator), wx = 9, Hh = 100, Tx
    * @param {KeyboardEvent} e - The keydown event.
    */
   _onKeyDown(e) {
-    e.keyCode !== wx || !this._activateOnTab || this._activate();
+    e.keyCode !== Tx || !this._activateOnTab || this._activate();
   }
   /**
    * Is called when the mouse moves across the renderer element
@@ -8515,23 +8515,23 @@ const Hd = {
   _accessibleActive: !1,
   _accessibleDiv: null,
   _renderId: -1
-}, to = /* @__PURE__ */ Object.create(null), Vh = /* @__PURE__ */ Object.create(null);
+}, to = /* @__PURE__ */ Object.create(null), zh = /* @__PURE__ */ Object.create(null);
 function Wr(s, e) {
-  let t = Vh[s];
-  return t === void 0 && (to[e] === void 0 && (to[e] = 1), Vh[s] = t = to[e]++), t;
-}
-let ii;
-function za() {
-  return (!ii || ii?.isContextLost()) && (ii = J.get().createCanvas().getContext("webgl", {})), ii;
+  let t = zh[s];
+  return t === void 0 && (to[e] === void 0 && (to[e] = 1), zh[s] = t = to[e]++), t;
 }
 let ni;
+function za() {
+  return (!ni || ni?.isContextLost()) && (ni = J.get().createCanvas().getContext("webgl", {})), ni;
+}
+let oi;
 function Wd() {
-  if (!ni) {
-    ni = "mediump";
+  if (!oi) {
+    oi = "mediump";
     const s = za();
-    s && s.getShaderPrecisionFormat && (ni = s.getShaderPrecisionFormat(s.FRAGMENT_SHADER, s.HIGH_FLOAT).precision ? "highp" : "mediump");
+    s && s.getShaderPrecisionFormat && (oi = s.getShaderPrecisionFormat(s.FRAGMENT_SHADER, s.HIGH_FLOAT).precision ? "highp" : "mediump");
   }
-  return ni;
+  return oi;
 }
 function zd(s, e, t) {
   return e ? s : t ? (s = s.replace("out vec4 finalColor;", ""), `
@@ -8565,10 +8565,10 @@ function Xd(s, e) {
   return e ? `#version 300 es
 ${s}` : s;
 }
-const Bx = {}, Rx = {};
+const Rx = {}, Mx = {};
 function Yd(s, { name: e = "pixi-program" }, t = !0) {
   e = e.replace(/\s+/g, "-"), e += t ? "-fragment" : "-vertex";
-  const r = t ? Bx : Rx;
+  const r = t ? Rx : Mx;
   return r[e] ? (r[e]++, e += `-${r[e]}`) : r[e] = 1, s.indexOf("#define SHADER_NAME") !== -1 ? s : `${`#define SHADER_NAME ${e}`}
 ${s}`;
 }
@@ -8586,13 +8586,13 @@ const ro = {
   setProgramName: Yd,
   // add the version string to the shader header
   insertVersion: Xd
-}, is = /* @__PURE__ */ Object.create(null), jd = class Uo {
+}, is = /* @__PURE__ */ Object.create(null), jd = class Oo {
   /**
    * Creates a shiny new GlProgram. Used by WebGL renderer.
    * @param options - The options for the program.
    */
   constructor(e) {
-    e = { ...Uo.defaultOptions, ...e };
+    e = { ...Oo.defaultOptions, ...e };
     const t = e.fragment.indexOf("#version 300 es") !== -1, r = {
       stripVersion: t,
       ensurePrecision: {
@@ -8626,7 +8626,7 @@ const ro = {
    */
   static from(e) {
     const t = `${e.vertex}:${e.fragment}`;
-    return is[t] || (is[t] = new Uo(e), is[t]._cacheKey = t), is[t];
+    return is[t] || (is[t] = new Oo(e), is[t]._cacheKey = t), is[t];
   }
 };
 jd.defaultOptions = {
@@ -8634,7 +8634,7 @@ jd.defaultOptions = {
   preferredFragmentPrecision: "mediump"
 };
 let Je = jd;
-const Xh = {
+const Vh = {
   uint8x2: { size: 2, stride: 2, normalised: !1 },
   uint8x4: { size: 4, stride: 4, normalised: !1 },
   sint8x2: { size: 2, stride: 2, normalised: !1 },
@@ -8667,9 +8667,9 @@ const Xh = {
   sint32x4: { size: 4, stride: 16, normalised: !1 }
 };
 function Gt(s) {
-  return Xh[s] ?? Xh.float32;
+  return Vh[s] ?? Vh.float32;
 }
-const Mx = {
+const Dx = {
   f32: "float32",
   "vec2<f32>": "float32x2",
   "vec3<f32>": "float32x3",
@@ -8698,7 +8698,7 @@ function qd({ source: s, entryPoint: e }) {
       const n = s.substring(r, i), o = /@location\((\d+)\)\s+([a-zA-Z0-9_]+)\s*:\s*([a-zA-Z0-9_<>]+)(?:,|\s|$)/g;
       let a;
       for (; (a = o.exec(n)) !== null; ) {
-        const u = Mx[a[3]] ?? "float32";
+        const u = Dx[a[3]] ?? "float32";
         t[a[2]] = {
           location: parseInt(a[1], 10),
           format: u,
@@ -8782,7 +8782,7 @@ function Qd(s, e) {
   return { structs: i, groups: n };
 }
 const ns = /* @__PURE__ */ Object.create(null);
-class We {
+class He {
   /**
    * Create a new GpuProgram
    * @param options - The options for the gpu program
@@ -8820,7 +8820,7 @@ class We {
    */
   static from(e) {
     const t = `${e.vertex.source}:${e.fragment.source}:${e.fragment.entryPoint}:${e.vertex.entryPoint}`;
-    return ns[t] || (ns[t] = new We(e), ns[t]._cacheKey = t), ns[t];
+    return ns[t] || (ns[t] = new He(e), ns[t]._cacheKey = t), ns[t];
   }
 }
 const Va = [
@@ -9097,14 +9097,14 @@ class nt extends Qe {
   static from(e) {
     const { gpu: t, gl: r, ...i } = e;
     let n, o;
-    return t && (n = We.from(t)), r && (o = Je.from(r)), new nt({
+    return t && (n = He.from(t)), r && (o = Je.from(r)), new nt({
       gpuProgram: n,
       glProgram: o,
       ...i
     });
   }
 }
-const Dx = {
+const Fx = {
   normal: 0,
   add: 1,
   multiply: 2,
@@ -9116,7 +9116,7 @@ const Dx = {
   "screen-npm": 8,
   min: 9,
   max: 10
-}, so = 0, io = 1, no = 2, oo = 3, ao = 4, uo = 5, Oo = class sf {
+}, so = 0, io = 1, no = 2, oo = 3, ao = 4, uo = 5, Go = class sf {
   constructor() {
     this.data = 0, this.blendMode = "normal", this.polygonOffset = 0, this.blend = !0, this.depthMask = !0;
   }
@@ -9200,7 +9200,7 @@ const Dx = {
     return this._blendMode;
   }
   set blendMode(e) {
-    this.blend = e !== "none", this._blendMode = e, this._blendModeId = Dx[e] || 0;
+    this.blend = e !== "none", this._blendMode = e, this._blendModeId = Fx[e] || 0;
   }
   /**
    * The polygon offset. Setting this property to anything other than 0 will automatically enable polygon offset fill.
@@ -9224,14 +9224,14 @@ const Dx = {
     return e.depthTest = !1, e.blend = !0, e;
   }
 };
-Oo.default2d = Oo.for2d();
-let rt = Oo;
-const nf = class Go extends nt {
+Go.default2d = Go.for2d();
+let rt = Go;
+const nf = class Lo extends nt {
   /**
    * @param options - The optional parameters of this filter.
    */
   constructor(e) {
-    e = { ...Go.defaultOptions, ...e }, super(e), this.enabled = !0, this._state = rt.for2d(), this.blendMode = e.blendMode, this.padding = e.padding, typeof e.antialias == "boolean" ? this.antialias = e.antialias ? "on" : "off" : this.antialias = e.antialias, this.resolution = e.resolution, this.blendRequired = e.blendRequired, this.clipToViewport = e.clipToViewport, this.addResource("uTexture", 0, 1);
+    e = { ...Lo.defaultOptions, ...e }, super(e), this.enabled = !0, this._state = rt.for2d(), this.blendMode = e.blendMode, this.padding = e.padding, typeof e.antialias == "boolean" ? this.antialias = e.antialias ? "on" : "off" : this.antialias = e.antialias, this.resolution = e.resolution, this.blendRequired = e.blendRequired, this.clipToViewport = e.clipToViewport, this.addResource("uTexture", 0, 1);
   }
   /**
    * Applies the filter
@@ -9262,7 +9262,7 @@ const nf = class Go extends nt {
   static from(e) {
     const { gpu: t, gl: r, ...i } = e;
     let n, o;
-    return t && (n = We.from(t)), r && (o = Je.from(r)), new Go({
+    return t && (n = He.from(t)), r && (o = Je.from(r)), new Lo({
       gpuProgram: n,
       glProgram: o,
       ...i
@@ -9404,7 +9404,7 @@ fn mainFragment(
 }`;
 class ye extends Rt {
   constructor(e) {
-    const t = e.gpu, r = Yh({ source: uf, ...t }), i = We.from({
+    const t = e.gpu, r = Xh({ source: uf, ...t }), i = He.from({
       vertex: {
         source: r,
         entryPoint: "mainVertex"
@@ -9413,7 +9413,7 @@ class ye extends Rt {
         source: r,
         entryPoint: "mainFragment"
       }
-    }), n = e.gl, o = Yh({ source: of, ...n }), a = Je.from({
+    }), n = e.gl, o = Xh({ source: of, ...n }), a = Je.from({
       vertex: af,
       fragment: o
     }), u = new we({
@@ -9433,7 +9433,7 @@ class ye extends Rt {
     });
   }
 }
-function Yh(s) {
+function Xh(s) {
   const { source: e, functions: t, main: r } = s;
   return e.replace("{FUNCTIONS}", t).replace("{MAIN}", r);
 }
@@ -10637,19 +10637,19 @@ Bf.extension = {
   name: "vivid-light",
   type: w.BlendMode
 };
-const Lo = [];
-Y.handleByNamedList(w.Environment, Lo);
+const No = [];
+Y.handleByNamedList(w.Environment, No);
 async function Xa(s) {
   if (!s)
-    for (let e = 0; e < Lo.length; e++) {
-      const t = Lo[e];
+    for (let e = 0; e < No.length; e++) {
+      const t = No[e];
       if (t.value.test()) {
         await t.value.load();
         return;
       }
     }
 }
-async function Fx(s) {
+async function Ix(s) {
   return Xa(!s);
 }
 let os;
@@ -10663,13 +10663,13 @@ function Ya() {
   }
   return os;
 }
-function $h(s, e, t = 2) {
+function Yh(s, e, t = 2) {
   const r = e && e.length, i = r ? e[0] * t : s.length;
   let n = Rf(s, 0, i, t, !0);
   const o = [];
   if (!n || n.next === n.prev) return o;
   let a, u, l;
-  if (r && (n = Gx(s, e, n, t)), s.length > 80 * t) {
+  if (r && (n = Lx(s, e, n, t)), s.length > 80 * t) {
     a = s[0], u = s[1];
     let h = a, c = u;
     for (let d = t; d < i; d += t) {
@@ -10682,10 +10682,10 @@ function $h(s, e, t = 2) {
 }
 function Rf(s, e, t, r, i) {
   let n;
-  if (i === qx(s, e, t, r) > 0)
-    for (let o = e; o < t; o += r) n = jh(o / r | 0, s[o], s[o + 1], n);
+  if (i === Kx(s, e, t, r) > 0)
+    for (let o = e; o < t; o += r) n = $h(o / r | 0, s[o], s[o + 1], n);
   else
-    for (let o = t - r; o >= e; o -= r) n = jh(o / r | 0, s[o], s[o + 1], n);
+    for (let o = t - r; o >= e; o -= r) n = $h(o / r | 0, s[o], s[o + 1], n);
   return n && zr(n, n.next) && (Fs(n), n = n.next), n;
 }
 function pr(s, e) {
@@ -10703,21 +10703,21 @@ function pr(s, e) {
 }
 function Ms(s, e, t, r, i, n, o) {
   if (!s) return;
-  !o && n && zx(s, r, i, n);
+  !o && n && Vx(s, r, i, n);
   let a = s;
   for (; s.prev !== s.next; ) {
     const u = s.prev, l = s.next;
-    if (n ? kx(s, r, i, n) : Ix(s)) {
+    if (n ? Ux(s, r, i, n) : kx(s)) {
       e.push(u.i, s.i, l.i), Fs(s), s = l.next, a = l.next;
       continue;
     }
     if (s = l, s === a) {
-      o ? o === 1 ? (s = Ux(pr(s), e), Ms(s, e, t, r, i, n, 2)) : o === 2 && Ox(s, e, t, r, i, n) : Ms(pr(s), e, t, r, i, n, 1);
+      o ? o === 1 ? (s = Ox(pr(s), e), Ms(s, e, t, r, i, n, 2)) : o === 2 && Gx(s, e, t, r, i, n) : Ms(pr(s), e, t, r, i, n, 1);
       break;
     }
   }
 }
-function Ix(s) {
+function kx(s) {
   const e = s.prev, t = s, r = s.next;
   if (me(e, t, r) >= 0) return !1;
   const i = e.x, n = t.x, o = r.x, a = e.y, u = t.y, l = r.y, h = Math.min(i, n, o), c = Math.min(a, u, l), d = Math.max(i, n, o), f = Math.max(a, u, l);
@@ -10728,10 +10728,10 @@ function Ix(s) {
   }
   return !0;
 }
-function kx(s, e, t, r) {
+function Ux(s, e, t, r) {
   const i = s.prev, n = s, o = s.next;
   if (me(i, n, o) >= 0) return !1;
-  const a = i.x, u = n.x, l = o.x, h = i.y, c = n.y, d = o.y, f = Math.min(a, u, l), g = Math.min(h, c, d), b = Math.max(a, u, l), p = Math.max(h, c, d), x = No(f, g, e, t, r), y = No(b, p, e, t, r);
+  const a = i.x, u = n.x, l = o.x, h = i.y, c = n.y, d = o.y, f = Math.min(a, u, l), g = Math.min(h, c, d), b = Math.max(a, u, l), p = Math.max(h, c, d), x = Ho(f, g, e, t, r), y = Ho(b, p, e, t, r);
   let S = s.prevZ, T = s.nextZ;
   for (; S && S.z >= x && T && T.z <= y; ) {
     if (S.x >= f && S.x <= b && S.y >= g && S.y <= p && S !== i && S !== o && bs(a, h, u, c, l, d, S.x, S.y) && me(S.prev, S, S.next) >= 0 || (S = S.prevZ, T.x >= f && T.x <= b && T.y >= g && T.y <= p && T !== i && T !== o && bs(a, h, u, c, l, d, T.x, T.y) && me(T.prev, T, T.next) >= 0)) return !1;
@@ -10747,7 +10747,7 @@ function kx(s, e, t, r) {
   }
   return !0;
 }
-function Ux(s, e) {
+function Ox(s, e) {
   let t = s;
   do {
     const r = t.prev, i = t.next.next;
@@ -10755,12 +10755,12 @@ function Ux(s, e) {
   } while (t !== s);
   return pr(t);
 }
-function Ox(s, e, t, r, i, n) {
+function Gx(s, e, t, r, i, n) {
   let o = s;
   do {
     let a = o.next.next;
     for (; a !== o.prev; ) {
-      if (o.i !== a.i && Yx(o, a)) {
+      if (o.i !== a.i && $x(o, a)) {
         let u = Ff(o, a);
         o = pr(o, o.next), u = pr(u, u.next), Ms(o, e, t, r, i, n, 0), Ms(u, e, t, r, i, n, 0);
         return;
@@ -10770,18 +10770,18 @@ function Ox(s, e, t, r, i, n) {
     o = o.next;
   } while (o !== s);
 }
-function Gx(s, e, t, r) {
+function Lx(s, e, t, r) {
   const i = [];
   for (let n = 0, o = e.length; n < o; n++) {
     const a = e[n] * r, u = n < o - 1 ? e[n + 1] * r : s.length, l = Rf(s, a, u, r, !1);
-    l === l.next && (l.steiner = !0), i.push(Xx(l));
+    l === l.next && (l.steiner = !0), i.push(Yx(l));
   }
-  i.sort(Lx);
+  i.sort(Nx);
   for (let n = 0; n < i.length; n++)
-    t = Nx(i[n], t);
+    t = Hx(i[n], t);
   return t;
 }
-function Lx(s, e) {
+function Nx(s, e) {
   let t = s.x - e.x;
   if (t === 0 && (t = s.y - e.y, t === 0)) {
     const r = (s.next.y - s.y) / (s.next.x - s.x), i = (e.next.y - e.y) / (e.next.x - e.x);
@@ -10789,14 +10789,14 @@ function Lx(s, e) {
   }
   return t;
 }
-function Nx(s, e) {
-  const t = Hx(s, e);
+function Hx(s, e) {
+  const t = Wx(s, e);
   if (!t)
     return e;
   const r = Ff(t, s);
   return pr(r, r.next), pr(t, t.next);
 }
-function Hx(s, e) {
+function Wx(s, e) {
   let t = e;
   const r = s.x, i = s.y;
   let n = -1 / 0, o;
@@ -10817,23 +10817,23 @@ function Hx(s, e) {
   do {
     if (r >= t.x && t.x >= u && r !== t.x && Mf(i < l ? r : n, i, u, l, i < l ? n : r, i, t.x, t.y)) {
       const c = Math.abs(i - t.y) / (r - t.x);
-      Ds(t, s) && (c < h || c === h && (t.x > o.x || t.x === o.x && Wx(o, t))) && (o = t, h = c);
+      Ds(t, s) && (c < h || c === h && (t.x > o.x || t.x === o.x && zx(o, t))) && (o = t, h = c);
     }
     t = t.next;
   } while (t !== a);
   return o;
 }
-function Wx(s, e) {
+function zx(s, e) {
   return me(s.prev, s, e.prev) < 0 && me(e.next, s, s.next) < 0;
 }
-function zx(s, e, t, r) {
+function Vx(s, e, t, r) {
   let i = s;
   do
-    i.z === 0 && (i.z = No(i.x, i.y, e, t, r)), i.prevZ = i.prev, i.nextZ = i.next, i = i.next;
+    i.z === 0 && (i.z = Ho(i.x, i.y, e, t, r)), i.prevZ = i.prev, i.nextZ = i.next, i = i.next;
   while (i !== s);
-  i.prevZ.nextZ = null, i.prevZ = null, Vx(i);
+  i.prevZ.nextZ = null, i.prevZ = null, Xx(i);
 }
-function Vx(s) {
+function Xx(s) {
   let e, t = 1;
   do {
     let r = s, i;
@@ -10853,10 +10853,10 @@ function Vx(s) {
   } while (e > 1);
   return s;
 }
-function No(s, e, t, r, i) {
+function Ho(s, e, t, r, i) {
   return s = (s - t) * i | 0, e = (e - r) * i | 0, s = (s | s << 8) & 16711935, s = (s | s << 4) & 252645135, s = (s | s << 2) & 858993459, s = (s | s << 1) & 1431655765, e = (e | e << 8) & 16711935, e = (e | e << 4) & 252645135, e = (e | e << 2) & 858993459, e = (e | e << 1) & 1431655765, s | e << 1;
 }
-function Xx(s) {
+function Yx(s) {
   let e = s, t = s;
   do
     (e.x < t.x || e.x === t.x && e.y < t.y) && (t = e), e = e.next;
@@ -10869,9 +10869,9 @@ function Mf(s, e, t, r, i, n, o, a) {
 function bs(s, e, t, r, i, n, o, a) {
   return !(s === o && e === a) && Mf(s, e, t, r, i, n, o, a);
 }
-function Yx(s, e) {
-  return s.next.i !== e.i && s.prev.i !== e.i && !$x(s, e) && // doesn't intersect other edges
-  (Ds(s, e) && Ds(e, s) && jx(s, e) && // locally visible
+function $x(s, e) {
+  return s.next.i !== e.i && s.prev.i !== e.i && !jx(s, e) && // doesn't intersect other edges
+  (Ds(s, e) && Ds(e, s) && qx(s, e) && // locally visible
   (me(s.prev, s, e.prev) || me(s, e.prev, e)) || // does not create opposite-facing sectors
   zr(s, e) && me(s.prev, s, s.next) > 0 && me(e.prev, e, e.next) > 0);
 }
@@ -10882,16 +10882,16 @@ function zr(s, e) {
   return s.x === e.x && s.y === e.y;
 }
 function Df(s, e, t, r) {
-  const i = ai(me(s, e, t)), n = ai(me(s, e, r)), o = ai(me(t, r, s)), a = ai(me(t, r, e));
-  return !!(i !== n && o !== a || i === 0 && oi(s, t, e) || n === 0 && oi(s, r, e) || o === 0 && oi(t, s, r) || a === 0 && oi(t, e, r));
+  const i = ui(me(s, e, t)), n = ui(me(s, e, r)), o = ui(me(t, r, s)), a = ui(me(t, r, e));
+  return !!(i !== n && o !== a || i === 0 && ai(s, t, e) || n === 0 && ai(s, r, e) || o === 0 && ai(t, s, r) || a === 0 && ai(t, e, r));
 }
-function oi(s, e, t) {
+function ai(s, e, t) {
   return e.x <= Math.max(s.x, t.x) && e.x >= Math.min(s.x, t.x) && e.y <= Math.max(s.y, t.y) && e.y >= Math.min(s.y, t.y);
 }
-function ai(s) {
+function ui(s) {
   return s > 0 ? 1 : s < 0 ? -1 : 0;
 }
-function $x(s, e) {
+function jx(s, e) {
   let t = s;
   do {
     if (t.i !== s.i && t.next.i !== s.i && t.i !== e.i && t.next.i !== e.i && Df(t, t.next, s, e)) return !0;
@@ -10902,7 +10902,7 @@ function $x(s, e) {
 function Ds(s, e) {
   return me(s.prev, s, s.next) < 0 ? me(s, e, s.next) >= 0 && me(s, s.prev, e) >= 0 : me(s, e, s.prev) < 0 || me(s, s.next, e) < 0;
 }
-function jx(s, e) {
+function qx(s, e) {
   let t = s, r = !1;
   const i = (s.x + e.x) / 2, n = (s.y + e.y) / 2;
   do
@@ -10911,17 +10911,17 @@ function jx(s, e) {
   return r;
 }
 function Ff(s, e) {
-  const t = Ho(s.i, s.x, s.y), r = Ho(e.i, e.x, e.y), i = s.next, n = e.prev;
+  const t = Wo(s.i, s.x, s.y), r = Wo(e.i, e.x, e.y), i = s.next, n = e.prev;
   return s.next = e, e.prev = s, t.next = i, i.prev = t, r.next = t, t.prev = r, n.next = r, r.prev = n, r;
 }
-function jh(s, e, t, r) {
-  const i = Ho(s, e, t);
+function $h(s, e, t, r) {
+  const i = Wo(s, e, t);
   return r ? (i.next = r.next, i.prev = r, r.next.prev = i, r.next = i) : (i.prev = i, i.next = i), i;
 }
 function Fs(s) {
   s.next.prev = s.prev, s.prev.next = s.next, s.prevZ && (s.prevZ.nextZ = s.nextZ), s.nextZ && (s.nextZ.prevZ = s.prevZ);
 }
-function Ho(s, e, t) {
+function Wo(s, e, t) {
   return {
     i: s,
     // vertex index in coordinates array
@@ -10940,14 +10940,14 @@ function Ho(s, e, t) {
     // indicates whether this is a steiner point
   };
 }
-function qx(s, e, t, r) {
+function Kx(s, e, t, r) {
   let i = 0;
   for (let n = e, o = t - r; n < t; n += r)
     i += (s[o] - s[n]) * (s[n + 1] + s[o + 1]), o = n;
   return i;
 }
-const If = $h.default || $h;
-var je = /* @__PURE__ */ ((s) => (s[s.NONE = 0] = "NONE", s[s.COLOR = 16384] = "COLOR", s[s.STENCIL = 1024] = "STENCIL", s[s.DEPTH = 256] = "DEPTH", s[s.COLOR_DEPTH = 16640] = "COLOR_DEPTH", s[s.COLOR_STENCIL = 17408] = "COLOR_STENCIL", s[s.DEPTH_STENCIL = 1280] = "DEPTH_STENCIL", s[s.ALL = 17664] = "ALL", s))(je || {});
+const If = Yh.default || Yh;
+var $e = /* @__PURE__ */ ((s) => (s[s.NONE = 0] = "NONE", s[s.COLOR = 16384] = "COLOR", s[s.STENCIL = 1024] = "STENCIL", s[s.DEPTH = 256] = "DEPTH", s[s.COLOR_DEPTH = 16640] = "COLOR_DEPTH", s[s.COLOR_STENCIL = 17408] = "COLOR_STENCIL", s[s.DEPTH_STENCIL = 1280] = "DEPTH_STENCIL", s[s.ALL = 17664] = "ALL", s))($e || {});
 class $a {
   /**
    * @param name - The function name that will be executed on the listeners added to this Runner.
@@ -11026,7 +11026,7 @@ class $a {
     return this._name;
   }
 }
-const Kx = [
+const Zx = [
   "init",
   "destroy",
   "contextChange",
@@ -11046,7 +11046,7 @@ const Kx = [
    */
   constructor(e) {
     super(), this.uid = ae("renderer"), this.runners = /* @__PURE__ */ Object.create(null), this.renderPipes = /* @__PURE__ */ Object.create(null), this._initOptions = {}, this._systemsHash = /* @__PURE__ */ Object.create(null), this.type = e.type, this.name = e.name, this.config = e;
-    const t = [...Kx, ...this.config.runners ?? []];
+    const t = [...Zx, ...this.config.runners ?? []];
     this._addRunners(...t), this._unsafeEvalCheck();
   }
   /**
@@ -11091,7 +11091,7 @@ const Kx = [
    */
   clear(e = {}) {
     const t = this;
-    e.target || (e.target = t.renderTarget.renderTarget), e.clearColor || (e.clearColor = this.background.colorRgba), e.clear ?? (e.clear = je.ALL);
+    e.target || (e.target = t.renderTarget.renderTarget), e.clearColor || (e.clearColor = this.background.colorRgba), e.clear ?? (e.clear = $e.ALL);
     const { clear: r, clearColor: i, target: n } = e;
     se.shared.setValue(i ?? this.background.colorRgba), t.renderTarget.clear(n, r, se.shared.toArray());
   }
@@ -11284,12 +11284,12 @@ kf.defaultOptions = {
    */
   roundPixels: !1
 };
-let Hs = kf, ui;
-function Ws(s) {
-  return ui !== void 0 || (ui = (() => {
+let Ws = kf, li;
+function zs(s) {
+  return li !== void 0 || (li = (() => {
     const e = {
       stencil: !0,
-      failIfMajorPerformanceCaveat: s ?? Hs.defaultOptions.failIfMajorPerformanceCaveat
+      failIfMajorPerformanceCaveat: s ?? Ws.defaultOptions.failIfMajorPerformanceCaveat
     };
     try {
       if (!J.get().getWebGLRenderingContext())
@@ -11304,11 +11304,11 @@ function Ws(s) {
     } catch {
       return !1;
     }
-  })()), ui;
+  })()), li;
 }
-let li;
-async function zs(s = {}) {
-  return li !== void 0 || (li = await (async () => {
+let hi;
+async function Vs(s = {}) {
+  return hi !== void 0 || (hi = await (async () => {
     const e = J.get().getNavigator().gpu;
     if (!e)
       return !1;
@@ -11317,25 +11317,25 @@ async function zs(s = {}) {
     } catch {
       return !1;
     }
-  })()), li;
+  })()), hi;
 }
-const qh = ["webgl", "webgpu", "canvas"];
+const jh = ["webgl", "webgpu", "canvas"];
 async function Of(s) {
   let e = [];
-  s.preference ? (e.push(s.preference), qh.forEach((n) => {
+  s.preference ? (e.push(s.preference), jh.forEach((n) => {
     n !== s.preference && e.push(n);
-  })) : e = qh.slice();
+  })) : e = jh.slice();
   let t, r = {};
   for (let n = 0; n < e.length; n++) {
     const o = e[n];
-    if (o === "webgpu" && await zs()) {
-      const { WebGPURenderer: a } = await Promise.resolve().then(() => Av);
+    if (o === "webgpu" && await Vs()) {
+      const { WebGPURenderer: a } = await Promise.resolve().then(() => Cv);
       t = a, r = { ...s, ...s.webgpu };
       break;
-    } else if (o === "webgl" && Ws(
-      s.failIfMajorPerformanceCaveat ?? Hs.defaultOptions.failIfMajorPerformanceCaveat
+    } else if (o === "webgl" && zs(
+      s.failIfMajorPerformanceCaveat ?? Ws.defaultOptions.failIfMajorPerformanceCaveat
     )) {
-      const { WebGLRenderer: a } = await Promise.resolve().then(() => bv);
+      const { WebGLRenderer: a } = await Promise.resolve().then(() => xv);
       t = a, r = { ...s, ...s.webgl };
       break;
     } else if (o === "canvas")
@@ -11346,7 +11346,7 @@ async function Of(s) {
   const i = new t();
   return await i.init(r), i;
 }
-const Zx = /^\s*data:(?:([\w-]+)\/([\w+.-]+))?(?:;charset=([\w-]+))?(?:;(base64))?,(.*)/i, Is = "8.14.0";
+const Qx = /^\s*data:(?:([\w-]+)\/([\w+.-]+))?(?:;charset=([\w-]+))?(?:;(base64))?,(.*)/i, Is = "8.14.0";
 class ja {
   static init() {
     globalThis.__PIXI_APP_INIT__?.(this, Is);
@@ -11374,7 +11374,7 @@ qa.extension = {
   name: "initHook",
   priority: -10
 };
-const Gf = class Wo {
+const Gf = class zo {
   constructor(...e) {
     this.stage = new le(), e[0] !== void 0 && N(Z, "Application constructor options are deprecated, please use Application.init() instead.");
   }
@@ -11398,7 +11398,7 @@ const Gf = class Wo {
    * ```
    */
   async init(e) {
-    e = { ...e }, this.renderer = await Of(e), Wo._plugins.forEach((t) => {
+    e = { ...e }, this.renderer = await Of(e), zo._plugins.forEach((t) => {
       t.init.call(this, e);
     });
   }
@@ -11530,7 +11530,7 @@ const Gf = class Wo {
    * > All properties will be null and further operations will throw errors.
    */
   destroy(e = !1, t = !1) {
-    const r = Wo._plugins.slice(0);
+    const r = zo._plugins.slice(0);
     r.reverse(), r.forEach((i) => {
       i.destroy.call(this);
     }), this.stage.destroy(t), this.stage = null, this.renderer.destroy(e), this.renderer = null;
@@ -11677,7 +11677,7 @@ class Ja extends Qe {
  * @license BSD-3-Clause
  * @version 11.4.5
  */
-class Qx {
+class Jx {
   /**
    * Creates a new LRU cache instance.
    * Note: Constructor does not validate parameters. Use lru() factory function for parameter validation.
@@ -11955,9 +11955,9 @@ function Lf(s = 1e3, e = 0, t = !1) {
     throw new TypeError("Invalid ttl value");
   if (typeof t != "boolean")
     throw new TypeError("Invalid resetTtl value");
-  return new Qx(s, e, t);
+  return new Jx(s, e, t);
 }
-const Jx = [
+const e0 = [
   "serif",
   "sans-serif",
   "monospace",
@@ -11971,7 +11971,7 @@ function ks(s) {
   Array.isArray(s.fontFamily) || (t = s.fontFamily.split(","));
   for (let r = t.length - 1; r >= 0; r--) {
     let i = t[r].trim();
-    !/([\"\'])[^\'\"]+\1/.test(i) && !Jx.includes(i) && (i = `"${i}"`), t[r] = i;
+    !/([\"\'])[^\'\"]+\1/.test(i) && !e0.includes(i) && (i = `"${i}"`), t[r] = i;
   }
   return `${s.fontStyle} ${s.fontVariant} ${s.fontWeight} ${e} ${t.join(",")}`;
 }
@@ -12371,11 +12371,11 @@ _t._breakingSpaces = [
 ];
 _t._measurementCache = Lf(1e3);
 let Ue = _t;
-const Kh = [{ offset: 0, color: "white" }, { offset: 1, color: "black" }], eu = class zo {
+const qh = [{ offset: 0, color: "white" }, { offset: 1, color: "black" }], eu = class Vo {
   constructor(...e) {
     this.uid = ae("fillGradient"), this._tick = 0, this.type = "linear", this.colorStops = [];
-    let t = e0(e);
-    t = { ...t.type === "radial" ? zo.defaultRadialOptions : zo.defaultLinearOptions, ...gt(t) }, this._textureSize = t.textureSize, this._wrapMode = t.wrapMode, t.type === "radial" ? (this.center = t.center, this.outerCenter = t.outerCenter ?? this.center, this.innerRadius = t.innerRadius, this.outerRadius = t.outerRadius, this.scale = t.scale, this.rotation = t.rotation) : (this.start = t.start, this.end = t.end), this.textureSpace = t.textureSpace, this.type = t.type, t.colorStops.forEach((i) => {
+    let t = t0(e);
+    t = { ...t.type === "radial" ? Vo.defaultRadialOptions : Vo.defaultLinearOptions, ...gt(t) }, this._textureSize = t.textureSize, this._wrapMode = t.wrapMode, t.type === "radial" ? (this.center = t.center, this.outerCenter = t.outerCenter ?? this.center, this.innerRadius = t.innerRadius, this.outerRadius = t.outerRadius, this.scale = t.scale, this.rotation = t.rotation) : (this.start = t.start, this.end = t.end), this.textureSpace = t.textureSpace, this.type = t.type, t.colorStops.forEach((i) => {
       this.addColorStop(i.offset, i.color);
     });
   }
@@ -12408,9 +12408,9 @@ const Kh = [{ offset: 0, color: "white" }, { offset: 1, color: "black" }], eu = 
         t = i, i = p, o *= -1;
       }
     }
-    const u = this.colorStops.length ? this.colorStops : Kh, l = this._textureSize, { canvas: h, context: c } = Qh(l, 1), d = a ? c.createLinearGradient(this._textureSize, 0, 0, 0) : c.createLinearGradient(0, 0, this._textureSize, 0);
-    Zh(d, u), c.fillStyle = d, c.fillRect(0, 0, l, 1), this.texture = new O({
-      source: new jt({
+    const u = this.colorStops.length ? this.colorStops : qh, l = this._textureSize, { canvas: h, context: c } = Zh(l, 1), d = a ? c.createLinearGradient(this._textureSize, 0, 0, 0) : c.createLinearGradient(0, 0, this._textureSize, 0);
+    Kh(d, u), c.fillStyle = d, c.fillRect(0, 0, l, 1), this.texture = new O({
+      source: new qt({
         resource: h,
         addressMode: this._wrapMode
       })
@@ -12434,7 +12434,7 @@ const Kh = [{ offset: 0, color: "white" }, { offset: 1, color: "black" }], eu = 
   buildRadialGradient() {
     if (this.texture)
       return;
-    const e = this.colorStops.length ? this.colorStops : Kh, t = this._textureSize, { canvas: r, context: i } = Qh(t, t), { x: n, y: o } = this.center, { x: a, y: u } = this.outerCenter, l = this.innerRadius, h = this.outerRadius, c = a - h, d = u - h, f = t / (h * 2), g = (n - c) * f, b = (o - d) * f, p = i.createRadialGradient(
+    const e = this.colorStops.length ? this.colorStops : qh, t = this._textureSize, { canvas: r, context: i } = Zh(t, t), { x: n, y: o } = this.center, { x: a, y: u } = this.outerCenter, l = this.innerRadius, h = this.outerRadius, c = a - h, d = u - h, f = t / (h * 2), g = (n - c) * f, b = (o - d) * f, p = i.createRadialGradient(
       g,
       b,
       l * f,
@@ -12442,8 +12442,8 @@ const Kh = [{ offset: 0, color: "white" }, { offset: 1, color: "black" }], eu = 
       (u - d) * f,
       h * f
     );
-    Zh(p, e), i.fillStyle = e[e.length - 1].color, i.fillRect(0, 0, t, t), i.fillStyle = p, i.translate(g, b), i.rotate(this.rotation), i.scale(1, this.scale), i.translate(-g, -b), i.fillRect(0, 0, t, t), this.texture = new O({
-      source: new jt({
+    Kh(p, e), i.fillStyle = e[e.length - 1].color, i.fillRect(0, 0, t, t), i.fillStyle = p, i.translate(g, b), i.rotate(this.rotation), i.scale(1, this.scale), i.translate(-g, -b), i.fillRect(0, 0, t, t), this.texture = new O({
+      source: new qt({
         resource: r,
         addressMode: this._wrapMode
       })
@@ -12485,17 +12485,17 @@ eu.defaultRadialOptions = {
   wrapMode: "clamp-to-edge"
 };
 let Ct = eu;
-function Zh(s, e) {
+function Kh(s, e) {
   for (let t = 0; t < e.length; t++) {
     const r = e[t];
     s.addColorStop(r.offset, r.color);
   }
 }
-function Qh(s, e) {
+function Zh(s, e) {
   const t = J.get().createCanvas(s, e), r = t.getContext("2d");
   return { canvas: t, context: r };
 }
-function e0(s) {
+function t0(s) {
   let e = s[0] ?? {};
   return (typeof e == "number" || s[1]) && (N("8.5.2", "use options object instead"), e = {
     type: "linear",
@@ -12505,7 +12505,7 @@ function e0(s) {
     textureSize: s[5] ?? Ct.defaultLinearOptions.textureSize
   }), e;
 }
-const Jh = {
+const Qh = {
   repeat: {
     addressModeU: "repeat",
     addressModeV: "repeat"
@@ -12523,12 +12523,12 @@ const Jh = {
     addressModeV: "clamp-to-edge"
   }
 };
-class Vs {
+class Xs {
   constructor(e, t) {
     this.uid = ae("fillPattern"), this._tick = 0, this.transform = new W(), this.texture = e, this.transform.scale(
       1 / e.frame.width,
       1 / e.frame.height
-    ), t && (e.source.style.addressModeU = Jh[t].addressModeU, e.source.style.addressModeV = Jh[t].addressModeV);
+    ), t && (e.source.style.addressModeU = Qh[t].addressModeU, e.source.style.addressModeV = Qh[t].addressModeV);
   }
   /**
    * Sets the transform for the pattern
@@ -12562,10 +12562,10 @@ class Vs {
     this.texture.destroy(!0), this.texture = null;
   }
 }
-var ho, ec;
-function t0() {
-  if (ec) return ho;
-  ec = 1, ho = t;
+var ho, Jh;
+function r0() {
+  if (Jh) return ho;
+  Jh = 1, ho = t;
   var s = { a: 7, c: 6, h: 1, l: 2, m: 2, q: 4, s: 4, t: 2, v: 1, z: 0 }, e = /([astvzqmhlc])([^astvzqmhlc]*)/ig;
   function t(n) {
     var o = [];
@@ -12586,10 +12586,10 @@ function t0() {
   }
   return ho;
 }
-var r0 = t0();
-const s0 = /* @__PURE__ */ qc(r0);
+var s0 = r0();
+const i0 = /* @__PURE__ */ qc(s0);
 function Nf(s, e) {
-  const t = s0(s), r = [];
+  const t = i0(s), r = [];
   let i = null, n = 0, o = 0;
   for (let a = 0; a < t.length; a++) {
     const u = t[a], l = u[0], h = u;
@@ -13057,7 +13057,7 @@ function vs(s, e, t, r, i, n) {
   const b = s - f, p = e - g;
   return b * b + p * p;
 }
-let i0, n0;
+let n0, o0;
 class Fr {
   /**
    * @param points - This can be an array of Points
@@ -13130,7 +13130,7 @@ class Fr {
    * @see {@link Polygon.getBounds} For bounds calculation
    */
   containsPolygon(e) {
-    const t = this.getBounds(i0), r = e.getBounds(n0);
+    const t = this.getBounds(n0), r = e.getBounds(o0);
     if (!t.containsRect(r))
       return !1;
     const i = e.points;
@@ -13361,7 +13361,7 @@ class Fr {
     return this.points[1];
   }
 }
-const hi = (s, e, t, r, i, n, o) => {
+const ci = (s, e, t, r, i, n, o) => {
   const a = s - t, u = e - r, l = Math.sqrt(a * a + u * u);
   return l >= i - n && l <= i + o;
 };
@@ -13526,7 +13526,7 @@ class cn {
     const { x: n, y: o, width: a, height: u, radius: l } = this, h = r * (1 - i), c = r - h, d = n + l, f = o + l, g = a - l * 2, b = u - l * 2, p = n + a, x = o + u;
     return (e >= n - h && e <= n + c || e >= p - c && e <= p + h) && t >= f && t <= f + b || (t >= o - h && t <= o + c || t >= x - c && t <= x + h) && e >= d && e <= d + g ? !0 : (
       // Top-left
-      e < d && t < f && hi(
+      e < d && t < f && ci(
         e,
         t,
         d,
@@ -13534,7 +13534,7 @@ class cn {
         l,
         c,
         h
-      ) || e > p - l && t < f && hi(
+      ) || e > p - l && t < f && ci(
         e,
         t,
         p - l,
@@ -13542,7 +13542,7 @@ class cn {
         l,
         c,
         h
-      ) || e > p - l && t > x - l && hi(
+      ) || e > p - l && t > x - l && ci(
         e,
         t,
         p - l,
@@ -13550,7 +13550,7 @@ class cn {
         l,
         c,
         h
-      ) || e < d && t > x - l && hi(
+      ) || e < d && t > x - l && ci(
         e,
         t,
         d,
@@ -13570,9 +13570,9 @@ function dn(s, e, t) {
   let r = 2166136261;
   for (let i = 0; i < e; i++)
     r ^= s[i].uid, r = Math.imul(r, 16777619), r >>>= 0;
-  return Hf[r] || o0(s, e, r, t);
+  return Hf[r] || a0(s, e, r, t);
 }
-function o0(s, e, t, r) {
+function a0(s, e, t, r) {
   const i = {};
   let n = 0;
   for (let a = 0; a < r; a++) {
@@ -13664,7 +13664,7 @@ var xe = /* @__PURE__ */ ((s) => (s[s.DISABLED = 0] = "DISABLED", s[s.RENDERING_
 function Vr(s, e) {
   return e.alphaMode === "no-premultiply-alpha" && Wf[s] || s;
 }
-const a0 = [
+const u0 = [
   "precision mediump float;",
   "void main(void){",
   "float test = 0.1;",
@@ -13673,7 +13673,7 @@ const a0 = [
   "}"
 ].join(`
 `);
-function u0(s) {
+function l0(s) {
   let e = "";
   for (let t = 0; t < s; ++t)
     t > 0 && (e += `
@@ -13686,7 +13686,7 @@ function tu(s, e) {
   const t = e.createShader(e.FRAGMENT_SHADER);
   try {
     for (; ; ) {
-      const r = a0.replace(/%forloop%/gi, u0(s));
+      const r = u0.replace(/%forloop%/gi, l0(s));
       if (e.shaderSource(t, r), e.compileShader(t), !e.getShaderParameter(t, e.COMPILE_STATUS))
         s = s / 2 | 0;
       else
@@ -13738,10 +13738,10 @@ gr.register({
     Ss.length = 0, Hi = 0;
   }
 });
-function tc() {
+function ec() {
   return Hi > 0 ? Ss[--Hi] : new Xf();
 }
-function rc(s) {
+function tc(s) {
   Ss[Hi++] = s;
 }
 let as = 0;
@@ -13754,7 +13754,7 @@ const Yf = class $f {
   begin() {
     this.elementSize = 0, this.elementStart = 0, this.indexSize = 0, this.attributeSize = 0;
     for (let e = 0; e < this.batchIndex; e++)
-      rc(this.batches[e]);
+      tc(this.batches[e]);
     this.batchIndex = 0, this._batchIndexStart = 0, this._batchIndexSize = 0, this.dirty = !0;
   }
   add(e) {
@@ -13790,7 +13790,7 @@ const Yf = class $f {
     const t = this._elements;
     if (!t[this.elementStart])
       return;
-    let r = tc(), i = r.textures;
+    let r = ec(), i = r.textures;
     i.clear();
     const n = t[this.elementStart];
     let o = Vr(n.blendMode, n.texture._source), a = n.topology;
@@ -13836,7 +13836,7 @@ const Yf = class $f {
         a,
         e,
         f
-      ), f = "renderBatch", d = c, o = S, a = p.topology, r = tc(), i = r.textures, i.clear(), ++as), p._textureId = y._textureBindLocation = i.count, i.ids[y.uid] = i.count, i.textures[i.count++] = y, p._batch = r, c += p.indexSize, p.packAsQuad ? (this.packQuadAttributes(
+      ), f = "renderBatch", d = c, o = S, a = p.topology, r = ec(), i = r.textures, i.clear(), ++as), p._textureId = y._textureBindLocation = i.count, i.ids[y.uid] = i.count, i.textures[i.count++] = y, p._batch = r, c += p.indexSize, p.packAsQuad ? (this.packQuadAttributes(
         p,
         u,
         l,
@@ -13917,7 +13917,7 @@ const Yf = class $f {
   destroy() {
     if (this.batches !== null) {
       for (let e = 0; e < this.batches.length; e++)
-        rc(this.batches[e]);
+        tc(this.batches[e]);
       this.batches = null;
       for (let e = 0; e < this._elements.length; e++)
         this._elements[e] && (this._elements[e]._batch = null);
@@ -14023,7 +14023,7 @@ function qf(s, e, t) {
   }
   return t.minX = n, t.minY = o, t.maxX = a, t.maxY = u, t;
 }
-function l0(s) {
+function h0(s) {
   return (s instanceof Ke || Array.isArray(s) || s.BYTES_PER_ELEMENT) && (s = {
     buffer: s
   }), s.buffer = ru(s.buffer, !1), s;
@@ -14084,7 +14084,7 @@ class _r extends Qe {
    * @param attributeOption - The attribute option to add.
    */
   addAttribute(e, t) {
-    const r = l0(t);
+    const r = h0(t);
     this.buffers.indexOf(r.buffer) === -1 && (this.buffers.push(r.buffer), r.buffer.on("update", this.onBufferUpdate, this), r.buffer.on("change", this.onBufferUpdate, this)), this.attributes[e] = r;
   }
   /**
@@ -14106,16 +14106,16 @@ class _r extends Qe {
     this.emit("destroy", this), this.removeAllListeners(), e && this.buffers.forEach((t) => t.destroy()), this.attributes = null, this.buffers = null, this.indexBuffer = null, this._bounds = null;
   }
 }
-const h0 = new Float32Array(1), c0 = new Uint32Array(1);
+const c0 = new Float32Array(1), d0 = new Uint32Array(1);
 class Kf extends _r {
   constructor() {
     const t = new Ke({
-      data: h0,
+      data: c0,
       label: "attribute-batch-buffer",
       usage: re.VERTEX | re.COPY_DST,
       shrinkToFit: !1
     }), r = new Ke({
-      data: c0,
+      data: d0,
       label: "index-batch-buffer",
       usage: re.INDEX | re.COPY_DST,
       // | BufferUsage.STATIC,
@@ -14152,7 +14152,7 @@ class Kf extends _r {
     });
   }
 }
-function Vo(s, e, t) {
+function Xo(s, e, t) {
   if (s)
     for (const r in s) {
       const i = r.toLocaleLowerCase(), n = e[i];
@@ -14163,23 +14163,23 @@ function Vo(s, e, t) {
         X(`${r} placement hook does not exist in shader`);
     }
 }
-const d0 = /\{\{(.*?)\}\}/g;
-function Xo(s) {
+const f0 = /\{\{(.*?)\}\}/g;
+function Yo(s) {
   const e = {};
-  return (s.match(d0)?.map((r) => r.replace(/[{()}]/g, "")) ?? []).forEach((r) => {
+  return (s.match(f0)?.map((r) => r.replace(/[{()}]/g, "")) ?? []).forEach((r) => {
     e[r] = [];
   }), e;
 }
-function sc(s, e) {
+function rc(s, e) {
   let t;
   const r = /@in\s+([^;]+);/g;
   for (; (t = r.exec(s)) !== null; )
     e.push(t[1]);
 }
-function Yo(s, e, t = !1) {
+function $o(s, e, t = !1) {
   const r = [];
-  sc(e, r), s.forEach((a) => {
-    a.header && sc(a.header, r);
+  rc(e, r), s.forEach((a) => {
+    a.header && rc(a.header, r);
   });
   const i = r;
   t && i.sort();
@@ -14190,30 +14190,30 @@ function Yo(s, e, t = !1) {
 ${n}
 `), o;
 }
-function ic(s, e) {
+function sc(s, e) {
   let t;
   const r = /@out\s+([^;]+);/g;
   for (; (t = r.exec(s)) !== null; )
     e.push(t[1]);
 }
-function f0(s) {
+function p0(s) {
   const t = /\b(\w+)\s*:/g.exec(s);
   return t ? t[1] : "";
 }
-function p0(s) {
+function m0(s) {
   const e = /@.*?\s+/g;
   return s.replace(e, "");
 }
 function Zf(s, e) {
   const t = [];
-  ic(e, t), s.forEach((u) => {
-    u.header && ic(u.header, t);
+  sc(e, t), s.forEach((u) => {
+    u.header && sc(u.header, t);
   });
   let r = 0;
   const i = t.sort().map((u) => u.indexOf("builtin") > -1 ? u : `@location(${r++}) ${u}`).join(`,
-`), n = t.sort().map((u) => `       var ${p0(u)};`).join(`
+`), n = t.sort().map((u) => `       var ${m0(u)};`).join(`
 `), o = `return VSOutput(
-            ${t.sort().map((u) => ` ${f0(u)}`).join(`,
+            ${t.sort().map((u) => ` ${p0(u)}`).join(`,
 `)});`;
   let a = e.replace(/@out\s+[^;]+;\s*/g, "");
   return a = a.replace("{{struct}}", `
@@ -14224,7 +14224,7 @@ ${n}
 ${o}
 `), a;
 }
-function $o(s, e) {
+function jo(s, e) {
   let t = s;
   for (const r in e) {
     const i = e[r];
@@ -14236,45 +14236,45 @@ ${i.join(`
   }
   return t;
 }
-const Xt = /* @__PURE__ */ Object.create(null), co = /* @__PURE__ */ new Map();
-let m0 = 0;
+const Yt = /* @__PURE__ */ Object.create(null), co = /* @__PURE__ */ new Map();
+let g0 = 0;
 function Qf({
   template: s,
   bits: e
 }) {
   const t = ep(s, e);
-  if (Xt[t])
-    return Xt[t];
-  const { vertex: r, fragment: i } = g0(s, e);
-  return Xt[t] = tp(r, i, e), Xt[t];
+  if (Yt[t])
+    return Yt[t];
+  const { vertex: r, fragment: i } = _0(s, e);
+  return Yt[t] = tp(r, i, e), Yt[t];
 }
 function Jf({
   template: s,
   bits: e
 }) {
   const t = ep(s, e);
-  return Xt[t] || (Xt[t] = tp(s.vertex, s.fragment, e)), Xt[t];
+  return Yt[t] || (Yt[t] = tp(s.vertex, s.fragment, e)), Yt[t];
 }
-function g0(s, e) {
+function _0(s, e) {
   const t = e.map((o) => o.vertex).filter((o) => !!o), r = e.map((o) => o.fragment).filter((o) => !!o);
-  let i = Yo(t, s.vertex, !0);
+  let i = $o(t, s.vertex, !0);
   i = Zf(t, i);
-  const n = Yo(r, s.fragment, !0);
+  const n = $o(r, s.fragment, !0);
   return {
     vertex: i,
     fragment: n
   };
 }
 function ep(s, e) {
-  return e.map((t) => (co.has(t) || co.set(t, m0++), co.get(t))).sort((t, r) => t - r).join("-") + s.vertex + s.fragment;
+  return e.map((t) => (co.has(t) || co.set(t, g0++), co.get(t))).sort((t, r) => t - r).join("-") + s.vertex + s.fragment;
 }
 function tp(s, e, t) {
-  const r = Xo(s), i = Xo(e);
+  const r = Yo(s), i = Yo(e);
   return t.forEach((n) => {
-    Vo(n.vertex, r, n.name), Vo(n.fragment, i, n.name);
+    Xo(n.vertex, r, n.name), Xo(n.fragment, i, n.name);
   }), {
-    vertex: $o(s, r),
-    fragment: $o(e, i)
+    vertex: jo(s, r),
+    fragment: jo(e, i)
   };
 }
 const rp = (
@@ -14430,7 +14430,7 @@ const rp = (
         `
     )
   }
-}, _0 = {
+}, b0 = {
   name: "global-uniforms-ubo-bit",
   vertex: {
     header: (
@@ -14470,7 +14470,7 @@ function jr({ bits: s, name: e }) {
       ...s
     ]
   });
-  return We.from({
+  return He.from({
     name: e,
     vertex: {
       source: t.vertex,
@@ -14530,7 +14530,7 @@ const fn = {
     )
   }
 }, fo = {};
-function b0(s) {
+function x0(s) {
   const e = [];
   if (s === 1)
     e.push("@group(1) @binding(0) var textureSource1: texture_2d<f32>;"), e.push("@group(1) @binding(1) var textureSampler1: sampler;");
@@ -14542,7 +14542,7 @@ function b0(s) {
   return e.join(`
 `);
 }
-function x0(s) {
+function y0(s) {
   const e = [];
   if (s === 1)
     e.push("outColor = textureSampleGrad(textureSource1, textureSampler1, vUV, uvDx, uvDy);");
@@ -14577,19 +14577,19 @@ function mn(s) {
       header: `
                 @in @interpolate(flat) vTextureId: u32;
 
-                ${b0(s)}
+                ${x0(s)}
             `,
       main: `
                 var uvDx = dpdx(vUV);
                 var uvDy = dpdy(vUV);
 
-                ${x0(s)}
+                ${y0(s)}
             `
     }
   }), fo[s];
 }
 const po = {};
-function y0(s) {
+function v0(s) {
   const e = [];
   for (let t = 0; t < s; t++)
     t > 0 && e.push("else"), t < s - 1 && e.push(`if(vTextureId < ${t}.5)`), e.push("{"), e.push(`	outColor = texture(uTextures[${t}], vUV);`), e.push("}");
@@ -14624,7 +14624,7 @@ function gn(s) {
             `,
       main: `
 
-                ${y0(s)}
+                ${v0(s)}
             `
     }
   }), po[s];
@@ -14655,15 +14655,15 @@ const Kr = {
         `
     )
   }
-}, nc = {};
+}, ic = {};
 function _n(s) {
-  let e = nc[s];
+  let e = ic[s];
   if (e)
     return e;
   const t = new Int32Array(s);
   for (let r = 0; r < s; r++)
     t[r] = r;
-  return e = nc[s] = new we({
+  return e = ic[s] = new we({
     uTextures: { value: t, type: "i32", size: s }
   }, { isStatic: !0 }), e;
 }
@@ -14756,7 +14756,7 @@ function xn(s, e, t, r, i) {
     s[c] = n * f + a * g + l, s[c + 1] = o * f + u * g + h, c += r;
   }
 }
-const v0 = new W();
+const S0 = new W();
 class yn {
   constructor() {
     this.packAsQuad = !1, this.batcherName = "default", this.topology = "triangle-list", this.applyTransform = !0, this.roundPixels = 0, this._batcher = null, this._batch = null;
@@ -14778,7 +14778,7 @@ class yn {
     return r ? Fa(t, r.groupColor) + (this.alpha * r.groupAlpha * 255 << 24) : t + (this.alpha * 255 << 24);
   }
   get transform() {
-    return this.renderable?.groupTransform || v0;
+    return this.renderable?.groupTransform || S0;
   }
   copyTo(e) {
     e.indexOffset = this.indexOffset, e.indexSize = this.indexSize, e.attributeOffset = this.attributeOffset, e.attributeSize = this.attributeSize, e.baseColor = this.baseColor, e.alpha = this.alpha, e.texture = this.texture, e.geometryData = this.geometryData, e.topology = this.topology;
@@ -14845,7 +14845,7 @@ const Xr = {
       e[u * t] = s[h], e[u * t + 1] = s[h + 1], h > 0 && (i[n++] = u, i[n++] = l, i[n++] = u - 1), u++;
     i[n++] = l + 1, i[n++] = l, i[n++] = u - 1;
   }
-}, cp = { ...Xr, extension: { ...Xr.extension, name: "ellipse" } }, dp = { ...Xr, extension: { ...Xr.extension, name: "roundedRectangle" } }, nu = 1e-4, jo = 1e-4;
+}, cp = { ...Xr, extension: { ...Xr.extension, name: "ellipse" } }, dp = { ...Xr, extension: { ...Xr.extension, name: "roundedRectangle" } }, nu = 1e-4, qo = 1e-4;
 function fp(s) {
   const e = s.length;
   if (e < 6)
@@ -14857,7 +14857,7 @@ function fp(s) {
   }
   return t < 0 ? -1 : 1;
 }
-function oc(s, e, t, r, i, n, o, a) {
+function nc(s, e, t, r, i, n, o, a) {
   const u = s - t * i, l = e - r * i, h = s + t * n, c = e + r * n;
   let d, f;
   o ? (d = r, f = -t) : (d = -r, f = t);
@@ -14920,7 +14920,7 @@ function pp(s, e, t, r, i, n) {
     R + M * F,
     f,
     !0
-  ) + 2 : a.cap === "square" && (b += oc(T, R, P, M, D, F, !0, f))), f.push(
+  ) + 2 : a.cap === "square" && (b += nc(T, R, P, M, D, F, !0, f))), f.push(
     T - P * D,
     R - M * D
   ), f.push(
@@ -14955,8 +14955,8 @@ function pp(s, e, t, r, i, n) {
       ));
       continue;
     }
-    const Mt = (-P + T) * (-M + A) - (-P + B) * (-M + R), Re = (-I + k) * (-G + A) - (-I + B) * (-G + E), Fe = (oe * Re - Te * Mt) / de, bt = (Ge * Mt - V * Re) / de, Ie = (Fe - B) * (Fe - B) + (bt - A) * (bt - A), Ee = B + (Fe - B) * D, ze = A + (bt - A) * D, he = B - (Fe - B) * F, Ve = A - (bt - A) * F, Pe = Math.min(oe * oe + V * V, Te * Te + Ge * Ge), Jt = ct ? D : F, xr = Pe + Jt * Jt * y;
-    Ie <= xr ? a.join === "bevel" || Ie / y > S ? (ct ? (f.push(Ee, ze), f.push(B + P * F, A + M * F), f.push(Ee, ze), f.push(B + I * F, A + G * F)) : (f.push(B - P * D, A - M * D), f.push(he, Ve), f.push(B - I * D, A - G * D), f.push(he, Ve)), b += 2) : a.join === "round" ? ct ? (f.push(Ee, ze), f.push(B + P * F, A + M * F), b += ir(
+    const Mt = (-P + T) * (-M + A) - (-P + B) * (-M + R), Re = (-I + k) * (-G + A) - (-I + B) * (-G + E), Fe = (oe * Re - Te * Mt) / de, bt = (Ge * Mt - V * Re) / de, Ie = (Fe - B) * (Fe - B) + (bt - A) * (bt - A), Ee = B + (Fe - B) * D, We = A + (bt - A) * D, he = B - (Fe - B) * F, ze = A - (bt - A) * F, Pe = Math.min(oe * oe + V * V, Te * Te + Ge * Ge), Jt = ct ? D : F, xr = Pe + Jt * Jt * y;
+    Ie <= xr ? a.join === "bevel" || Ie / y > S ? (ct ? (f.push(Ee, We), f.push(B + P * F, A + M * F), f.push(Ee, We), f.push(B + I * F, A + G * F)) : (f.push(B - P * D, A - M * D), f.push(he, ze), f.push(B - I * D, A - G * D), f.push(he, ze)), b += 2) : a.join === "round" ? ct ? (f.push(Ee, We), f.push(B + P * F, A + M * F), b += ir(
       B,
       A,
       B + P * F,
@@ -14965,7 +14965,7 @@ function pp(s, e, t, r, i, n) {
       A + G * F,
       f,
       !0
-    ) + 4, f.push(Ee, ze), f.push(B + I * F, A + G * F)) : (f.push(B - P * D, A - M * D), f.push(he, Ve), b += ir(
+    ) + 4, f.push(Ee, We), f.push(B + I * F, A + G * F)) : (f.push(B - P * D, A - M * D), f.push(he, ze), b += ir(
       B,
       A,
       B - P * D,
@@ -14974,7 +14974,7 @@ function pp(s, e, t, r, i, n) {
       A - G * D,
       f,
       !1
-    ) + 4, f.push(B - I * D, A - G * D), f.push(he, Ve)) : (f.push(Ee, ze), f.push(he, Ve)) : (f.push(B - P * D, A - M * D), f.push(B + P * F, A + M * F), a.join === "round" ? ct ? b += ir(
+    ) + 4, f.push(B - I * D, A - G * D), f.push(he, ze)) : (f.push(Ee, We), f.push(he, ze)) : (f.push(B - P * D, A - M * D), f.push(B + P * F, A + M * F), a.join === "round" ? ct ? b += ir(
       B,
       A,
       B + P * F,
@@ -14992,7 +14992,7 @@ function pp(s, e, t, r, i, n) {
       A - G * D,
       f,
       !1
-    ) + 2 : a.join === "miter" && Ie / y <= S && (ct ? (f.push(he, Ve), f.push(he, Ve)) : (f.push(Ee, ze), f.push(Ee, ze)), b += 2), f.push(B - I * D, A - G * D), f.push(B + I * F, A + G * F), b += 2);
+    ) + 2 : a.join === "miter" && Ie / y <= S && (ct ? (f.push(he, ze), f.push(he, ze)) : (f.push(Ee, We), f.push(Ee, We)), b += 2), f.push(B - I * D, A - G * D), f.push(B + I * F, A + G * F), b += 2);
   }
   T = s[(g - 2) * 2], R = s[(g - 2) * 2 + 1], B = s[(g - 1) * 2], A = s[(g - 1) * 2 + 1], P = -(R - A), M = T - B, H = Math.sqrt(P * P + M * M), P /= H, M /= H, P *= x, M *= x, f.push(B - P * D, A - M * D), f.push(B + P * F, A + M * F), c || (a.cap === "round" ? b += ir(
     B - P * (D - F) * 0.5,
@@ -15003,8 +15003,8 @@ function pp(s, e, t, r, i, n) {
     A + M * F,
     f,
     !1
-  ) + 2 : a.cap === "square" && (b += oc(B, A, P, M, D, F, !1, f)));
-  const q = jo * jo;
+  ) + 2 : a.cap === "square" && (b += nc(B, A, P, M, D, F, !1, f)));
+  const q = qo * qo;
   for (let L = p; L < b + p - 2; ++L)
     T = f[L * 2], R = f[L * 2 + 1], B = f[(L + 1) * 2], A = f[(L + 1) * 2 + 1], k = f[(L + 2) * 2], E = f[(L + 2) * 2 + 1], !(Math.abs(T * (A - E) + B * (E - R) + k * (R - A)) < q) && n.push(L, L + 1, L + 2);
 }
@@ -15029,7 +15029,7 @@ function ou(s, e, t, r, i, n, o) {
   for (let l = 0; l < s.length; l += 2)
     t[u] = s[l], t[u + 1] = s[l + 1], u += r;
 }
-const S0 = [], gp = {
+const w0 = [], gp = {
   extension: {
     type: w.ShapeBuilder,
     name: "polygon"
@@ -15040,7 +15040,7 @@ const S0 = [], gp = {
     return !0;
   },
   triangulate(s, e, t, r, i, n) {
-    ou(s, S0, e, t, r, i, n);
+    ou(s, w0, e, t, r, i, n);
   }
 }, _p = {
   extension: {
@@ -15071,38 +15071,38 @@ const S0 = [], gp = {
     const a = r / t;
     i[n++] = a, i[n++] = a + 1, i[n++] = a + 2;
   }
-}, w0 = new W(), T0 = new te();
+}, T0 = new W(), E0 = new te();
 function xp(s, e, t, r) {
   const i = e.matrix ? s.copyFrom(e.matrix).invert() : s.identity();
   if (e.textureSpace === "local") {
-    const o = t.getBounds(T0);
+    const o = t.getBounds(E0);
     e.width && o.pad(e.width);
     const { x: a, y: u } = o, l = 1 / o.width, h = 1 / o.height, c = -a * l, d = -u * h, f = i.a, g = i.b, b = i.c, p = i.d;
     i.a *= l, i.b *= l, i.c *= h, i.d *= h, i.tx = c * f + d * b + i.tx, i.ty = c * g + d * p + i.ty;
   } else
     i.translate(e.texture.frame.x, e.texture.frame.y), i.scale(1 / e.texture.source.width, 1 / e.texture.source.height);
   const n = e.texture.source.style;
-  return !(e.fill instanceof Ct) && n.addressMode === "clamp-to-edge" && (n.addressMode = "repeat", n.update()), r && i.append(w0.copyFrom(r).invert()), i;
+  return !(e.fill instanceof Ct) && n.addressMode === "clamp-to-edge" && (n.addressMode = "repeat", n.update()), r && i.append(T0.copyFrom(r).invert()), i;
 }
 const Qr = {};
 Y.handleByMap(w.ShapeBuilder, Qr);
 Y.add(_p, gp, bp, Xr, cp, dp);
-const E0 = new te(), A0 = new W();
+const A0 = new te(), C0 = new W();
 function yp(s, e) {
   const { geometryData: t, batches: r } = e;
   r.length = 0, t.indices.length = 0, t.vertices.length = 0, t.uvs.length = 0;
   for (let i = 0; i < s.instructions.length; i++) {
     const n = s.instructions[i];
     if (n.action === "texture")
-      C0(n.data, r, t);
+      P0(n.data, r, t);
     else if (n.action === "fill" || n.action === "stroke") {
       const o = n.action === "stroke", a = n.data.path.shapePath, u = n.data.style, l = n.data.hole;
-      o && l && ac(l.shapePath, u, !0, r, t), l && (a.shapePrimitives[a.shapePrimitives.length - 1].holes = l.shapePath.shapePrimitives), ac(a, u, o, r, t);
+      o && l && oc(l.shapePath, u, !0, r, t), l && (a.shapePrimitives[a.shapePrimitives.length - 1].holes = l.shapePath.shapePrimitives), oc(a, u, o, r, t);
     }
   }
 }
-function C0(s, e, t) {
-  const r = [], i = Qr.rectangle, n = E0;
+function P0(s, e, t) {
+  const r = [], i = Qr.rectangle, n = A0;
   n.x = s.dx, n.y = s.dy, n.width = s.dw, n.height = s.dh;
   const o = s.transform;
   if (!i.build(n, r))
@@ -15123,7 +15123,7 @@ function C0(s, e, t) {
   const g = Se.get(yn);
   g.indexOffset = h, g.indexSize = l.length - h, g.attributeOffset = c, g.attributeSize = a.length / 2 - c, g.baseColor = s.style, g.alpha = s.alpha, g.texture = d, g.geometryData = t, e.push(g);
 }
-function ac(s, e, t, r, i) {
+function oc(s, e, t, r, i) {
   const { vertices: n, uvs: o, indices: a } = i;
   s.shapePrimitives.forEach(({ shape: u, transform: l, holes: h }) => {
     const c = [], d = Qr[u.type];
@@ -15136,14 +15136,14 @@ function ac(s, e, t, r, i) {
       T.pixelLine ? (mp(c, S, n, a), b = "line-list") : pp(c, T, !1, S, n, a);
     } else if (h) {
       const S = [], T = c.slice();
-      P0(h).forEach((B) => {
+      B0(h).forEach((B) => {
         S.push(T.length / 2), T.push(...B);
       }), ou(T, S, n, 2, g, a, f);
     } else
       d.triangulate(c, n, 2, g, a, f);
     const p = o.length / 2, x = e.texture;
     if (x !== O.WHITE) {
-      const S = xp(A0, e, u, l);
+      const S = xp(C0, e, u, l);
       su(n, 2, g, o, p, 2, n.length / 2 - g, S);
     } else
       iu(o, p, 2, n.length / 2 - g);
@@ -15151,7 +15151,7 @@ function ac(s, e, t, r, i) {
     y.indexOffset = f, y.indexSize = a.length - f, y.attributeOffset = g, y.attributeSize = n.length / 2 - g, y.baseColor = e.color, y.alpha = e.alpha, y.texture = x, y.geometryData = i, y.topology = b, r.push(y);
   });
 }
-function P0(s) {
+function B0(s) {
   const e = [];
   for (let t = 0; t < s.length; t++) {
     const r = s[t].shape, i = [];
@@ -15189,7 +15189,7 @@ class Sp {
     this.batcher.destroy(), this.instructions.destroy(), this.batcher = null, this.instructions = null;
   }
 }
-const au = class qo {
+const au = class Ko {
   constructor(e) {
     this._gpuContextHash = {}, this._graphicsDataContextHash = /* @__PURE__ */ Object.create(null), this._renderer = e, e.renderableGC.addManagedHash(this, "_gpuContextHash"), e.renderableGC.addManagedHash(this, "_graphicsDataContextHash");
   }
@@ -15198,7 +15198,7 @@ const au = class qo {
    * @ignore
    */
   init(e) {
-    qo.defaultOptions.bezierSmoothness = e?.bezierSmoothness ?? qo.defaultOptions.bezierSmoothness;
+    Ko.defaultOptions.bezierSmoothness = e?.bezierSmoothness ?? Ko.defaultOptions.bezierSmoothness;
   }
   /**
    * Returns the render data for a given GraphicsContext.
@@ -15294,37 +15294,37 @@ au.defaultOptions = {
   bezierSmoothness: 0.5
 };
 let vn = au;
-const B0 = 8, ci = 11920929e-14, R0 = 1;
+const R0 = 8, di = 11920929e-14, M0 = 1;
 function uu(s, e, t, r, i, n, o, a, u, l) {
   const c = Math.min(
     0.99,
     // a value of 1.0 actually inverts smoothing, so we cap it at 0.99
     Math.max(0, l ?? vn.defaultOptions.bezierSmoothness)
   );
-  let d = (R0 - c) / 1;
-  return d *= d, M0(e, t, r, i, n, o, a, u, s, d), s;
+  let d = (M0 - c) / 1;
+  return d *= d, D0(e, t, r, i, n, o, a, u, s, d), s;
 }
-function M0(s, e, t, r, i, n, o, a, u, l) {
-  Ko(s, e, t, r, i, n, o, a, u, l, 0), u.push(o, a);
+function D0(s, e, t, r, i, n, o, a, u, l) {
+  Zo(s, e, t, r, i, n, o, a, u, l, 0), u.push(o, a);
 }
-function Ko(s, e, t, r, i, n, o, a, u, l, h) {
-  if (h > B0)
+function Zo(s, e, t, r, i, n, o, a, u, l, h) {
+  if (h > R0)
     return;
   const c = (s + t) / 2, d = (e + r) / 2, f = (t + i) / 2, g = (r + n) / 2, b = (i + o) / 2, p = (n + a) / 2, x = (c + f) / 2, y = (d + g) / 2, S = (f + b) / 2, T = (g + p) / 2, R = (x + S) / 2, B = (y + T) / 2;
   if (h > 0) {
     let A = o - s, k = a - e;
     const E = Math.abs((t - o) * k - (r - a) * A), P = Math.abs((i - o) * k - (n - a) * A);
-    if (E > ci && P > ci) {
+    if (E > di && P > di) {
       if ((E + P) * (E + P) <= l * (A * A + k * k)) {
         u.push(R, B);
         return;
       }
-    } else if (E > ci) {
+    } else if (E > di) {
       if (E * E <= l * (A * A + k * k)) {
         u.push(R, B);
         return;
       }
-    } else if (P > ci) {
+    } else if (P > di) {
       if (P * P <= l * (A * A + k * k)) {
         u.push(R, B);
         return;
@@ -15334,28 +15334,28 @@ function Ko(s, e, t, r, i, n, o, a, u, l, h) {
       return;
     }
   }
-  Ko(s, e, c, d, x, y, R, B, u, l, h + 1), Ko(R, B, S, T, b, p, o, a, u, l, h + 1);
+  Zo(s, e, c, d, x, y, R, B, u, l, h + 1), Zo(R, B, S, T, b, p, o, a, u, l, h + 1);
 }
-const D0 = 8, F0 = 11920929e-14, I0 = 1;
+const F0 = 8, I0 = 11920929e-14, k0 = 1;
 function wp(s, e, t, r, i, n, o, a) {
   const l = Math.min(
     0.99,
     // a value of 1.0 actually inverts smoothing, so we cap it at 0.99
     Math.max(0, a ?? vn.defaultOptions.bezierSmoothness)
   );
-  let h = (I0 - l) / 1;
-  return h *= h, k0(e, t, r, i, n, o, s, h), s;
+  let h = (k0 - l) / 1;
+  return h *= h, U0(e, t, r, i, n, o, s, h), s;
 }
-function k0(s, e, t, r, i, n, o, a) {
-  Zo(o, s, e, t, r, i, n, a, 0), o.push(i, n);
+function U0(s, e, t, r, i, n, o, a) {
+  Qo(o, s, e, t, r, i, n, a, 0), o.push(i, n);
 }
-function Zo(s, e, t, r, i, n, o, a, u) {
-  if (u > D0)
+function Qo(s, e, t, r, i, n, o, a, u) {
+  if (u > F0)
     return;
   const l = (e + r) / 2, h = (t + i) / 2, c = (r + n) / 2, d = (i + o) / 2, f = (l + c) / 2, g = (h + d) / 2;
   let b = n - e, p = o - t;
   const x = Math.abs((r - n) * p - (i - o) * b);
-  if (x > F0) {
+  if (x > I0) {
     if (x * x <= a * (b * b + p * p)) {
       s.push(f, g);
       return;
@@ -15364,7 +15364,7 @@ function Zo(s, e, t, r, i, n, o, a, u) {
     s.push(f, g);
     return;
   }
-  Zo(s, e, t, l, h, f, g, a, u + 1), Zo(s, f, g, c, d, n, o, a, u + 1);
+  Qo(s, e, t, l, h, f, g, a, u + 1), Qo(s, f, g, c, d, n, o, a, u + 1);
 }
 function lu(s, e, t, r, i, n, o, a) {
   let u = Math.abs(i - n);
@@ -15403,7 +15403,7 @@ const ws = Math.PI * 2, go = {
   const l = i * s - n * e, h = n * s + i * e;
   return u.x = l + o, u.y = h + a, u;
 };
-function U0(s, e) {
+function O0(s, e) {
   const t = e === -1.5707963267948966 ? -0.551915024494 : 1.3333333333333333 * Math.tan(e / 4), r = e === 1.5707963267948966 ? 0.551915024494 : t, i = Math.cos(s), n = Math.sin(s), o = Math.cos(s + e), a = Math.sin(s + e);
   return [
     {
@@ -15420,16 +15420,16 @@ function U0(s, e) {
     }
   ];
 }
-const uc = (s, e, t, r) => {
+const ac = (s, e, t, r) => {
   const i = s * r - e * t < 0 ? -1 : 1;
   let n = s * t + e * r;
   return n > 1 && (n = 1), n < -1 && (n = -1), i * Math.acos(n);
-}, O0 = (s, e, t, r, i, n, o, a, u, l, h, c, d) => {
+}, G0 = (s, e, t, r, i, n, o, a, u, l, h, c, d) => {
   const f = Math.pow(i, 2), g = Math.pow(n, 2), b = Math.pow(h, 2), p = Math.pow(c, 2);
   let x = f * g - f * p - g * b;
   x < 0 && (x = 0), x /= f * p + g * b, x = Math.sqrt(x) * (o === a ? -1 : 1);
-  const y = x * i / n * c, S = x * -n / i * h, T = l * y - u * S + (s + t) / 2, R = u * y + l * S + (e + r) / 2, B = (h - y) / i, A = (c - S) / n, k = (-h - y) / i, E = (-c - S) / n, P = uc(1, 0, B, A);
-  let M = uc(B, A, k, E);
+  const y = x * i / n * c, S = x * -n / i * h, T = l * y - u * S + (s + t) / 2, R = u * y + l * S + (e + r) / 2, B = (h - y) / i, A = (c - S) / n, k = (-h - y) / i, E = (-c - S) / n, P = ac(1, 0, B, A);
+  let M = ac(B, A, k, E);
   a === 0 && M > 0 && (M -= ws), a === 1 && M < 0 && (M += ws), d.centerX = T, d.centerY = R, d.ang1 = P, d.ang2 = M;
 };
 function Ep(s, e, t, r, i, n, o, a = 0, u = 0, l = 0) {
@@ -15440,7 +15440,7 @@ function Ep(s, e, t, r, i, n, o, a = 0, u = 0, l = 0) {
     return;
   n = Math.abs(n), o = Math.abs(o);
   const g = Math.pow(d, 2) / Math.pow(n, 2) + Math.pow(f, 2) / Math.pow(o, 2);
-  g > 1 && (n *= Math.sqrt(g), o *= Math.sqrt(g)), O0(
+  g > 1 && (n *= Math.sqrt(g), o *= Math.sqrt(g)), G0(
     e,
     t,
     r,
@@ -15464,7 +15464,7 @@ function Ep(s, e, t, r, i, n, o, a = 0, u = 0, l = 0) {
   let R = s[s.length - 2], B = s[s.length - 1];
   const A = { x: 0, y: 0 };
   for (let k = 0; k < T; k++) {
-    const E = U0(b, p), { x: P, y: M } = _o(E[0], n, o, c, h, x, y, A), { x: I, y: G } = _o(E[1], n, o, c, h, x, y, A), { x: H, y: Q } = _o(E[2], n, o, c, h, x, y, A);
+    const E = O0(b, p), { x: P, y: M } = _o(E[0], n, o, c, h, x, y, A), { x: I, y: G } = _o(E[1], n, o, c, h, x, y, A), { x: H, y: Q } = _o(E[2], n, o, c, h, x, y, A);
     uu(
       s,
       R,
@@ -15549,7 +15549,7 @@ function Cp(s, e, t, r) {
     a === 0 ? s.moveTo(f.x, f.y) : s.lineTo(f.x, f.y), s.quadraticCurveTo(u.x, u.y, b.x, b.y, r);
   }
 }
-const G0 = new te();
+const L0 = new te();
 class Pp {
   constructor(e) {
     this.shapePrimitives = [], this._currentPoly = null, this._bounds = new Be(), this._graphicsPath2D = e, this.signed = e.checkForHoles;
@@ -15964,7 +15964,7 @@ class Pp {
     e.clear();
     const t = this.shapePrimitives;
     for (let r = 0; r < t.length; r++) {
-      const i = t[r], n = i.shape.getBounds(G0);
+      const i = t[r], n = i.shape.getBounds(L0);
       i.transform ? e.addRect(n, i.transform) : e.addRect(n);
     }
     return e;
@@ -16289,16 +16289,16 @@ function Bp(s, e) {
       const o = i.children[n];
       switch (o.nodeName.toLowerCase()) {
         case "lineargradient":
-          e.defs[o.id] = L0(o);
+          e.defs[o.id] = N0(o);
           break;
         case "radialgradient":
-          e.defs[o.id] = N0();
+          e.defs[o.id] = H0();
           break;
       }
     }
   }
 }
-function L0(s) {
+function N0(s) {
   const e = pe(s, "x1", 0), t = pe(s, "y1", 0), r = pe(s, "x2", 1), i = pe(s, "y2", 0), n = s.getAttribute("gradientUnits") || "objectBoundingBox", o = new Ct(
     e,
     t,
@@ -16312,14 +16312,14 @@ function L0(s) {
   }
   return o;
 }
-function N0(s) {
+function H0(s) {
   return X("[SVG Parser] Radial gradients are not yet supported"), new Ct(0, 0, 1, 0);
 }
-function Qo(s) {
+function Jo(s) {
   const e = s.match(/url\s*\(\s*['"]?\s*#([^'"\s)]+)\s*['"]?\s*\)/i);
   return e ? e[1] : "";
 }
-const Jo = {
+const ea = {
   // Fill properties
   fill: { type: "paint", default: 0 },
   // Fill color/gradient
@@ -16353,15 +16353,15 @@ function hu(s, e) {
     useFill: !1,
     useStroke: !1
   };
-  for (const o in Jo) {
+  for (const o in ea) {
     const a = s.getAttribute(o);
-    a && lc(e, n, o, a.trim());
+    a && uc(e, n, o, a.trim());
   }
   if (t) {
     const o = t.split(";");
     for (let a = 0; a < o.length; a++) {
       const u = o[a].trim(), [l, h] = u.split(":");
-      Jo[l] && lc(e, n, l, h.trim());
+      ea[l] && uc(e, n, l, h.trim());
     }
   }
   return {
@@ -16371,12 +16371,12 @@ function hu(s, e) {
     useStroke: n.useStroke
   };
 }
-function lc(s, e, t, r) {
+function uc(s, e, t, r) {
   switch (t) {
     case "stroke":
       if (r !== "none") {
         if (r.startsWith("url(")) {
-          const i = Qo(r);
+          const i = Jo(r);
           e.strokeStyle.fill = s.defs[i];
         } else
           e.strokeStyle.color = se.shared.setValue(r).toNumber();
@@ -16389,7 +16389,7 @@ function lc(s, e, t, r) {
     case "fill":
       if (r !== "none") {
         if (r.startsWith("url(")) {
-          const i = Qo(r);
+          const i = Jo(r);
           e.fillStyle.fill = s.defs[i];
         } else
           e.fillStyle.color = se.shared.setValue(r).toNumber();
@@ -16413,7 +16413,7 @@ function Rp(s) {
   const e = s.map((a) => a.area).sort((a, u) => u - a), [t, r] = e, i = e[e.length - 1], n = t / r, o = r / i;
   return !(n > 3 && o < 2);
 }
-function H0(s, e = 0) {
+function W0(s, e = 0) {
   const t = s.instructions[e];
   if (!t || t.action !== "fill")
     throw new Error(`Expected fill instruction at index ${e}, got ${t?.action || "undefined"}`);
@@ -16434,7 +16434,7 @@ function Dp(s) {
   const n = Math.min(...r), o = Math.max(...r), a = Math.min(...i), u = Math.max(...i);
   return (o - n) * (u - a);
 }
-function ea(s, e) {
+function ta(s, e) {
   const t = new mt(s, !1);
   for (const r of t.instructions)
     e.instructions.push(r);
@@ -16477,14 +16477,14 @@ function Ip(s, e, t, r) {
             const F = H[D], q = D === 0;
             e.context.beginPath();
             const L = new mt(void 0, !0);
-            ea(F.path, L), e.context.path(L), q ? (t && e.context.fill(t), r && e.context.stroke(r)) : e.context.cut();
+            ta(F.path, L), e.context.path(L), q ? (t && e.context.fill(t), r && e.context.stroke(r)) : e.context.cut();
           }
         else
           for (let D = 0; D < H.length; D++) {
             const F = H[D], q = D % 2 === 1;
             e.context.beginPath();
             const L = new mt(void 0, !0);
-            ea(F.path, L), e.context.path(L), q ? e.context.cut() : (t && e.context.fill(t), r && e.context.stroke(r));
+            ta(F.path, L), e.context.path(L), q ? e.context.cut() : (t && e.context.fill(t), r && e.context.stroke(r));
           }
       } else {
         const H = E ? E === "evenodd" : !0;
@@ -16522,43 +16522,43 @@ function Ip(s, e, t, r) {
   for (let E = 0; E < i.length; E++)
     Ip(i[E], e, t, r);
 }
-function W0(s) {
+function z0(s) {
   return se.isColorLike(s);
 }
-function hc(s) {
-  return s instanceof Vs;
+function lc(s) {
+  return s instanceof Xs;
 }
-function cc(s) {
+function hc(s) {
   return s instanceof Ct;
 }
-function z0(s) {
+function V0(s) {
   return s instanceof O;
 }
-function V0(s, e, t) {
+function X0(s, e, t) {
   const r = se.shared.setValue(e ?? 0);
   return s.color = r.toNumber(), s.alpha = r.alpha === 1 ? t.alpha : r.alpha, s.texture = O.WHITE, { ...t, ...s };
 }
-function X0(s, e, t) {
+function Y0(s, e, t) {
   return s.texture = e, { ...t, ...s };
 }
-function dc(s, e, t) {
+function cc(s, e, t) {
   return s.fill = e, s.color = 16777215, s.texture = e.texture, s.matrix = e.transform, { ...t, ...s };
 }
-function fc(s, e, t) {
+function dc(s, e, t) {
   return e.buildGradient(), s.fill = e, s.color = 16777215, s.texture = e.texture, s.matrix = e.transform, s.textureSpace = e.textureSpace, { ...t, ...s };
 }
-function Y0(s, e) {
+function $0(s, e) {
   const t = { ...e, ...s }, r = se.shared.setValue(t.color);
   return t.alpha *= r.alpha, t.color = r.toNumber(), t;
 }
-function Yt(s, e) {
+function $t(s, e) {
   if (s == null)
     return null;
   const t = {}, r = s;
-  return W0(s) ? V0(t, s, e) : z0(s) ? X0(t, s, e) : hc(s) ? dc(t, s, e) : cc(s) ? fc(t, s, e) : r.fill && hc(r.fill) ? dc(r, r.fill, e) : r.fill && cc(r.fill) ? fc(r, r.fill, e) : Y0(r, e);
+  return z0(s) ? X0(t, s, e) : V0(s) ? Y0(t, s, e) : lc(s) ? cc(t, s, e) : hc(s) ? dc(t, s, e) : r.fill && lc(r.fill) ? cc(r, r.fill, e) : r.fill && hc(r.fill) ? dc(r, r.fill, e) : $0(r, e);
 }
 function Us(s, e) {
-  const { width: t, alignment: r, miterLimit: i, cap: n, join: o, pixelLine: a, ...u } = e, l = Yt(s, u);
+  const { width: t, alignment: r, miterLimit: i, cap: n, join: o, pixelLine: a, ...u } = e, l = $t(s, u);
   return l ? {
     width: t,
     alignment: r,
@@ -16569,7 +16569,7 @@ function Us(s, e) {
     ...l
   } : null;
 }
-const $0 = new $(), pc = new W(), cu = class vt extends Qe {
+const j0 = new $(), fc = new W(), cu = class vt extends Qe {
   constructor() {
     super(...arguments), this.uid = ae("graphicsContext"), this.dirty = !0, this.batchMode = "auto", this.instructions = [], this._activePath = new mt(), this._transform = new W(), this._fillStyle = { ...vt.defaultFillStyle }, this._strokeStyle = { ...vt.defaultStrokeStyle }, this._stateStack = [], this._tick = 0, this._bounds = new Be(), this._boundsDirty = !0;
   }
@@ -16589,7 +16589,7 @@ const $0 = new $(), pc = new W(), cu = class vt extends Qe {
     return this._fillStyle;
   }
   set fillStyle(e) {
-    this._fillStyle = Yt(e, vt.defaultFillStyle);
+    this._fillStyle = $t(e, vt.defaultFillStyle);
   }
   /**
    * The current stroke style of the graphics context. Similar to fill styles, stroke styles can encompass colors, gradients, patterns, or more detailed configurations via a StrokeStyle object.
@@ -16608,7 +16608,7 @@ const $0 = new $(), pc = new W(), cu = class vt extends Qe {
    * @returns The instance of the current GraphicsContext for method chaining.
    */
   setFillStyle(e) {
-    return this._fillStyle = Yt(e, vt.defaultFillStyle), this;
+    return this._fillStyle = $t(e, vt.defaultFillStyle), this;
   }
   /**
    * Sets the current stroke style of the graphics context. Similar to fill styles, stroke styles can
@@ -16618,7 +16618,7 @@ const $0 = new $(), pc = new W(), cu = class vt extends Qe {
    * @returns The instance of the current GraphicsContext for method chaining.
    */
   setStrokeStyle(e) {
-    return this._strokeStyle = Yt(e, vt.defaultStrokeStyle), this;
+    return this._strokeStyle = $t(e, vt.defaultStrokeStyle), this;
   }
   texture(e, t, r, i, n, o) {
     return this.instructions.push({
@@ -16646,7 +16646,7 @@ const $0 = new $(), pc = new W(), cu = class vt extends Qe {
   fill(e, t) {
     let r;
     const i = this.instructions[this.instructions.length - 1];
-    return this._tick === 0 && i && i.action === "stroke" ? r = i.data.path : r = this._activePath.clone(), r ? (e != null && (t !== void 0 && typeof e == "number" && (N(Z, "GraphicsContext.fill(color, alpha) is deprecated, use GraphicsContext.fill({ color, alpha }) instead"), e = { color: e, alpha: t }), this._fillStyle = Yt(e, vt.defaultFillStyle)), this.instructions.push({
+    return this._tick === 0 && i && i.action === "stroke" ? r = i.data.path : r = this._activePath.clone(), r ? (e != null && (t !== void 0 && typeof e == "number" && (N(Z, "GraphicsContext.fill(color, alpha) is deprecated, use GraphicsContext.fill({ color, alpha }) instead"), e = { color: e, alpha: t }), this._fillStyle = $t(e, vt.defaultFillStyle)), this.instructions.push({
       action: "fill",
       // TODO copy fill style!
       data: { style: this.fillStyle, path: r }
@@ -17054,7 +17054,7 @@ const $0 = new $(), pc = new W(), cu = class vt extends Qe {
     return e instanceof W ? (this._transform.set(e.a, e.b, e.c, e.d, e.tx, e.ty), this) : (this._transform.set(e, t, r, i, n, o), this);
   }
   transform(e, t, r, i, n, o) {
-    return e instanceof W ? (this._transform.append(e), this) : (pc.set(e, t, r, i, n, o), this._transform.append(pc), this);
+    return e instanceof W ? (this._transform.append(e), this) : (fc.set(e, t, r, i, n, o), this._transform.append(fc), this);
   }
   /**
    * Applies a translation transformation to the graphics context, moving the origin by the specified amounts.
@@ -17123,7 +17123,7 @@ const $0 = new $(), pc = new W(), cu = class vt extends Qe {
         const c = l[h].shape;
         if (!u || !c)
           continue;
-        const d = l[h].transform, f = d ? d.applyInverse(e, $0) : e;
+        const d = l[h].transform, f = d ? d.applyInverse(e, j0) : e;
         if (n.action === "fill")
           r = c.contains(f.x, f.y);
         else {
@@ -17203,7 +17203,7 @@ cu.defaultStrokeStyle = {
 let Le = cu;
 const du = class Ar extends Qe {
   constructor(e = {}) {
-    super(), this.uid = ae("textStyle"), this._tick = 0, j0(e);
+    super(), this.uid = ae("textStyle"), this._tick = 0, q0(e);
     const t = { ...Ar.defaultTextStyle, ...e };
     for (const r in t) {
       const i = r;
@@ -17406,11 +17406,11 @@ const du = class Ar extends Qe {
   }
   set fill(e) {
     e !== this._originalFill && (this._originalFill = e, this._isFillStyle(e) && (this._originalFill = this._createProxy({ ...Le.defaultFillStyle, ...e }, () => {
-      this._fill = Yt(
+      this._fill = $t(
         { ...this._originalFill },
         Le.defaultFillStyle
       );
-    })), this._fill = Yt(
+    })), this._fill = $t(
       e === 0 ? "black" : e,
       Le.defaultFillStyle
     ), this.update());
@@ -17506,7 +17506,7 @@ const du = class Ar extends Qe {
     });
   }
   _isFillStyle(e) {
-    return (e ?? null) !== null && !(se.isColorLike(e) || e instanceof Ct || e instanceof Vs);
+    return (e ?? null) !== null && !(se.isColorLike(e) || e instanceof Ct || e instanceof Xs);
   }
 };
 du.defaultDropShadow = {
@@ -17538,7 +17538,7 @@ du.defaultTextStyle = {
   wordWrapWidth: 100
 };
 let st = du;
-function j0(s) {
+function q0(s) {
   const e = s;
   if (typeof e.dropShadow == "boolean" && e.dropShadow) {
     const t = st.defaultDropShadow;
@@ -17556,7 +17556,7 @@ function j0(s) {
     let r = {};
     if (se.isColorLike(t))
       r.color = t;
-    else if (t instanceof Ct || t instanceof Vs)
+    else if (t instanceof Ct || t instanceof Xs)
       r.fill = t;
     else if (Object.hasOwnProperty.call(t, "color") || Object.hasOwnProperty.call(t, "fill"))
       r = t;
@@ -17626,12 +17626,12 @@ class kp {
 }
 const Pt = new kp();
 gr.register(Pt);
-const mc = 1e5;
+const pc = 1e5;
 function Os(s, e, t, r = 0) {
   if (s.texture === O.WHITE && !s.fill)
     return se.shared.setValue(s.color).setAlpha(s.alpha ?? 1).toHexa();
   if (s.fill) {
-    if (s.fill instanceof Vs) {
+    if (s.fill instanceof Xs) {
       const i = s.fill, n = e.createPattern(i.texture.source.resource, "repeat"), o = i.transform.copyTo(W.shared);
       return o.scale(
         i.texture.frame.width,
@@ -17669,7 +17669,7 @@ function Os(s, e, t, r = 0) {
             const b = f + g.offset * c;
             l.addColorStop(
               // fix to 5 decimal places to avoid floating point precision issues
-              Math.floor(b * mc) / mc,
+              Math.floor(b * pc) / pc,
               se.shared.setValue(g.color).toHex()
             );
           });
@@ -17785,7 +17785,7 @@ const Up = class Op extends Ja {
     );
     this._setupContext(t.context, this._style, e);
     const r = e * (this.baseRenderedFontSize / this.baseMeasurementFontSize), i = new O({
-      source: new jt({
+      source: new qt({
         resource: t.canvas,
         resolution: r,
         alphaMode: "premultiply-alpha-on-upload",
@@ -17830,7 +17830,7 @@ Up.defaultOptions = {
   style: new st(),
   mipmap: !0
 };
-let ta = Up;
+let ra = Up;
 function Sn(s, e, t, r) {
   const i = {
     width: 0,
@@ -17896,23 +17896,23 @@ function Sn(s, e, t, r) {
     }
     o = y;
   }
-  return b(), e.align === "center" ? q0(i) : e.align === "right" ? K0(i) : e.align === "justify" && Z0(i), i;
+  return b(), e.align === "center" ? K0(i) : e.align === "right" ? Z0(i) : e.align === "justify" && Q0(i), i;
 }
-function q0(s) {
+function K0(s) {
   for (let e = 0; e < s.lines.length; e++) {
     const t = s.lines[e], r = s.width / 2 - t.width / 2;
     for (let i = 0; i < t.charPositions.length; i++)
       t.charPositions[i] += r;
   }
 }
-function K0(s) {
+function Z0(s) {
   for (let e = 0; e < s.lines.length; e++) {
     const t = s.lines[e], r = s.width - t.width;
     for (let i = 0; i < t.charPositions.length; i++)
       t.charPositions[i] += r;
   }
 }
-function Z0(s) {
+function Q0(s) {
   const e = s.width;
   for (let t = 0; t < s.lines.length; t++) {
     const r = s.lines[t];
@@ -17946,8 +17946,8 @@ function Gp(s) {
     throw new Error("[BitmapFont]: Empty set when resolving characters.");
   return e;
 }
-let di = 0;
-class Q0 {
+let fi = 0;
+class J0 {
   constructor() {
     this.ALPHA = [["a", "z"], ["A", "Z"], " "], this.NUMERIC = [["0", "9"]], this.ALPHANUMERIC = [["a", "z"], ["A", "Z"], ["0", "9"], " "], this.ASCII = [[" ", "~"]], this.defaultOptions = {
       chars: this.ALPHANUMERIC,
@@ -17967,14 +17967,14 @@ class Q0 {
     if (t._fill.fill && !t._stroke ? (r += t._fill.fill.styleKey, i = !1) : (t._stroke || t.dropShadow) && (r = `${t.styleKey}-bitmap`, i = !1), !ne.has(r)) {
       const o = Object.create(t);
       o.lineHeight = 0;
-      const a = new ta({
+      const a = new ra({
         style: o,
         overrideFill: i,
         overrideSize: !0,
         ...this.defaultOptions
       });
-      di++, di > 50 && X("BitmapText", `You have dynamically created ${di} bitmap fonts, this can be inefficient. Try pre installing your font styles using \`BitmapFont.install({name:"style1", style})\``), a.once("destroy", () => {
-        di--, ne.remove(r);
+      fi++, fi > 50 && X("BitmapText", `You have dynamically created ${fi} bitmap fonts, this can be inefficient. Try pre installing your font styles using \`BitmapFont.install({name:"style1", style})\``), a.once("destroy", () => {
+        fi--, ne.remove(r);
       }), ne.set(
         r,
         a
@@ -18020,7 +18020,7 @@ class Q0 {
     if (!r)
       throw new Error("[BitmapFontManager] Property `name` is required.");
     t = { ...this.defaultOptions, ...t };
-    const i = t.style, n = i instanceof st ? i : new st(i), o = t.dynamicFill ?? this._canUseTintForStyle(n), a = new ta({
+    const i = t.style, n = i instanceof st ? i : new st(i), o = t.dynamicFill ?? this._canUseTintForStyle(n), a = new ra({
       style: n,
       overrideFill: o,
       skipKerning: t.skipKerning,
@@ -18050,7 +18050,7 @@ class Q0 {
     return !e._stroke && (!e.dropShadow || e.dropShadow.color === 0) && !e._fill.fill && e._fill.color === 16777215;
   }
 }
-const Yr = new Q0();
+const Yr = new J0();
 class fu extends Ja {
   constructor(e, t) {
     super();
@@ -18224,7 +18224,7 @@ const Ai = {
     }
     return r;
   }
-}, ra = {
+}, sa = {
   test(s) {
     const e = s;
     return typeof e != "string" && "getElementsByTagName" in e && e.getElementsByTagName("page").length && e.getElementsByTagName("info")[0].getAttribute("face") !== null;
@@ -18277,14 +18277,14 @@ const Ai = {
     }
     return e;
   }
-}, sa = {
+}, ia = {
   test(s) {
-    return typeof s == "string" && s.includes("<font>") ? ra.test(J.get().parseXML(s)) : !1;
+    return typeof s == "string" && s.includes("<font>") ? sa.test(J.get().parseXML(s)) : !1;
   },
   parse(s) {
-    return ra.parse(J.get().parseXML(s));
+    return sa.parse(J.get().parseXML(s));
   }
-}, J0 = [".xml", ".fnt"], Lp = {
+}, ey = [".xml", ".fnt"], Lp = {
   extension: {
     type: w.CacheParser,
     name: "cacheBitmapFont"
@@ -18305,13 +18305,13 @@ const Ai = {
   name: "loadBitmapFont",
   id: "bitmap-font",
   test(s) {
-    return J0.includes(qe.extname(s).toLowerCase());
+    return ey.includes(qe.extname(s).toLowerCase());
   },
   async testParse(s) {
-    return Ai.test(s) || sa.test(s);
+    return Ai.test(s) || ia.test(s);
   },
   async parse(s, e, t) {
-    const r = Ai.test(s) ? Ai.parse(s) : sa.parse(s), { src: i } = e, { pages: n } = r, o = [], a = r.distanceField ? {
+    const r = Ai.test(s) ? Ai.parse(s) : ia.parse(s), { src: i } = e, { pages: n } = r, o = [], a = r.distanceField ? {
       scaleMode: "linear",
       alphaMode: "premultiply-alpha-on-upload",
       autoGenerateMipmaps: !1,
@@ -18468,24 +18468,24 @@ const zp = {
   ),
   add: async (s) => [...s, "avif"],
   remove: async (s) => s.filter((e) => e !== "avif")
-}, gc = ["png", "jpg", "jpeg"], Vp = {
+}, mc = ["png", "jpg", "jpeg"], Vp = {
   extension: {
     type: w.DetectionParser,
     priority: -1
   },
   test: () => Promise.resolve(!0),
-  add: async (s) => [...s, ...gc],
-  remove: async (s) => s.filter((e) => !gc.includes(e))
-}, ey = "WorkerGlobalScope" in globalThis && globalThis instanceof globalThis.WorkerGlobalScope;
-function Xs(s) {
-  return ey ? !1 : document.createElement("video").canPlayType(s) !== "";
+  add: async (s) => [...s, ...mc],
+  remove: async (s) => s.filter((e) => !mc.includes(e))
+}, ty = "WorkerGlobalScope" in globalThis && globalThis instanceof globalThis.WorkerGlobalScope;
+function Ys(s) {
+  return ty ? !1 : document.createElement("video").canPlayType(s) !== "";
 }
 const Xp = {
   extension: {
     type: w.DetectionParser,
     priority: 0
   },
-  test: async () => Xs("video/mp4"),
+  test: async () => Ys("video/mp4"),
   add: async (s) => [...s, "mp4", "m4v"],
   remove: async (s) => s.filter((e) => e !== "mp4" && e !== "m4v")
 }, Yp = {
@@ -18493,7 +18493,7 @@ const Xp = {
     type: w.DetectionParser,
     priority: 0
   },
-  test: async () => Xs("video/ogg"),
+  test: async () => Ys("video/ogg"),
   add: async (s) => [...s, "ogv"],
   remove: async (s) => s.filter((e) => e !== "ogv")
 }, $p = {
@@ -18501,7 +18501,7 @@ const Xp = {
     type: w.DetectionParser,
     priority: 0
   },
-  test: async () => Xs("video/webm"),
+  test: async () => Ys("video/webm"),
   add: async (s) => [...s, "webm"],
   remove: async (s) => s.filter((e) => e !== "webm")
 }, jp = {
@@ -18647,7 +18647,7 @@ function lt(s, e) {
   const t = s.split("?")[0], r = qe.extname(t).toLowerCase();
   return Array.isArray(e) ? e.includes(r) : r === e;
 }
-const ty = ".json", ry = "application/json", Zp = {
+const ry = ".json", sy = "application/json", Zp = {
   extension: {
     type: w.LoadParser,
     priority: it.Low
@@ -18656,12 +18656,12 @@ const ty = ".json", ry = "application/json", Zp = {
   name: "loadJson",
   id: "json",
   test(s) {
-    return br(s, ry) || lt(s, ty);
+    return br(s, sy) || lt(s, ry);
   },
   async load(s) {
     return await (await J.get().fetch(s)).json();
   }
-}, sy = ".txt", iy = "text/plain", Qp = {
+}, iy = ".txt", ny = "text/plain", Qp = {
   /** used for deprecation purposes */
   name: "loadTxt",
   id: "text",
@@ -18671,12 +18671,12 @@ const ty = ".json", ry = "application/json", Zp = {
     name: "loadTxt"
   },
   test(s) {
-    return br(s, iy) || lt(s, sy);
+    return br(s, ny) || lt(s, iy);
   },
   async load(s) {
     return await (await J.get().fetch(s)).text();
   }
-}, ny = [
+}, oy = [
   "normal",
   "bold",
   "100",
@@ -18688,26 +18688,26 @@ const ty = ".json", ry = "application/json", Zp = {
   "700",
   "800",
   "900"
-], oy = [".ttf", ".otf", ".woff", ".woff2"], ay = [
+], ay = [".ttf", ".otf", ".woff", ".woff2"], uy = [
   "font/ttf",
   "font/otf",
   "font/woff",
   "font/woff2"
-], uy = /^(--|-?[A-Z_])[0-9A-Z_-]*$/i;
+], ly = /^(--|-?[A-Z_])[0-9A-Z_-]*$/i;
 function Jp(s) {
   const e = qe.extname(s), i = qe.basename(s, e).replace(/(-|_)/g, " ").toLowerCase().split(" ").map((a) => a.charAt(0).toUpperCase() + a.slice(1));
   let n = i.length > 0;
   for (const a of i)
-    if (!a.match(uy)) {
+    if (!a.match(ly)) {
       n = !1;
       break;
     }
   let o = i.join(" ");
   return n || (o = `"${o.replace(/[\\"]/g, "\\$&")}"`), o;
 }
-const ly = /^[0-9A-Za-z%:/?#\[\]@!\$&'()\*\+,;=\-._~]*$/;
-function hy(s) {
-  return ly.test(s) ? s : encodeURI(s);
+const hy = /^[0-9A-Za-z%:/?#\[\]@!\$&'()\*\+,;=\-._~]*$/;
+function cy(s) {
+  return hy.test(s) ? s : encodeURI(s);
 }
 const em = {
   extension: {
@@ -18718,14 +18718,14 @@ const em = {
   name: "loadWebFont",
   id: "web-font",
   test(s) {
-    return br(s, ay) || lt(s, oy);
+    return br(s, uy) || lt(s, ay);
   },
   async load(s, e) {
     const t = J.get().getFontFaceSet();
     if (t) {
-      const r = [], i = e.data?.family ?? Jp(s), n = e.data?.weights?.filter((a) => ny.includes(a)) ?? ["normal"], o = e.data ?? {};
+      const r = [], i = e.data?.family ?? Jp(s), n = e.data?.weights?.filter((a) => oy.includes(a)) ?? ["normal"], o = e.data ?? {};
       for (let a = 0; a < n.length; a++) {
-        const u = n[a], l = new FontFace(i, `url(${hy(s)})`, {
+        const u = n[a], l = new FontFace(i, `url(${cy(s)})`, {
           ...o,
           weight: u
         });
@@ -18762,7 +18762,7 @@ function Zt(s, e, t) {
     s.destroyed || (X("[Assets] A Texture managed by Assets was destroyed instead of unloaded! Use Assets.unload() instead of destroying the Texture."), i());
   }), r;
 }
-const cy = ".svg", dy = "image/svg+xml", tm = {
+const dy = ".svg", fy = "image/svg+xml", tm = {
   extension: {
     type: w.LoadParser,
     priority: it.Low,
@@ -18776,21 +18776,21 @@ const cy = ".svg", dy = "image/svg+xml", tm = {
     parseAsGraphicsContext: !1
   },
   test(s) {
-    return br(s, dy) || lt(s, cy);
+    return br(s, fy) || lt(s, dy);
   },
   async load(s, e, t) {
-    return e.data?.parseAsGraphicsContext ?? this.config.parseAsGraphicsContext ? py(s) : fy(s, e, t, this.config.crossOrigin);
+    return e.data?.parseAsGraphicsContext ?? this.config.parseAsGraphicsContext ? my(s) : py(s, e, t, this.config.crossOrigin);
   },
   unload(s) {
     s.destroy(!0);
   }
 };
-async function fy(s, e, t, r) {
+async function py(s, e, t, r) {
   const i = await J.get().fetch(s), n = J.get().createImage();
   n.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(await i.text())}`, n.crossOrigin = r, await n.decode();
   const o = e.data?.width ?? n.width, a = e.data?.height ?? n.height, u = e.data?.resolution || wn(s), l = Math.ceil(o * u), h = Math.ceil(a * u), c = J.get().createCanvas(l, h), d = c.getContext("2d");
   d.imageSmoothingEnabled = !0, d.imageSmoothingQuality = "high", d.drawImage(n, 0, 0, o * u, a * u);
-  const { parseAsGraphicsContext: f, ...g } = e.data ?? {}, b = new jt({
+  const { parseAsGraphicsContext: f, ...g } = e.data ?? {}, b = new qt({
     resource: c,
     alphaMode: "premultiply-alpha-on-upload",
     resolution: u,
@@ -18798,11 +18798,11 @@ async function fy(s, e, t, r) {
   });
   return Zt(b, t, s);
 }
-async function py(s) {
+async function my(s) {
   const t = await (await J.get().fetch(s)).text(), r = new Le();
   return r.svg(t), r;
 }
-const my = `(function () {
+const gy = `(function () {
     'use strict';
 
     const WHITE_PNG = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=";
@@ -18824,15 +18824,15 @@ const my = `(function () {
 
 })();
 `;
-let Ir = null, ia = class {
+let Ir = null, na = class {
   constructor() {
-    Ir || (Ir = URL.createObjectURL(new Blob([my], { type: "application/javascript" }))), this.worker = new Worker(Ir);
+    Ir || (Ir = URL.createObjectURL(new Blob([gy], { type: "application/javascript" }))), this.worker = new Worker(Ir);
   }
 };
-ia.revokeObjectURL = function() {
+na.revokeObjectURL = function() {
   Ir && (URL.revokeObjectURL(Ir), Ir = null);
 };
-const gy = `(function () {
+const _y = `(function () {
     'use strict';
 
     async function loadImageBitmap(url, alphaMode) {
@@ -18864,14 +18864,14 @@ const gy = `(function () {
 `;
 let kr = null, rm = class {
   constructor() {
-    kr || (kr = URL.createObjectURL(new Blob([gy], { type: "application/javascript" }))), this.worker = new Worker(kr);
+    kr || (kr = URL.createObjectURL(new Blob([_y], { type: "application/javascript" }))), this.worker = new Worker(kr);
   }
 };
 rm.revokeObjectURL = function() {
   kr && (URL.revokeObjectURL(kr), kr = null);
 };
-let _c = 0, bo;
-class _y {
+let gc = 0, bo;
+class by {
   constructor() {
     this._initialized = !1, this._createdWorkers = 0, this._workerPool = [], this._queue = [], this._resolveHash = {};
   }
@@ -18884,9 +18884,9 @@ class _y {
    */
   isImageBitmapSupported() {
     return this._isImageBitmapSupported !== void 0 ? this._isImageBitmapSupported : (this._isImageBitmapSupported = new Promise((e) => {
-      const { worker: t } = new ia();
+      const { worker: t } = new na();
       t.addEventListener("message", (r) => {
-        t.terminate(), ia.revokeObjectURL(), e(r.data);
+        t.terminate(), na.revokeObjectURL(), e(r.data);
       });
     }), this._isImageBitmapSupported);
   }
@@ -18967,9 +18967,9 @@ class _y {
     if (!e)
       return;
     const t = this._queue.pop(), r = t.id;
-    this._resolveHash[_c] = { resolve: t.resolve, reject: t.reject }, e.postMessage({
+    this._resolveHash[gc] = { resolve: t.resolve, reject: t.reject }, e.postMessage({
       data: t.arguments,
-      uuid: _c++,
+      uuid: gc++,
       id: r
     });
   }
@@ -18996,7 +18996,7 @@ class _y {
     }), this._resolveHash = {}, this._queue.length = 0, this._initialized = !1, this._createdWorkers = 0;
   }
 }
-const na = new _y(), by = [".jpeg", ".jpg", ".png", ".webp", ".avif"], xy = [
+const oa = new by(), xy = [".jpeg", ".jpg", ".png", ".webp", ".avif"], yy = [
   "image/jpeg",
   "image/png",
   "image/webp",
@@ -19024,16 +19024,16 @@ const mu = {
     crossOrigin: "anonymous"
   },
   test(s) {
-    return br(s, xy) || lt(s, by);
+    return br(s, yy) || lt(s, xy);
   },
   async load(s, e, t) {
     let r = null;
-    globalThis.createImageBitmap && this.config.preferCreateImageBitmap ? this.config.preferWorkers && await na.isImageBitmapSupported() ? r = await na.loadImageBitmap(s, e) : r = await sm(s, e) : r = await new Promise((n, o) => {
+    globalThis.createImageBitmap && this.config.preferCreateImageBitmap ? this.config.preferWorkers && await oa.isImageBitmapSupported() ? r = await oa.loadImageBitmap(s, e) : r = await sm(s, e) : r = await new Promise((n, o) => {
       r = J.get().createImage(), r.crossOrigin = this.config.crossOrigin, r.src = s, r.complete ? n(r) : (r.onload = () => {
         n(r);
       }, r.onerror = o);
     });
-    const i = new jt({
+    const i = new qt({
       resource: r,
       alphaMode: "premultiply-alpha-on-upload",
       resolution: e.data?.resolution || wn(s),
@@ -19044,7 +19044,7 @@ const mu = {
   unload(s) {
     s.destroy(!0);
   }
-}, yy = [".mp4", ".m4v", ".webm", ".ogg", ".ogv", ".h264", ".avi", ".mov"];
+}, vy = [".mp4", ".m4v", ".webm", ".ogg", ".ogv", ".h264", ".avi", ".mov"];
 let xo, yo;
 function im(s, e, t) {
   t === void 0 && !e.startsWith("data:") ? s.crossOrigin = om(e) : t !== !1 && (s.crossOrigin = typeof t == "string" ? t : "anonymous");
@@ -19070,11 +19070,11 @@ function om(s, e = globalThis.location) {
   const t = new URL(s, document.baseURI);
   return t.hostname !== e.hostname || t.port !== e.port || t.protocol !== e.protocol ? "anonymous" : "";
 }
-function vy() {
+function Sy() {
   const s = [], e = [];
-  for (const t of yy) {
+  for (const t of vy) {
     const r = Dr.MIME_TYPES[t.substring(1)] || `video/${t.substring(1)}`;
-    Xs(r) && (s.push(t), e.includes(r) || e.push(r));
+    Ys(r) && (s.push(t), e.includes(r) || e.push(r));
   }
   return {
     validVideoExtensions: s,
@@ -19091,7 +19091,7 @@ const am = {
   },
   test(s) {
     if (!xo || !yo) {
-      const { validVideoExtensions: r, validVideoMime: i } = vy();
+      const { validVideoExtensions: r, validVideoMime: i } = Sy();
       xo = r, yo = i;
     }
     const e = br(s, yo), t = lt(s, xo);
@@ -19755,7 +19755,7 @@ Y.add(
   gu,
   um
 );
-const bc = {
+const _c = {
   loader: w.LoadParser,
   resolver: w.ResolveParser,
   cache: w.CacheParser,
@@ -19763,7 +19763,7 @@ const bc = {
 };
 Y.handle(w.Asset, (s) => {
   const e = s.ref;
-  Object.entries(bc).filter(([t]) => !!e[t]).forEach(([t, r]) => Y.add(Object.assign(
+  Object.entries(_c).filter(([t]) => !!e[t]).forEach(([t, r]) => Y.add(Object.assign(
     e[t],
     // Allow the function to optionally define it's own
     // ExtensionMetadata, the use cases here is priority for LoaderParsers
@@ -19771,28 +19771,28 @@ Y.handle(w.Asset, (s) => {
   )));
 }, (s) => {
   const e = s.ref;
-  Object.keys(bc).filter((t) => !!e[t]).forEach((t) => Y.remove(e[t]));
+  Object.keys(_c).filter((t) => !!e[t]).forEach((t) => Y.remove(e[t]));
 });
-const Sy = {
+const wy = {
   extension: {
     type: w.DetectionParser,
     priority: 3
   },
-  test: async () => !!(await zs() || Ws()),
+  test: async () => !!(await Vs() || zs()),
   add: async (s) => [...s, "basis"],
   remove: async (s) => s.filter((e) => e !== "basis")
 };
-class Ys extends ge {
+class $s extends ge {
   constructor(e) {
     super(e), this.uploadMethodId = "compressed", this.resource = e.resource, this.mipLevelCount = this.resource.length;
   }
 }
-let fi;
-function oa() {
-  if (fi)
-    return fi;
+let pi;
+function aa() {
+  if (pi)
+    return pi;
   const e = J.get().createCanvas(1, 1).getContext("webgl");
-  return e ? (fi = [
+  return e ? (pi = [
     // BC compressed formats usable if "texture-compression-bc" is both
     // supported by the device/user agent and enabled in requestDevice.
     // 'bc6h-rgb-ufloat'
@@ -19875,14 +19875,14 @@ function oa() {
       "astc-12x12-unorm",
       "astc-12x12-unorm-srgb"
     ] : []
-  ], fi) : [];
+  ], pi) : [];
 }
-let pi;
-async function aa() {
-  if (pi)
-    return pi;
+let mi;
+async function ua() {
+  if (mi)
+    return mi;
   const s = await J.get().getNavigator().gpu.requestAdapter();
-  return pi = [
+  return mi = [
     ...s.features.has("texture-compression-bc") ? [
       // BC compressed formats usable if "texture-compression-bc" is both
       // supported by the device/user agent and enabled in requestDevice.
@@ -19947,23 +19947,23 @@ async function aa() {
       "astc-12x12-unorm",
       "astc-12x12-unorm-srgb"
     ] : []
-  ], pi;
+  ], mi;
 }
-let mi;
+let gi;
 async function _u() {
-  return mi !== void 0 || (mi = await (async () => {
-    const s = await zs(), e = Ws();
+  return gi !== void 0 || (gi = await (async () => {
+    const s = await Vs(), e = zs();
     if (s && e) {
-      const t = await aa(), r = oa();
+      const t = await ua(), r = aa();
       return t.filter((i) => r.includes(i));
     } else {
       if (s)
-        return await aa();
+        return await ua();
       if (e)
-        return oa();
+        return aa();
     }
     return [];
-  })()), mi;
+  })()), gi;
 }
 const hm = [
   // 8-bit formats
@@ -20017,17 +20017,17 @@ const hm = [
   // "depth32float-stencil8" feature
   "depth32float-stencil8"
 ];
-let gi;
-async function $s() {
-  if (gi !== void 0)
-    return gi;
+let _i;
+async function js() {
+  if (_i !== void 0)
+    return _i;
   const s = await _u();
-  return gi = [
+  return _i = [
     ...hm,
     ...s
-  ], gi;
+  ], _i;
 }
-const wy = `(function () {
+const Ty = `(function () {
     'use strict';
 
     function createLevelBuffers(basisTexture, basisTranscoderFormat) {
@@ -20166,7 +20166,7 @@ const wy = `(function () {
 `;
 let Ur = null, cm = class {
   constructor() {
-    Ur || (Ur = URL.createObjectURL(new Blob([wy], { type: "application/javascript" }))), this.worker = new Worker(Ur);
+    Ur || (Ur = URL.createObjectURL(new Blob([Ty], { type: "application/javascript" }))), this.worker = new Worker(Ur);
   }
 };
 cm.revokeObjectURL = function() {
@@ -20176,12 +20176,12 @@ const Wi = {
   jsUrl: "https://files.pixijs.download/transcoders/basis/basis_transcoder.js",
   wasmUrl: "https://files.pixijs.download/transcoders/basis/basis_transcoder.wasm"
 };
-function Ty(s) {
+function Ey(s) {
   Object.assign(Wi, s);
 }
 let ls;
 const dm = {};
-function Ey(s) {
+function Ay(s) {
   return ls || (ls = new cm().worker, ls.onmessage = (e) => {
     const { success: t, url: r, textureOptions: i } = e.data;
     t || console.warn("Failed to load Basis texture", r), dm[r](i);
@@ -20193,12 +20193,12 @@ function Ey(s) {
   })), ls;
 }
 function fm(s, e) {
-  const t = Ey(e);
+  const t = Ay(e);
   return new Promise((r) => {
     dm[s] = r, t.postMessage({ type: "load", url: s });
   });
 }
-const Ay = {
+const Cy = {
   extension: {
     type: w.LoadParser,
     priority: it.High,
@@ -20211,14 +20211,14 @@ const Ay = {
     return lt(s, [".basis"]);
   },
   async load(s, e, t) {
-    const r = await $s(), i = await fm(s, r), n = new Ys(i);
+    const r = await js(), i = await fm(s, r), n = new $s(i);
     return Zt(n, t, s);
   },
   unload(s) {
     Array.isArray(s) ? s.forEach((e) => e.destroy(!0)) : s.destroy(!0);
   }
 };
-function Cy(s, e) {
+function Py(s, e) {
   const t = s.getNumImages(), r = s.getNumLevels(0);
   if (!s.startTranscoding())
     throw new Error("startTranscoding failed");
@@ -20232,7 +20232,7 @@ function Cy(s, e) {
     }
   return n;
 }
-const Py = {
+const By = {
   "bc3-rgba-unorm": 3,
   // cTFBC3_RGBA
   "bc7-rgba-unorm": 6,
@@ -20247,13 +20247,13 @@ const Py = {
   rgba4unorm: 16
   // cTFRGBA4444,
 };
-function By(s) {
-  const e = Py[s];
+function Ry(s) {
+  const e = By[s];
   if (e)
     return e;
   throw new Error(`Unsupported transcoderFormat: ${s}`);
 }
-const Ry = {
+const My = {
   MAGIC: 0,
   SIZE: 1,
   FLAGS: 2,
@@ -20268,7 +20268,7 @@ const Ry = {
   G_BIT_MASK: 24,
   B_BIT_MASK: 25,
   A_BIT_MASK: 26
-}, My = {
+}, Dy = {
   DXGI_FORMAT: 0,
   RESOURCE_DIMENSION: 1,
   MISC_FLAG: 2,
@@ -20279,19 +20279,19 @@ var bu = /* @__PURE__ */ ((s) => (s[s.DXGI_FORMAT_UNKNOWN = 0] = "DXGI_FORMAT_UN
 function Me(s) {
   return s.charCodeAt(0) + (s.charCodeAt(1) << 8) + (s.charCodeAt(2) << 16) + (s.charCodeAt(3) << 24);
 }
-var Ye = ((s) => (s[s.UNKNOWN = 0] = "UNKNOWN", s[s.R8G8B8 = 20] = "R8G8B8", s[s.A8R8G8B8 = 21] = "A8R8G8B8", s[s.X8R8G8B8 = 22] = "X8R8G8B8", s[s.R5G6B5 = 23] = "R5G6B5", s[s.X1R5G5B5 = 24] = "X1R5G5B5", s[s.A1R5G5B5 = 25] = "A1R5G5B5", s[s.A4R4G4B4 = 26] = "A4R4G4B4", s[s.R3G3B2 = 27] = "R3G3B2", s[s.A8 = 28] = "A8", s[s.A8R3G3B2 = 29] = "A8R3G3B2", s[s.X4R4G4B4 = 30] = "X4R4G4B4", s[s.A2B10G10R10 = 31] = "A2B10G10R10", s[s.A8B8G8R8 = 32] = "A8B8G8R8", s[s.X8B8G8R8 = 33] = "X8B8G8R8", s[s.G16R16 = 34] = "G16R16", s[s.A2R10G10B10 = 35] = "A2R10G10B10", s[s.A16B16G16R16 = 36] = "A16B16G16R16", s[s.A8P8 = 40] = "A8P8", s[s.P8 = 41] = "P8", s[s.L8 = 50] = "L8", s[s.A8L8 = 51] = "A8L8", s[s.A4L4 = 52] = "A4L4", s[s.V8U8 = 60] = "V8U8", s[s.L6V5U5 = 61] = "L6V5U5", s[s.X8L8V8U8 = 62] = "X8L8V8U8", s[s.Q8W8V8U8 = 63] = "Q8W8V8U8", s[s.V16U16 = 64] = "V16U16", s[s.A2W10V10U10 = 67] = "A2W10V10U10", s[s.Q16W16V16U16 = 110] = "Q16W16V16U16", s[s.R16F = 111] = "R16F", s[s.G16R16F = 112] = "G16R16F", s[s.A16B16G16R16F = 113] = "A16B16G16R16F", s[s.R32F = 114] = "R32F", s[s.G32R32F = 115] = "G32R32F", s[s.A32B32G32R32F = 116] = "A32B32G32R32F", s[s.UYVY = Me("UYVY")] = "UYVY", s[s.R8G8_B8G8 = Me("RGBG")] = "R8G8_B8G8", s[s.YUY2 = Me("YUY2")] = "YUY2", s[s.D3DFMT_G8R8_G8B8 = Me("GRGB")] = "D3DFMT_G8R8_G8B8", s[s.DXT1 = Me("DXT1")] = "DXT1", s[s.DXT2 = Me("DXT2")] = "DXT2", s[s.DXT3 = Me("DXT3")] = "DXT3", s[s.DXT4 = Me("DXT4")] = "DXT4", s[s.DXT5 = Me("DXT5")] = "DXT5", s[s.ATI1 = Me("ATI1")] = "ATI1", s[s.AT1N = Me("AT1N")] = "AT1N", s[s.ATI2 = Me("ATI2")] = "ATI2", s[s.AT2N = Me("AT2N")] = "AT2N", s[s.BC4U = Me("BC4U")] = "BC4U", s[s.BC4S = Me("BC4S")] = "BC4S", s[s.BC5U = Me("BC5U")] = "BC5U", s[s.BC5S = Me("BC5S")] = "BC5S", s[s.DX10 = Me("DX10")] = "DX10", s))(Ye || {});
-const ua = {
-  [Ye.DXT1]: "bc1-rgba-unorm",
-  [Ye.DXT2]: "bc2-rgba-unorm",
-  [Ye.DXT3]: "bc2-rgba-unorm",
-  [Ye.DXT4]: "bc3-rgba-unorm",
-  [Ye.DXT5]: "bc3-rgba-unorm",
-  [Ye.ATI1]: "bc4-r-unorm",
-  [Ye.BC4U]: "bc4-r-unorm",
-  [Ye.BC4S]: "bc4-r-snorm",
-  [Ye.ATI2]: "bc5-rg-unorm",
-  [Ye.BC5U]: "bc5-rg-unorm",
-  [Ye.BC5S]: "bc5-rg-snorm",
+var Xe = ((s) => (s[s.UNKNOWN = 0] = "UNKNOWN", s[s.R8G8B8 = 20] = "R8G8B8", s[s.A8R8G8B8 = 21] = "A8R8G8B8", s[s.X8R8G8B8 = 22] = "X8R8G8B8", s[s.R5G6B5 = 23] = "R5G6B5", s[s.X1R5G5B5 = 24] = "X1R5G5B5", s[s.A1R5G5B5 = 25] = "A1R5G5B5", s[s.A4R4G4B4 = 26] = "A4R4G4B4", s[s.R3G3B2 = 27] = "R3G3B2", s[s.A8 = 28] = "A8", s[s.A8R3G3B2 = 29] = "A8R3G3B2", s[s.X4R4G4B4 = 30] = "X4R4G4B4", s[s.A2B10G10R10 = 31] = "A2B10G10R10", s[s.A8B8G8R8 = 32] = "A8B8G8R8", s[s.X8B8G8R8 = 33] = "X8B8G8R8", s[s.G16R16 = 34] = "G16R16", s[s.A2R10G10B10 = 35] = "A2R10G10B10", s[s.A16B16G16R16 = 36] = "A16B16G16R16", s[s.A8P8 = 40] = "A8P8", s[s.P8 = 41] = "P8", s[s.L8 = 50] = "L8", s[s.A8L8 = 51] = "A8L8", s[s.A4L4 = 52] = "A4L4", s[s.V8U8 = 60] = "V8U8", s[s.L6V5U5 = 61] = "L6V5U5", s[s.X8L8V8U8 = 62] = "X8L8V8U8", s[s.Q8W8V8U8 = 63] = "Q8W8V8U8", s[s.V16U16 = 64] = "V16U16", s[s.A2W10V10U10 = 67] = "A2W10V10U10", s[s.Q16W16V16U16 = 110] = "Q16W16V16U16", s[s.R16F = 111] = "R16F", s[s.G16R16F = 112] = "G16R16F", s[s.A16B16G16R16F = 113] = "A16B16G16R16F", s[s.R32F = 114] = "R32F", s[s.G32R32F = 115] = "G32R32F", s[s.A32B32G32R32F = 116] = "A32B32G32R32F", s[s.UYVY = Me("UYVY")] = "UYVY", s[s.R8G8_B8G8 = Me("RGBG")] = "R8G8_B8G8", s[s.YUY2 = Me("YUY2")] = "YUY2", s[s.D3DFMT_G8R8_G8B8 = Me("GRGB")] = "D3DFMT_G8R8_G8B8", s[s.DXT1 = Me("DXT1")] = "DXT1", s[s.DXT2 = Me("DXT2")] = "DXT2", s[s.DXT3 = Me("DXT3")] = "DXT3", s[s.DXT4 = Me("DXT4")] = "DXT4", s[s.DXT5 = Me("DXT5")] = "DXT5", s[s.ATI1 = Me("ATI1")] = "ATI1", s[s.AT1N = Me("AT1N")] = "AT1N", s[s.ATI2 = Me("ATI2")] = "ATI2", s[s.AT2N = Me("AT2N")] = "AT2N", s[s.BC4U = Me("BC4U")] = "BC4U", s[s.BC4S = Me("BC4S")] = "BC4S", s[s.BC5U = Me("BC5U")] = "BC5U", s[s.BC5S = Me("BC5S")] = "BC5S", s[s.DX10 = Me("DX10")] = "DX10", s))(Xe || {});
+const la = {
+  [Xe.DXT1]: "bc1-rgba-unorm",
+  [Xe.DXT2]: "bc2-rgba-unorm",
+  [Xe.DXT3]: "bc2-rgba-unorm",
+  [Xe.DXT4]: "bc3-rgba-unorm",
+  [Xe.DXT5]: "bc3-rgba-unorm",
+  [Xe.ATI1]: "bc4-r-unorm",
+  [Xe.BC4U]: "bc4-r-unorm",
+  [Xe.BC4S]: "bc4-r-snorm",
+  [Xe.ATI2]: "bc5-rg-unorm",
+  [Xe.BC5U]: "bc5-rg-unorm",
+  [Xe.BC5S]: "bc5-rg-snorm",
   36: "rgba16uint",
   110: "rgba16sint",
   111: "r16float",
@@ -20300,7 +20300,7 @@ const ua = {
   114: "r32float",
   115: "rg32float",
   116: "rgba32float"
-}, $e = {
+}, Ye = {
   70: "bc1-rgba-unorm",
   71: "bc1-rgba-unorm",
   72: "bc1-rgba-unorm-srgb",
@@ -20357,11 +20357,11 @@ const ua = {
     LUMINANCEA: 131073
   },
   RESOURCE_MISC_TEXTURECUBE: 4,
-  HEADER_FIELDS: Ry,
-  HEADER_DX10_FIELDS: My,
+  HEADER_FIELDS: My,
+  HEADER_DX10_FIELDS: Dy,
   DXGI_FORMAT: bu,
   D3D10_RESOURCE_DIMENSION: xu,
-  D3DFMT: Ye
+  D3DFMT: Xe
 }, pm = {
   "bc1-rgba-unorm": 8,
   "bc1-rgba-unorm-srgb": 8,
@@ -20386,7 +20386,7 @@ function mm(s, e) {
     height: n,
     dataOffset: o,
     mipmapCount: a
-  } = Fy(s);
+  } = Iy(s);
   if (!e.includes(t))
     throw new Error(`Unsupported texture format: ${r} ${t}, supported: ${e}`);
   if (a <= 1)
@@ -20397,7 +20397,7 @@ function mm(s, e) {
       resource: [new Uint8Array(s, o)],
       alphaMode: "no-premultiply-alpha"
     };
-  const u = Dy(t, i, n, o, a, s);
+  const u = Fy(t, i, n, o, a, s);
   return {
     format: t,
     width: i,
@@ -20406,7 +20406,7 @@ function mm(s, e) {
     alphaMode: "no-premultiply-alpha"
   };
 }
-function Dy(s, e, t, r, i, n) {
+function Fy(s, e, t, r, i, n) {
   const o = [], a = pm[s];
   let u = e, l = t, h = r;
   for (let c = 0; c < i; ++c) {
@@ -20415,11 +20415,11 @@ function Dy(s, e, t, r, i, n) {
   }
   return o;
 }
-function Fy(s) {
+function Iy(s) {
   const e = new Uint32Array(s, 0, K.HEADER_SIZE / Uint32Array.BYTES_PER_ELEMENT);
   if (e[K.HEADER_FIELDS.MAGIC] !== K.MAGIC_VALUE)
     throw new Error("Invalid magic number in DDS header");
-  const t = e[K.HEADER_FIELDS.HEIGHT], r = e[K.HEADER_FIELDS.WIDTH], i = Math.max(1, e[K.HEADER_FIELDS.MIPMAP_COUNT]), n = e[K.HEADER_FIELDS.PF_FLAGS], o = e[K.HEADER_FIELDS.FOURCC], a = Iy(e, n, o, s), u = K.MAGIC_SIZE + K.HEADER_SIZE + (o === K.D3DFMT.DX10 ? K.HEADER_DX10_SIZE : 0);
+  const t = e[K.HEADER_FIELDS.HEIGHT], r = e[K.HEADER_FIELDS.WIDTH], i = Math.max(1, e[K.HEADER_FIELDS.MIPMAP_COUNT]), n = e[K.HEADER_FIELDS.PF_FLAGS], o = e[K.HEADER_FIELDS.FOURCC], a = ky(e, n, o, s), u = K.MAGIC_SIZE + K.HEADER_SIZE + (o === K.D3DFMT.DX10 ? K.HEADER_DX10_SIZE : 0);
   return {
     format: a,
     fourCC: o,
@@ -20429,7 +20429,7 @@ function Fy(s) {
     mipmapCount: i
   };
 }
-function Iy(s, e, t, r) {
+function ky(s, e, t, r) {
   if (e & K.PIXEL_FORMAT_FLAGS.FOURCC) {
     if (t === K.D3DFMT.DX10) {
       const i = new Uint32Array(
@@ -20443,56 +20443,56 @@ function Iy(s, e, t, r) {
       if (i[K.HEADER_DX10_FIELDS.RESOURCE_DIMENSION] === K.D3D10_RESOURCE_DIMENSION.DDS_DIMENSION_TEXTURE3D)
         throw new Error("DDSParser does not supported 3D texture data");
       const a = i[K.HEADER_DX10_FIELDS.DXGI_FORMAT];
-      if (a in $e)
-        return $e[a];
+      if (a in Ye)
+        return Ye[a];
       throw new Error(`DDSParser cannot parse texture data with DXGI format ${a}`);
     }
-    if (t in ua)
-      return ua[t];
+    if (t in la)
+      return la[t];
     throw new Error(`DDSParser cannot parse texture data with fourCC format ${t}`);
   }
   if (e & K.PIXEL_FORMAT_FLAGS.RGB || e & K.PIXEL_FORMAT_FLAGS.RGBA)
-    return ky(s);
+    return Uy(s);
   throw e & K.PIXEL_FORMAT_FLAGS.YUV ? new Error("DDSParser does not supported YUV uncompressed texture data.") : e & K.PIXEL_FORMAT_FLAGS.LUMINANCE || e & K.PIXEL_FORMAT_FLAGS.LUMINANCEA ? new Error("DDSParser does not support single-channel (lumninance) texture data!") : e & K.PIXEL_FORMAT_FLAGS.ALPHA || e & K.PIXEL_FORMAT_FLAGS.ALPHAPIXELS ? new Error("DDSParser does not support single-channel (alpha) texture data!") : new Error("DDSParser failed to load a texture file due to an unknown reason!");
 }
-function ky(s) {
+function Uy(s) {
   const e = s[K.HEADER_FIELDS.RGB_BITCOUNT], t = s[K.HEADER_FIELDS.R_BIT_MASK], r = s[K.HEADER_FIELDS.G_BIT_MASK], i = s[K.HEADER_FIELDS.B_BIT_MASK], n = s[K.HEADER_FIELDS.A_BIT_MASK];
   switch (e) {
     case 32:
       if (t === 255 && r === 65280 && i === 16711680 && n === 4278190080)
-        return $e[K.DXGI_FORMAT.DXGI_FORMAT_R8G8B8A8_UNORM];
+        return Ye[K.DXGI_FORMAT.DXGI_FORMAT_R8G8B8A8_UNORM];
       if (t === 16711680 && r === 65280 && i === 255 && n === 4278190080)
-        return $e[K.DXGI_FORMAT.DXGI_FORMAT_B8G8R8A8_UNORM];
+        return Ye[K.DXGI_FORMAT.DXGI_FORMAT_B8G8R8A8_UNORM];
       if (t === 1072693248 && r === 1047552 && i === 1023 && n === 3221225472)
-        return $e[K.DXGI_FORMAT.DXGI_FORMAT_R10G10B10A2_UNORM];
+        return Ye[K.DXGI_FORMAT.DXGI_FORMAT_R10G10B10A2_UNORM];
       if (t === 65535 && r === 4294901760 && i === 0 && n === 0)
-        return $e[K.DXGI_FORMAT.DXGI_FORMAT_R16G16_UNORM];
+        return Ye[K.DXGI_FORMAT.DXGI_FORMAT_R16G16_UNORM];
       if (t === 4294967295 && r === 0 && i === 0 && n === 0)
-        return $e[K.DXGI_FORMAT.DXGI_FORMAT_R32_FLOAT];
+        return Ye[K.DXGI_FORMAT.DXGI_FORMAT_R32_FLOAT];
       break;
     case 24:
       break;
     case 16:
       if (t === 31744 && r === 992 && i === 31 && n === 32768)
-        return $e[K.DXGI_FORMAT.DXGI_FORMAT_B5G5R5A1_UNORM];
+        return Ye[K.DXGI_FORMAT.DXGI_FORMAT_B5G5R5A1_UNORM];
       if (t === 63488 && r === 2016 && i === 31 && n === 0)
-        return $e[K.DXGI_FORMAT.DXGI_FORMAT_B5G6R5_UNORM];
+        return Ye[K.DXGI_FORMAT.DXGI_FORMAT_B5G6R5_UNORM];
       if (t === 3840 && r === 240 && i === 15 && n === 61440)
-        return $e[K.DXGI_FORMAT.DXGI_FORMAT_B4G4R4A4_UNORM];
+        return Ye[K.DXGI_FORMAT.DXGI_FORMAT_B4G4R4A4_UNORM];
       if (t === 255 && r === 0 && i === 0 && n === 65280)
-        return $e[K.DXGI_FORMAT.DXGI_FORMAT_R8G8_UNORM];
+        return Ye[K.DXGI_FORMAT.DXGI_FORMAT_R8G8_UNORM];
       if (t === 65535 && r === 0 && i === 0 && n === 0)
-        return $e[K.DXGI_FORMAT.DXGI_FORMAT_R16_UNORM];
+        return Ye[K.DXGI_FORMAT.DXGI_FORMAT_R16_UNORM];
       break;
     case 8:
       if (t === 255 && r === 0 && i === 0 && n === 0)
-        return $e[K.DXGI_FORMAT.DXGI_FORMAT_R8_UNORM];
+        return Ye[K.DXGI_FORMAT.DXGI_FORMAT_R8_UNORM];
       break;
   }
   throw new Error(`DDSParser does not support uncompressed texture with configuration:
                 bitCount = ${e}, rBitMask = ${t}, gBitMask = ${r}, aBitMask = ${n}`);
 }
-const Uy = {
+const Oy = {
   extension: {
     type: w.LoadParser,
     priority: it.High,
@@ -20505,7 +20505,7 @@ const Uy = {
     return lt(s, [".dds"]);
   },
   async load(s, e, t) {
-    const r = await $s(), n = await (await fetch(s)).arrayBuffer(), o = mm(n, r), a = new Ys(o);
+    const r = await js(), n = await (await fetch(s)).arrayBuffer(), o = mm(n, r), a = new $s(o);
     return Zt(a, t, s);
   },
   unload(s) {
@@ -20513,7 +20513,7 @@ const Uy = {
   }
 };
 var gm = /* @__PURE__ */ ((s) => (s[s.RGBA8_SNORM = 36759] = "RGBA8_SNORM", s[s.RGBA = 6408] = "RGBA", s[s.RGBA8UI = 36220] = "RGBA8UI", s[s.SRGB8_ALPHA8 = 35907] = "SRGB8_ALPHA8", s[s.RGBA8I = 36238] = "RGBA8I", s[s.RGBA8 = 32856] = "RGBA8", s[s.COMPRESSED_RGB_S3TC_DXT1_EXT = 33776] = "COMPRESSED_RGB_S3TC_DXT1_EXT", s[s.COMPRESSED_RGBA_S3TC_DXT1_EXT = 33777] = "COMPRESSED_RGBA_S3TC_DXT1_EXT", s[s.COMPRESSED_RGBA_S3TC_DXT3_EXT = 33778] = "COMPRESSED_RGBA_S3TC_DXT3_EXT", s[s.COMPRESSED_RGBA_S3TC_DXT5_EXT = 33779] = "COMPRESSED_RGBA_S3TC_DXT5_EXT", s[s.COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT = 35917] = "COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT", s[s.COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT = 35918] = "COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT", s[s.COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT = 35919] = "COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT", s[s.COMPRESSED_SRGB_S3TC_DXT1_EXT = 35916] = "COMPRESSED_SRGB_S3TC_DXT1_EXT", s[s.COMPRESSED_RED_RGTC1_EXT = 36283] = "COMPRESSED_RED_RGTC1_EXT", s[s.COMPRESSED_SIGNED_RED_RGTC1_EXT = 36284] = "COMPRESSED_SIGNED_RED_RGTC1_EXT", s[s.COMPRESSED_RED_GREEN_RGTC2_EXT = 36285] = "COMPRESSED_RED_GREEN_RGTC2_EXT", s[s.COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT = 36286] = "COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT", s[s.COMPRESSED_R11_EAC = 37488] = "COMPRESSED_R11_EAC", s[s.COMPRESSED_SIGNED_R11_EAC = 37489] = "COMPRESSED_SIGNED_R11_EAC", s[s.COMPRESSED_RG11_EAC = 37490] = "COMPRESSED_RG11_EAC", s[s.COMPRESSED_SIGNED_RG11_EAC = 37491] = "COMPRESSED_SIGNED_RG11_EAC", s[s.COMPRESSED_RGB8_ETC2 = 37492] = "COMPRESSED_RGB8_ETC2", s[s.COMPRESSED_RGBA8_ETC2_EAC = 37496] = "COMPRESSED_RGBA8_ETC2_EAC", s[s.COMPRESSED_SRGB8_ETC2 = 37493] = "COMPRESSED_SRGB8_ETC2", s[s.COMPRESSED_SRGB8_ALPHA8_ETC2_EAC = 37497] = "COMPRESSED_SRGB8_ALPHA8_ETC2_EAC", s[s.COMPRESSED_RGB8_PUNCHTHROUGH_ALPHA1_ETC2 = 37494] = "COMPRESSED_RGB8_PUNCHTHROUGH_ALPHA1_ETC2", s[s.COMPRESSED_SRGB8_PUNCHTHROUGH_ALPHA1_ETC2 = 37495] = "COMPRESSED_SRGB8_PUNCHTHROUGH_ALPHA1_ETC2", s[s.COMPRESSED_RGBA_ASTC_4x4_KHR = 37808] = "COMPRESSED_RGBA_ASTC_4x4_KHR", s[s.COMPRESSED_RGBA_ASTC_5x4_KHR = 37809] = "COMPRESSED_RGBA_ASTC_5x4_KHR", s[s.COMPRESSED_RGBA_ASTC_5x5_KHR = 37810] = "COMPRESSED_RGBA_ASTC_5x5_KHR", s[s.COMPRESSED_RGBA_ASTC_6x5_KHR = 37811] = "COMPRESSED_RGBA_ASTC_6x5_KHR", s[s.COMPRESSED_RGBA_ASTC_6x6_KHR = 37812] = "COMPRESSED_RGBA_ASTC_6x6_KHR", s[s.COMPRESSED_RGBA_ASTC_8x5_KHR = 37813] = "COMPRESSED_RGBA_ASTC_8x5_KHR", s[s.COMPRESSED_RGBA_ASTC_8x6_KHR = 37814] = "COMPRESSED_RGBA_ASTC_8x6_KHR", s[s.COMPRESSED_RGBA_ASTC_8x8_KHR = 37815] = "COMPRESSED_RGBA_ASTC_8x8_KHR", s[s.COMPRESSED_RGBA_ASTC_10x5_KHR = 37816] = "COMPRESSED_RGBA_ASTC_10x5_KHR", s[s.COMPRESSED_RGBA_ASTC_10x6_KHR = 37817] = "COMPRESSED_RGBA_ASTC_10x6_KHR", s[s.COMPRESSED_RGBA_ASTC_10x8_KHR = 37818] = "COMPRESSED_RGBA_ASTC_10x8_KHR", s[s.COMPRESSED_RGBA_ASTC_10x10_KHR = 37819] = "COMPRESSED_RGBA_ASTC_10x10_KHR", s[s.COMPRESSED_RGBA_ASTC_12x10_KHR = 37820] = "COMPRESSED_RGBA_ASTC_12x10_KHR", s[s.COMPRESSED_RGBA_ASTC_12x12_KHR = 37821] = "COMPRESSED_RGBA_ASTC_12x12_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_4x4_KHR = 37840] = "COMPRESSED_SRGB8_ALPHA8_ASTC_4x4_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_5x4_KHR = 37841] = "COMPRESSED_SRGB8_ALPHA8_ASTC_5x4_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_5x5_KHR = 37842] = "COMPRESSED_SRGB8_ALPHA8_ASTC_5x5_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_6x5_KHR = 37843] = "COMPRESSED_SRGB8_ALPHA8_ASTC_6x5_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_6x6_KHR = 37844] = "COMPRESSED_SRGB8_ALPHA8_ASTC_6x6_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_8x5_KHR = 37845] = "COMPRESSED_SRGB8_ALPHA8_ASTC_8x5_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_8x6_KHR = 37846] = "COMPRESSED_SRGB8_ALPHA8_ASTC_8x6_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_8x8_KHR = 37847] = "COMPRESSED_SRGB8_ALPHA8_ASTC_8x8_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_10x5_KHR = 37848] = "COMPRESSED_SRGB8_ALPHA8_ASTC_10x5_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_10x6_KHR = 37849] = "COMPRESSED_SRGB8_ALPHA8_ASTC_10x6_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_10x8_KHR = 37850] = "COMPRESSED_SRGB8_ALPHA8_ASTC_10x8_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_10x10_KHR = 37851] = "COMPRESSED_SRGB8_ALPHA8_ASTC_10x10_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_12x10_KHR = 37852] = "COMPRESSED_SRGB8_ALPHA8_ASTC_12x10_KHR", s[s.COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR = 37853] = "COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR", s[s.COMPRESSED_RGBA_BPTC_UNORM_EXT = 36492] = "COMPRESSED_RGBA_BPTC_UNORM_EXT", s[s.COMPRESSED_SRGB_ALPHA_BPTC_UNORM_EXT = 36493] = "COMPRESSED_SRGB_ALPHA_BPTC_UNORM_EXT", s[s.COMPRESSED_RGB_BPTC_SIGNED_FLOAT_EXT = 36494] = "COMPRESSED_RGB_BPTC_SIGNED_FLOAT_EXT", s[s.COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT_EXT = 36495] = "COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT_EXT", s))(gm || {});
-const Oy = {
+const Gy = {
   33776: "bc1-rgba-unorm",
   // TODO: ???
   33777: "bc1-rgba-unorm",
@@ -20576,7 +20576,7 @@ const Oy = {
   36238: "rgba8sint",
   6408: "rgba8unorm"
   // [GL_INTERNAL_FORMAT.RGBA8]: 'bgra8unorm'
-}, Gy = [171, 75, 84, 88, 32, 49, 49, 187, 13, 10, 26, 10], Ly = {
+}, Ly = [171, 75, 84, 88, 32, 49, 49, 187, 13, 10, 26, 10], Ny = {
   FILE_IDENTIFIER: 0,
   ENDIANNESS: 12,
   GL_TYPE: 16,
@@ -20591,14 +20591,14 @@ const Oy = {
   NUMBER_OF_FACES: 52,
   NUMBER_OF_MIPMAP_LEVELS: 56,
   BYTES_OF_KEY_VALUE_DATA: 60
-}, Ny = 64, Hy = 67305985, Wy = {
+}, Hy = 64, Wy = 67305985, zy = {
   5121: 1,
   5123: 2,
   5124: 4,
   5125: 4,
   5126: 4,
   36193: 8
-}, zy = {
+}, Vy = {
   6408: 4,
   6407: 3,
   33319: 2,
@@ -20606,11 +20606,11 @@ const Oy = {
   6409: 1,
   6410: 2,
   6406: 1
-}, Vy = {
+}, Xy = {
   32819: 2,
   32820: 2,
   33635: 2
-}, Xy = {
+}, Yy = {
   33776: 0.5,
   33777: 0.5,
   33778: 1,
@@ -20666,19 +20666,19 @@ const Oy = {
   36494: 1,
   36495: 1
 }, _e = {
-  FILE_HEADER_SIZE: Ny,
-  FILE_IDENTIFIER: Gy,
-  FORMATS_TO_COMPONENTS: zy,
-  INTERNAL_FORMAT_TO_BYTES_PER_PIXEL: Xy,
-  INTERNAL_FORMAT_TO_TEXTURE_FORMATS: Oy,
-  FIELDS: Ly,
-  TYPES_TO_BYTES_PER_COMPONENT: Wy,
-  TYPES_TO_BYTES_PER_PIXEL: Vy,
-  ENDIANNESS: Hy
+  FILE_HEADER_SIZE: Hy,
+  FILE_IDENTIFIER: Ly,
+  FORMATS_TO_COMPONENTS: Vy,
+  INTERNAL_FORMAT_TO_BYTES_PER_PIXEL: Yy,
+  INTERNAL_FORMAT_TO_TEXTURE_FORMATS: Gy,
+  FIELDS: Ny,
+  TYPES_TO_BYTES_PER_COMPONENT: zy,
+  TYPES_TO_BYTES_PER_PIXEL: Xy,
+  ENDIANNESS: Wy
 };
 function _m(s, e) {
   const t = new DataView(s);
-  if (!qy(t))
+  if (!Ky(t))
     throw new Error("Invalid KTX identifier in header");
   const {
     littleEndian: r,
@@ -20689,12 +20689,12 @@ function _m(s, e) {
     pixelHeight: u,
     numberOfMipmapLevels: l,
     offset: h
-  } = jy(t), c = _e.INTERNAL_FORMAT_TO_TEXTURE_FORMATS[o];
+  } = qy(t), c = _e.INTERNAL_FORMAT_TO_TEXTURE_FORMATS[o];
   if (!c)
     throw new Error(`Unknown texture format ${o}`);
   if (!e.includes(c))
     throw new Error(`Unsupported texture format: ${c}, supportedFormats: ${e}`);
-  const d = $y(i, n, o), f = Yy(
+  const d = jy(i, n, o), f = $y(
     t,
     i,
     d,
@@ -20712,7 +20712,7 @@ function _m(s, e) {
     alphaMode: "no-premultiply-alpha"
   };
 }
-function Yy(s, e, t, r, i, n, o, a) {
+function $y(s, e, t, r, i, n, o, a) {
   const u = r + 3 & -4, l = i + 3 & -4;
   let h = r * i;
   e === 0 && (h = u * l);
@@ -20725,13 +20725,13 @@ function Yy(s, e, t, r, i, n, o, a) {
   }
   return x;
 }
-function $y(s, e, t) {
+function jy(s, e, t) {
   let r = _e.INTERNAL_FORMAT_TO_BYTES_PER_PIXEL[t];
   if (s !== 0 && (_e.TYPES_TO_BYTES_PER_COMPONENT[s] ? r = _e.TYPES_TO_BYTES_PER_COMPONENT[s] * _e.FORMATS_TO_COMPONENTS[e] : r = _e.TYPES_TO_BYTES_PER_PIXEL[s]), r === void 0)
     throw new Error("Unable to resolve the pixel format stored in the *.ktx file!");
   return r;
 }
-function jy(s) {
+function qy(s) {
   const e = s.getUint32(_e.FIELDS.ENDIANNESS, !0) === _e.ENDIANNESS, t = s.getUint32(_e.FIELDS.GL_TYPE, e), r = s.getUint32(_e.FIELDS.GL_FORMAT, e), i = s.getUint32(_e.FIELDS.GL_INTERNAL_FORMAT, e), n = s.getUint32(_e.FIELDS.PIXEL_WIDTH, e), o = s.getUint32(_e.FIELDS.PIXEL_HEIGHT, e) || 1, a = s.getUint32(_e.FIELDS.PIXEL_DEPTH, e) || 1, u = s.getUint32(_e.FIELDS.NUMBER_OF_ARRAY_ELEMENTS, e) || 1, l = s.getUint32(_e.FIELDS.NUMBER_OF_FACES, e), h = s.getUint32(_e.FIELDS.NUMBER_OF_MIPMAP_LEVELS, e), c = s.getUint32(_e.FIELDS.BYTES_OF_KEY_VALUE_DATA, e);
   if (o === 0 || a !== 1)
     throw new Error("Only 2D textures are supported");
@@ -20750,13 +20750,13 @@ function jy(s) {
     offset: _e.FILE_HEADER_SIZE + c
   };
 }
-function qy(s) {
+function Ky(s) {
   for (let e = 0; e < _e.FILE_IDENTIFIER.length; e++)
     if (s.getUint8(e) !== _e.FILE_IDENTIFIER[e])
       return !1;
   return !0;
 }
-const Ky = {
+const Zy = {
   extension: {
     type: w.LoadParser,
     priority: it.High,
@@ -20769,13 +20769,13 @@ const Ky = {
     return lt(s, ".ktx");
   },
   async load(s, e, t) {
-    const r = await $s(), n = await (await fetch(s)).arrayBuffer(), o = _m(n, r), a = new Ys(o);
+    const r = await js(), n = await (await fetch(s)).arrayBuffer(), o = _m(n, r), a = new $s(o);
     return Zt(a, t, s);
   },
   unload(s) {
     Array.isArray(s) ? s.forEach((e) => e.destroy(!0)) : s.destroy(!0);
   }
-}, Zy = `(function () {
+}, Qy = `(function () {
     'use strict';
 
     const converters = {
@@ -21023,7 +21023,7 @@ const Ky = {
 let Or = null;
 class bm {
   constructor() {
-    Or || (Or = URL.createObjectURL(new Blob([Zy], { type: "application/javascript" }))), this.worker = new Worker(Or);
+    Or || (Or = URL.createObjectURL(new Blob([Qy], { type: "application/javascript" }))), this.worker = new Worker(Or);
   }
 }
 bm.revokeObjectURL = function() {
@@ -21033,12 +21033,12 @@ const zi = {
   jsUrl: "https://files.pixijs.download/transcoders/ktx/libktx.js",
   wasmUrl: "https://files.pixijs.download/transcoders/ktx/libktx.wasm"
 };
-function Qy(s) {
+function Jy(s) {
   Object.assign(zi, s);
 }
 let hs;
 const xm = {};
-function Jy(s) {
+function e2(s) {
   return hs || (hs = new bm().worker, hs.onmessage = (e) => {
     const { success: t, url: r, textureOptions: i } = e.data;
     t || console.warn("Failed to load KTX texture", r), xm[r](i);
@@ -21050,12 +21050,12 @@ function Jy(s) {
   })), hs;
 }
 function ym(s, e) {
-  const t = Jy(e);
+  const t = e2(e);
   return new Promise((r) => {
     xm[s] = r, t.postMessage({ type: "load", url: s });
   });
 }
-const e2 = {
+const t2 = {
   extension: {
     type: w.LoadParser,
     priority: it.High,
@@ -21068,7 +21068,7 @@ const e2 = {
     return lt(s, ".ktx2");
   },
   async load(s, e, t) {
-    const r = await $s(), i = await ym(s, r), n = new Ys(i);
+    const r = await js(), i = await ym(s, r), n = new $s(i);
     return Zt(n, t, s);
   },
   async unload(s) {
@@ -21077,14 +21077,14 @@ const e2 = {
 }, vo = {
   rgb8unorm: {
     convertedFormat: "rgba8unorm",
-    convertFunction: xc
+    convertFunction: bc
   },
   "rgb8unorm-srgb": {
     convertedFormat: "rgba8unorm-srgb",
-    convertFunction: xc
+    convertFunction: bc
   }
 };
-function t2(s) {
+function r2(s) {
   const e = s.format;
   if (vo[e]) {
     const t = vo[e].convertFunction, r = s.resource;
@@ -21093,13 +21093,13 @@ function t2(s) {
     s.format = vo[e].convertedFormat;
   }
 }
-function xc(s) {
+function bc(s) {
   const e = s.byteLength / 3, t = new Uint32Array(e);
   for (let r = 0; r < e; ++r)
     t[r] = s[r * 3] + (s[r * 3 + 1] << 8) + (s[r * 3 + 2] << 16) + 4278190080;
   return new Uint8Array(t.buffer);
 }
-function r2(s) {
+function s2(s) {
   const e = [];
   for (let t = 0; t < s.numLevels; t++) {
     const r = s.getImageData(t, 0, 0), i = new Uint8Array(r.byteLength);
@@ -21107,7 +21107,7 @@ function r2(s) {
   }
   return e;
 }
-const s2 = {
+const i2 = {
   6408: "rgba8unorm",
   32856: "bgra8unorm",
   //
@@ -21158,12 +21158,12 @@ const s2 = {
   37808: "astc-4x4-unorm"
 };
 function vm(s) {
-  const e = s2[s];
+  const e = i2[s];
   if (e)
     return e;
   throw new Error(`Unsupported glInternalFormat: ${s}`);
 }
-const i2 = {
+const n2 = {
   23: "rgb8unorm",
   // VK_FORMAT_R8G8B8_UNORM
   37: "rgba8unorm",
@@ -21173,15 +21173,15 @@ const i2 = {
   // TODO add more!
 };
 function Sm(s) {
-  const e = i2[s];
+  const e = n2[s];
   if (e)
     return e;
   throw new Error(`Unsupported VkFormat: ${s}`);
 }
-function n2(s) {
+function o2(s) {
   return s.classId === 2 ? Sm(s.vkFormat) : vm(s.glInternalformat);
 }
-const o2 = {
+const a2 = {
   "bc3-rgba-unorm": "BC3_RGBA",
   "bc7-rgba-unorm": "BC7_M5_RGBA",
   "etc2-rgba8unorm": "ETC2_RGBA",
@@ -21190,13 +21190,13 @@ const o2 = {
   rgba8unorm: "RGBA32",
   rg11b10ufloat: "R11F_G11F_B10F"
 };
-function a2(s) {
-  const e = o2[s];
+function u2(s) {
+  const e = a2[s];
   if (e)
     return e;
   throw new Error(`Unsupported transcoderFormat: ${s}`);
 }
-const Vi = ["basis", "bc7", "bc6h", "astc", "etc2", "bc5", "bc4", "bc3", "bc2", "bc1", "eac"], u2 = {
+const Vi = ["basis", "bc7", "bc6h", "astc", "etc2", "bc5", "bc4", "bc3", "bc2", "bc1", "eac"], l2 = {
   extension: w.ResolveParser,
   test: (s) => lt(s, [".ktx", ".ktx2", ".dds"]),
   parse: (s) => {
@@ -21214,20 +21214,20 @@ const Vi = ["basis", "bc7", "bc6h", "astc", "etc2", "bc5", "bc4", "bc3", "bc2", 
     };
   }
 };
-let _i;
-const l2 = {
+let bi;
+const h2 = {
   extension: {
     type: w.DetectionParser,
     priority: 2
   },
-  test: async () => !!(await zs() || Ws()),
+  test: async () => !!(await Vs() || zs()),
   add: async (s) => {
     const e = await _u();
-    return _i = h2(e), [..._i, ...s];
+    return bi = c2(e), [...bi, ...s];
   },
-  remove: async (s) => _i ? s.filter((e) => !(e in _i)) : s
+  remove: async (s) => bi ? s.filter((e) => !(e in bi)) : s
 };
-function h2(s) {
+function c2(s) {
   const e = ["basis"], t = {};
   return s.forEach((r) => {
     const i = r.split("-")[0];
@@ -21237,7 +21237,7 @@ function h2(s) {
     return n === -1 ? 1 : o === -1 ? -1 : n - o;
   }), e;
 }
-const c2 = new Be(), la = class {
+const d2 = new Be(), ha = class {
   /**
    * Culls the children of a specific container based on the given view rectangle.
    * This determines which objects should be rendered and which can be skipped.
@@ -21270,7 +21270,7 @@ const c2 = new Be(), la = class {
   }
   _cullRecursive(e, t, r = !0) {
     if (e.cullable && e.measurable && e.includeInBuild) {
-      const i = e.cullArea ?? Ns(e, r, c2);
+      const i = e.cullArea ?? Hs(e, r, d2);
       e.culled = i.x >= t.x + t.width || i.y >= t.y + t.height || i.x + i.width <= t.x || i.y + i.height <= t.y;
     } else
       e.culled = !1;
@@ -21279,8 +21279,8 @@ const c2 = new Be(), la = class {
         this._cullRecursive(e.children[i], t, r);
   }
 };
-la.shared = new la();
-let wm = la;
+ha.shared = new ha();
+let wm = ha;
 class Tm {
   /**
    * Initialize the plugin with scope of application instance
@@ -21303,7 +21303,7 @@ Tm.extension = {
   type: w.Application,
   name: "culler"
 };
-class d2 extends Bt {
+class f2 extends Bt {
   /**
    * @param options - The options for creating the DOM container.
    */
@@ -21466,10 +21466,10 @@ yu.extension = {
   ],
   name: "dom"
 };
-var cs = {}, Ut = {}, nr = {}, yc;
+var cs = {}, Ut = {}, nr = {}, xc;
 function Tn() {
-  if (yc) return nr;
-  yc = 1;
+  if (xc) return nr;
+  xc = 1;
   function s(n, o, a) {
     if (a === void 0 && (a = Array.prototype), n && typeof a.find == "function")
       return a.find.call(n, o);
@@ -21585,10 +21585,10 @@ function Tn() {
   });
   return nr.assign = t, nr.find = s, nr.freeze = e, nr.MIME_TYPE = r, nr.NAMESPACE = i, nr;
 }
-var vc;
+var yc;
 function Em() {
-  if (vc) return Ut;
-  vc = 1;
+  if (yc) return Ut;
+  yc = 1;
   var s = Tn(), e = s.find, t = s.NAMESPACE;
   function r(m) {
     return m !== "";
@@ -21686,7 +21686,7 @@ function Em() {
     var _ = m._node._inc || m._node.ownerDocument._inc;
     if (m._inc !== _) {
       var v = m._refresh(m._node);
-      if (ch(m, "length", v.length), !m.$$length || v.length < m.$$length)
+      if (hh(m, "length", v.length), !m.$$length || v.length < m.$$length)
         for (var C = v.length; C in m; C++)
           Object.prototype.hasOwnProperty.call(m, C) && delete m[C];
       u(v, m), m._inc = _;
@@ -21838,7 +21838,7 @@ function Em() {
      * @see https://www.w3.org/TR/xml-names/#ns-qualnames XML Namespaces: Qualified names
      */
     createDocumentType: function(m, _, v) {
-      var C = new Ks();
+      var C = new Zs();
       return C.name = m, C.nodeName = m, C.publicId = _ || "", C.systemId = v || "", C;
     }
   };
@@ -21980,7 +21980,7 @@ function Em() {
     return m && (m.nodeType === V.DOCUMENT_NODE || m.nodeType === V.DOCUMENT_FRAGMENT_NODE || m.nodeType === V.ELEMENT_NODE);
   }
   function bt(m) {
-    return m && (Ee(m) || ze(m) || Ie(m) || m.nodeType === V.DOCUMENT_FRAGMENT_NODE || m.nodeType === V.COMMENT_NODE || m.nodeType === V.PROCESSING_INSTRUCTION_NODE);
+    return m && (Ee(m) || We(m) || Ie(m) || m.nodeType === V.DOCUMENT_FRAGMENT_NODE || m.nodeType === V.COMMENT_NODE || m.nodeType === V.PROCESSING_INSTRUCTION_NODE);
   }
   function Ie(m) {
     return m && m.nodeType === V.DOCUMENT_TYPE_NODE;
@@ -21988,7 +21988,7 @@ function Em() {
   function Ee(m) {
     return m && m.nodeType === V.ELEMENT_NODE;
   }
-  function ze(m) {
+  function We(m) {
     return m && m.nodeType === V.TEXT_NODE;
   }
   function he(m, _) {
@@ -21998,7 +21998,7 @@ function Em() {
     var C = e(v, Ie);
     return !(_ && C && v.indexOf(C) > v.indexOf(_));
   }
-  function Ve(m, _) {
+  function ze(m, _) {
     var v = m.childNodes || [];
     function C(j) {
       return Ee(j) && j !== _;
@@ -22030,7 +22030,7 @@ function Em() {
     var C = m.childNodes || [], U = _.childNodes || [];
     if (_.nodeType === V.DOCUMENT_FRAGMENT_NODE) {
       var j = U.filter(Ee);
-      if (j.length > 1 || e(U, ze))
+      if (j.length > 1 || e(U, We))
         throw new I(E, "More than one element or text in fragment");
       if (j.length === 1 && !he(m, v))
         throw new I(E, "Element in fragment can not be inserted before doctype");
@@ -22051,12 +22051,12 @@ function Em() {
     var C = m.childNodes || [], U = _.childNodes || [];
     if (_.nodeType === V.DOCUMENT_FRAGMENT_NODE) {
       var j = U.filter(Ee);
-      if (j.length > 1 || e(U, ze))
+      if (j.length > 1 || e(U, We))
         throw new I(E, "More than one element or text in fragment");
-      if (j.length === 1 && !Ve(m, v))
+      if (j.length === 1 && !ze(m, v))
         throw new I(E, "Element in fragment can not be inserted before doctype");
     }
-    if (Ee(_) && !Ve(m, v))
+    if (Ee(_) && !ze(m, v))
       throw new I(E, "Only one element can be added and only after doctype");
     if (Ie(_)) {
       if (e(C, function(dt) {
@@ -22078,16 +22078,16 @@ function Em() {
       var ue = _.lastChild;
     } else
       j = ue = _;
-    var Xe = v ? v.previousSibling : m.lastChild;
-    j.previousSibling = Xe, ue.nextSibling = v, Xe ? Xe.nextSibling = j : m.firstChild = j, v == null ? m.lastChild = ue : v.previousSibling = ue;
+    var Ve = v ? v.previousSibling : m.lastChild;
+    j.previousSibling = Ve, ue.nextSibling = v, Ve ? Ve.nextSibling = j : m.firstChild = j, v == null ? m.lastChild = ue : v.previousSibling = ue;
     do {
       j.parentNode = m;
       var dt = m.ownerDocument || m;
-      Nt(j, dt);
+      Ht(j, dt);
     } while (j !== ue && (j = j.nextSibling));
     return Mt(m.ownerDocument || m, m), _.nodeType == R && (_.firstChild = _.lastChild = null), _;
   }
-  function Nt(m, _) {
+  function Ht(m, _) {
     if (m.ownerDocument !== _) {
       if (m.ownerDocument = _, m.nodeType === c && m.attributes)
         for (var v = 0; v < m.attributes.length; v++) {
@@ -22095,13 +22095,13 @@ function Em() {
           C && (C.ownerDocument = _);
         }
       for (var U = m.firstChild; U; )
-        Nt(U, _), U = U.nextSibling;
+        Ht(U, _), U = U.nextSibling;
     }
   }
   function fe(m, _) {
     _.parentNode && _.parentNode.removeChild(_), _.parentNode = m, _.previousSibling = m.lastChild, _.nextSibling = null, _.previousSibling ? _.previousSibling.nextSibling = _ : m.firstChild = _, m.lastChild = _, Mt(m.ownerDocument, m, _);
     var v = m.ownerDocument || m;
-    return Nt(_, v), _;
+    return Ht(_, v), _;
   }
   ve.prototype = {
     //implementation : null,
@@ -22124,17 +22124,17 @@ function Em() {
         }
         return m;
       }
-      return Dt(this, m, _), Nt(m, this), this.documentElement === null && m.nodeType === c && (this.documentElement = m), m;
+      return Dt(this, m, _), Ht(m, this), this.documentElement === null && m.nodeType === c && (this.documentElement = m), m;
     },
     removeChild: function(m) {
       return this.documentElement == m && (this.documentElement = null), Re(this, m);
     },
     replaceChild: function(m, _) {
-      Dt(this, m, _, xr), Nt(m, this), _ && this.removeChild(_), Ee(m) && (this.documentElement = m);
+      Dt(this, m, _, xr), Ht(m, this), _ && this.removeChild(_), Ee(m) && (this.documentElement = m);
     },
     // Introduced in DOM Level 2:
     importNode: function(m, _) {
-      return hh(this, m, _);
+      return lh(this, m, _);
     },
     // Introduced in DOM Level 2:
     getElementById: function(m) {
@@ -22171,8 +22171,8 @@ function Em() {
             if (j) {
               var ue = m === j;
               if (!ue) {
-                var Xe = o(j);
-                ue = _.every(a(Xe));
+                var Ve = o(j);
+                ue = _.every(a(Ve));
               }
               ue && C.push(U);
             }
@@ -22188,7 +22188,7 @@ function Em() {
       return v._ownerElement = _, _;
     },
     createDocumentFragment: function() {
-      var m = new Zs();
+      var m = new Qs();
       return m.ownerDocument = this, m.childNodes = new G(), m;
     },
     createTextNode: function(m) {
@@ -22349,30 +22349,30 @@ function Em() {
     nodeName: "#cdata-section",
     nodeType: g
   }, l(Ln, ts);
-  function Ks() {
+  function Zs() {
   }
-  Ks.prototype.nodeType = T, l(Ks, V);
+  Zs.prototype.nodeType = T, l(Zs, V);
+  function ih() {
+  }
+  ih.prototype.nodeType = B, l(ih, V);
   function nh() {
   }
-  nh.prototype.nodeType = B, l(nh, V);
-  function oh() {
-  }
-  oh.prototype.nodeType = p, l(oh, V);
+  nh.prototype.nodeType = p, l(nh, V);
   function Nn() {
   }
   Nn.prototype.nodeType = b, l(Nn, V);
-  function Zs() {
+  function Qs() {
   }
-  Zs.prototype.nodeName = "#document-fragment", Zs.prototype.nodeType = R, l(Zs, V);
+  Qs.prototype.nodeName = "#document-fragment", Qs.prototype.nodeType = R, l(Qs, V);
   function Hn() {
   }
   Hn.prototype.nodeType = x, l(Hn, V);
-  function ah() {
+  function oh() {
   }
-  ah.prototype.serializeToString = function(m, _, v) {
-    return uh.call(m, _, v);
-  }, V.prototype.toString = uh;
-  function uh(m, _) {
+  oh.prototype.serializeToString = function(m, _, v) {
+    return ah.call(m, _, v);
+  }, V.prototype.toString = ah;
+  function ah(m, _) {
     var v = [], C = this.nodeType == 9 && this.documentElement || this, U = C.prefix, j = C.namespaceURI;
     if (j && U == null) {
       var U = C.lookupPrefix(j);
@@ -22384,7 +22384,7 @@ function Em() {
     }
     return vr(this, v, m, _, ue), v.join("");
   }
-  function lh(m, _, v) {
+  function uh(m, _, v) {
     var C = m.prefix || "", U = m.namespaceURI;
     if (!U || C === "xml" && U === t.XML || U === t.XMLNS)
       return !1;
@@ -22409,28 +22409,28 @@ function Em() {
         return;
     switch (m.nodeType) {
       case c:
-        var j = m.attributes, ue = j.length, ke = m.firstChild, Xe = m.tagName;
+        var j = m.attributes, ue = j.length, ke = m.firstChild, Ve = m.tagName;
         v = t.isHTML(m.namespaceURI) || v;
-        var dt = Xe;
+        var dt = Ve;
         if (!v && !m.prefix && m.namespaceURI) {
-          for (var Ht, Ft = 0; Ft < j.length; Ft++)
+          for (var Wt, Ft = 0; Ft < j.length; Ft++)
             if (j.item(Ft).name === "xmlns") {
-              Ht = j.item(Ft).value;
+              Wt = j.item(Ft).value;
               break;
             }
-          if (!Ht)
+          if (!Wt)
             for (var er = U.length - 1; er >= 0; er--) {
               var tr = U[er];
               if (tr.prefix === "" && tr.namespace === m.namespaceURI) {
-                Ht = tr.namespace;
+                Wt = tr.namespace;
                 break;
               }
             }
-          if (Ht !== m.namespaceURI)
+          if (Wt !== m.namespaceURI)
             for (var er = U.length - 1; er >= 0; er--) {
               var tr = U[er];
               if (tr.namespace === m.namespaceURI) {
-                tr.prefix && (dt = tr.prefix + ":" + Xe);
+                tr.prefix && (dt = tr.prefix + ":" + Ve);
                 break;
               }
             }
@@ -22442,18 +22442,18 @@ function Em() {
         }
         for (var rr = 0; rr < ue; rr++) {
           var xt = j.item(rr);
-          if (lh(xt, v, U)) {
+          if (uh(xt, v, U)) {
             var sr = xt.prefix || "", rs = xt.namespaceURI;
             Wn(_, sr ? "xmlns:" + sr : "xmlns", rs), U.push({ prefix: sr, namespace: rs });
           }
           vr(xt, _, v, C, U);
         }
-        if (Xe === dt && lh(m, v, U)) {
+        if (Ve === dt && uh(m, v, U)) {
           var sr = m.prefix || "", rs = m.namespaceURI;
           Wn(_, sr ? "xmlns:" + sr : "xmlns", rs), U.push({ prefix: sr, namespace: rs });
         }
-        if (ke || v && !/^(?:meta|link|img|br|hr|input)$/i.test(Xe)) {
-          if (_.push(">"), v && /^script$/i.test(Xe))
+        if (ke || v && !/^(?:meta|link|img|br|hr|input)$/i.test(Ve)) {
+          if (_.push(">"), v && /^script$/i.test(Ve))
             for (; ke; )
               ke.data ? _.push(ke.data) : vr(ke, _, v, C, U.slice()), ke = ke.nextSibling;
           else
@@ -22479,14 +22479,14 @@ function Em() {
       case y:
         return _.push("<!--", m.data, "-->");
       case T:
-        var dh = m.publicId, Sr = m.systemId;
-        if (_.push("<!DOCTYPE ", m.name), dh)
-          _.push(" PUBLIC ", dh), Sr && Sr != "." && _.push(" ", Sr), _.push(">");
+        var ch = m.publicId, Sr = m.systemId;
+        if (_.push("<!DOCTYPE ", m.name), ch)
+          _.push(" PUBLIC ", ch), Sr && Sr != "." && _.push(" ", Sr), _.push(">");
         else if (Sr && Sr != ".")
           _.push(" SYSTEM ", Sr, ">");
         else {
-          var fh = m.internalSubset;
-          fh && _.push(" [", fh, "]"), _.push(">");
+          var dh = m.internalSubset;
+          dh && _.push(" [", dh, "]"), _.push(">");
         }
         return;
       case x:
@@ -22499,7 +22499,7 @@ function Em() {
         _.push("??", m.nodeName);
     }
   }
-  function hh(m, _, v) {
+  function lh(m, _, v) {
     var C;
     switch (_.nodeType) {
       case c:
@@ -22517,7 +22517,7 @@ function Em() {
     }
     if (C || (C = _.cloneNode(!1)), C.ownerDocument = m, C.parentNode = null, v)
       for (var U = _.firstChild; U; )
-        C.appendChild(hh(m, U, v)), U = U.nextSibling;
+        C.appendChild(lh(m, U, v)), U = U.nextSibling;
     return C;
   }
   function zn(m, _, v) {
@@ -22529,10 +22529,10 @@ function Em() {
       }
     switch (_.childNodes && (C.childNodes = new G()), C.ownerDocument = m, C.nodeType) {
       case c:
-        var ue = _.attributes, Xe = C.attributes = new D(), dt = ue.length;
-        Xe._ownerElement = C;
-        for (var Ht = 0; Ht < dt; Ht++)
-          C.setAttributeNode(zn(m, ue.item(Ht), !0));
+        var ue = _.attributes, Ve = C.attributes = new D(), dt = ue.length;
+        Ve._ownerElement = C;
+        for (var Wt = 0; Wt < dt; Wt++)
+          C.setAttributeNode(zn(m, ue.item(Wt), !0));
         break;
       case d:
         v = !0;
@@ -22542,7 +22542,7 @@ function Em() {
         C.appendChild(zn(m, Ft, v)), Ft = Ft.nextSibling;
     return C;
   }
-  function ch(m, _, v) {
+  function hh(m, _, v) {
     m[_] = v;
   }
   try {
@@ -22579,17 +22579,17 @@ function Em() {
               this.data = _, this.value = _, this.nodeValue = _;
           }
         }
-      }), ch = function(_, v, C) {
+      }), hh = function(_, v, C) {
         _["$$" + v] = C;
       };
     }
   } catch {
   }
-  return Ut.DocumentType = Ks, Ut.DOMException = I, Ut.DOMImplementation = oe, Ut.Element = Ae, Ut.Node = V, Ut.NodeList = G, Ut.XMLSerializer = ah, Ut;
+  return Ut.DocumentType = Zs, Ut.DOMException = I, Ut.DOMImplementation = oe, Ut.Element = Ae, Ut.Node = V, Ut.NodeList = G, Ut.XMLSerializer = oh, Ut;
 }
-var ds = {}, So = {}, Sc;
-function f2() {
-  return Sc || (Sc = 1, (function(s) {
+var ds = {}, So = {}, vc;
+function p2() {
+  return vc || (vc = 1, (function(s) {
     var e = Tn().freeze;
     s.XML_ENTITIES = e({
       amp: "&",
@@ -24727,10 +24727,10 @@ function f2() {
     }), s.entityMap = s.HTML_ENTITIES;
   })(So)), So;
 }
-var bi = {}, wc;
-function p2() {
-  if (wc) return bi;
-  wc = 1;
+var xi = {}, Sc;
+function m2() {
+  if (Sc) return xi;
+  Sc = 1;
   var s = Tn().NAMESPACE, e = /[A-Z_a-z\xC0-\xD6\xD8-\xF6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/, t = new RegExp("[\\-\\.0-9" + e.source.slice(1, -1) + "\\u00B7\\u0300-\\u036F\\u203F-\\u2040]"), r = new RegExp("^" + e.source + t.source + "*(?::" + e.source + t.source + "*)?$"), i = 0, n = 1, o = 2, a = 3, u = 4, l = 5, h = 6, c = 7;
   function d(E, P) {
     this.message = E, this.locator = P, Error.captureStackTrace && Error.captureStackTrace(this, d);
@@ -24791,8 +24791,8 @@ function p2() {
             var bt = Fe.localNSMap, Ie = Fe.tagName == Re, Ee = Ie || Fe.tagName && Fe.tagName.toLowerCase() == Re.toLowerCase();
             if (Ee) {
               if (I.endElement(Fe.uri, Fe.localName, Re), bt)
-                for (var ze in bt)
-                  Object.prototype.hasOwnProperty.call(bt, ze) && I.endPrefixMapping(ze);
+                for (var We in bt)
+                  Object.prototype.hasOwnProperty.call(bt, We) && I.endPrefixMapping(We);
               Ie || G.fatalError("end tag name: " + Re + " is not match the current start tagName:" + Fe.tagName);
             } else
               Te.push(Fe);
@@ -24807,15 +24807,15 @@ function p2() {
             break;
           default:
             V && F(de);
-            var he = new A(), Ve = Te[Te.length - 1].currentNSMap, Pe = p(E, de, he, Ve, Q, G), Jt = he.length;
+            var he = new A(), ze = Te[Te.length - 1].currentNSMap, Pe = p(E, de, he, ze, Q, G), Jt = he.length;
             if (!he.closed && S(E, Pe, he.tagName, Ge) && (he.closed = !0, M.nbsp || G.warning("unclosed xml attribute")), V && Jt) {
               for (var xr = b(V, {}), Dt = 0; Dt < Jt; Dt++) {
-                var Nt = he[Dt];
-                F(Nt.offset), Nt.locator = b(V, {});
+                var Ht = he[Dt];
+                F(Ht.offset), Ht.locator = b(V, {});
               }
-              I.locator = xr, x(he, I, Ve) && Te.push(he), I.locator = V;
+              I.locator = xr, x(he, I, ze) && Te.push(he), I.locator = V;
             } else
-              x(he, I, Ve) && Te.push(he);
+              x(he, I, ze) && Te.push(he);
             s.isHTML(he.uri) && !he.closed ? Pe = y(E, Pe, he.tagName, Q, I) : Pe++;
         }
       } catch (fe) {
@@ -25065,13 +25065,13 @@ function p2() {
     for (G.lastIndex = P, G.exec(E); M = G.exec(E); )
       if (I.push(M), M[1]) return I;
   }
-  return bi.XMLReader = f, bi.ParseError = d, bi;
+  return xi.XMLReader = f, xi.ParseError = d, xi;
 }
-var Tc;
-function m2() {
-  if (Tc) return ds;
-  Tc = 1;
-  var s = Tn(), e = Em(), t = f2(), r = p2(), i = e.DOMImplementation, n = s.NAMESPACE, o = r.ParseError, a = r.XMLReader;
+var wc;
+function g2() {
+  if (wc) return ds;
+  wc = 1;
+  var s = Tn(), e = Em(), t = p2(), r = m2(), i = e.DOMImplementation, n = s.NAMESPACE, o = r.ParseError, a = r.XMLReader;
   function u(p) {
     return p.replace(/\r[\n\u0085]/g, `
 `).replace(/[\r\u0085\u2028]/g, `
@@ -25209,15 +25209,15 @@ function m2() {
   }
   return ds.__DOMHandler = c, ds.normalizeLineEndings = u, ds.DOMParser = l, ds;
 }
-var Ec;
-function g2() {
-  if (Ec) return cs;
-  Ec = 1;
+var Tc;
+function _2() {
+  if (Tc) return cs;
+  Tc = 1;
   var s = Em();
-  return cs.DOMImplementation = s.DOMImplementation, cs.XMLSerializer = s.XMLSerializer, cs.DOMParser = m2().DOMParser, cs;
+  return cs.DOMImplementation = s.DOMImplementation, cs.XMLSerializer = s.XMLSerializer, cs.DOMParser = g2().DOMParser, cs;
 }
-var _2 = g2();
-const b2 = {
+var b2 = _2();
+const x2 = {
   createCanvas: (s, e) => new OffscreenCanvas(s ?? 0, e ?? 0),
   createImage: () => new Image(),
   getCanvasRenderingContext2D: () => OffscreenCanvasRenderingContext2D,
@@ -25226,9 +25226,9 @@ const b2 = {
   getBaseUrl: () => globalThis.location.href,
   getFontFaceSet: () => globalThis.fonts,
   fetch: (s, e) => fetch(s, e),
-  parseXML: (s) => new _2.DOMParser().parseFromString(s, "text/xml")
+  parseXML: (s) => new b2.DOMParser().parseFromString(s, "text/xml")
 };
-class x2 {
+class y2 {
   constructor() {
     this.interactionFrequency = 10, this._deltaTime = 0, this._didMove = !1, this._tickerAdded = !1, this._pauseUpdate = !0;
   }
@@ -25292,7 +25292,7 @@ class x2 {
     this.removeTickerListener(), this.events = null, this.domElement = null, this._deltaTime = 0, this._didMove = !1, this._tickerAdded = !1, this._pauseUpdate = !0;
   }
 }
-const St = new x2();
+const St = new y2();
 class Gs extends $r {
   constructor() {
     super(...arguments), this.client = new $(), this.movement = new $(), this.offset = new $(), this.global = new $(), this.screen = new $();
@@ -25447,7 +25447,7 @@ class mr extends Gs {
 mr.DOM_DELTA_PIXEL = 0;
 mr.DOM_DELTA_LINE = 1;
 mr.DOM_DELTA_PAGE = 2;
-const y2 = 2048, v2 = new $(), fs = new $();
+const v2 = 2048, S2 = new $(), fs = new $();
 class Am {
   /**
    * @param rootTarget - The holder of the event boundary.
@@ -25509,7 +25509,7 @@ class Am {
     const i = this._isPointerMoveEvent && this.enableGlobalMoveEvents ? "hitTestMoveRecursive" : "hitTestRecursive", n = this[i](
       this.rootTarget,
       this.rootTarget.eventMode,
-      v2.set(e, t),
+      S2.set(e, t),
       this.hitTestFn,
       this.hitPruneFn
     );
@@ -25561,7 +25561,7 @@ class Am {
    */
   propagationPath(e) {
     const t = [e];
-    for (let r = 0; r < y2 && e !== this.rootTarget && e.parent; r++) {
+    for (let r = 0; r < v2 && e !== this.rootTarget && e.parent; r++) {
       if (!e.parent)
         throw new Error("Cannot find propagation path to disconnected target");
       t.push(e.parent), e = e.parent;
@@ -26056,13 +26056,13 @@ class Am {
           r[i].once && e.currentTarget.removeListener(t, r[i].fn, void 0, !0), r[i].fn.call(r[i].context, e);
   }
 }
-const S2 = 1, w2 = {
+const w2 = 1, T2 = {
   touchstart: "pointerdown",
   touchend: "pointerup",
   touchendoutside: "pointerupoutside",
   touchmove: "pointermove",
   touchcancel: "pointercancel"
-}, vu = class ha {
+}, vu = class ca {
   /**
    * @param {Renderer} renderer
    */
@@ -26070,7 +26070,7 @@ const S2 = 1, w2 = {
     this.supportsTouchEvents = "ontouchstart" in globalThis, this.supportsPointerEvents = !!globalThis.PointerEvent, this.domElement = null, this.resolution = 1, this.renderer = e, this.rootBoundary = new Am(null), St.init(this), this.autoPreventDefault = !0, this._eventsAdded = !1, this._rootPointerEvent = new ot(null), this._rootWheelEvent = new mr(null), this.cursorStyles = {
       default: "inherit",
       pointer: "pointer"
-    }, this.features = new Proxy({ ...ha.defaultEventFeatures }, {
+    }, this.features = new Proxy({ ...ca.defaultEventFeatures }, {
       set: (t, r, i) => (r === "globalMove" && (this.rootBoundary.enableGlobalMoveEvents = i), t[r] = i, !0)
     }), this._onPointerDown = this._onPointerDown.bind(this), this._onPointerMove = this._onPointerMove.bind(this), this._onPointerUp = this._onPointerUp.bind(this), this._onPointerOverOut = this._onPointerOverOut.bind(this), this.onWheel = this.onWheel.bind(this);
   }
@@ -26090,7 +26090,7 @@ const S2 = 1, w2 = {
    */
   init(e) {
     const { canvas: t, resolution: r } = this.renderer;
-    this.setTargetElement(t), this.resolution = r, ha._defaultEventMode = e.eventMode ?? "passive", Object.assign(this.features, e.eventFeatures ?? {}), this.rootBoundary.enableGlobalMoveEvents = this.features.globalMove;
+    this.setTargetElement(t), this.resolution = r, ca._defaultEventMode = e.eventMode ?? "passive", Object.assign(this.features, e.eventFeatures ?? {}), this.rootBoundary.enableGlobalMoveEvents = this.features.globalMove;
   }
   /**
    * Handle changing resolution.
@@ -26358,7 +26358,7 @@ const S2 = 1, w2 = {
       }
     else if (!globalThis.MouseEvent || e instanceof MouseEvent && (!this.supportsPointerEvents || !(e instanceof globalThis.PointerEvent))) {
       const r = e;
-      typeof r.isPrimary > "u" && (r.isPrimary = !0), typeof r.width > "u" && (r.width = 1), typeof r.height > "u" && (r.height = 1), typeof r.tiltX > "u" && (r.tiltX = 0), typeof r.tiltY > "u" && (r.tiltY = 0), typeof r.pointerType > "u" && (r.pointerType = "mouse"), typeof r.pointerId > "u" && (r.pointerId = S2), typeof r.pressure > "u" && (r.pressure = 0.5), typeof r.twist > "u" && (r.twist = 0), typeof r.tangentialPressure > "u" && (r.tangentialPressure = 0), r.isNormalized = !0, t.push(r);
+      typeof r.isPrimary > "u" && (r.isPrimary = !0), typeof r.width > "u" && (r.width = 1), typeof r.height > "u" && (r.height = 1), typeof r.tiltX > "u" && (r.tiltX = 0), typeof r.tiltY > "u" && (r.tiltY = 0), typeof r.pointerType > "u" && (r.pointerType = "mouse"), typeof r.pointerId > "u" && (r.pointerId = w2), typeof r.pressure > "u" && (r.pressure = 0.5), typeof r.twist > "u" && (r.twist = 0), typeof r.tangentialPressure > "u" && (r.tangentialPressure = 0), r.isNormalized = !0, t.push(r);
     } else
       t.push(e);
     return t;
@@ -26381,7 +26381,7 @@ const S2 = 1, w2 = {
    * @param nativeEvent
    */
   _bootstrapEvent(e, t) {
-    return e.originalEvent = null, e.nativeEvent = t, e.pointerId = t.pointerId, e.width = t.width, e.height = t.height, e.isPrimary = t.isPrimary, e.pointerType = t.pointerType, e.pressure = t.pressure, e.tangentialPressure = t.tangentialPressure, e.tiltX = t.tiltX, e.tiltY = t.tiltY, e.twist = t.twist, this._transferMouseData(e, t), this.mapPositionToPoint(e.screen, t.clientX, t.clientY), e.global.copyFrom(e.screen), e.offset.copyFrom(e.screen), e.isTrusted = t.isTrusted, e.type === "pointerleave" && (e.type = "pointerout"), e.type.startsWith("mouse") && (e.type = e.type.replace("mouse", "pointer")), e.type.startsWith("touch") && (e.type = w2[e.type] || e.type), e;
+    return e.originalEvent = null, e.nativeEvent = t, e.pointerId = t.pointerId, e.width = t.width, e.height = t.height, e.isPrimary = t.isPrimary, e.pointerType = t.pointerType, e.pressure = t.pressure, e.tangentialPressure = t.tangentialPressure, e.tiltX = t.tiltX, e.tiltY = t.tiltY, e.twist = t.twist, this._transferMouseData(e, t), this.mapPositionToPoint(e.screen, t.clientX, t.clientY), e.global.copyFrom(e.screen), e.offset.copyFrom(e.screen), e.isTrusted = t.isTrusted, e.type === "pointerleave" && (e.type = "pointerout"), e.type.startsWith("mouse") && (e.type = e.type.replace("mouse", "pointer")), e.type.startsWith("touch") && (e.type = T2[e.type] || e.type), e;
   }
   /**
    * Transfers base & mouse event data from the `nativeEvent` to the federated event.
@@ -26482,7 +26482,7 @@ const Cm = {
     return s.defaultPrevented = !1, s.path = null, s.target = this, s.manager.dispatchEvent(s), !s.defaultPrevented;
   }
 };
-var js = `in vec2 aPosition;
+var qs = `in vec2 aPosition;
 out vec2 vTextureCoord;
 
 uniform vec4 uInputSize;
@@ -26521,7 +26521,7 @@ void main()
 {
     finalColor =  texture(uTexture, vTextureCoord) * uAlpha;
 }
-`, ca = `struct GlobalFilterUniforms {
+`, da = `struct GlobalFilterUniforms {
   uInputSize:vec4<f32>,
   uInputPixel:vec4<f32>,
   uInputClamp:vec4<f32>,
@@ -26593,17 +26593,17 @@ fn mainFragment(
 const Bm = class Rm extends Rt {
   constructor(e) {
     e = { ...Rm.defaultOptions, ...e };
-    const t = We.from({
+    const t = He.from({
       vertex: {
-        source: ca,
+        source: da,
         entryPoint: "mainVertex"
       },
       fragment: {
-        source: ca,
+        source: da,
         entryPoint: "mainFragment"
       }
     }), r = Je.from({
-      vertex: js,
+      vertex: qs,
       fragment: Pm,
       name: "alpha-filter"
     }), { alpha: i, ...n } = e, o = new we({
@@ -26651,7 +26651,7 @@ Bm.defaultOptions = {
    */
   alpha: 1
 };
-let T2 = Bm;
+let E2 = Bm;
 const wu = {
   5: [0.153388, 0.221461, 0.250301],
   7: [0.071303, 0.131514, 0.189879, 0.214607],
@@ -26659,7 +26659,7 @@ const wu = {
   11: [93e-4, 0.028002, 0.065984, 0.121703, 0.175713, 0.198596],
   13: [2406e-6, 9255e-6, 0.027867, 0.065666, 0.121117, 0.174868, 0.197641],
   15: [489e-6, 2403e-6, 9246e-6, 0.02784, 0.065602, 0.120999, 0.174697, 0.197448]
-}, E2 = [
+}, A2 = [
   "in vec2 vBlurTexCoords[%size%];",
   "uniform sampler2D uTexture;",
   "out vec4 finalColor;",
@@ -26672,7 +26672,7 @@ const wu = {
 `);
 function Mm(s) {
   const e = wu[s], t = e.length;
-  let r = E2, i = "";
+  let r = A2, i = "";
   const n = "finalColor += texture(uTexture, vBlurTexCoords[%index%]) * %value%;";
   let o;
   for (let a = 0; a < s; a++) {
@@ -26682,7 +26682,7 @@ function Mm(s) {
   }
   return r = r.replace("%blur%", i), r = r.replace("%size%", s.toString()), r;
 }
-const A2 = `
+const C2 = `
     in vec2 aPosition;
 
     uniform float uStrength;
@@ -26719,7 +26719,7 @@ const A2 = `
     }`;
 function Dm(s, e) {
   const t = Math.ceil(s / 2);
-  let r = A2, i = "", n;
+  let r = C2, i = "", n;
   e ? n = "vBlurTexCoords[%index%] =  textureCoord + vec2(%sampleIndex% * pixelStrength, 0.0);" : n = "vBlurTexCoords[%index%] =  textureCoord + vec2(0.0, %sampleIndex% * pixelStrength);";
   for (let o = 0; o < s; o++) {
     let a = n.replace("%index%", o.toString());
@@ -26827,7 +26827,7 @@ function km(s, e) {
 `), u = n.join(`
 `), l = o.join(`
 `), h = Im.replace("%blur-struct%", a).replace("%blur-vertex-out%", u).replace("%blur-fragment-in%", a).replace("%blur-sampling%", l).replace("%dimension%", s ? "z" : "w");
-  return We.from({
+  return He.from({
     vertex: {
       source: h,
       entryPoint: "mainVertex"
@@ -27148,7 +27148,7 @@ void main()
 
     finalColor = vec4(rgb, result.a);
 }
-`, da = `struct GlobalFilterUniforms {
+`, fa = `struct GlobalFilterUniforms {
   uInputSize:vec4<f32>,
   uInputPixel:vec4<f32>,
   uInputClamp:vec4<f32>,
@@ -27257,7 +27257,7 @@ fn mainFragment(
 
     return vec4(rgb, result.a);
 }`;
-class C2 extends Rt {
+class P2 extends Rt {
   constructor(e = {}) {
     const t = new we({
       uColorMatrix: {
@@ -27290,17 +27290,17 @@ class C2 extends Rt {
         value: 1,
         type: "f32"
       }
-    }), r = We.from({
+    }), r = He.from({
       vertex: {
-        source: da,
+        source: fa,
         entryPoint: "mainVertex"
       },
       fragment: {
-        source: da,
+        source: fa,
         entryPoint: "mainFragment"
       }
     }), i = Je.from({
-      vertex: js,
+      vertex: qs,
       fragment: Lm,
       name: "color-matrix-filter"
     });
@@ -28476,7 +28476,7 @@ void main(void)
     vTextureCoord = filterTextureCoord();
     vFilterUv = getFilterCoord();
 }
-`, fa = `
+`, pa = `
 struct GlobalFilterUniforms {
   uInputSize:vec4<f32>,
   uInputPixel:vec4<f32>,
@@ -28564,10 +28564,10 @@ fn mainFragment(
    
     return textureSample(uTexture, uSampler, clamp(uv + offset, gfu.uInputClamp.xy, gfu.uInputClamp.zw));
 }`;
-class P2 extends Rt {
+class B2 extends Rt {
   constructor(...e) {
     let t = e[0];
-    t instanceof Ne && (e[1] && N(Z, "DisplacementFilter now uses options object instead of params. {sprite, scale}"), t = { sprite: t, scale: e[1] });
+    t instanceof je && (e[1] && N(Z, "DisplacementFilter now uses options object instead of params. {sprite, scale}"), t = { sprite: t, scale: e[1] });
     const { sprite: r, scale: i, ...n } = t;
     let o = i ?? 20;
     typeof o == "number" && (o = new $(o, o));
@@ -28579,13 +28579,13 @@ class P2 extends Rt {
       vertex: Hm,
       fragment: Nm,
       name: "displacement-filter"
-    }), l = We.from({
+    }), l = He.from({
       vertex: {
-        source: fa,
+        source: pa,
         entryPoint: "mainVertex"
       },
       fragment: {
-        source: fa,
+        source: pa,
         entryPoint: "mainFragment"
       }
     }), h = r.texture.source;
@@ -28675,7 +28675,7 @@ void main()
 
     finalColor = color;
 }
-`, pa = `
+`, ma = `
 
 struct GlobalFilterUniforms {
   uInputSize:vec4<f32>,
@@ -28781,17 +28781,17 @@ const zm = class Vm extends Rt {
    */
   constructor(e = {}) {
     e = { ...Vm.defaultOptions, ...e };
-    const t = We.from({
+    const t = He.from({
       vertex: {
-        source: pa,
+        source: ma,
         entryPoint: "mainVertex"
       },
       fragment: {
-        source: pa,
+        source: ma,
         entryPoint: "mainFragment"
       }
     }), r = Je.from({
-      vertex: js,
+      vertex: qs,
       fragment: Wm,
       name: "noise-filter"
     }), { noise: i, seed: n, ...o } = e;
@@ -28861,14 +28861,14 @@ const zm = class Vm extends Rt {
 zm.defaultOptions = {
   noise: 0.5
 };
-let B2 = zm;
+let R2 = zm;
 var Xm = `in vec2 vTextureCoord;
 out vec4 finalColor;
 uniform sampler2D uTexture;
 void main() {
     finalColor = texture(uTexture, vTextureCoord);
 }
-`, ma = `struct GlobalFilterUniforms {
+`, ga = `struct GlobalFilterUniforms {
   uInputSize: vec4<f32>,
   uInputPixel: vec4<f32>,
   uInputClamp: vec4<f32>,
@@ -28920,12 +28920,12 @@ fn mainFragment(
 `;
 class Ym extends Rt {
   constructor() {
-    const e = We.from({
-      vertex: { source: ma, entryPoint: "mainVertex" },
-      fragment: { source: ma, entryPoint: "mainFragment" },
+    const e = He.from({
+      vertex: { source: ga, entryPoint: "mainVertex" },
+      fragment: { source: ga, entryPoint: "mainFragment" },
       name: "passthrough-filter"
     }), t = Je.from({
-      vertex: js,
+      vertex: qs,
       fragment: Xm,
       name: "passthrough-filter"
     });
@@ -28970,7 +28970,7 @@ Tu.extension = {
   ],
   name: "filter"
 };
-function ga(s, e, t, r, i, n, o, a) {
+function _a(s, e, t, r, i, n, o, a) {
   const u = o - t, l = a - r, h = i - t, c = n - r, d = s - t, f = e - r, g = u * u + l * l, b = u * h + l * c, p = u * d + l * f, x = h * h + c * c, y = h * d + c * f, S = 1 / (g * x - b * b), T = (x * p - b * y) * S, R = (g * y - b * p) * S;
   return T >= 0 && R >= 0 && T + R < 1;
 }
@@ -29139,7 +29139,7 @@ class Eu {
     return e.x = t, e.y = i, e.width = r - t, e.height = n - i, e;
   }
 }
-const Ac = new W();
+const Ec = new W();
 function $m(s, e) {
   e.clear();
   const t = e.matrix;
@@ -29148,11 +29148,11 @@ function $m(s, e) {
     if (i.globalDisplayStatus < 7)
       continue;
     const n = i.renderGroup ?? i.parentRenderGroup;
-    n?.isCachedAsTexture ? e.matrix = Ac.copyFrom(n.textureOffsetInverseTransform).append(i.worldTransform) : n?._parentCacheAsTextureRenderGroup ? e.matrix = Ac.copyFrom(n._parentCacheAsTextureRenderGroup.inverseWorldTransform).append(i.groupTransform) : e.matrix = i.worldTransform, e.addBounds(i.bounds);
+    n?.isCachedAsTexture ? e.matrix = Ec.copyFrom(n.textureOffsetInverseTransform).append(i.worldTransform) : n?._parentCacheAsTextureRenderGroup ? e.matrix = Ec.copyFrom(n._parentCacheAsTextureRenderGroup.inverseWorldTransform).append(i.groupTransform) : e.matrix = i.worldTransform, e.addBounds(i.bounds);
   }
   return e.matrix = t, e;
 }
-const R2 = new _r({
+const M2 = new _r({
   attributes: {
     aPosition: {
       buffer: new Float32Array([0, 0, 1, 0, 1, 1, 0, 1]),
@@ -29163,7 +29163,7 @@ const R2 = new _r({
   },
   indexBuffer: new Uint32Array([0, 1, 2, 0, 2, 3])
 });
-class M2 {
+class D2 {
   constructor() {
     this.skip = !1, this.inputTexture = null, this.backTexture = null, this.filters = null, this.bounds = new Be(), this.container = null, this.blendRequired = !1, this.outputRenderSurface = null, this.globalFrame = { x: 0, y: 0, width: 0, height: 0 }, this.firstEnabledIndex = -1, this.lastEnabledIndex = -1;
   }
@@ -29354,7 +29354,7 @@ class Au {
     } else
       this._globalFilterBindGroup.setResource(this._filterGlobalUniforms, 0);
     this._globalFilterBindGroup.setResource(t.source, 1), this._globalFilterBindGroup.setResource(t.source.style, 2), e.groups[0] = this._globalFilterBindGroup, r.encoder.draw({
-      geometry: R2,
+      geometry: M2,
       shader: e,
       state: e._state,
       topology: "triangle-list"
@@ -29514,7 +29514,7 @@ class Au {
   }
   _pushFilterData() {
     let e = this._filterStack[this._filterStackIndex];
-    return e || (e = this._filterStack[this._filterStackIndex] = new M2()), this._filterStackIndex++, e;
+    return e || (e = this._filterStack[this._filterStackIndex] = new D2()), this._filterStackIndex++, e;
   }
 }
 Au.extension = {
@@ -29595,7 +29595,7 @@ void main(void)
     vTextureCoord = filterTextureCoord(aPosition);
     vMaskCoord = getFilterCoord(aPosition);
 }
-`, _a = `struct GlobalFilterUniforms {
+`, ba = `struct GlobalFilterUniforms {
   uInputSize:vec4<f32>,
   uInputPixel:vec4<f32>,
   uInputClamp:vec4<f32>,
@@ -29701,13 +29701,13 @@ class Km extends Rt {
       uMaskClamp: { value: i.uClampFrame, type: "vec4<f32>" },
       uAlpha: { value: 1, type: "f32" },
       uInverse: { value: e.inverse ? 1 : 0, type: "f32" }
-    }), o = We.from({
+    }), o = He.from({
       vertex: {
-        source: _a,
+        source: ba,
         entryPoint: "mainVertex"
       },
       fragment: {
-        source: _a,
+        source: ba,
         entryPoint: "mainFragment"
       }
     }), a = Je.from({
@@ -29739,7 +29739,7 @@ class Km extends Rt {
     ).prepend(this._textureMatrix.mapCoord), this.resources.uMaskTexture = this.sprite.texture.source, e.applyFilter(this, t, r, i);
   }
 }
-var D2 = `fn getLuminosity(c: vec3<f32>) -> f32 {
+var F2 = `fn getLuminosity(c: vec3<f32>) -> f32 {
   return 0.3 * c.r + 0.59 * c.g + 0.11 * c.b;
 }
 
@@ -29888,7 +29888,7 @@ const Zm = class Qm {
 };
 Zm.uploadsPerFrame = 4;
 let Jm = Zm;
-class qt extends Bt {
+class Lt extends Bt {
   /**
    * Creates a new Graphics object.
    * @param options - Options for the Graphics.
@@ -30576,7 +30576,7 @@ class qt extends Bt {
    * @see {@link GraphicsContext} For understanding the shared context behavior
    */
   clone(e = !1) {
-    return e ? new qt(this._context.clone()) : (this._ownedContext = null, new qt(this._context));
+    return e ? new Lt(this._context.clone()) : (this._ownedContext = null, new Lt(this._context));
   }
   // -------- v7 deprecations ---------
   /**
@@ -30813,7 +30813,7 @@ class Jr extends Bt {
       const o = this.geometry.getIndex().data, a = o.length;
       for (let u = 0; u + 2 < a; u += n) {
         const l = o[u] * 2, h = o[u + 1] * 2, c = o[u + 2] * 2;
-        if (ga(
+        if (_a(
           t,
           r,
           i[l],
@@ -30829,7 +30829,7 @@ class Jr extends Bt {
       const o = i.length / 2;
       for (let a = 0; a + 2 < o; a += n) {
         const u = a * 2, l = (a + 1) * 2, h = (a + 2) * 2;
-        if (ga(
+        if (_a(
           t,
           r,
           i[u],
@@ -30861,7 +30861,7 @@ class Jr extends Bt {
     this._geometry?.off("update", this.onViewUpdate, this), this._texture = null, this._geometry = null, this._shader = null, this._gpuData = null;
   }
 }
-class Ls extends Ne {
+class Ls extends je {
   constructor(...e) {
     let t = e[0];
     Array.isArray(e[0]) && (t = {
@@ -31776,7 +31776,7 @@ sg.defaultOptions = {
    */
   applyAnchorToTexture: !1
 };
-let Cu = sg;
+let ig = sg;
 class En extends Bt {
   constructor(e, t) {
     const { text: r, resolution: i, style: n, anchor: o, width: a, height: u, roundPixels: l, ...h } = e;
@@ -32072,28 +32072,28 @@ function An(s, e) {
   }), t;
 }
 let or = null, Ot = null;
-function F2(s, e) {
+function I2(s, e) {
   or || (or = J.get().createCanvas(256, 128), Ot = or.getContext("2d", { willReadFrequently: !0 }), Ot.globalCompositeOperation = "copy", Ot.globalAlpha = 1), (or.width < s || or.height < e) && (or.width = fr(s), or.height = fr(e));
 }
-function Cc(s, e, t) {
+function Ac(s, e, t) {
   for (let r = 0, i = 4 * t * e; r < e; ++r, i += 4)
     if (s[i + 3] !== 0)
       return !1;
   return !0;
 }
-function Pc(s, e, t, r, i) {
+function Cc(s, e, t, r, i) {
   const n = 4 * e;
   for (let o = r, a = r * n + 4 * t; o <= i; ++o, a += n)
     if (s[a + 3] !== 0)
       return !1;
   return !0;
 }
-function ig(...s) {
+function ng(...s) {
   let e = s[0];
   e.canvas || (e = { canvas: s[0], resolution: s[1] });
   const { canvas: t } = e, r = Math.min(e.resolution ?? 1, 1), i = e.width ?? t.width, n = e.height ?? t.height;
   let o = e.output;
-  if (F2(i, n), !Ot)
+  if (I2(i, n), !Ot)
     throw new TypeError("Failed to get canvas 2D context");
   Ot.drawImage(
     t,
@@ -32108,20 +32108,20 @@ function ig(...s) {
   );
   const u = Ot.getImageData(0, 0, i, n).data;
   let l = 0, h = 0, c = i - 1, d = n - 1;
-  for (; h < n && Cc(u, i, h); )
+  for (; h < n && Ac(u, i, h); )
     ++h;
   if (h === n)
     return te.EMPTY;
-  for (; Cc(u, i, d); )
+  for (; Ac(u, i, d); )
     --d;
-  for (; Pc(u, i, l, h, d); )
+  for (; Cc(u, i, l, h, d); )
     ++l;
-  for (; Pc(u, i, c, h, d); )
+  for (; Cc(u, i, c, h, d); )
     --c;
   return ++c, ++d, Ot.globalCompositeOperation = "source-over", Ot.strokeRect(l, h, c - l, d - h), Ot.globalCompositeOperation = "copy", o ?? (o = new te()), o.set(l / r, h / r, (c - l) / r, (d - h) / r), o;
 }
-const Bc = new te();
-class I2 {
+const Pc = new te();
+class k2 {
   /**
    * Creates a canvas with the specified text rendered to it.
    *
@@ -32140,7 +32140,7 @@ class I2 {
   getCanvasAndContext(e) {
     const { text: t, style: r, resolution: i = 1 } = e, n = r._getFinalPadding(), o = Ue.measureText(t || " ", r), a = Math.ceil(Math.ceil(Math.max(1, o.width) + n * 2) * i), u = Math.ceil(Math.ceil(Math.max(1, o.height) + n * 2) * i), l = Pt.getOptimalCanvasAndContext(a, u);
     this._renderTextToCanvas(t, r, n, i, l);
-    const h = r.trim ? ig({ canvas: l.canvas, width: a, height: u, resolution: 1, output: Bc }) : Bc.set(0, 0, a, u);
+    const h = r.trim ? ng({ canvas: l.canvas, width: a, height: u, resolution: 1, output: Pc }) : Pc.set(0, 0, a, u);
     return {
       canvasAndContext: l,
       frame: h
@@ -32245,7 +32245,7 @@ class I2 {
     }
   }
 }
-const Gr = new I2();
+const Gr = new k2();
 class Cn extends En {
   constructor(...e) {
     const t = An(e, "Text");
@@ -32272,7 +32272,7 @@ class Cn extends En {
     e.minX = -t._x * r, e.maxX = e.minX + r, e.minY = -t._y * i, e.maxY = e.minY + i;
   }
 }
-class ng extends Jm {
+class og extends Jm {
   /**
    * Resolve the given resource type and return an item for the queue
    * @param source
@@ -32287,7 +32287,7 @@ class ng extends Jm {
    * @param queue
    */
   resolveContainerQueueItem(e, t) {
-    e instanceof Ne || e instanceof Cu || e instanceof Jr ? t.push(e.texture.source) : e instanceof Cn ? t.push(e) : e instanceof qt ? t.push(e.context) : e instanceof Ls && e.textures.forEach((r) => {
+    e instanceof je || e instanceof ig || e instanceof Jr ? t.push(e.texture.source) : e instanceof Cn ? t.push(e) : e instanceof Lt ? t.push(e.context) : e instanceof Ls && e.textures.forEach((r) => {
       r.source ? t.push(r.source) : t.push(r.texture.source);
     });
   }
@@ -32309,7 +32309,7 @@ class ng extends Jm {
     return null;
   }
 }
-class Pu extends En {
+class Cu extends En {
   constructor(...e) {
     var t;
     const r = An(e, "BitmapText");
@@ -32365,7 +32365,7 @@ class Pu extends En {
     return this._resolution;
   }
 }
-function og(s) {
+function ag(s) {
   const e = s._stroke, t = s._fill, i = [`div { ${[
     `color: ${se.shared.setValue(t.color).toHex()}`,
     `font-size: ${s.fontSize}px`,
@@ -32382,17 +32382,17 @@ function og(s) {
       `word-wrap: ${s.breakWords ? "break-all" : "break-word"}`,
       `max-width: ${s.wordWrapWidth}px`
     ] : [],
-    ...e ? [ug(e)] : [],
-    ...s.dropShadow ? [ag(s.dropShadow)] : [],
+    ...e ? [lg(e)] : [],
+    ...s.dropShadow ? [ug(s.dropShadow)] : [],
     ...s.cssOverrides
   ].join(";")} }`];
-  return k2(s.tagStyles, i), i.join(" ");
+  return U2(s.tagStyles, i), i.join(" ");
 }
-function ag(s) {
+function ug(s) {
   const e = se.shared.setValue(s.color).setAlpha(s.alpha).toHexa(), t = Math.round(Math.cos(s.angle) * s.distance), r = Math.round(Math.sin(s.angle) * s.distance), i = `${t}px ${r}px`;
   return s.blur > 0 ? `text-shadow: ${i} ${s.blur}px ${e}` : `text-shadow: ${i} ${e}`;
 }
-function ug(s) {
+function lg(s) {
   return [
     `-webkit-text-stroke-width: ${s.width}px`,
     `-webkit-text-stroke-color: ${se.shared.setValue(s.color).toHex()}`,
@@ -32401,7 +32401,7 @@ function ug(s) {
     "paint-order: stroke"
   ].join(";");
 }
-const Rc = {
+const Bc = {
   fontSize: "font-size: {{VALUE}}px",
   fontFamily: "font-family: {{VALUE}}",
   fontWeight: "font-weight: {{VALUE}}",
@@ -32413,17 +32413,17 @@ const Rc = {
   whiteSpace: "white-space: {{VALUE}}",
   lineHeight: "line-height: {{VALUE}}px",
   wordWrapWidth: "max-width: {{VALUE}}px"
-}, Mc = {
+}, Rc = {
   fill: (s) => `color: ${se.shared.setValue(s).toHex()}`,
   breakWords: (s) => `word-wrap: ${s ? "break-all" : "break-word"}`,
-  stroke: ug,
-  dropShadow: ag
+  stroke: lg,
+  dropShadow: ug
 };
-function k2(s, e) {
+function U2(s, e) {
   for (const t in s) {
     const r = s[t], i = [];
     for (const n in r)
-      Mc[n] ? i.push(Mc[n](r[n])) : Rc[n] && i.push(Rc[n].replace("{{VALUE}}", r[n]));
+      Rc[n] ? i.push(Rc[n](r[n])) : Bc[n] && i.push(Bc[n].replace("{{VALUE}}", r[n]));
     e.push(`${t} { ${i.join(";")} }`);
   }
 }
@@ -32533,7 +32533,7 @@ class Pn extends st {
    * @advanced
    */
   get cssStyle() {
-    return this._cssStyle || (this._cssStyle = og(this)), this._cssStyle;
+    return this._cssStyle || (this._cssStyle = ag(this)), this._cssStyle;
   }
   /**
    * Add a style override, this can be any CSS property
@@ -32638,10 +32638,10 @@ class Pn extends st {
     e && typeof e != "string" && typeof e != "number" && X("[HTMLTextStyle] only color stroke is not supported by HTMLText"), super.stroke = e;
   }
 }
-const Dc = "http://www.w3.org/2000/svg", Fc = "http://www.w3.org/1999/xhtml";
-class Bu {
+const Mc = "http://www.w3.org/2000/svg", Dc = "http://www.w3.org/1999/xhtml";
+class Pu {
   constructor() {
-    this.svgRoot = document.createElementNS(Dc, "svg"), this.foreignObject = document.createElementNS(Dc, "foreignObject"), this.domElement = document.createElementNS(Fc, "div"), this.styleElement = document.createElementNS(Fc, "style");
+    this.svgRoot = document.createElementNS(Mc, "svg"), this.foreignObject = document.createElementNS(Mc, "foreignObject"), this.domElement = document.createElementNS(Dc, "div"), this.styleElement = document.createElementNS(Dc, "style");
     const { foreignObject: e, svgRoot: t, styleElement: r, domElement: i } = this;
     e.setAttribute("width", "10000"), e.setAttribute("height", "10000"), e.style.overflow = "hidden", t.appendChild(e), e.appendChild(r), e.appendChild(i), this.image = J.get().createImage();
   }
@@ -32649,9 +32649,9 @@ class Bu {
     this.svgRoot.remove(), this.foreignObject.remove(), this.styleElement.remove(), this.domElement.remove(), this.image.src = "", this.image.remove(), this.svgRoot = null, this.foreignObject = null, this.styleElement = null, this.domElement = null, this.image = null, this.canvasAndContext = null;
   }
 }
-let Ic;
-function Ru(s, e, t, r) {
-  r || (r = Ic || (Ic = new Bu()));
+let Fc;
+function Bu(s, e, t, r) {
+  r || (r = Fc || (Fc = new Pu()));
   const { domElement: i, styleElement: n, svgRoot: o } = r;
   i.innerHTML = `<style>${e.cssStyle};</style><div style='padding:0'>${s}</div>`, i.setAttribute("style", "transform-origin: top left; display: inline-block"), t && (n.textContent = t), document.body.appendChild(o);
   const a = i.getBoundingClientRect();
@@ -32662,14 +32662,14 @@ function Ru(s, e, t, r) {
     height: a.height - u
   };
 }
-class lg extends En {
+class hg extends En {
   constructor(...e) {
     const t = An(e, "HtmlText");
     super(t, Pn), this.renderPipeId = "htmlText", t.textureStyle && (this.textureStyle = t.textureStyle instanceof tt ? t.textureStyle : new tt(t.textureStyle));
   }
   /** @private */
   updateBounds() {
-    const e = this._bounds, t = this._anchor, r = Ru(this.text, this._style), { width: i, height: n } = r;
+    const e = this._bounds, t = this._anchor, r = Bu(this.text, this._style), { width: i, height: n } = r;
     e.minX = -t._x * i, e.maxX = e.minX + i, e.minY = -t._y * n, e.maxY = e.minY + n;
   }
   get text() {
@@ -32719,13 +32719,13 @@ class lg extends En {
     return e.replace(t, "");
   }
 }
-class hg extends ng {
+class cg extends og {
   /**
    * Upload the given queue item
    * @param item
    */
   uploadQueueItem(e) {
-    e instanceof ge ? this.uploadTextureSource(e) : e instanceof Cn ? this.uploadText(e) : e instanceof lg ? this.uploadHTMLText(e) : e instanceof Pu ? this.uploadBitmapText(e) : e instanceof Le && this.uploadGraphicsContext(e);
+    e instanceof ge ? this.uploadTextureSource(e) : e instanceof Cn ? this.uploadText(e) : e instanceof hg ? this.uploadHTMLText(e) : e instanceof Cu ? this.uploadBitmapText(e) : e instanceof Le && this.uploadGraphicsContext(e);
   }
   uploadTextureSource(e) {
     this.renderer.texture.initSource(e);
@@ -32757,20 +32757,20 @@ class hg extends ng {
     return null;
   }
 }
-class cg extends hg {
+class dg extends cg {
   /** Destroys the plugin, don't use after this. */
   destroy() {
     super.destroy(), clearTimeout(this.timeout), this.renderer = null, this.queue = null, this.resolves = null;
   }
 }
-cg.extension = {
+dg.extension = {
   type: [
     w.WebGLSystem,
     w.WebGPUSystem
   ],
   name: "prepare"
 };
-class Mu {
+class Ru {
   constructor() {
     this._tempState = rt.for2d(), this._didUploadHash = {};
   }
@@ -32793,13 +32793,13 @@ class Mu {
     r.geometry.draw(t.topology, t.size, t.start);
   }
 }
-Mu.extension = {
+Ru.extension = {
   type: [
     w.WebGLPipesAdaptor
   ],
   name: "batch"
 };
-function U2(s) {
+function O2(s) {
   const e = [];
   let t = 0;
   for (let r = 0; r < s; r++)
@@ -32820,21 +32820,21 @@ function U2(s) {
     }, t++;
   return e;
 }
-function O2(s) {
+function G2(s) {
   const e = {};
   let t = 0;
   for (let r = 0; r < s; r++)
     e[`textureSource${r + 1}`] = t++, e[`textureSampler${r + 1}`] = t++;
   return e;
 }
-const xi = rt.for2d();
-class Du {
+const yi = rt.for2d();
+class Mu {
   start(e, t, r) {
     const i = e.renderer, n = i.encoder, o = r.gpuProgram;
-    this._shader = r, this._geometry = t, n.setGeometry(t, o), xi.blendMode = "normal", i.pipeline.getPipeline(
+    this._shader = r, this._geometry = t, n.setGeometry(t, o), yi.blendMode = "normal", i.pipeline.getPipeline(
       t,
       o,
-      xi
+      yi
     );
     const a = i.globalUniforms.bindGroup;
     n.resetBindGroup(1), n.setBindGroup(0, a, o);
@@ -32849,7 +32849,7 @@ class Du {
         i.limits.maxBatchableTextures
       );
     }
-    xi.blendMode = t.blendMode;
+    yi.blendMode = t.blendMode;
     const o = i.bindGroup.getBindGroup(
       t.bindGroup,
       r,
@@ -32857,19 +32857,19 @@ class Du {
     ), a = i.pipeline.getPipeline(
       this._geometry,
       r,
-      xi,
+      yi,
       t.topology
     );
     t.bindGroup._touch(i.textureGC.count), n.setPipeline(a), n.renderPassEncoder.setBindGroup(1, o), n.renderPassEncoder.drawIndexed(t.size, 1, t.start);
   }
 }
-Du.extension = {
+Mu.extension = {
   type: [
     w.WebGPUPipesAdaptor
   ],
   name: "batch"
 };
-const Fu = class dg {
+const Du = class fg {
   constructor(e, t) {
     this.state = rt.for2d(), this._batchersByInstructionSet = /* @__PURE__ */ Object.create(null), this._activeBatches = /* @__PURE__ */ Object.create(null), this.renderer = e, this._adaptor = t, this._adaptor.init?.(this);
   }
@@ -32888,7 +32888,7 @@ const Fu = class dg {
     if (this._activeBatch.name !== e.batcherName) {
       this._activeBatch.break(t);
       let r = this._activeBatches[e.batcherName];
-      r || (r = this._activeBatches[e.batcherName] = dg.getBatcher(e.batcherName), r.begin()), this._activeBatch = r;
+      r || (r = this._activeBatches[e.batcherName] = fg.getBatcher(e.batcherName), r.begin()), this._activeBatch = r;
     }
     this._activeBatch.add(e);
   }
@@ -32924,7 +32924,7 @@ const Fu = class dg {
     this._activeBatches = null;
   }
 };
-Fu.extension = {
+Du.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -32932,11 +32932,11 @@ Fu.extension = {
   ],
   name: "batch"
 };
-Fu._availableBatchers = /* @__PURE__ */ Object.create(null);
-let Iu = Fu;
-Y.handleByMap(w.Batcher, Iu._availableBatchers);
+Du._availableBatchers = /* @__PURE__ */ Object.create(null);
+let Fu = Du;
+Y.handleByMap(w.Batcher, Fu._availableBatchers);
 Y.add(bn);
-function G2(s) {
+function L2(s) {
   const e = s.split(/([\n{}])/g).map((i) => i.trim()).filter((i) => i.length);
   let t = "";
   return e.map((i) => {
@@ -32978,7 +32978,7 @@ const Lr = {
         `
     )
   }
-}, fg = {
+}, pg = {
   ...Lr,
   vertex: {
     ...Lr.vertex,
@@ -33014,7 +33014,7 @@ const Lr = {
         `
     )
   }
-}, pg = {
+}, mg = {
   name: "texture-bit",
   vertex: {
     header: (
@@ -33052,7 +33052,7 @@ const Lr = {
         `
     )
   }
-}, mg = {
+}, gg = {
   name: "texture-bit",
   vertex: {
     header: (
@@ -33084,11 +33084,11 @@ const Lr = {
         `
     )
   }
-}, L2 = new Be();
-class N2 extends Cs {
+}, N2 = new Be();
+class H2 extends Cs {
   constructor() {
     super(), this.filters = [new Km({
-      sprite: new Ne(O.EMPTY),
+      sprite: new je(O.EMPTY),
       inverse: !1,
       resolution: "inherit",
       antialias: "inherit"
@@ -33107,7 +33107,7 @@ class N2 extends Cs {
     this.filters[0].inverse = e;
   }
 }
-class ku {
+class Iu {
   constructor(e) {
     this._activeMaskStage = [], this._renderer = e;
   }
@@ -33149,10 +33149,10 @@ class ku {
   execute(e) {
     const t = this._renderer, r = e.mask.renderMaskToTexture;
     if (e.action === "pushMaskBegin") {
-      const i = Se.get(N2);
+      const i = Se.get(H2);
       if (i.inverse = e.inverse, r) {
         e.mask.mask.measurable = !0;
-        const n = Ns(e.mask.mask, !0, L2);
+        const n = Hs(e.mask.mask, !0, N2);
         e.mask.mask.measurable = !1, n.ceil();
         const o = t.renderTarget.renderTarget.colorTexture.source, a = be.getOptimalTexture(
           n.width,
@@ -33194,7 +33194,7 @@ class ku {
     this._renderer = null, this._activeMaskStage = null;
   }
 }
-ku.extension = {
+Iu.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -33202,7 +33202,7 @@ ku.extension = {
   ],
   name: "alphaMask"
 };
-class Uu {
+class ku {
   constructor(e) {
     this._colorStack = [], this._colorStackIndex = 0, this._currentColor = 0, this._renderer = e;
   }
@@ -33238,7 +33238,7 @@ class Uu {
     this._renderer = null, this._colorStack = null;
   }
 }
-Uu.extension = {
+ku.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -33246,7 +33246,7 @@ Uu.extension = {
   ],
   name: "colorMask"
 };
-class H2 {
+class W2 {
   constructor(e) {
     this.priority = 0, this.pipe = "scissorMask", this.mask = e, this.mask.renderable = !1, this.mask.measurable = !1;
   }
@@ -33267,7 +33267,7 @@ class H2 {
     this.reset();
   }
 }
-class Ou {
+class Uu {
   constructor(e) {
     this._maskStackHash = {}, this._maskHash = /* @__PURE__ */ new WeakMap(), this._renderer = e;
   }
@@ -33324,13 +33324,13 @@ class Ou {
     var t;
     const r = this._renderer, i = r.renderTarget.renderTarget.uid;
     let n = (t = this._maskStackHash)[i] ?? (t[i] = 0);
-    e.action === "pushMaskBegin" ? (r.renderTarget.ensureDepthStencil(), r.stencil.setStencilMode(xe.RENDERING_MASK_ADD, n), n++, r.colorMask.setMask(0)) : e.action === "pushMaskEnd" ? (e.inverse ? r.stencil.setStencilMode(xe.INVERSE_MASK_ACTIVE, n) : r.stencil.setStencilMode(xe.MASK_ACTIVE, n), r.colorMask.setMask(15)) : e.action === "popMaskBegin" ? (r.colorMask.setMask(0), n !== 0 ? r.stencil.setStencilMode(xe.RENDERING_MASK_REMOVE, n) : (r.renderTarget.clear(null, je.STENCIL), r.stencil.setStencilMode(xe.DISABLED, n)), n--) : e.action === "popMaskEnd" && (e.inverse ? r.stencil.setStencilMode(xe.INVERSE_MASK_ACTIVE, n) : r.stencil.setStencilMode(xe.MASK_ACTIVE, n), r.colorMask.setMask(15)), this._maskStackHash[i] = n;
+    e.action === "pushMaskBegin" ? (r.renderTarget.ensureDepthStencil(), r.stencil.setStencilMode(xe.RENDERING_MASK_ADD, n), n++, r.colorMask.setMask(0)) : e.action === "pushMaskEnd" ? (e.inverse ? r.stencil.setStencilMode(xe.INVERSE_MASK_ACTIVE, n) : r.stencil.setStencilMode(xe.MASK_ACTIVE, n), r.colorMask.setMask(15)) : e.action === "popMaskBegin" ? (r.colorMask.setMask(0), n !== 0 ? r.stencil.setStencilMode(xe.RENDERING_MASK_REMOVE, n) : (r.renderTarget.clear(null, $e.STENCIL), r.stencil.setStencilMode(xe.DISABLED, n)), n--) : e.action === "popMaskEnd" && (e.inverse ? r.stencil.setStencilMode(xe.INVERSE_MASK_ACTIVE, n) : r.stencil.setStencilMode(xe.MASK_ACTIVE, n), r.colorMask.setMask(15)), this._maskStackHash[i] = n;
   }
   destroy() {
     this._renderer = null, this._maskStackHash = null, this._maskHash = null;
   }
 }
-Ou.extension = {
+Uu.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -33339,12 +33339,12 @@ Ou.extension = {
   name: "stencilMask"
 };
 var Ts = /* @__PURE__ */ ((s) => (s[s.ELEMENT_ARRAY_BUFFER = 34963] = "ELEMENT_ARRAY_BUFFER", s[s.ARRAY_BUFFER = 34962] = "ARRAY_BUFFER", s[s.UNIFORM_BUFFER = 35345] = "UNIFORM_BUFFER", s))(Ts || {});
-class gg {
+class _g {
   constructor(e, t) {
     this._lastBindBaseLocation = -1, this._lastBindCallId = -1, this.buffer = e || null, this.updateID = -1, this.byteLength = -1, this.type = t;
   }
 }
-class Gu {
+class Ou {
   /**
    * @param {Renderer} renderer - The renderer this System works for.
    */
@@ -33453,20 +33453,20 @@ class Gu {
     const { _gl: t } = this;
     let r = Ts.ARRAY_BUFFER;
     e.descriptor.usage & re.INDEX ? r = Ts.ELEMENT_ARRAY_BUFFER : e.descriptor.usage & re.UNIFORM && (r = Ts.UNIFORM_BUFFER);
-    const i = new gg(t.createBuffer(), r);
+    const i = new _g(t.createBuffer(), r);
     return this._gpuBuffers[e.uid] = i, e.on("destroy", this.onBufferDestroy, this), i;
   }
   resetState() {
     this._boundBufferBases = /* @__PURE__ */ Object.create(null);
   }
 }
-Gu.extension = {
+Ou.extension = {
   type: [
     w.WebGLSystem
   ],
   name: "buffer"
 };
-const Lu = class _g {
+const Gu = class bg {
   /** @param renderer - The renderer this System works for. */
   constructor(e) {
     this.supports = {
@@ -33501,7 +33501,7 @@ const Lu = class _g {
     this.gl = e, this._renderer.gl = e;
   }
   init(e) {
-    e = { ..._g.defaultOptions, ...e };
+    e = { ...bg.defaultOptions, ...e };
     let t = this.multiView = e.multiView;
     if (e.context && t && (X("Renderer created with both a context and multiview enabled. Disabling multiView as both cannot work together."), t = !1), t ? this.canvas = J.get().createCanvas(this._renderer.canvas.width, this._renderer.canvas.height) : this.canvas = this._renderer.view.canvas, e.context)
       this.initFromContext(e.context);
@@ -33628,13 +33628,13 @@ const Lu = class _g {
     r.uint32Indices = i || !!n.uint32ElementIndex, r.uniformBufferObject = i, r.vertexArrayObject = i || !!n.vertexArrayObject, r.srgbTextures = i || !!n.srgb, r.nonPowOf2wrapping = i, r.nonPowOf2mipmaps = i, r.msaa = i, r.uint32Indices || X("Provided WebGL context does not support 32 index buffer, large scenes may not render correctly");
   }
 };
-Lu.extension = {
+Gu.extension = {
   type: [
     w.WebGLSystem
   ],
   name: "context"
 };
-Lu.defaultOptions = {
+Gu.defaultOptions = {
   /**
    * {@link WebGLOptions.context}
    * @default null
@@ -33666,15 +33666,15 @@ Lu.defaultOptions = {
    */
   multiView: !1
 };
-let bg = Lu;
-function Nu(s, e) {
+let xg = Gu;
+function Lu(s, e) {
   for (const t in s.attributes) {
     const r = s.attributes[t], i = e[t];
     i ? (r.format ?? (r.format = i.format), r.offset ?? (r.offset = i.offset), r.instance ?? (r.instance = i.instance)) : X(`Attribute ${t} is not present in the shader, but is present in the geometry. Unable to infer attribute details.`);
   }
-  W2(s);
+  z2(s);
 }
-function W2(s) {
+function z2(s) {
   const { buffers: e, attributes: t } = s, r = {}, i = {};
   for (const n in e) {
     const o = e[n];
@@ -33689,8 +33689,8 @@ function W2(s) {
     o.stride ?? (o.stride = r[o.buffer.uid]), o.start ?? (o.start = i[o.buffer.uid]), i[o.buffer.uid] += Gt(o.format).stride;
   }
 }
-var Xi = /* @__PURE__ */ ((s) => (s[s.RGBA = 6408] = "RGBA", s[s.RGB = 6407] = "RGB", s[s.RG = 33319] = "RG", s[s.RED = 6403] = "RED", s[s.RGBA_INTEGER = 36249] = "RGBA_INTEGER", s[s.RGB_INTEGER = 36248] = "RGB_INTEGER", s[s.RG_INTEGER = 33320] = "RG_INTEGER", s[s.RED_INTEGER = 36244] = "RED_INTEGER", s[s.ALPHA = 6406] = "ALPHA", s[s.LUMINANCE = 6409] = "LUMINANCE", s[s.LUMINANCE_ALPHA = 6410] = "LUMINANCE_ALPHA", s[s.DEPTH_COMPONENT = 6402] = "DEPTH_COMPONENT", s[s.DEPTH_STENCIL = 34041] = "DEPTH_STENCIL", s))(Xi || {}), Hu = /* @__PURE__ */ ((s) => (s[s.TEXTURE_2D = 3553] = "TEXTURE_2D", s[s.TEXTURE_CUBE_MAP = 34067] = "TEXTURE_CUBE_MAP", s[s.TEXTURE_2D_ARRAY = 35866] = "TEXTURE_2D_ARRAY", s[s.TEXTURE_CUBE_MAP_POSITIVE_X = 34069] = "TEXTURE_CUBE_MAP_POSITIVE_X", s[s.TEXTURE_CUBE_MAP_NEGATIVE_X = 34070] = "TEXTURE_CUBE_MAP_NEGATIVE_X", s[s.TEXTURE_CUBE_MAP_POSITIVE_Y = 34071] = "TEXTURE_CUBE_MAP_POSITIVE_Y", s[s.TEXTURE_CUBE_MAP_NEGATIVE_Y = 34072] = "TEXTURE_CUBE_MAP_NEGATIVE_Y", s[s.TEXTURE_CUBE_MAP_POSITIVE_Z = 34073] = "TEXTURE_CUBE_MAP_POSITIVE_Z", s[s.TEXTURE_CUBE_MAP_NEGATIVE_Z = 34074] = "TEXTURE_CUBE_MAP_NEGATIVE_Z", s))(Hu || {}), xg = /* @__PURE__ */ ((s) => (s[s.CLAMP = 33071] = "CLAMP", s[s.REPEAT = 10497] = "REPEAT", s[s.MIRRORED_REPEAT = 33648] = "MIRRORED_REPEAT", s))(xg || {}), ie = /* @__PURE__ */ ((s) => (s[s.UNSIGNED_BYTE = 5121] = "UNSIGNED_BYTE", s[s.UNSIGNED_SHORT = 5123] = "UNSIGNED_SHORT", s[s.UNSIGNED_SHORT_5_6_5 = 33635] = "UNSIGNED_SHORT_5_6_5", s[s.UNSIGNED_SHORT_4_4_4_4 = 32819] = "UNSIGNED_SHORT_4_4_4_4", s[s.UNSIGNED_SHORT_5_5_5_1 = 32820] = "UNSIGNED_SHORT_5_5_5_1", s[s.UNSIGNED_INT = 5125] = "UNSIGNED_INT", s[s.UNSIGNED_INT_10F_11F_11F_REV = 35899] = "UNSIGNED_INT_10F_11F_11F_REV", s[s.UNSIGNED_INT_2_10_10_10_REV = 33640] = "UNSIGNED_INT_2_10_10_10_REV", s[s.UNSIGNED_INT_24_8 = 34042] = "UNSIGNED_INT_24_8", s[s.UNSIGNED_INT_5_9_9_9_REV = 35902] = "UNSIGNED_INT_5_9_9_9_REV", s[s.BYTE = 5120] = "BYTE", s[s.SHORT = 5122] = "SHORT", s[s.INT = 5124] = "INT", s[s.FLOAT = 5126] = "FLOAT", s[s.FLOAT_32_UNSIGNED_INT_24_8_REV = 36269] = "FLOAT_32_UNSIGNED_INT_24_8_REV", s[s.HALF_FLOAT = 36193] = "HALF_FLOAT", s))(ie || {});
-const kc = {
+var Xi = /* @__PURE__ */ ((s) => (s[s.RGBA = 6408] = "RGBA", s[s.RGB = 6407] = "RGB", s[s.RG = 33319] = "RG", s[s.RED = 6403] = "RED", s[s.RGBA_INTEGER = 36249] = "RGBA_INTEGER", s[s.RGB_INTEGER = 36248] = "RGB_INTEGER", s[s.RG_INTEGER = 33320] = "RG_INTEGER", s[s.RED_INTEGER = 36244] = "RED_INTEGER", s[s.ALPHA = 6406] = "ALPHA", s[s.LUMINANCE = 6409] = "LUMINANCE", s[s.LUMINANCE_ALPHA = 6410] = "LUMINANCE_ALPHA", s[s.DEPTH_COMPONENT = 6402] = "DEPTH_COMPONENT", s[s.DEPTH_STENCIL = 34041] = "DEPTH_STENCIL", s))(Xi || {}), Nu = /* @__PURE__ */ ((s) => (s[s.TEXTURE_2D = 3553] = "TEXTURE_2D", s[s.TEXTURE_CUBE_MAP = 34067] = "TEXTURE_CUBE_MAP", s[s.TEXTURE_2D_ARRAY = 35866] = "TEXTURE_2D_ARRAY", s[s.TEXTURE_CUBE_MAP_POSITIVE_X = 34069] = "TEXTURE_CUBE_MAP_POSITIVE_X", s[s.TEXTURE_CUBE_MAP_NEGATIVE_X = 34070] = "TEXTURE_CUBE_MAP_NEGATIVE_X", s[s.TEXTURE_CUBE_MAP_POSITIVE_Y = 34071] = "TEXTURE_CUBE_MAP_POSITIVE_Y", s[s.TEXTURE_CUBE_MAP_NEGATIVE_Y = 34072] = "TEXTURE_CUBE_MAP_NEGATIVE_Y", s[s.TEXTURE_CUBE_MAP_POSITIVE_Z = 34073] = "TEXTURE_CUBE_MAP_POSITIVE_Z", s[s.TEXTURE_CUBE_MAP_NEGATIVE_Z = 34074] = "TEXTURE_CUBE_MAP_NEGATIVE_Z", s))(Nu || {}), yg = /* @__PURE__ */ ((s) => (s[s.CLAMP = 33071] = "CLAMP", s[s.REPEAT = 10497] = "REPEAT", s[s.MIRRORED_REPEAT = 33648] = "MIRRORED_REPEAT", s))(yg || {}), ie = /* @__PURE__ */ ((s) => (s[s.UNSIGNED_BYTE = 5121] = "UNSIGNED_BYTE", s[s.UNSIGNED_SHORT = 5123] = "UNSIGNED_SHORT", s[s.UNSIGNED_SHORT_5_6_5 = 33635] = "UNSIGNED_SHORT_5_6_5", s[s.UNSIGNED_SHORT_4_4_4_4 = 32819] = "UNSIGNED_SHORT_4_4_4_4", s[s.UNSIGNED_SHORT_5_5_5_1 = 32820] = "UNSIGNED_SHORT_5_5_5_1", s[s.UNSIGNED_INT = 5125] = "UNSIGNED_INT", s[s.UNSIGNED_INT_10F_11F_11F_REV = 35899] = "UNSIGNED_INT_10F_11F_11F_REV", s[s.UNSIGNED_INT_2_10_10_10_REV = 33640] = "UNSIGNED_INT_2_10_10_10_REV", s[s.UNSIGNED_INT_24_8 = 34042] = "UNSIGNED_INT_24_8", s[s.UNSIGNED_INT_5_9_9_9_REV = 35902] = "UNSIGNED_INT_5_9_9_9_REV", s[s.BYTE = 5120] = "BYTE", s[s.SHORT = 5122] = "SHORT", s[s.INT = 5124] = "INT", s[s.FLOAT = 5126] = "FLOAT", s[s.FLOAT_32_UNSIGNED_INT_24_8_REV = 36269] = "FLOAT_32_UNSIGNED_INT_24_8_REV", s[s.HALF_FLOAT = 36193] = "HALF_FLOAT", s))(ie || {});
+const Ic = {
   uint8x2: ie.UNSIGNED_BYTE,
   uint8x4: ie.UNSIGNED_BYTE,
   sint8x2: ie.BYTE,
@@ -33722,17 +33722,17 @@ const kc = {
   sint32x3: ie.INT,
   sint32x4: ie.INT
 };
-function yg(s) {
-  return kc[s] ?? kc.float32;
+function vg(s) {
+  return Ic[s] ?? Ic.float32;
 }
-const z2 = {
+const V2 = {
   "point-list": 0,
   "line-list": 1,
   "line-strip": 3,
   "triangle-list": 4,
   "triangle-strip": 5
 };
-class Wu {
+class Hu {
   /** @param renderer - The renderer this System works for. */
   constructor(e) {
     this._geometryVaoHash = /* @__PURE__ */ Object.create(null), this._renderer = e, this._activeGeometry = null, this._activeVao = null, this.hasVao = !0, this.hasInstance = !0, this._renderer.renderableGC.addManagedHash(this, "_geometryVaoHash");
@@ -33817,7 +33817,7 @@ class Wu {
     let u = a[o];
     if (u)
       return a[t._key] = u, u;
-    Nu(e, t._attributeData);
+    Lu(e, t._attributeData);
     const l = e.buffers;
     u = i.createVertexArray(), i.bindVertexArray(u);
     for (let h = 0; h < l.length; h++) {
@@ -33870,7 +33870,7 @@ class Wu {
         o !== h && (i.bind(l), o = h);
         const d = c.location;
         r.enableVertexAttribArray(d);
-        const f = Gt(u.format), g = yg(u.format);
+        const f = Gt(u.format), g = vg(u.format);
         if (c.format?.substring(1, 4) === "int" ? r.vertexAttribIPointer(
           d,
           f.size,
@@ -33905,7 +33905,7 @@ class Wu {
    * @returns This instance of the geometry system.
    */
   draw(e, t, r, i) {
-    const { gl: n } = this._renderer, o = this._activeGeometry, a = z2[e || o.topology];
+    const { gl: n } = this._renderer, o = this._activeGeometry, a = V2[e || o.topology];
     if (i ?? (i = o.instanceCount), o.indexBuffer) {
       const u = o.indexBuffer.data.BYTES_PER_ELEMENT, l = u === 2 ? n.UNSIGNED_SHORT : n.UNSIGNED_INT;
       i !== 1 ? n.drawElementsInstanced(a, t || o.indexBuffer.data.length, l, (r || 0) * u, i) : n.drawElements(a, t || o.indexBuffer.data.length, l, (r || 0) * u);
@@ -33920,13 +33920,13 @@ class Wu {
     this._renderer = null, this.gl = null, this._activeVao = null, this._activeGeometry = null, this._geometryVaoHash = null;
   }
 }
-Wu.extension = {
+Hu.extension = {
   type: [
     w.WebGLSystem
   ],
   name: "geometry"
 };
-const V2 = new _r({
+const X2 = new _r({
   attributes: {
     aPosition: [
       -1,
@@ -33940,12 +33940,12 @@ const V2 = new _r({
       // Top left corner, extending beyond top edge
     ]
   }
-}), zu = class vg {
+}), Wu = class Sg {
   constructor(e) {
     this.useBackBuffer = !1, this._useBackBufferThisRender = !1, this._renderer = e;
   }
   init(e = {}) {
-    const { useBackBuffer: t, antialias: r } = { ...vg.defaultOptions, ...e };
+    const { useBackBuffer: t, antialias: r } = { ...Sg.defaultOptions, ...e };
     this.useBackBuffer = t, this._antialias = r, this._renderer.context.supports.msaa || (X("antialiasing, is not supported on when using the back buffer"), this._antialias = !1), this._state = rt.for2d();
     const i = new Je({
       vertex: `
@@ -33996,7 +33996,7 @@ const V2 = new _r({
   _presentBackBuffer() {
     const e = this._renderer;
     e.renderTarget.finishRenderPass(), this._useBackBufferThisRender && (e.renderTarget.bind(this._targetTexture, !1), this._bigTriangleShader.resources.uTexture = this._backBufferTexture.source, e.encoder.draw({
-      geometry: V2,
+      geometry: X2,
       shader: this._bigTriangleShader,
       state: this._state
     }));
@@ -34020,19 +34020,19 @@ const V2 = new _r({
     this._backBufferTexture && (this._backBufferTexture.destroy(), this._backBufferTexture = null);
   }
 };
-zu.extension = {
+Wu.extension = {
   type: [
     w.WebGLSystem
   ],
   name: "backBuffer",
   priority: 1
 };
-zu.defaultOptions = {
+Wu.defaultOptions = {
   /** if true will use the back buffer where required */
   useBackBuffer: !1
 };
-let Sg = zu;
-class Vu {
+let wg = Wu;
+class zu {
   constructor(e) {
     this._colorMaskCache = 15, this._renderer = e;
   }
@@ -34045,13 +34045,13 @@ class Vu {
     ));
   }
 }
-Vu.extension = {
+zu.extension = {
   type: [
     w.WebGLSystem
   ],
   name: "colorMask"
 };
-class Xu {
+class Vu {
   constructor(e) {
     this.commandFinished = Promise.resolve(), this._renderer = e;
   }
@@ -34068,13 +34068,13 @@ class Xu {
     this._renderer = null;
   }
 }
-Xu.extension = {
+Vu.extension = {
   type: [
     w.WebGLSystem
   ],
   name: "encoder"
 };
-class Yu {
+class Xu {
   constructor(e) {
     this._renderer = e;
   }
@@ -34087,24 +34087,24 @@ class Yu {
   destroy() {
   }
 }
-Yu.extension = {
+Xu.extension = {
   type: [
     w.WebGLSystem
   ],
   name: "limits"
 };
-class wg {
+class Tg {
   constructor() {
     this.width = -1, this.height = -1, this.msaa = !1, this.msaaRenderBuffer = [];
   }
 }
-const Lt = [];
-Lt[xe.NONE] = void 0;
-Lt[xe.DISABLED] = {
+const Nt = [];
+Nt[xe.NONE] = void 0;
+Nt[xe.DISABLED] = {
   stencilWriteMask: 0,
   stencilReadMask: 0
 };
-Lt[xe.RENDERING_MASK_ADD] = {
+Nt[xe.RENDERING_MASK_ADD] = {
   stencilFront: {
     compare: "equal",
     passOp: "increment-clamp"
@@ -34114,7 +34114,7 @@ Lt[xe.RENDERING_MASK_ADD] = {
     passOp: "increment-clamp"
   }
 };
-Lt[xe.RENDERING_MASK_REMOVE] = {
+Nt[xe.RENDERING_MASK_REMOVE] = {
   stencilFront: {
     compare: "equal",
     passOp: "decrement-clamp"
@@ -34124,7 +34124,7 @@ Lt[xe.RENDERING_MASK_REMOVE] = {
     passOp: "decrement-clamp"
   }
 };
-Lt[xe.MASK_ACTIVE] = {
+Nt[xe.MASK_ACTIVE] = {
   stencilWriteMask: 0,
   stencilFront: {
     compare: "equal",
@@ -34135,7 +34135,7 @@ Lt[xe.MASK_ACTIVE] = {
     passOp: "keep"
   }
 };
-Lt[xe.INVERSE_MASK_ACTIVE] = {
+Nt[xe.INVERSE_MASK_ACTIVE] = {
   stencilWriteMask: 0,
   stencilFront: {
     compare: "not-equal",
@@ -34146,7 +34146,7 @@ Lt[xe.INVERSE_MASK_ACTIVE] = {
     passOp: "keep"
   }
 };
-class $u {
+class Yu {
   constructor(e) {
     this._stencilCache = {
       enabled: !1,
@@ -34189,7 +34189,7 @@ class $u {
     this._stencilCache.enabled = !1, this._stencilCache.stencilMode = xe.NONE, this._stencilCache.stencilReference = 0;
   }
   setStencilMode(e, t) {
-    const r = this._renderTargetStencilState[this._activeRenderTarget.uid], i = this._gl, n = Lt[e], o = this._stencilCache;
+    const r = this._renderTargetStencilState[this._activeRenderTarget.uid], i = this._gl, n = Nt[e], o = this._stencilCache;
     if (r.stencilMode = e, r.stencilReference = t, e === xe.DISABLED) {
       this._stencilCache.enabled && (this._stencilCache.enabled = !1, i.disable(i.STENCIL_TEST));
       return;
@@ -34197,13 +34197,13 @@ class $u {
     this._stencilCache.enabled || (this._stencilCache.enabled = !0, i.enable(i.STENCIL_TEST)), (e !== o.stencilMode || o.stencilReference !== t) && (o.stencilMode = e, o.stencilReference = t, i.stencilFunc(this._comparisonFuncMapping[n.stencilBack.compare], t, 255), i.stencilOp(i.KEEP, i.KEEP, this._stencilOpsMapping[n.stencilBack.passOp]));
   }
 }
-$u.extension = {
+Yu.extension = {
   type: [
     w.WebGLSystem
   ],
   name: "stencil"
 };
-class ju {
+class $u {
   constructor(e) {
     this._syncFunctionHash = /* @__PURE__ */ Object.create(null), this._adaptor = e, this._systemCheck();
   }
@@ -34261,7 +34261,7 @@ class ju {
     this._syncFunctionHash = null;
   }
 }
-const qu = {
+const ju = {
   f32: 4,
   i32: 4,
   "vec2<f32>": 8,
@@ -34290,7 +34290,7 @@ const qu = {
   // mat3:     16 * 3,
   // mat4:     16 * 4,
 };
-function Tg(s) {
+function Eg(s) {
   const e = s.map((n) => ({
     data: n,
     offset: 0,
@@ -34299,7 +34299,7 @@ function Tg(s) {
   let r = 0, i = 0;
   for (let n = 0; n < e.length; n++) {
     const o = e[n];
-    if (r = qu[o.data.type], !r)
+    if (r = ju[o.data.type], !r)
       throw new Error(`Unknown type ${o.data.type}`);
     o.data.size > 1 && (r = Math.max(r, t) * o.data.size);
     const a = r === 12 ? 16 : r;
@@ -34309,7 +34309,7 @@ function Tg(s) {
   }
   return i = Math.ceil(i / 16) * 16, { uboElements: e, size: i };
 }
-const $t = [
+const jt = [
   // uploading pixi matrix object to mat3
   {
     type: "mat3x3<f32>",
@@ -34417,7 +34417,7 @@ const $t = [
         `
   }
 ];
-function Ku(s, e, t, r) {
+function qu(s, e, t, r) {
   const i = [`
         var v = null;
         var v2 = null;
@@ -34430,12 +34430,12 @@ function Ku(s, e, t, r) {
   for (let a = 0; a < s.length; a++) {
     const u = s[a], l = u.data.name;
     let h = !1, c = 0;
-    for (let d = 0; d < $t.length; d++)
-      if ($t[d].test(u.data)) {
+    for (let d = 0; d < jt.length; d++)
+      if (jt[d].test(u.data)) {
         c = u.offset / 4, i.push(
           `name = "${l}";`,
           `offset += ${c - n};`,
-          $t[d][e] || $t[d].ubo
+          jt[d][e] || jt[d].ubo
         ), h = !0;
         break;
       }
@@ -34472,7 +34472,7 @@ function Er(s, e) {
         }
     `;
 }
-const Zu = {
+const Ku = {
   f32: `
         data[offset] = v;`,
   i32: `
@@ -34526,8 +34526,8 @@ const Zu = {
   "mat4x3<f32>": Er(4, 3),
   "mat2x4<f32>": Er(2, 4),
   "mat3x4<f32>": Er(3, 4)
-}, Eg = {
-  ...Zu,
+}, Ag = {
+  ...Ku,
   "mat2x2<f32>": `
         data[offset] = v[0];
         data[offset + 1] = v[1];
@@ -34535,8 +34535,8 @@ const Zu = {
         data[offset + 3] = v[3];
     `
 };
-function Ag(s, e) {
-  const t = Math.max(qu[s.data.type] / 16, 1), r = s.data.value.length / s.data.size, i = (4 - r % 4) % 4, n = s.data.type.indexOf("i32") >= 0 ? "dataInt32" : "data";
+function Cg(s, e) {
+  const t = Math.max(ju[s.data.type] / 16, 1), r = s.data.value.length / s.data.size, i = (4 - r % 4) % 4, n = s.data.type.indexOf("i32") >= 0 ? "dataInt32" : "data";
   return `
         v = uv.${s.data.name};
         offset += ${e};
@@ -34555,27 +34555,27 @@ function Ag(s, e) {
         }
     `;
 }
-function Cg(s) {
-  return Ku(
+function Pg(s) {
+  return qu(
     s,
     "uboStd40",
-    Ag,
-    Zu
+    Cg,
+    Ku
   );
 }
-class Qu extends ju {
+class Zu extends $u {
   constructor() {
     super({
-      createUboElements: Tg,
-      generateUboSync: Cg
+      createUboElements: Eg,
+      generateUboSync: Pg
     });
   }
 }
-Qu.extension = {
+Zu.extension = {
   type: [w.WebGLSystem],
   name: "ubo"
 };
-class Pg {
+class Bg {
   constructor() {
     this._clearColorCache = [0, 0, 0, 0], this._viewPortCache = new te();
   }
@@ -34633,7 +34633,7 @@ class Pg {
     ), i.bindFramebuffer(i.FRAMEBUFFER, r.framebuffer);
   }
   initGpuRenderTarget(e) {
-    const r = this._renderer.gl, i = new wg();
+    const r = this._renderer.gl, i = new Tg();
     return e.colorTexture instanceof Tt ? (this._renderer.context.ensureCanvasSize(e.colorTexture.resource), i.framebuffer = null, i) : (this._initColor(e, i), r.bindFramebuffer(r.FRAMEBUFFER, null), i);
   }
   destroyGpuRenderTarget(e) {
@@ -34646,9 +34646,9 @@ class Pg {
     if (!t)
       return;
     const i = this._renderTargetSystem;
-    typeof t == "boolean" && (t = t ? je.ALL : je.NONE);
+    typeof t == "boolean" && (t = t ? $e.ALL : $e.NONE);
     const n = this._renderer.gl;
-    if (t & je.COLOR) {
+    if (t & $e.COLOR) {
       r ?? (r = i.defaultClearColor);
       const o = this._clearColorCache, a = r;
       (o[0] !== a[0] || o[1] !== a[1] || o[2] !== a[2] || o[3] !== a[3]) && (o[0] = a[0], o[1] = a[1], o[2] = a[2], o[3] = a[3], n.clearColor(a[0], a[1], a[2], a[3]));
@@ -34760,13 +34760,13 @@ class Pg {
     }
   }
 }
-function Bg(s, e, t, r, i, n) {
+function Rg(s, e, t, r, i, n) {
   const o = n ? 1 : -1;
   return s.identity(), s.a = 1 / r * 2, s.d = o * (1 / i * 2), s.tx = -1 - e * s.a, s.ty = -o - t * s.d, s;
 }
 const cr = /* @__PURE__ */ new Map();
 gr.register(cr);
-function Ju(s, e) {
+function Qu(s, e) {
   if (!cr.has(s)) {
     const t = new O({
       source: new Tt({
@@ -34780,19 +34780,19 @@ function Ju(s, e) {
   }
   return cr.get(s);
 }
-function X2(s) {
+function Y2(s) {
   return cr.has(s);
 }
-function Rg(s) {
+function Mg(s) {
   const e = s.colorTexture.source.resource;
   return globalThis.HTMLCanvasElement && e instanceof HTMLCanvasElement && document.body.contains(e);
 }
-const Mg = class Dg {
+const Dg = class Fg {
   /**
    * @param [descriptor] - Options for creating a render target.
    */
   constructor(e = {}) {
-    if (this.uid = ae("renderTarget"), this.colorTextures = [], this.dirtyId = 0, this.isRoot = !1, this._size = new Float32Array(2), this._managedColorTextures = !1, e = { ...Dg.defaultOptions, ...e }, this.stencil = e.stencil, this.depth = e.depth, this.isRoot = e.isRoot, typeof e.colorTextures == "number") {
+    if (this.uid = ae("renderTarget"), this.colorTextures = [], this.dirtyId = 0, this.isRoot = !1, this._size = new Float32Array(2), this._managedColorTextures = !1, e = { ...Fg.defaultOptions, ...e }, this.stencil = e.stencil, this.depth = e.depth, this.isRoot = e.isRoot, typeof e.colorTextures == "number") {
       this._managedColorTextures = !0;
       for (let t = 0; t < e.colorTextures; t++)
         this.colorTextures.push(
@@ -34863,7 +34863,7 @@ const Mg = class Dg {
     }), this.depthStencilTexture && (this.depthStencilTexture.destroy(), delete this.depthStencilTexture);
   }
 };
-Mg.defaultOptions = {
+Dg.defaultOptions = {
   /** the width of the RenderTarget */
   width: 0,
   /** the height of the RenderTarget */
@@ -34882,8 +34882,8 @@ Mg.defaultOptions = {
   /** is this a root element, true if this is gl context owners render target */
   isRoot: !1
 };
-let Yi = Mg;
-class el {
+let Yi = Dg;
+class Ju {
   constructor(e) {
     this.rootViewPort = new te(), this.viewport = new te(), this.onRenderTargetChange = new $a("onRenderTargetChange"), this.projectionMatrix = new W(), this.defaultClearColor = [0, 0, 0, 0], this._renderSurfaceToRenderTargetHash = /* @__PURE__ */ new Map(), this._gpuRenderTargetHash = /* @__PURE__ */ Object.create(null), this._renderTargetStack = [], this._renderer = e, e.renderableGC.addManagedHash(this, "_gpuRenderTargetHash");
   }
@@ -34910,7 +34910,7 @@ class el {
       t,
       r,
       i
-    ), this.rootViewPort.copyFrom(this.viewport), this.rootRenderTarget = this.renderTarget, this.renderingToScreen = Rg(this.rootRenderTarget), this.adaptor.prerender?.(this.rootRenderTarget);
+    ), this.rootViewPort.copyFrom(this.viewport), this.rootRenderTarget = this.renderTarget, this.renderingToScreen = Mg(this.rootRenderTarget), this.adaptor.prerender?.(this.rootRenderTarget);
   }
   postrender() {
     this.adaptor.postrender?.(this.rootRenderTarget);
@@ -34938,7 +34938,7 @@ class el {
       l.x = i.x * d + 0.5 | 0, l.y = i.y * d + 0.5 | 0, l.width = i.width * d + 0.5 | 0, l.height = i.height * d + 0.5 | 0;
     } else
       l.x = 0, l.y = 0, l.width = h, l.height = c;
-    return Bg(
+    return Rg(
       this.projectionMatrix,
       0,
       0,
@@ -34947,7 +34947,7 @@ class el {
       !n.isRoot
     ), this.adaptor.startRenderPass(n, t, r, l), o && this.onRenderTargetChange.emit(n), n;
   }
-  clear(e, t = je.ALL, r) {
+  clear(e, t = $e.ALL, r) {
     t && (e && (e = this.getRenderTarget(e)), this.adaptor.clear(
       e || this.renderTarget,
       t,
@@ -34965,7 +34965,7 @@ class el {
    * @param clearColor - the color to clear to
    * @param frame - the frame to use when rendering to the render surface
    */
-  push(e, t = je.ALL, r, i) {
+  push(e, t = $e.ALL, r, i) {
     const n = this.bind(e, t, r, i);
     return this._renderTargetStack.push({
       renderTarget: n,
@@ -35053,7 +35053,7 @@ class el {
   }
   _initRenderTarget(e) {
     let t = null;
-    return Tt.test(e) && (e = Ju(e).source), e instanceof Yi ? t = e : e instanceof ge && (t = new Yi({
+    return Tt.test(e) && (e = Qu(e).source), e instanceof Yi ? t = e : e instanceof ge && (t = new Yi({
       colorTextures: [e]
     }), e.source instanceof Tt && (t.isRoot = !0), e.once("destroy", () => {
       t.destroy(), this._renderSurfaceToRenderTargetHash.delete(e);
@@ -35068,12 +35068,12 @@ class el {
     this.renderTarget = null, this.renderSurface = null;
   }
 }
-class tl extends el {
+class el extends Ju {
   constructor(e) {
-    super(e), this.adaptor = new Pg(), this.adaptor.init(e, this);
+    super(e), this.adaptor = new Bg(), this.adaptor.init(e, this);
   }
 }
-tl.extension = {
+el.extension = {
   type: [w.WebGLSystem],
   name: "renderTarget"
 };
@@ -35102,7 +35102,7 @@ class Rn extends Qe {
     this.destroyed = !0, e && this.buffer.destroy(), this.emit("change", this), this.buffer = null;
   }
 }
-function Fg(s, e) {
+function Ig(s, e) {
   const t = [], r = [`
         var g = s.groups;
         var sS = r.shader;
@@ -35156,9 +35156,9 @@ function Fg(s, e) {
 `);
   return new Function("r", "s", "sD", a);
 }
-class Y2 {
+class $2 {
 }
-class Ig {
+class kg {
   /**
    * Makes a new Pixi program.
    * @param program - webgl program
@@ -35172,7 +35172,7 @@ class Ig {
     this.uniformData = null, this.uniformGroups = null, this.uniformDirtyGroups = null, this.uniformBlockBindings = null, this.program = null;
   }
 }
-function ba(s, e, t) {
+function xa(s, e, t) {
   const r = s.createShader(e);
   return s.shaderSource(r, t), s.compileShader(r), r;
 }
@@ -35182,7 +35182,7 @@ function wo(s) {
     e[t] = !1;
   return e;
 }
-function rl(s, e) {
+function tl(s, e) {
   switch (s) {
     case "float":
       return 0;
@@ -35258,8 +35258,8 @@ function rl(s, e) {
   }
   return null;
 }
-let yi = null;
-const Uc = {
+let vi = null;
+const kc = {
   FLOAT: "float",
   FLOAT_VEC2: "vec2",
   FLOAT_VEC3: "vec3",
@@ -35288,7 +35288,7 @@ const Uc = {
   SAMPLER_2D_ARRAY: "sampler2DArray",
   INT_SAMPLER_2D_ARRAY: "sampler2DArray",
   UNSIGNED_INT_SAMPLER_2D_ARRAY: "sampler2DArray"
-}, $2 = {
+}, j2 = {
   float: "float32",
   vec2: "float32x2",
   vec3: "float32x3",
@@ -35306,28 +35306,28 @@ const Uc = {
   bvec3: "uint32x3",
   bvec4: "uint32x4"
 };
-function sl(s, e) {
-  if (!yi) {
-    const t = Object.keys(Uc);
-    yi = {};
+function rl(s, e) {
+  if (!vi) {
+    const t = Object.keys(kc);
+    vi = {};
     for (let r = 0; r < t.length; ++r) {
       const i = t[r];
-      yi[s[i]] = Uc[i];
+      vi[s[i]] = kc[i];
     }
   }
-  return yi[e];
+  return vi[e];
 }
-function kg(s, e) {
-  const t = sl(s, e);
-  return $2[t] || "float32";
+function Ug(s, e) {
+  const t = rl(s, e);
+  return j2[t] || "float32";
 }
-function Ug(s, e, t = !1) {
+function Og(s, e, t = !1) {
   const r = {}, i = e.getProgramParameter(s, e.ACTIVE_ATTRIBUTES);
   for (let o = 0; o < i; o++) {
     const a = e.getActiveAttrib(s, o);
     if (a.name.startsWith("gl_"))
       continue;
-    const u = kg(e, a.type);
+    const u = Ug(e, a.type);
     r[a.name] = {
       location: 0,
       // set further down..
@@ -35349,7 +35349,7 @@ function Ug(s, e, t = !1) {
       r[n[o]].location = e.getAttribLocation(s, n[o]);
   return r;
 }
-function Og(s, e) {
+function Gg(s, e) {
   if (!e.ACTIVE_UNIFORM_BLOCKS)
     return {};
   const t = {}, r = e.getProgramParameter(s, e.ACTIVE_UNIFORM_BLOCKS);
@@ -35363,22 +35363,22 @@ function Og(s, e) {
   }
   return t;
 }
-function Gg(s, e) {
+function Lg(s, e) {
   const t = {}, r = e.getProgramParameter(s, e.ACTIVE_UNIFORMS);
   for (let i = 0; i < r; i++) {
-    const n = e.getActiveUniform(s, i), o = n.name.replace(/\[.*?\]$/, ""), a = !!n.name.match(/\[.*?\]$/), u = sl(e, n.type);
+    const n = e.getActiveUniform(s, i), o = n.name.replace(/\[.*?\]$/, ""), a = !!n.name.match(/\[.*?\]$/), u = rl(e, n.type);
     t[o] = {
       name: o,
       index: i,
       type: u,
       size: n.size,
       isArray: a,
-      value: rl(u, n.size)
+      value: tl(u, n.size)
     };
   }
   return t;
 }
-function Oc(s, e) {
+function Uc(s, e) {
   const t = s.getShaderSource(e).split(`
 `).map((l, h) => `${h}: ${l}`), r = s.getShaderInfoLog(e), i = r.split(`
 `), n = {}, o = i.map((l) => parseFloat(l.replace(/^ERROR\: 0\:([\d]+)\:.*$/, "$1"))).filter((l) => l && !n[l] ? (n[l] = !0, !0) : !1), a = [""];
@@ -35389,37 +35389,37 @@ function Oc(s, e) {
 `);
   a[0] = u, console.error(r), console.groupCollapsed("click to view full shader code"), console.warn(...a), console.groupEnd();
 }
-function Lg(s, e, t, r) {
-  s.getProgramParameter(e, s.LINK_STATUS) || (s.getShaderParameter(t, s.COMPILE_STATUS) || Oc(s, t), s.getShaderParameter(r, s.COMPILE_STATUS) || Oc(s, r), console.error("PixiJS Error: Could not initialize shader."), s.getProgramInfoLog(e) !== "" && console.warn("PixiJS Warning: gl.getProgramInfoLog()", s.getProgramInfoLog(e)));
+function Ng(s, e, t, r) {
+  s.getProgramParameter(e, s.LINK_STATUS) || (s.getShaderParameter(t, s.COMPILE_STATUS) || Uc(s, t), s.getShaderParameter(r, s.COMPILE_STATUS) || Uc(s, r), console.error("PixiJS Error: Could not initialize shader."), s.getProgramInfoLog(e) !== "" && console.warn("PixiJS Warning: gl.getProgramInfoLog()", s.getProgramInfoLog(e)));
 }
-function Ng(s, e) {
-  const t = ba(s, s.VERTEX_SHADER, e.vertex), r = ba(s, s.FRAGMENT_SHADER, e.fragment), i = s.createProgram();
+function Hg(s, e) {
+  const t = xa(s, s.VERTEX_SHADER, e.vertex), r = xa(s, s.FRAGMENT_SHADER, e.fragment), i = s.createProgram();
   s.attachShader(i, t), s.attachShader(i, r);
   const n = e.transformFeedbackVaryings;
   n && (typeof s.transformFeedbackVaryings != "function" ? X("TransformFeedback is not supported but TransformFeedbackVaryings are given.") : s.transformFeedbackVaryings(
     i,
     n.names,
     n.bufferMode === "separate" ? s.SEPARATE_ATTRIBS : s.INTERLEAVED_ATTRIBS
-  )), s.linkProgram(i), s.getProgramParameter(i, s.LINK_STATUS) || Lg(s, i, t, r), e._attributeData = Ug(
+  )), s.linkProgram(i), s.getProgramParameter(i, s.LINK_STATUS) || Ng(s, i, t, r), e._attributeData = Og(
     i,
     s,
     !/^[ \t]*#[ \t]*version[ \t]+300[ \t]+es[ \t]*$/m.test(e.vertex)
-  ), e._uniformData = Gg(i, s), e._uniformBlockData = Og(i, s), s.deleteShader(t), s.deleteShader(r);
+  ), e._uniformData = Lg(i, s), e._uniformBlockData = Gg(i, s), s.deleteShader(t), s.deleteShader(r);
   const o = {};
   for (const u in e._uniformData) {
     const l = e._uniformData[u];
     o[u] = {
       location: s.getUniformLocation(i, u),
-      value: rl(l.type, l.size)
+      value: tl(l.type, l.size)
     };
   }
-  return new Ig(i, o);
+  return new kg(i, o);
 }
-const vi = {
+const Si = {
   textureCount: 0,
   blockIndex: 0
 };
-class il {
+class sl {
   constructor(e) {
     this._activeProgram = null, this._programDataHash = /* @__PURE__ */ Object.create(null), this._shaderSyncFunctions = /* @__PURE__ */ Object.create(null), this._renderer = e, this._renderer.renderableGC.addManagedHash(this, "_programDataHash");
   }
@@ -35435,16 +35435,16 @@ class il {
   bind(e, t) {
     if (this._setProgram(e.glProgram), t)
       return;
-    vi.textureCount = 0, vi.blockIndex = 0;
+    Si.textureCount = 0, Si.blockIndex = 0;
     let r = this._shaderSyncFunctions[e.glProgram._key];
-    r || (r = this._shaderSyncFunctions[e.glProgram._key] = this._generateShaderSync(e, this)), this._renderer.buffer.nextBindBase(!!e.glProgram.transformFeedbackVaryings), r(this._renderer, e, vi);
+    r || (r = this._shaderSyncFunctions[e.glProgram._key] = this._generateShaderSync(e, this)), this._renderer.buffer.nextBindBase(!!e.glProgram.transformFeedbackVaryings), r(this._renderer, e, Si);
   }
   /**
    * Updates the uniform group.
    * @param uniformGroup - the uniform group to update
    */
   updateUniformGroup(e) {
-    this._renderer.uniformGroup.updateUniformGroup(e, this._activeProgram, vi);
+    this._renderer.uniformGroup.updateUniformGroup(e, this._activeProgram, Si);
   }
   /**
    * Binds a uniform block to the shader.
@@ -35479,7 +35479,7 @@ class il {
   }
   _createProgramData(e) {
     const t = e._key;
-    return this._programDataHash[t] = Ng(this._gl, e), this._programDataHash[t];
+    return this._programDataHash[t] = Hg(this._gl, e), this._programDataHash[t];
   }
   destroy() {
     for (const e of Object.keys(this._programDataHash))
@@ -35495,19 +35495,19 @@ class il {
    * @ignore
    */
   _generateShaderSync(e, t) {
-    return Fg(e, t);
+    return Ig(e, t);
   }
   resetState() {
     this._activeProgram = null;
   }
 }
-il.extension = {
+sl.extension = {
   type: [
     w.WebGLSystem
   ],
   name: "shader"
 };
-const Hg = {
+const Wg = {
   f32: `if (cv !== v) {
             cu.value = v;
             gl.uniform1f(location, v);
@@ -35599,7 +35599,7 @@ const Hg = {
   "mat2x2<f32>": "gl.uniformMatrix2fv(location, false, v);",
   "mat3x3<f32>": "gl.uniformMatrix3fv(location, false, v);",
   "mat4x4<f32>": "gl.uniformMatrix4fv(location, false, v);"
-}, Wg = {
+}, zg = {
   f32: "gl.uniform1fv(location, v);",
   "vec2<f32>": "gl.uniform2fv(location, v);",
   "vec3<f32>": "gl.uniform3fv(location, v);",
@@ -35620,7 +35620,7 @@ const Hg = {
   "vec3<bool>": "gl.uniform3iv(location, v);",
   "vec4<bool>": "gl.uniform4iv(location, v);"
 };
-function zg(s, e) {
+function Vg(s, e) {
   const t = [`
         var v = null;
         var cv = null;
@@ -35642,15 +35642,15 @@ function zg(s, e) {
     }
     const i = s.uniformStructures[r];
     let n = !1;
-    for (let o = 0; o < $t.length; o++) {
-      const a = $t[o];
+    for (let o = 0; o < jt.length; o++) {
+      const a = jt[o];
       if (i.type === a.type && a.test(i)) {
-        t.push(`name = "${r}";`, $t[o].uniform), n = !0;
+        t.push(`name = "${r}";`, jt[o].uniform), n = !0;
         break;
       }
     }
     if (!n) {
-      const a = (i.size === 1 ? Hg : Wg)[i.type].replace("location", `ud["${r}"].location`);
+      const a = (i.size === 1 ? Wg : zg)[i.type].replace("location", `ud["${r}"].location`);
       t.push(`
             cu = ud["${r}"];
             cv = cu.value;
@@ -35661,7 +35661,7 @@ function zg(s, e) {
   return new Function("ud", "uv", "renderer", "syncData", t.join(`
 `));
 }
-class nl {
+class il {
   /** @param renderer - The renderer this System works for. */
   constructor(e) {
     this._cache = {}, this._uniformGroupSyncHash = {}, this._renderer = e, this.gl = null, this._cache = {};
@@ -35693,7 +35693,7 @@ class nl {
     return this._cache[i] || (this._cache[i] = this._generateUniformsSync(e, t._uniformData)), r[t._key] = this._cache[i], r[t._key];
   }
   _generateUniformsSync(e, t) {
-    return zg(e, t);
+    return Vg(e, t);
   }
   /**
    * Takes a uniform group and data and generates a unique signature for them.
@@ -35714,19 +35714,19 @@ class nl {
     this._renderer = null, this._cache = null;
   }
 }
-nl.extension = {
+il.extension = {
   type: [
     w.WebGLSystem
   ],
   name: "uniformGroup"
 };
-function j2(s) {
+function q2(s) {
   return s = s.replaceAll("texture2D", "texture").replaceAll("gl_FragColor", "finalColor").replaceAll("varying", "in"), s = `
         out vec4 finalColor;
     ${s}
     `, s;
 }
-const q2 = {
+const K2 = {
   float: 1,
   vec2: 2,
   vec3: 3,
@@ -35748,10 +35748,10 @@ const q2 = {
   mat4: 16,
   sampler2D: 1
 };
-function K2(s) {
-  return q2[s];
+function Z2(s) {
+  return K2[s];
 }
-function Vg(s) {
+function Xg(s) {
   const e = {};
   if (e.normal = [s.ONE, s.ONE_MINUS_SRC_ALPHA], e.add = [s.ONE, s.ONE], e.multiply = [s.DST_COLOR, s.ONE_MINUS_SRC_ALPHA, s.ONE, s.ONE_MINUS_SRC_ALPHA], e.screen = [s.ONE, s.ONE_MINUS_SRC_COLOR, s.ONE, s.ONE_MINUS_SRC_ALPHA], e.none = [0, 0], e["normal-npm"] = [s.SRC_ALPHA, s.ONE_MINUS_SRC_ALPHA, s.ONE, s.ONE_MINUS_SRC_ALPHA], e["add-npm"] = [s.SRC_ALPHA, s.ONE, s.ONE, s.ONE], e["screen-npm"] = [s.SRC_ALPHA, s.ONE_MINUS_SRC_COLOR, s.ONE, s.ONE_MINUS_SRC_ALPHA], e.erase = [s.ZERO, s.ONE_MINUS_SRC_ALPHA], !(s instanceof J.get().getWebGLRenderingContext()))
     e.min = [s.ONE, s.ONE, s.ONE, s.ONE, s.MIN, s.MIN], e.max = [s.ONE, s.ONE, s.ONE, s.ONE, s.MAX, s.MAX];
@@ -35761,15 +35761,15 @@ function Vg(s) {
   }
   return e;
 }
-const Z2 = 0, Q2 = 1, J2 = 2, ev = 3, tv = 4, rv = 5, Xg = class xa {
+const Q2 = 0, J2 = 1, ev = 2, tv = 3, rv = 4, sv = 5, Yg = class ya {
   constructor(e) {
-    this._invertFrontFace = !1, this.gl = null, this.stateId = 0, this.polygonOffset = 0, this.blendMode = "none", this._blendEq = !1, this.map = [], this.map[Z2] = this.setBlend, this.map[Q2] = this.setOffset, this.map[J2] = this.setCullFace, this.map[ev] = this.setDepthTest, this.map[tv] = this.setFrontFace, this.map[rv] = this.setDepthMask, this.checks = [], this.defaultState = rt.for2d(), e.renderTarget.onRenderTargetChange.add(this);
+    this._invertFrontFace = !1, this.gl = null, this.stateId = 0, this.polygonOffset = 0, this.blendMode = "none", this._blendEq = !1, this.map = [], this.map[Q2] = this.setBlend, this.map[J2] = this.setOffset, this.map[ev] = this.setCullFace, this.map[tv] = this.setDepthTest, this.map[rv] = this.setFrontFace, this.map[sv] = this.setDepthMask, this.checks = [], this.defaultState = rt.for2d(), e.renderTarget.onRenderTargetChange.add(this);
   }
   onRenderTargetChange(e) {
     this._invertFrontFace = !e.isRoot, this._cullFace ? this.setFrontFace(this._frontFace) : this._frontFaceDirty = !0;
   }
   contextChange(e) {
-    this.gl = e, this.blendModesMap = Vg(e), this.resetState();
+    this.gl = e, this.blendModesMap = Xg(e), this.resetState();
   }
   /**
    * Sets the current state
@@ -35802,14 +35802,14 @@ const Z2 = 0, Q2 = 1, J2 = 2, ev = 3, tv = 4, rv = 5, Xg = class xa {
    * @param value - Turn on or off WebGl blending.
    */
   setBlend(e) {
-    this._updateCheck(xa._checkBlendMode, e), this.gl[e ? "enable" : "disable"](this.gl.BLEND);
+    this._updateCheck(ya._checkBlendMode, e), this.gl[e ? "enable" : "disable"](this.gl.BLEND);
   }
   /**
    * Sets whether to enable or disable polygon offset fill.
    * @param value - Turn on or off webgl polygon offset testing.
    */
   setOffset(e) {
-    this._updateCheck(xa._checkPolygonOffset, e), this.gl[e ? "enable" : "disable"](this.gl.POLYGON_OFFSET_FILL);
+    this._updateCheck(ya._checkPolygonOffset, e), this.gl[e ? "enable" : "disable"](this.gl.POLYGON_OFFSET_FILL);
   }
   /**
    * Sets whether to enable or disable depth test.
@@ -35898,19 +35898,19 @@ const Z2 = 0, Q2 = 1, J2 = 2, ev = 3, tv = 4, rv = 5, Xg = class xa {
     this.gl = null, this.checks.length = 0;
   }
 };
-Xg.extension = {
+Yg.extension = {
   type: [
     w.WebGLSystem
   ],
   name: "state"
 };
-let Yg = Xg;
-class $g {
+let $g = Yg;
+class jg {
   constructor(e) {
-    this.target = Hu.TEXTURE_2D, this.texture = e, this.width = -1, this.height = -1, this.type = ie.UNSIGNED_BYTE, this.internalFormat = Xi.RGBA, this.format = Xi.RGBA, this.samplerType = 0;
+    this.target = Nu.TEXTURE_2D, this.texture = e, this.width = -1, this.height = -1, this.type = ie.UNSIGNED_BYTE, this.internalFormat = Xi.RGBA, this.format = Xi.RGBA, this.samplerType = 0;
   }
 }
-const jg = {
+const qg = {
   id: "buffer",
   upload(s, e, t) {
     e.width === s.width || e.height === s.height ? t.texSubImage2D(
@@ -35935,7 +35935,7 @@ const jg = {
       s.resource
     ), e.width = s.width, e.height = s.height;
   }
-}, sv = {
+}, iv = {
   "bc1-rgba-unorm": !0,
   "bc1-rgba-unorm-srgb": !0,
   "bc2-rgba-unorm": !0,
@@ -35992,12 +35992,12 @@ const jg = {
   "astc-12x10-unorm-srgb": !0,
   "astc-12x12-unorm": !0,
   "astc-12x12-unorm-srgb": !0
-}, qg = {
+}, Kg = {
   id: "compressed",
   upload(s, e, t) {
     t.pixelStorei(t.UNPACK_ALIGNMENT, 4);
     let r = s.pixelWidth, i = s.pixelHeight;
-    const n = !!sv[s.format];
+    const n = !!iv[s.format];
     for (let o = 0; o < s.resource.length; o++) {
       const a = s.resource[o];
       n ? t.compressedTexImage2D(
@@ -36021,7 +36021,7 @@ const jg = {
       ), r = Math.max(r >> 1, 1), i = Math.max(i >> 1, 1);
     }
   }
-}, ol = {
+}, nl = {
   id: "image",
   upload(s, e, t, r) {
     const i = e.width, n = e.height, o = s.pixelWidth, a = s.pixelHeight, u = s.resourceWidth, l = s.resourceHeight;
@@ -36080,7 +36080,7 @@ const jg = {
       s.resource
     ), e.width = o, e.height = a;
   }
-}, Kg = {
+}, Zg = {
   id: "video",
   upload(s, e, t, r) {
     if (!s.isValid) {
@@ -36097,12 +36097,12 @@ const jg = {
       );
       return;
     }
-    ol.upload(s, e, t, r);
+    nl.upload(s, e, t, r);
   }
-}, ya = {
+}, va = {
   linear: 9729,
   nearest: 9728
-}, Zg = {
+}, Qg = {
   linear: {
     linear: 9987,
     nearest: 9985
@@ -36115,7 +36115,7 @@ const jg = {
   "clamp-to-edge": 33071,
   repeat: 10497,
   "mirror-repeat": 33648
-}, Qg = {
+}, Jg = {
   never: 512,
   less: 513,
   equal: 514,
@@ -36125,26 +36125,26 @@ const jg = {
   "greater-equal": 518,
   always: 519
 };
-function va(s, e, t, r, i, n, o, a) {
+function Sa(s, e, t, r, i, n, o, a) {
   const u = n;
   if (!a || s.addressModeU !== "repeat" || s.addressModeV !== "repeat" || s.addressModeW !== "repeat") {
     const l = Ri[o ? "clamp-to-edge" : s.addressModeU], h = Ri[o ? "clamp-to-edge" : s.addressModeV], c = Ri[o ? "clamp-to-edge" : s.addressModeW];
     e[i](u, e.TEXTURE_WRAP_S, l), e[i](u, e.TEXTURE_WRAP_T, h), e.TEXTURE_WRAP_R && e[i](u, e.TEXTURE_WRAP_R, c);
   }
-  if ((!a || s.magFilter !== "linear") && e[i](u, e.TEXTURE_MAG_FILTER, ya[s.magFilter]), t) {
+  if ((!a || s.magFilter !== "linear") && e[i](u, e.TEXTURE_MAG_FILTER, va[s.magFilter]), t) {
     if (!a || s.mipmapFilter !== "linear") {
-      const l = Zg[s.minFilter][s.mipmapFilter];
+      const l = Qg[s.minFilter][s.mipmapFilter];
       e[i](u, e.TEXTURE_MIN_FILTER, l);
     }
   } else
-    e[i](u, e.TEXTURE_MIN_FILTER, ya[s.minFilter]);
+    e[i](u, e.TEXTURE_MIN_FILTER, va[s.minFilter]);
   if (r && s.maxAnisotropy > 1) {
     const l = Math.min(s.maxAnisotropy, e.getParameter(r.MAX_TEXTURE_MAX_ANISOTROPY_EXT));
     e[i](u, r.TEXTURE_MAX_ANISOTROPY_EXT, l);
   }
-  s.compare && e[i](u, e.TEXTURE_COMPARE_FUNC, Qg[s.compare]);
+  s.compare && e[i](u, e.TEXTURE_COMPARE_FUNC, Jg[s.compare]);
 }
-function Jg(s) {
+function e_(s) {
   return {
     // 8-bit formats
     r8unorm: s.RED,
@@ -36197,7 +36197,7 @@ function Jg(s) {
     "depth32float-stencil8": s.DEPTH_STENCIL
   };
 }
-function e_(s, e) {
+function t_(s, e) {
   let t = {}, r = s.RGBA;
   return s instanceof J.get().getWebGLRenderingContext() ? e.srgb && (t = {
     "rgba8unorm-srgb": e.srgb.SRGB8_ALPHA8_EXT,
@@ -36321,7 +36321,7 @@ function e_(s, e) {
     } : {}
   };
 }
-function t_(s) {
+function r_(s) {
   return {
     // 8-bit formats
     r8unorm: s.UNSIGNED_BYTE,
@@ -36374,7 +36374,7 @@ function t_(s) {
     "depth32float-stencil8": s.FLOAT_32_UNSIGNED_INT_24_8_REV
   };
 }
-function iv(s) {
+function nv(s) {
   s instanceof Uint8ClampedArray && (s = new Uint8Array(s.buffer));
   const e = s.length;
   for (let t = 0; t < e; t += 4) {
@@ -36385,18 +36385,18 @@ function iv(s) {
     }
   }
 }
-const nv = 4;
-class al {
+const ov = 4;
+class ol {
   constructor(e) {
     this.managedTextures = [], this._glTextures = /* @__PURE__ */ Object.create(null), this._glSamplers = /* @__PURE__ */ Object.create(null), this._boundTextures = [], this._activeTextureLocation = -1, this._boundSamplers = /* @__PURE__ */ Object.create(null), this._uploads = {
-      image: ol,
-      buffer: jg,
-      video: Kg,
-      compressed: qg
+      image: nl,
+      buffer: qg,
+      video: Zg,
+      compressed: Kg
     }, this._premultiplyAlpha = !1, this._useSeparateSamplers = !1, this._renderer = e, this._renderer.renderableGC.addManagedHash(this, "_glTextures"), this._renderer.renderableGC.addManagedHash(this, "_glSamplers");
   }
   contextChange(e) {
-    this._gl = e, this._mapFormatToInternalFormat || (this._mapFormatToInternalFormat = e_(e, this._renderer.context.extensions), this._mapFormatToType = t_(e), this._mapFormatToFormat = Jg(e)), this._glTextures = /* @__PURE__ */ Object.create(null), this._glSamplers = /* @__PURE__ */ Object.create(null), this._boundSamplers = /* @__PURE__ */ Object.create(null), this._premultiplyAlpha = !1;
+    this._gl = e, this._mapFormatToInternalFormat || (this._mapFormatToInternalFormat = t_(e, this._renderer.context.extensions), this._mapFormatToType = r_(e), this._mapFormatToFormat = e_(e)), this._glTextures = /* @__PURE__ */ Object.create(null), this._glSamplers = /* @__PURE__ */ Object.create(null), this._boundSamplers = /* @__PURE__ */ Object.create(null), this._premultiplyAlpha = !1;
     for (let t = 0; t < 16; t++)
       this.bind(O.EMPTY, t);
   }
@@ -36442,7 +36442,7 @@ class al {
     this._activeTextureLocation !== e && (this._activeTextureLocation = e, this._gl.activeTexture(this._gl.TEXTURE0 + e));
   }
   _initSource(e) {
-    const t = this._gl, r = new $g(t.createTexture());
+    const t = this._gl, r = new jg(t.createTexture());
     if (r.type = this._mapFormatToType[e.format], r.internalFormat = this._mapFormatToInternalFormat[e.format], r.format = this._mapFormatToFormat[e.format], e.autoGenerateMipmaps && (this._renderer.context.supports.nonPowOf2mipmaps || e.isPowerOfTwo)) {
       const i = Math.max(e.width, e.height);
       e.mipLevelCount = Math.floor(Math.log2(i)) + 1;
@@ -36454,7 +36454,7 @@ class al {
   }
   updateStyle(e, t) {
     const r = this._gl, i = this.getGlSource(e);
-    r.bindTexture(r.TEXTURE_2D, i.texture), this._boundTextures[this._activeTextureLocation] = e, va(
+    r.bindTexture(r.TEXTURE_2D, i.texture), this._boundTextures[this._activeTextureLocation] = e, Sa(
       e.style,
       r,
       e.mipLevelCount > 1,
@@ -36486,7 +36486,7 @@ class al {
   }
   _initSampler(e) {
     const t = this._gl, r = this._gl.createSampler();
-    return this._glSamplers[e._resourceId] = r, va(
+    return this._glSamplers[e._resourceId] = r, Sa(
       e,
       t,
       this._boundTextures[this._activeTextureLocation].mipLevelCount > 1,
@@ -36514,7 +36514,7 @@ class al {
     return n;
   }
   getPixels(e) {
-    const t = e.source.resolution, r = e.frame, i = Math.max(Math.round(r.width * t), 1), n = Math.max(Math.round(r.height * t), 1), o = new Uint8Array(nv * i * n), a = this._renderer, u = a.renderTarget.getRenderTarget(e), l = a.renderTarget.getGpuRenderTarget(u), h = a.gl;
+    const t = e.source.resolution, r = e.frame, i = Math.max(Math.round(r.width * t), 1), n = Math.max(Math.round(r.height * t), 1), o = new Uint8Array(ov * i * n), a = this._renderer, u = a.renderTarget.getRenderTarget(e), l = a.renderTarget.getGpuRenderTarget(u), h = a.gl;
     return h.bindFramebuffer(h.FRAMEBUFFER, l.resolveTargetFramebuffer), h.readPixels(
       Math.round(r.x * t),
       Math.round(r.y * t),
@@ -36534,13 +36534,13 @@ class al {
     this._premultiplyAlpha = !1, e.pixelStorei(e.UNPACK_PREMULTIPLY_ALPHA_WEBGL, this._premultiplyAlpha);
   }
 }
-al.extension = {
+ol.extension = {
   type: [
     w.WebGLSystem
   ],
   name: "texture"
 };
-class ul {
+class al {
   contextChange(e) {
     const t = new we({
       uColor: { value: new Float32Array([1, 1, 1, 1]), type: "vec4<f32>" },
@@ -36583,19 +36583,19 @@ class ul {
     this.shader.destroy(!0), this.shader = null;
   }
 }
-ul.extension = {
+al.extension = {
   type: [
     w.WebGLPipesAdaptor
   ],
   name: "graphics"
 };
-class ll {
+class ul {
   init() {
     const e = qr({
       name: "mesh",
       bits: [
         Bn,
-        mg,
+        gg,
         Zr
       ]
     });
@@ -36632,13 +36632,13 @@ class ll {
     this._shader.destroy(!0), this._shader = null;
   }
 }
-ll.extension = {
+ul.extension = {
   type: [
     w.WebGLPipesAdaptor
   ],
   name: "mesh"
 };
-class hl {
+class ll {
   constructor(e) {
     this._renderer = e;
   }
@@ -36659,7 +36659,7 @@ class hl {
     this._renderer = null;
   }
 }
-hl.extension = {
+ll.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -36667,7 +36667,7 @@ hl.extension = {
   ],
   name: "customRender"
 };
-class qs {
+class Ks {
   constructor() {
     this.batcherName = "default", this.topology = "triangle-list", this.attributeSize = 4, this.indexSize = 6, this.packAsQuad = !0, this.roundPixels = 0, this._attributeStart = 0, this._batcher = null, this._batch = null;
   }
@@ -36690,8 +36690,8 @@ function $i(s, e) {
     e[n.renderPipeId].execute(n);
   }
 }
-const ov = new W();
-class cl {
+const av = new W();
+class hl {
   constructor(e) {
     this._renderer = e;
   }
@@ -36708,13 +36708,13 @@ class cl {
     this._renderer.renderPipes.batch.break(t), e._batchableRenderGroup && (Se.return(e._batchableRenderGroup), e._batchableRenderGroup = null), t.add(e);
   }
   _addRenderableCacheAsTexture(e, t) {
-    const r = e._batchableRenderGroup ?? (e._batchableRenderGroup = Se.get(qs));
+    const r = e._batchableRenderGroup ?? (e._batchableRenderGroup = Se.get(Ks));
     r.renderable = e.root, r.transform = e.root.relativeGroupTransform, r.texture = e.texture, r.bounds = e._textureBounds, t.add(e), this._renderer.renderPipes.blendMode.pushBlendMode(e, e.root.groupBlendMode, t), this._renderer.renderPipes.batch.addToBatch(r, t), this._renderer.renderPipes.blendMode.popBlendMode(t);
   }
   _executeCacheAsTexture(e) {
     if (e.textureNeedsUpdate) {
       e.textureNeedsUpdate = !1;
-      const t = ov.identity().translate(
+      const t = av.identity().translate(
         -e._textureBounds.x,
         -e._textureBounds.y
       );
@@ -36733,7 +36733,7 @@ class cl {
     }), $i(e, this._renderer.renderPipes), this._renderer.globalUniforms.pop();
   }
 }
-cl.extension = {
+hl.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -36746,23 +36746,23 @@ function ji(s, e) {
   for (let t = e; t < s.length && s[t]; t++)
     s[t] = null;
 }
-const av = new le(), Gc = Mr | Bs | rn;
-function dl(s, e = !1) {
-  r_(s);
+const uv = new le(), Oc = Mr | Bs | rn;
+function cl(s, e = !1) {
+  s_(s);
   const t = s.childrenToUpdate, r = s.updateTick++;
   for (const i in t) {
     const n = Number(i), o = t[i], a = o.list, u = o.index;
     for (let l = 0; l < u; l++) {
       const h = a[l];
-      h.parentRenderGroup === s && h.relativeRenderGroupDepth === n && fl(h, r, 0);
+      h.parentRenderGroup === s && h.relativeRenderGroupDepth === n && dl(h, r, 0);
     }
     ji(a, u), o.index = 0;
   }
   if (e)
     for (let i = 0; i < s.renderGroupChildren.length; i++)
-      dl(s.renderGroupChildren[i], e);
+      cl(s.renderGroupChildren[i], e);
 }
-function r_(s) {
+function s_(s) {
   const e = s.root;
   let t;
   if (s.renderGroupParent) {
@@ -36778,7 +36778,7 @@ function r_(s) {
     s.worldTransform.copyFrom(e.localTransform), s.worldColor = e.localColor, t = e.localAlpha;
   t = t < 0 ? 0 : t > 1 ? 1 : t, s.worldAlpha = t, s.worldColorAlpha = s.worldColor + ((t * 255 | 0) << 24);
 }
-function fl(s, e, t) {
+function dl(s, e, t) {
   if (e === s.updateTick)
     return;
   s.updateTick = e, s.didChange = !1;
@@ -36788,15 +36788,15 @@ function fl(s, e, t) {
   if (i && !i.renderGroup ? (t |= s._updateFlags, s.relativeGroupTransform.appendFrom(
     r,
     i.relativeGroupTransform
-  ), t & Gc && Lc(s, i, t)) : (t = s._updateFlags, s.relativeGroupTransform.copyFrom(r), t & Gc && Lc(s, av, t)), !s.renderGroup) {
+  ), t & Oc && Gc(s, i, t)) : (t = s._updateFlags, s.relativeGroupTransform.copyFrom(r), t & Oc && Gc(s, uv, t)), !s.renderGroup) {
     const n = s.children, o = n.length;
     for (let l = 0; l < o; l++)
-      fl(n[l], e, t);
+      dl(n[l], e, t);
     const a = s.parentRenderGroup, u = s;
     u.renderPipeId && !a.structureDidChange && a.updateRenderable(u);
   }
 }
-function Lc(s, e, t) {
+function Gc(s, e, t) {
   if (t & Bs) {
     s.groupColor = Ps(
       s.localColor,
@@ -36807,7 +36807,7 @@ function Lc(s, e, t) {
   }
   t & rn && (s.groupBlendMode = s.localBlendMode === "inherit" ? e.groupBlendMode : s.localBlendMode), t & Mr && (s.globalDisplayStatus = s.localDisplayStatus & e.globalDisplayStatus), s._updateFlags = 0;
 }
-function s_(s, e) {
+function i_(s, e) {
   const { list: t } = s.childrenRenderablesToUpdate;
   let r = !1;
   for (let i = 0; i < s.childrenRenderablesToUpdate.index; i++) {
@@ -36817,15 +36817,15 @@ function s_(s, e) {
   }
   return s.structureDidChange = r, r;
 }
-const uv = new W();
-class pl {
+const lv = new W();
+class fl {
   constructor(e) {
     this._renderer = e;
   }
   render({ container: e, transform: t }) {
     const r = e.parent, i = e.renderGroup.renderGroupParent;
     e.parent = null, e.renderGroup.renderGroupParent = null;
-    const n = this._renderer, o = uv;
+    const n = this._renderer, o = lv;
     t && (o.copyFrom(e.renderGroup.localTransform), e.renderGroup.localTransform.copyFrom(t));
     const a = n.renderPipes;
     this._updateCachedRenderGroups(e.renderGroup, null), this._updateRenderGroups(e.renderGroup), n.globalUniforms.start({
@@ -36862,7 +36862,7 @@ class pl {
   }
   _updateRenderGroups(e) {
     const t = this._renderer, r = t.renderPipes;
-    if (e.runOnRender(t), e.instructionSet.renderPipes = r, e.structureDidChange ? ji(e.childrenRenderablesToUpdate.list, 0) : s_(e, r), dl(e), e.structureDidChange ? (e.structureDidChange = !1, this._buildInstructions(e, t)) : this._updateRenderables(e), e.childrenRenderablesToUpdate.index = 0, t.renderPipes.batch.upload(e.instructionSet), !(e.isCachedAsTexture && !e.textureNeedsUpdate))
+    if (e.runOnRender(t), e.instructionSet.renderPipes = r, e.structureDidChange ? ji(e.childrenRenderablesToUpdate.list, 0) : i_(e, r), cl(e), e.structureDidChange ? (e.structureDidChange = !1, this._buildInstructions(e, t)) : this._updateRenderables(e), e.childrenRenderablesToUpdate.index = 0, t.renderPipes.batch.upload(e.instructionSet), !(e.isCachedAsTexture && !e.textureNeedsUpdate))
       for (let i = 0; i < e.renderGroupChildren.length; i++)
         this._updateRenderGroups(e.renderGroupChildren[i]);
   }
@@ -36881,7 +36881,7 @@ class pl {
     o.batch.buildStart(i), o.blendMode.buildStart(), o.colorMask.buildStart(), r.sortableChildren && r.sortChildren(), r.collectRenderablesWithEffects(i, n, null), o.batch.buildEnd(i), o.blendMode.buildEnd(i);
   }
 }
-pl.extension = {
+fl.extension = {
   type: [
     w.WebGLSystem,
     w.WebGPUSystem,
@@ -36889,7 +36889,7 @@ pl.extension = {
   ],
   name: "renderGroup"
 };
-class ml {
+class pl {
   constructor(e) {
     this._renderer = e;
   }
@@ -36915,14 +36915,14 @@ class ml {
     return e._gpuData[this._renderer.uid] || this._initGPUSprite(e);
   }
   _initGPUSprite(e) {
-    const t = new qs();
+    const t = new Ks();
     return t.renderable = e, t.transform = e.groupTransform, t.texture = e._texture, t.bounds = e.visualBounds, t.roundPixels = this._renderer._roundPixels | e._roundPixels, e._gpuData[this._renderer.uid] = t, t;
   }
   destroy() {
     this._renderer = null;
   }
 }
-ml.extension = {
+pl.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -36930,7 +36930,7 @@ ml.extension = {
   ],
   name: "sprite"
 };
-const gl = class i_ {
+const ml = class n_ {
   constructor() {
     this.clearBeforeRender = !0, this._backgroundColor = new se(0), this.color = this._backgroundColor, this.alpha = 1;
   }
@@ -36939,7 +36939,7 @@ const gl = class i_ {
    * @param options - the options for the background colors
    */
   init(e) {
-    e = { ...i_.defaultOptions, ...e }, this.clearBeforeRender = e.clearBeforeRender, this.color = e.background || e.backgroundColor || this._backgroundColor, this.alpha = e.backgroundAlpha, this._backgroundColor.setAlpha(e.backgroundAlpha);
+    e = { ...n_.defaultOptions, ...e }, this.clearBeforeRender = e.clearBeforeRender, this.color = e.background || e.backgroundColor || this._backgroundColor, this.alpha = e.backgroundAlpha, this._backgroundColor.setAlpha(e.backgroundAlpha);
   }
   /** The background color to fill if not transparent */
   get color() {
@@ -36968,7 +36968,7 @@ const gl = class i_ {
   destroy() {
   }
 };
-gl.extension = {
+ml.extension = {
   type: [
     w.WebGLSystem,
     w.WebGPUSystem,
@@ -36977,7 +36977,7 @@ gl.extension = {
   name: "background",
   priority: 0
 };
-gl.defaultOptions = {
+ml.defaultOptions = {
   /**
    * {@link WebGLOptions.backgroundAlpha}
    * @default 1
@@ -36994,7 +36994,7 @@ gl.defaultOptions = {
    */
   clearBeforeRender: !0
 };
-let n_ = gl;
+let o_ = ml;
 const Es = {};
 Y.handle(w.BlendMode, (s) => {
   if (!s.name)
@@ -37003,7 +37003,7 @@ Y.handle(w.BlendMode, (s) => {
 }, (s) => {
   delete Es[s.name];
 });
-class _l {
+class gl {
   constructor(e) {
     this._blendModeStack = [], this._isAdvanced = !1, this._filterHash = /* @__PURE__ */ Object.create(null), this._renderer = e, this._renderer.runners.prerender.add(this);
   }
@@ -37096,7 +37096,7 @@ class _l {
     this._filterHash = null;
   }
 }
-_l.extension = {
+gl.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -37108,7 +37108,7 @@ const To = {
   png: "image/png",
   jpg: "image/jpeg",
   webp: "image/webp"
-}, bl = class o_ {
+}, _l = class a_ {
   /** @param renderer - The renderer this System works for. */
   constructor(e) {
     this._renderer = e;
@@ -37193,7 +37193,7 @@ const To = {
   async base64(e) {
     e = this._normalizeOptions(
       e,
-      o_.defaultImageOptions
+      a_.defaultImageOptions
     );
     const { format: t, quality: r } = e, i = this.canvas(e);
     if (i.toBlob !== void 0)
@@ -37429,18 +37429,18 @@ const To = {
     this._renderer = null;
   }
 };
-bl.extension = {
+_l.extension = {
   type: [
     w.WebGLSystem,
     w.WebGPUSystem
   ],
   name: "extract"
 };
-bl.defaultImageOptions = {
+_l.defaultImageOptions = {
   format: "png",
   quality: 1
 };
-let a_ = bl;
+let u_ = _l;
 class Mn extends O {
   static create(e) {
     return new Mn({
@@ -37458,8 +37458,8 @@ class Mn extends O {
     return this.source.resize(e, t, r), this;
   }
 }
-const lv = new te(), hv = new Be(), cv = [0, 0, 0, 0];
-class xl {
+const hv = new te(), cv = new Be(), dv = [0, 0, 0, 0];
+class bl {
   constructor(e) {
     this._renderer = e;
   }
@@ -37508,8 +37508,8 @@ class xl {
     });
     const t = e.resolution || this._renderer.resolution, r = e.antialias || this._renderer.view.antialias, i = e.target;
     let n = e.clearColor;
-    n ? n = Array.isArray(n) && n.length === 4 ? n : se.shared.setValue(n).toArray() : n = cv;
-    const o = e.frame?.copyTo(lv) || tn(i, hv).rectangle;
+    n ? n = Array.isArray(n) && n.length === 4 ? n : se.shared.setValue(n).toArray() : n = dv;
+    const o = e.frame?.copyTo(hv) || tn(i, cv).rectangle;
     o.width = Math.max(o.width, 1 / t) | 0, o.height = Math.max(o.height, 1 / t) | 0;
     const a = Mn.create({
       ...e.textureSourceOptions,
@@ -37529,21 +37529,21 @@ class xl {
     this._renderer = null;
   }
 }
-xl.extension = {
+bl.extension = {
   type: [
     w.WebGLSystem,
     w.WebGPUSystem
   ],
   name: "textureGenerator"
 };
-function dv(s, e, t, r) {
+function fv(s, e, t, r) {
   t[r++] = (s >> 16 & 255) / 255, t[r++] = (s >> 8 & 255) / 255, t[r++] = (s & 255) / 255, t[r++] = e;
 }
 function es(s, e, t) {
   const r = (s >> 24 & 255) / 255;
   e[t++] = (s & 255) / 255 * r, e[t++] = (s >> 8 & 255) / 255 * r, e[t++] = (s >> 16 & 255) / 255 * r, e[t++] = r;
 }
-class yl {
+class xl {
   constructor(e) {
     this._stackIndex = 0, this._globalUniformDataStack = [], this._uniformsPool = [], this._activeUniforms = [], this._bindGroupPool = [], this._activeBindGroups = [], this._renderer = e;
   }
@@ -37617,7 +37617,7 @@ class yl {
     this._renderer = null, this._globalUniformDataStack.length = 0, this._uniformsPool.length = 0, this._activeUniforms.length = 0, this._bindGroupPool.length = 0, this._activeBindGroups.length = 0, this._currentGlobalUniformData = null;
   }
 }
-yl.extension = {
+xl.extension = {
   type: [
     w.WebGLSystem,
     w.WebGPUSystem,
@@ -37625,8 +37625,8 @@ yl.extension = {
   ],
   name: "globalUniforms"
 };
-let fv = 1;
-class vl {
+let pv = 1;
+class yl {
   constructor() {
     this._tasks = [], this._offset = 0;
   }
@@ -37642,7 +37642,7 @@ class vl {
    * @returns The unique identifier for the scheduled task.
    */
   repeat(e, t, r = !0) {
-    const i = fv++;
+    const i = pv++;
     let n = 0;
     return r && (this._offset += 1e3, n = this._offset), this._tasks.push({
       func: e,
@@ -37687,7 +37687,7 @@ class vl {
     Ce.system.remove(this._update, this), this._tasks.length = 0;
   }
 }
-vl.extension = {
+yl.extension = {
   type: [
     w.WebGLSystem,
     w.WebGPUSystem,
@@ -37696,9 +37696,9 @@ vl.extension = {
   name: "scheduler",
   priority: 0
 };
-let Nc = !1;
-function u_(s) {
-  if (!Nc) {
+let Lc = !1;
+function l_(s) {
+  if (!Lc) {
     if (J.get().getNavigator().userAgent.toLowerCase().indexOf("chrome") > -1) {
       const e = [
         `%c  %c  %c  %c  %c PixiJS %c v${Is} (${s}) http://www.pixijs.com/
@@ -37713,7 +37713,7 @@ function u_(s) {
       ];
       globalThis.console.log(...e);
     } else globalThis.console && globalThis.console.log(`PixiJS ${Is} - ${s} - http://www.pixijs.com/`);
-    Nc = !0;
+    Lc = !0;
   }
 }
 class Dn {
@@ -37727,7 +37727,7 @@ class Dn {
   init(e) {
     if (e.hello) {
       let t = this._renderer.name;
-      this._renderer.type === Ze.WEBGL && (t += ` ${this._renderer.context.webGLVersion}`), u_(t);
+      this._renderer.type === Ze.WEBGL && (t += ` ${this._renderer.context.webGLVersion}`), l_(t);
     }
   }
 }
@@ -37744,7 +37744,7 @@ Dn.defaultOptions = {
   /** {@link WebGLOptions.hello} */
   hello: !1
 };
-function l_(s) {
+function h_(s) {
   let e = !1;
   for (const r in s)
     if (s[r] == null) {
@@ -37760,14 +37760,14 @@ function l_(s) {
   }
   return t;
 }
-function h_(s) {
+function c_(s) {
   let e = 0;
   for (let t = 0; t < s.length; t++)
     s[t] == null ? e++ : s[t - e] = s[t];
   return s.length -= e, s;
 }
-let pv = 0;
-const Sl = class c_ {
+let mv = 0;
+const vl = class d_ {
   /**
    * Creates a new RenderableGCSystem instance.
    * @param renderer - The renderer this garbage collection system works for
@@ -37780,7 +37780,7 @@ const Sl = class c_ {
    * @param options - Configuration options for the renderer
    */
   init(e) {
-    e = { ...c_.defaultOptions, ...e }, this.maxUnusedTime = e.renderableGCMaxUnusedTime, this._frequency = e.renderableGCFrequency, this.enabled = e.renderableGCActive;
+    e = { ...d_.defaultOptions, ...e }, this.maxUnusedTime = e.renderableGCMaxUnusedTime, this._frequency = e.renderableGCFrequency, this.enabled = e.renderableGCActive;
   }
   /**
    * Gets whether the garbage collection system is currently enabled.
@@ -37802,13 +37802,13 @@ const Sl = class c_ {
     ), this._hashHandler = this._renderer.scheduler.repeat(
       () => {
         for (const t of this._managedHashes)
-          t.context[t.hash] = l_(t.context[t.hash]);
+          t.context[t.hash] = h_(t.context[t.hash]);
       },
       this._frequency
     ), this._arrayHandler = this._renderer.scheduler.repeat(
       () => {
         for (const t of this._managedArrays)
-          h_(t.context[t.hash]);
+          c_(t.context[t.hash]);
       },
       this._frequency
     )) : (this._renderer.scheduler.cancel(this._handler), this._renderer.scheduler.cancel(this._hashHandler), this._renderer.scheduler.cancel(this._arrayHandler)));
@@ -37837,7 +37837,7 @@ const Sl = class c_ {
   prerender({
     container: e
   }) {
-    this._now = performance.now(), e.renderGroup.gcTick = pv++, this._updateInstructionGCTick(e.renderGroup, e.renderGroup.gcTick);
+    this._now = performance.now(), e.renderGroup.gcTick = mv++, this._updateInstructionGCTick(e.renderGroup, e.renderGroup.gcTick);
   }
   /**
    * Starts tracking a renderable for garbage collection.
@@ -37894,7 +37894,7 @@ const Sl = class c_ {
       this._updateInstructionGCTick(r, t);
   }
 };
-Sl.extension = {
+vl.extension = {
   type: [
     w.WebGLSystem,
     w.WebGPUSystem
@@ -37902,7 +37902,7 @@ Sl.extension = {
   name: "renderableGC",
   priority: 0
 };
-Sl.defaultOptions = {
+vl.defaultOptions = {
   /** Enable/disable the garbage collector */
   renderableGCActive: !0,
   /** Time in ms before an unused resource is collected (default 1 minute) */
@@ -37910,14 +37910,14 @@ Sl.defaultOptions = {
   /** How often to run garbage collection in ms (default 30 seconds) */
   renderableGCFrequency: 3e4
 };
-let d_ = Sl;
-const wl = class f_ {
+let f_ = vl;
+const Sl = class p_ {
   /** @param renderer - The renderer this System works for. */
   constructor(e) {
     this._renderer = e, this.count = 0, this.checkCount = 0;
   }
   init(e) {
-    e = { ...f_.defaultOptions, ...e }, this.checkCountMax = e.textureGCCheckCountMax, this.maxIdle = e.textureGCAMaxIdle ?? e.textureGCMaxIdle, this.active = e.textureGCActive;
+    e = { ...p_.defaultOptions, ...e }, this.checkCountMax = e.textureGCCheckCountMax, this.maxIdle = e.textureGCAMaxIdle ?? e.textureGCMaxIdle, this.active = e.textureGCActive;
   }
   /**
    * Checks to see when the last time a texture was used.
@@ -37941,14 +37941,14 @@ const wl = class f_ {
     this._renderer = null;
   }
 };
-wl.extension = {
+Sl.extension = {
   type: [
     w.WebGLSystem,
     w.WebGPUSystem
   ],
   name: "textureGC"
 };
-wl.defaultOptions = {
+Sl.defaultOptions = {
   /**
    * If set to true, this will enable the garbage collector on the GPU.
    * @default true
@@ -37970,8 +37970,8 @@ wl.defaultOptions = {
    */
   textureGCCheckCountMax: 600
 };
-let p_ = wl;
-const Tl = class m_ {
+let m_ = Sl;
+const wl = class g_ {
   /**
    * Whether CSS dimensions of canvas view should be resized to screen dimensions automatically.
    * This is only supported for HTMLCanvasElement and will be ignored if the canvas is an OffscreenCanvas.
@@ -38000,9 +38000,9 @@ const Tl = class m_ {
    */
   init(e) {
     e = {
-      ...m_.defaultOptions,
+      ...g_.defaultOptions,
       ...e
-    }, e.view && (N(Z, "ViewSystem.view has been renamed to ViewSystem.canvas"), e.canvas = e.view), this.screen = new te(0, 0, e.width, e.height), this.canvas = e.canvas || J.get().createCanvas(), this.antialias = !!e.antialias, this.texture = Ju(this.canvas, e), this.renderTarget = new Yi({
+    }, e.view && (N(Z, "ViewSystem.view has been renamed to ViewSystem.canvas"), e.canvas = e.view), this.screen = new te(0, 0, e.width, e.height), this.canvas = e.canvas || J.get().createCanvas(), this.antialias = !!e.antialias, this.texture = Qu(this.canvas, e), this.renderTarget = new Yi({
       colorTextures: [this.texture],
       depth: !!e.depth,
       isRoot: !0
@@ -38029,7 +38029,7 @@ const Tl = class m_ {
     (typeof e == "boolean" ? e : !!e?.removeView) && this.canvas.parentNode && this.canvas.parentNode.removeChild(this.canvas), this.texture.destroy();
   }
 };
-Tl.extension = {
+wl.extension = {
   type: [
     w.WebGLSystem,
     w.WebGPUSystem,
@@ -38038,7 +38038,7 @@ Tl.extension = {
   name: "view",
   priority: 0
 };
-Tl.defaultOptions = {
+wl.defaultOptions = {
   /**
    * {@link WebGLOptions.width}
    * @default 800
@@ -38060,66 +38060,66 @@ Tl.defaultOptions = {
    */
   antialias: !1
 };
-let g_ = Tl;
-const El = [
-  n_,
-  yl,
-  Dn,
-  g_,
-  pl,
-  p_,
+let __ = wl;
+const Tl = [
+  o_,
   xl,
-  a_,
+  Dn,
+  __,
+  fl,
+  m_,
+  bl,
+  u_,
   qa,
-  d_,
-  vl
-], Al = [
-  _l,
+  f_,
+  yl
+], El = [
+  gl,
+  Fu,
+  pl,
+  hl,
   Iu,
-  ml,
-  cl,
-  ku,
-  Ou,
   Uu,
-  hl
-], mv = [
-  ...El,
-  Qu,
-  Sg,
-  bg,
-  Yu,
-  Gu,
-  al,
-  tl,
-  Wu,
-  nl,
-  il,
+  ku,
+  ll
+], gv = [
+  ...Tl,
+  Zu,
+  wg,
+  xg,
   Xu,
-  Yg,
-  $u,
-  Vu
-], gv = [...Al], _v = [Mu, ll, ul], __ = [], b_ = [], x_ = [];
-Y.handleByNamedList(w.WebGLSystem, __);
-Y.handleByNamedList(w.WebGLPipes, b_);
-Y.handleByNamedList(w.WebGLPipesAdaptor, x_);
-Y.add(...mv, ...gv, ..._v);
-class y_ extends Hs {
+  Ou,
+  ol,
+  el,
+  Hu,
+  il,
+  sl,
+  Vu,
+  $g,
+  Yu,
+  zu
+], _v = [...El], bv = [Ru, ul, al], b_ = [], x_ = [], y_ = [];
+Y.handleByNamedList(w.WebGLSystem, b_);
+Y.handleByNamedList(w.WebGLPipes, x_);
+Y.handleByNamedList(w.WebGLPipesAdaptor, y_);
+Y.add(...gv, ..._v, ...bv);
+class v_ extends Ws {
   constructor() {
     const e = {
       name: "webgl",
       type: Ze.WEBGL,
-      systems: __,
-      renderPipes: b_,
-      renderPipeAdaptors: x_
+      systems: b_,
+      renderPipes: x_,
+      renderPipeAdaptors: y_
     };
     super(e);
   }
 }
-const bv = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const xv = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  WebGLRenderer: y_
+  WebGLRenderer: v_
 }, Symbol.toStringTag, { value: "Module" }));
-class Cl {
+class Al {
   constructor(e) {
     this._hash = /* @__PURE__ */ Object.create(null), this._renderer = e, this._renderer.renderableGC.addManagedHash(this, "_hash");
   }
@@ -38181,13 +38181,13 @@ class Cl {
     this._hash = null, this._renderer = null;
   }
 }
-Cl.extension = {
+Al.extension = {
   type: [
     w.WebGPUSystem
   ],
   name: "bindGroup"
 };
-class Pl {
+class Cl {
   constructor(e) {
     this._gpuBuffers = /* @__PURE__ */ Object.create(null), this._managedBuffers = [], e.renderableGC.addManagedHash(this, "_gpuBuffers");
   }
@@ -38236,13 +38236,13 @@ class Pl {
     this._gpuBuffers[e.uid].destroy(), e.off("update", this.updateBuffer, this), e.off("change", this.onBufferChange, this), e.off("destroy", this.onBufferDestroy, this), this._gpuBuffers[e.uid] = null;
   }
 }
-Pl.extension = {
+Cl.extension = {
   type: [
     w.WebGPUSystem
   ],
   name: "buffer"
 };
-class v_ {
+class S_ {
   constructor({ minUniformOffsetAlignment: e }) {
     this._minUniformOffsetAlignment = 256, this.byteIndex = 0, this._minUniformOffsetAlignment = e, this.data = new Float32Array(65535);
   }
@@ -38268,7 +38268,7 @@ class v_ {
     this.data = null;
   }
 }
-class Bl {
+class Pl {
   constructor(e) {
     this._colorMaskCache = 15, this._renderer = e;
   }
@@ -38279,7 +38279,7 @@ class Bl {
     this._renderer = null, this._colorMaskCache = null;
   }
 }
-Bl.extension = {
+Pl.extension = {
   type: [
     w.WebGPUSystem
   ],
@@ -38346,7 +38346,7 @@ Fn.defaultOptions = {
    */
   forceFallbackAdapter: !1
 };
-class Rl {
+class Bl {
   constructor(e) {
     this._boundBindGroup = /* @__PURE__ */ Object.create(null), this._boundVertexBuffer = /* @__PURE__ */ Object.create(null), this._renderer = e;
   }
@@ -38455,12 +38455,12 @@ class Rl {
     this._gpu = e;
   }
 }
-Rl.extension = {
+Bl.extension = {
   type: [w.WebGPUSystem],
   name: "encoder",
   priority: 1
 };
-class Ml {
+class Rl {
   constructor(e) {
     this._renderer = e;
   }
@@ -38470,13 +38470,13 @@ class Ml {
   destroy() {
   }
 }
-Ml.extension = {
+Rl.extension = {
   type: [
     w.WebGPUSystem
   ],
   name: "limits"
 };
-class Dl {
+class Ml {
   constructor(e) {
     this._renderTargetStencilState = /* @__PURE__ */ Object.create(null), this._renderer = e, e.renderTarget.onRenderTargetChange.add(this);
   }
@@ -38497,7 +38497,7 @@ class Dl {
     this._renderer.renderTarget.onRenderTargetChange.remove(this), this._renderer = null, this._activeRenderTarget = null, this._renderTargetStencilState = null;
   }
 }
-Dl.extension = {
+Ml.extension = {
   type: [
     w.WebGPUSystem
   ],
@@ -38539,7 +38539,7 @@ const As = {
   "mat4x4<f32>": { align: 16, size: 64 },
   "mat4x4<f16>": { align: 8, size: 32 }
 };
-function S_(s) {
+function w_(s) {
   const e = s.map((r) => ({
     data: r,
     offset: 0,
@@ -38556,7 +38556,7 @@ function S_(s) {
   }
   return t = Math.ceil(t / 16) * 16, { uboElements: e, size: t };
 }
-function w_(s, e) {
+function T_(s, e) {
   const { size: t, align: r } = As[s.data.type], i = (r - t) / 4, n = s.data.type.indexOf("i32") >= 0 ? "dataInt32" : "data";
   return `
          v = uv.${s.data.name};
@@ -38576,31 +38576,31 @@ function w_(s, e) {
          }
      `;
 }
-function T_(s) {
-  return Ku(
+function E_(s) {
+  return qu(
     s,
     "uboWgsl",
-    w_,
-    Eg
+    T_,
+    Ag
   );
 }
-class Fl extends ju {
+class Dl extends $u {
   constructor() {
     super({
-      createUboElements: S_,
-      generateUboSync: T_
+      createUboElements: w_,
+      generateUboSync: E_
     });
   }
 }
-Fl.extension = {
+Dl.extension = {
   type: [w.WebGPUSystem],
   name: "ubo"
 };
-const Wt = 128;
-class Il {
+const zt = 128;
+class Fl {
   constructor(e) {
-    this._bindGroupHash = /* @__PURE__ */ Object.create(null), this._buffers = [], this._bindGroups = [], this._bufferResources = [], this._renderer = e, this._renderer.renderableGC.addManagedHash(this, "_bindGroupHash"), this._batchBuffer = new v_({ minUniformOffsetAlignment: Wt });
-    const t = 256 / Wt;
+    this._bindGroupHash = /* @__PURE__ */ Object.create(null), this._buffers = [], this._bindGroups = [], this._bufferResources = [], this._renderer = e, this._renderer.renderableGC.addManagedHash(this, "_bindGroupHash"), this._batchBuffer = new S_({ minUniformOffsetAlignment: zt });
+    const t = 256 / zt;
     for (let r = 0; r < t; r++) {
       let i = re.UNIFORM | re.COPY_DST;
       r === 0 && (i |= re.COPY_SRC), this._buffers.push(new Ke({
@@ -38623,19 +38623,19 @@ class Il {
       return this._bindGroupHash[e.uid];
     this._renderer.ubo.ensureUniformGroup(e);
     const r = e.buffer.data, i = this._batchBuffer.addEmptyGroup(r.length);
-    return this._renderer.ubo.syncUniformGroup(e, this._batchBuffer.data, i / 4), this._bindGroupHash[e.uid] = this._getBindGroup(i / Wt), this._bindGroupHash[e.uid];
+    return this._renderer.ubo.syncUniformGroup(e, this._batchBuffer.data, i / 4), this._bindGroupHash[e.uid] = this._getBindGroup(i / zt), this._bindGroupHash[e.uid];
   }
   getUboResource(e) {
     this._renderer.ubo.updateUniformGroup(e);
     const t = e.buffer.data, r = this._batchBuffer.addGroup(t);
-    return this._getBufferResource(r / Wt);
+    return this._getBufferResource(r / zt);
   }
   getArrayBindGroup(e) {
     const t = this._batchBuffer.addGroup(e);
-    return this._getBindGroup(t / Wt);
+    return this._getBindGroup(t / zt);
   }
   getArrayBufferResource(e) {
-    const r = this._batchBuffer.addGroup(e) / Wt;
+    const r = this._batchBuffer.addGroup(e) / zt;
     return this._getBufferResource(r);
   }
   _getBufferResource(e) {
@@ -38644,7 +38644,7 @@ class Il {
       this._bufferResources[e] = new Rn({
         buffer: t,
         offset: (e / 2 | 0) * 256,
-        size: Wt
+        size: zt
       });
     }
     return this._bufferResources[e];
@@ -38666,7 +38666,7 @@ class Il {
       const n = this._buffers[i];
       r.copyBufferToBuffer(
         e.getGPUBuffer(t),
-        Wt,
+        zt,
         e.getGPUBuffer(n),
         0,
         this._batchBuffer.byteIndex
@@ -38686,26 +38686,26 @@ class Il {
     this._bufferResources = null, this._batchBuffer.destroy(), this._bindGroupHash = null, this._renderer = null;
   }
 }
-Il.extension = {
+Fl.extension = {
   type: [
     w.WebGPUPipes
   ],
   name: "uniformBatch"
 };
-const xv = {
+const yv = {
   "point-list": 0,
   "line-list": 1,
   "line-strip": 2,
   "triangle-list": 3,
   "triangle-strip": 4
 };
-function yv(s, e, t, r, i) {
+function vv(s, e, t, r, i) {
   return s << 24 | e << 16 | t << 10 | r << 5 | i;
 }
-function vv(s, e, t, r) {
+function Sv(s, e, t, r) {
   return t << 6 | s << 3 | r << 1 | e;
 }
-class kl {
+class Il {
   constructor(e) {
     this._moduleCache = /* @__PURE__ */ Object.create(null), this._bufferLayoutsCache = /* @__PURE__ */ Object.create(null), this._bindingNamesCache = /* @__PURE__ */ Object.create(null), this._pipeCache = /* @__PURE__ */ Object.create(null), this._pipeStateCaches = /* @__PURE__ */ Object.create(null), this._colorMask = 15, this._multisampleCount = 1, this._renderer = e;
   }
@@ -38722,20 +38722,20 @@ class kl {
     this._colorMask !== e && (this._colorMask = e, this._updatePipeHash());
   }
   setStencilMode(e) {
-    this._stencilMode !== e && (this._stencilMode = e, this._stencilState = Lt[e], this._updatePipeHash());
+    this._stencilMode !== e && (this._stencilMode = e, this._stencilState = Nt[e], this._updatePipeHash());
   }
   setPipeline(e, t, r, i) {
     const n = this.getPipeline(e, t, r);
     i.setPipeline(n);
   }
   getPipeline(e, t, r, i) {
-    e._layoutKey || (Nu(e, t.attributeData), this._generateBufferKey(e)), i || (i = e.topology);
-    const n = yv(
+    e._layoutKey || (Lu(e, t.attributeData), this._generateBufferKey(e)), i || (i = e.topology);
+    const n = vv(
       e._layoutKey,
       t._layoutKey,
       r.data,
       r._blendModeId,
-      xv[i]
+      yv[i]
     );
     return this._pipeCache[n] ? this._pipeCache[n] : (this._pipeCache[n] = this._createPipeline(e, t, r, i), this._pipeCache[n]);
   }
@@ -38851,7 +38851,7 @@ class kl {
     }), this._bufferLayoutsCache[r] = i, i;
   }
   _updatePipeHash() {
-    const e = vv(
+    const e = Sv(
       this._stencilMode,
       this._multisampleCount,
       this._colorMask,
@@ -38863,16 +38863,16 @@ class kl {
     this._renderer = null, this._bufferLayoutsCache = null;
   }
 }
-kl.extension = {
+Il.extension = {
   type: [w.WebGPUSystem],
   name: "pipeline"
 };
-class E_ {
+class A_ {
   constructor() {
     this.contexts = [], this.msaaTextures = [], this.msaaSamples = 1;
   }
 }
-class A_ {
+class C_ {
   init(e, t) {
     this._renderer = e, this._renderTargetSystem = t;
   }
@@ -38914,7 +38914,7 @@ class A_ {
     );
   }
   getDescriptor(e, t, r) {
-    typeof t == "boolean" && (t = t ? je.ALL : je.NONE);
+    typeof t == "boolean" && (t = t ? $e.ALL : $e.NONE);
     const i = this._renderTargetSystem, n = i.getGpuRenderTarget(e), o = e.colorTextures.map(
       (l, h) => {
         const c = n.contexts[h];
@@ -38924,7 +38924,7 @@ class A_ {
         }), n.msaaTextures[h] && (f = d, d = this._renderer.texture.getTextureView(
           n.msaaTextures[h]
         ));
-        const g = t & je.COLOR ? "clear" : "load";
+        const g = t & $e.COLOR ? "clear" : "load";
         return r ?? (r = i.defaultClearColor), {
           view: d,
           resolveTarget: f,
@@ -38936,7 +38936,7 @@ class A_ {
     );
     let a;
     if ((e.stencil || e.depth) && !e.depthStencilTexture && (e.ensureDepthStencilTexture(), e.depthStencilTexture.source.sampleCount = n.msaa ? 4 : 1), e.depthStencilTexture) {
-      const l = t & je.STENCIL ? "clear" : "load", h = t & je.DEPTH ? "clear" : "load";
+      const l = t & $e.STENCIL ? "clear" : "load", h = t & $e.DEPTH ? "clear" : "load";
       a = {
         view: this._renderer.texture.getGpuSource(e.depthStencilTexture.source).createView(),
         stencilStoreOp: "store",
@@ -38965,7 +38965,7 @@ class A_ {
   }
   initGpuRenderTarget(e) {
     e.isRoot = !0;
-    const t = new E_();
+    const t = new A_();
     return e.colorTextures.forEach((r, i) => {
       if (r instanceof Tt) {
         const n = r.resource.getContext(
@@ -39015,16 +39015,16 @@ class A_ {
     });
   }
 }
-class Ul extends el {
+class kl extends Ju {
   constructor(e) {
-    super(e), this.adaptor = new A_(), this.adaptor.init(e, this);
+    super(e), this.adaptor = new C_(), this.adaptor.init(e, this);
   }
 }
-Ul.extension = {
+kl.extension = {
   type: [w.WebGPUSystem],
   name: "renderTarget"
 };
-class Ol {
+class Ul {
   constructor() {
     this._gpuProgramData = /* @__PURE__ */ Object.create(null);
   }
@@ -39045,14 +39045,14 @@ class Ol {
     this._gpu = null, this._gpuProgramData = null;
   }
 }
-Ol.extension = {
+Ul.extension = {
   type: [
     w.WebGPUSystem
   ],
   name: "shader"
 };
-const He = {};
-He.normal = {
+const Ne = {};
+Ne.normal = {
   alpha: {
     srcFactor: "one",
     dstFactor: "one-minus-src-alpha",
@@ -39064,7 +39064,7 @@ He.normal = {
     operation: "add"
   }
 };
-He.add = {
+Ne.add = {
   alpha: {
     srcFactor: "src-alpha",
     dstFactor: "one-minus-src-alpha",
@@ -39076,7 +39076,7 @@ He.add = {
     operation: "add"
   }
 };
-He.multiply = {
+Ne.multiply = {
   alpha: {
     srcFactor: "one",
     dstFactor: "one-minus-src-alpha",
@@ -39088,7 +39088,7 @@ He.multiply = {
     operation: "add"
   }
 };
-He.screen = {
+Ne.screen = {
   alpha: {
     srcFactor: "one",
     dstFactor: "one-minus-src-alpha",
@@ -39100,7 +39100,7 @@ He.screen = {
     operation: "add"
   }
 };
-He.overlay = {
+Ne.overlay = {
   alpha: {
     srcFactor: "one",
     dstFactor: "one-minus-src-alpha",
@@ -39112,7 +39112,7 @@ He.overlay = {
     operation: "add"
   }
 };
-He.none = {
+Ne.none = {
   alpha: {
     srcFactor: "one",
     dstFactor: "one-minus-src-alpha",
@@ -39124,7 +39124,7 @@ He.none = {
     operation: "add"
   }
 };
-He["normal-npm"] = {
+Ne["normal-npm"] = {
   alpha: {
     srcFactor: "one",
     dstFactor: "one-minus-src-alpha",
@@ -39136,7 +39136,7 @@ He["normal-npm"] = {
     operation: "add"
   }
 };
-He["add-npm"] = {
+Ne["add-npm"] = {
   alpha: {
     srcFactor: "one",
     dstFactor: "one",
@@ -39148,7 +39148,7 @@ He["add-npm"] = {
     operation: "add"
   }
 };
-He["screen-npm"] = {
+Ne["screen-npm"] = {
   alpha: {
     srcFactor: "one",
     dstFactor: "one-minus-src-alpha",
@@ -39160,7 +39160,7 @@ He["screen-npm"] = {
     operation: "add"
   }
 };
-He.erase = {
+Ne.erase = {
   alpha: {
     srcFactor: "zero",
     dstFactor: "one-minus-src-alpha",
@@ -39172,7 +39172,7 @@ He.erase = {
     operation: "add"
   }
 };
-He.min = {
+Ne.min = {
   alpha: {
     srcFactor: "one",
     dstFactor: "one",
@@ -39184,7 +39184,7 @@ He.min = {
     operation: "min"
   }
 };
-He.max = {
+Ne.max = {
   alpha: {
     srcFactor: "one",
     dstFactor: "one",
@@ -39196,7 +39196,7 @@ He.max = {
     operation: "max"
   }
 };
-class Gl {
+class Ol {
   constructor() {
     this.defaultState = new rt(), this.defaultState.blend = !0;
   }
@@ -39212,7 +39212,7 @@ class Gl {
       {
         format: "bgra8unorm",
         writeMask: 0,
-        blend: He[e.blendMode] || He.normal
+        blend: Ne[e.blendMode] || Ne.normal
       }
     ];
   }
@@ -39220,13 +39220,13 @@ class Gl {
     this.gpu = null;
   }
 }
-Gl.extension = {
+Ol.extension = {
   type: [
     w.WebGPUSystem
   ],
   name: "state"
 };
-const C_ = {
+const P_ = {
   type: "image",
   upload(s, e, t) {
     const r = s.resource, i = (s.pixelWidth | 0) * (s.pixelHeight | 0), n = r.byteLength / i;
@@ -39245,7 +39245,7 @@ const C_ = {
       }
     );
   }
-}, Ll = {
+}, Gl = {
   "bc1-rgba-unorm": { blockBytes: 8, blockWidth: 4, blockHeight: 4 },
   "bc2-rgba-unorm": { blockBytes: 16, blockWidth: 4, blockHeight: 4 },
   "bc3-rgba-unorm": { blockBytes: 16, blockWidth: 4, blockHeight: 4 },
@@ -39253,11 +39253,11 @@ const C_ = {
   "etc1-rgb-unorm": { blockBytes: 8, blockWidth: 4, blockHeight: 4 },
   "etc2-rgba8unorm": { blockBytes: 16, blockWidth: 4, blockHeight: 4 },
   "astc-4x4-unorm": { blockBytes: 16, blockWidth: 4, blockHeight: 4 }
-}, Sv = { blockBytes: 4, blockWidth: 1, blockHeight: 1 }, P_ = {
+}, wv = { blockBytes: 4, blockWidth: 1, blockHeight: 1 }, B_ = {
   type: "compressed",
   upload(s, e, t) {
     let r = s.pixelWidth, i = s.pixelHeight;
-    const n = Ll[s.format] || Sv;
+    const n = Gl[s.format] || wv;
     for (let o = 0; o < s.resource.length; o++) {
       const a = s.resource[o], u = Math.ceil(r / n.blockWidth) * n.blockBytes;
       t.device.queue.writeTexture(
@@ -39278,7 +39278,7 @@ const C_ = {
       ), r = Math.max(r >> 1, 1), i = Math.max(i >> 1, 1);
     }
   }
-}, Nl = {
+}, Ll = {
   type: "image",
   upload(s, e, t) {
     const r = s.resource;
@@ -39298,13 +39298,13 @@ const C_ = {
       }
     );
   }
-}, B_ = {
+}, R_ = {
   type: "video",
   upload(s, e, t) {
-    Nl.upload(s, e, t);
+    Ll.upload(s, e, t);
   }
 };
-class R_ {
+class M_ {
   constructor(e) {
     this.device = e, this.sampler = e.createSampler({ minFilter: "linear" }), this.pipelines = {};
   }
@@ -39430,13 +39430,13 @@ class R_ {
     return this.device.queue.submit([o.finish()]), n || r.destroy(), e;
   }
 }
-class Hl {
+class Nl {
   constructor(e) {
     this.managedTextures = [], this._gpuSources = /* @__PURE__ */ Object.create(null), this._gpuSamplers = /* @__PURE__ */ Object.create(null), this._bindGroupHash = /* @__PURE__ */ Object.create(null), this._textureViewHash = /* @__PURE__ */ Object.create(null), this._uploads = {
-      image: Nl,
-      buffer: C_,
-      video: B_,
-      compressed: P_
+      image: Ll,
+      buffer: P_,
+      video: R_,
+      compressed: B_
     }, this._renderer = e, e.renderableGC.addManagedHash(this, "_gpuSources"), e.renderableGC.addManagedHash(this, "_gpuSamplers"), e.renderableGC.addManagedHash(this, "_bindGroupHash"), e.renderableGC.addManagedHash(this, "_textureViewHash");
   }
   contextChange(e) {
@@ -39457,7 +39457,7 @@ class Hl {
     }
     let t = GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST;
     e.uploadMethodId !== "compressed" && (t |= GPUTextureUsage.RENDER_ATTACHMENT, t |= GPUTextureUsage.COPY_SRC);
-    const r = Ll[e.format] || { blockWidth: 1, blockHeight: 1 }, i = Math.ceil(e.pixelWidth / r.blockWidth) * r.blockWidth, n = Math.ceil(e.pixelHeight / r.blockHeight) * r.blockHeight, o = {
+    const r = Gl[e.format] || { blockWidth: 1, blockHeight: 1 }, i = Math.ceil(e.pixelWidth / r.blockWidth) * r.blockWidth, n = Math.ceil(e.pixelHeight / r.blockHeight) * r.blockHeight, o = {
       label: e.label,
       size: { width: i, height: n },
       format: e.format,
@@ -39477,7 +39477,7 @@ class Hl {
     t && (this._gpuSources[e.uid] = null, t.destroy());
   }
   onUpdateMipmaps(e) {
-    this._mipmapGenerator || (this._mipmapGenerator = new R_(this._gpu.device));
+    this._mipmapGenerator || (this._mipmapGenerator = new M_(this._gpu.device));
     const t = this.getGpuSource(e);
     this._mipmapGenerator.generateMipmap(t);
   }
@@ -39563,13 +39563,13 @@ class Hl {
     this._gpu = null, this._mipmapGenerator = null, this._gpuSources = null, this._bindGroupHash = null, this._textureViewHash = null, this._gpuSamplers = null;
   }
 }
-Hl.extension = {
+Nl.extension = {
   type: [
     w.WebGPUSystem
   ],
   name: "texture"
 };
-class Wl {
+class Hl {
   constructor() {
     this._maxTextures = 0;
   }
@@ -39585,7 +39585,7 @@ class Wl {
       bits: [
         fn,
         mn(this._maxTextures),
-        fg,
+        pg,
         Kr
       ]
     });
@@ -39635,19 +39635,19 @@ class Wl {
     this.shader.destroy(!0), this.shader = null;
   }
 }
-Wl.extension = {
+Hl.extension = {
   type: [
     w.WebGPUPipesAdaptor
   ],
   name: "graphics"
 };
-class zl {
+class Wl {
   init() {
     const e = jr({
       name: "mesh",
       bits: [
         Lr,
-        pg,
+        mg,
         Kr
       ]
     });
@@ -39686,71 +39686,71 @@ class zl {
     this._shader.destroy(!0), this._shader = null;
   }
 }
-zl.extension = {
+Wl.extension = {
   type: [
     w.WebGPUPipesAdaptor
   ],
   name: "mesh"
 };
-const wv = [
-  ...El,
-  Fl,
-  Rl,
+const Tv = [
+  ...Tl,
+  Dl,
+  Bl,
   Fn,
-  Ml,
-  Pl,
-  Hl,
+  Rl,
+  Cl,
+  Nl,
+  kl,
   Ul,
   Ol,
-  Gl,
-  kl,
-  Bl,
-  Dl,
-  Cl
-], Tv = [...Al, Il], Ev = [Du, zl, Wl], M_ = [], D_ = [], F_ = [];
-Y.handleByNamedList(w.WebGPUSystem, M_);
-Y.handleByNamedList(w.WebGPUPipes, D_);
-Y.handleByNamedList(w.WebGPUPipesAdaptor, F_);
-Y.add(...wv, ...Tv, ...Ev);
-class I_ extends Hs {
+  Il,
+  Pl,
+  Ml,
+  Al
+], Ev = [...El, Fl], Av = [Mu, Wl, Hl], D_ = [], F_ = [], I_ = [];
+Y.handleByNamedList(w.WebGPUSystem, D_);
+Y.handleByNamedList(w.WebGPUPipes, F_);
+Y.handleByNamedList(w.WebGPUPipesAdaptor, I_);
+Y.add(...Tv, ...Ev, ...Av);
+class k_ extends Ws {
   constructor() {
     const e = {
       name: "webgpu",
       type: Ze.WEBGPU,
-      systems: M_,
-      renderPipes: D_,
-      renderPipeAdaptors: F_
+      systems: D_,
+      renderPipes: F_,
+      renderPipeAdaptors: I_
     };
     super(e);
   }
 }
-const Av = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Cv = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  WebGPURenderer: I_
-}, Symbol.toStringTag, { value: "Module" })), Hc = {
+  WebGPURenderer: k_
+}, Symbol.toStringTag, { value: "Module" })), Nc = {
   POINTS: "point-list",
   LINES: "line-list",
   LINE_STRIP: "line-strip",
   TRIANGLES: "triangle-list",
   TRIANGLE_STRIP: "triangle-strip"
-}, Cv = new Proxy(Hc, {
+}, Pv = new Proxy(Nc, {
   get(s, e) {
-    return N(Z, `DRAW_MODES.${e} is deprecated, use '${Hc[e]}' instead`), s[e];
+    return N(Z, `DRAW_MODES.${e} is deprecated, use '${Nc[e]}' instead`), s[e];
   }
 });
 var qi = /* @__PURE__ */ ((s) => (s.CLAMP = "clamp-to-edge", s.REPEAT = "repeat", s.MIRRORED_REPEAT = "mirror-repeat", s))(qi || {});
-const Pv = new Proxy(qi, {
+const Bv = new Proxy(qi, {
   get(s, e) {
     return N(Z, `DRAW_MODES.${e} is deprecated, use '${qi[e]}' instead`), s[e];
   }
 });
 var Ki = /* @__PURE__ */ ((s) => (s.NEAREST = "nearest", s.LINEAR = "linear", s))(Ki || {});
-const Bv = new Proxy(Ki, {
+const Rv = new Proxy(Ki, {
   get(s, e) {
     return N(Z, `DRAW_MODES.${e} is deprecated, use '${Ki[e]}' instead`), s[e];
   }
 });
-class Rv {
+class Mv {
   constructor() {
     this.x0 = 0, this.y0 = 0, this.x1 = 1, this.y1 = 0, this.x2 = 1, this.y2 = 1, this.x3 = 0, this.y3 = 1, this.uvsFloat32 = new Float32Array(8);
   }
@@ -39774,16 +39774,16 @@ class Rv {
     return `[pixi.js/core:TextureUvs x0=${this.x0} y0=${this.y0} x1=${this.x1} y1=${this.y1} x2=${this.x2} y2=${this.y2} x3=${this.x3} y3=${this.y3}]`;
   }
 }
-function Mv(s) {
+function Dv(s) {
   const e = s.toString(), t = e.indexOf("{"), r = e.lastIndexOf("}");
   if (t === -1 || r === -1)
     throw new Error("getFunctionBody: No body found in function definition");
   return e.slice(t + 1, r).trim();
 }
-function Dv(s, e) {
+function Fv(s, e) {
   return N("8.7.0", "Use container.getFastGlobalBounds() instead"), s.getFastGlobalBounds(!0, e);
 }
-class Fv extends Bt {
+class Iv extends Bt {
   /**
    * @param options - The options for the container.
    */
@@ -39806,20 +39806,20 @@ class Fv extends Bt {
   render(e) {
   }
 }
-function Iv(s, e, t) {
+function kv(s, e, t) {
   N("8.7.0", "Please use container.collectRenderables instead.");
   const r = t.renderPipes ? t : t.batch.renderer;
   return s.collectRenderables(e, r, null);
 }
-function kv(s, e) {
+function Uv(s, e) {
   const t = e._scale, r = e._pivot, i = e._position, n = t._x, o = t._y, a = r._x, u = r._y;
   s.a = e._cx * n, s.b = e._sx * n, s.c = e._cy * o, s.d = e._sy * o, s.tx = i._x - (a * s.a + u * s.c), s.ty = i._y - (a * s.b + u * s.d);
 }
-function Uv(s, e, t) {
+function Ov(s, e, t) {
   const r = s.a, i = s.b, n = s.c, o = s.d, a = s.tx, u = s.ty, l = e.a, h = e.b, c = e.c, d = e.d;
   t.a = r * l + i * c, t.b = r * h + i * d, t.c = n * l + o * c, t.d = n * h + o * d, t.tx = a * l + u * c + e.tx, t.ty = a * h + u * d + e.ty;
 }
-class k_ {
+class U_ {
   constructor() {
     this.batches = [], this.batched = !1;
   }
@@ -39829,7 +39829,7 @@ class k_ {
     }), this.batches.length = 0;
   }
 }
-class Vl {
+class zl {
   constructor(e, t) {
     this.state = rt.for2d(), this.renderer = e, this._adaptor = t, this.renderer.runners.contextChange.add(this);
   }
@@ -39881,7 +39881,7 @@ class Vl {
     return e._gpuData[this.renderer.uid] || this._initGpuDataForRenderable(e);
   }
   _initGpuDataForRenderable(e) {
-    const t = new k_();
+    const t = new U_();
     return e._gpuData[this.renderer.uid] = t, t;
   }
   _updateBatchesForRenderable(e, t) {
@@ -39895,7 +39895,7 @@ class Vl {
     this.renderer = null, this._adaptor.destroy(), this._adaptor = null, this.state = null;
   }
 }
-Vl.extension = {
+zl.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -39903,7 +39903,7 @@ Vl.extension = {
   ],
   name: "graphics"
 };
-function Ov(s) {
+function Gv(s) {
   s instanceof mt && (s = {
     path: s,
     textureMatrix: null,
@@ -39923,7 +39923,7 @@ function Ov(s) {
     indices: new Uint32Array(r)
   });
 }
-const U_ = class O_ extends le {
+const O_ = class G_ extends le {
   /**
    * Creates a new RenderLayer instance
    * @param options - Configuration options for the RenderLayer
@@ -39931,7 +39931,7 @@ const U_ = class O_ extends le {
    * @param {Function} [options.sortFunction] - Custom function to sort layer children. Default sorts by zIndex
    */
   constructor(e = {}) {
-    e = { ...O_.defaultOptions, ...e }, super(), this.renderLayerChildren = [], this.sortableChildren = e.sortableChildren, this.sortFunction = e.sortFunction;
+    e = { ...G_.defaultOptions, ...e }, super(), this.renderLayerChildren = [], this.sortableChildren = e.sortableChildren, this.sortFunction = e.sortFunction;
   }
   /**
    * Adds one or more Containers to this render layer. The Containers will be rendered as part of this layer
@@ -40272,7 +40272,7 @@ const U_ = class O_ extends le {
     throw new Error("RenderLayer.reparentChildAt() is not available with the render layer");
   }
 };
-U_.defaultOptions = {
+O_.defaultOptions = {
   /** If true, layer children will be automatically sorted each render. Default is false. */
   sortableChildren: !1,
   /**
@@ -40285,8 +40285,8 @@ U_.defaultOptions = {
    */
   sortFunction: (s, e) => s.zIndex - e.zIndex
 };
-let Zi = U_;
-const G_ = class L_ extends Qt {
+let Zi = O_;
+const L_ = class N_ extends Qt {
   constructor(...e) {
     super({});
     let t = e[0] ?? {};
@@ -40302,7 +40302,7 @@ const G_ = class L_ extends Qt {
    * @param options - Options to be applied to plane geometry
    */
   build(e) {
-    e = { ...L_.defaultOptions, ...e }, this.verticesX = this.verticesX ?? e.verticesX, this.verticesY = this.verticesY ?? e.verticesY, this.width = this.width ?? e.width, this.height = this.height ?? e.height;
+    e = { ...N_.defaultOptions, ...e }, this.verticesX = this.verticesX ?? e.verticesX, this.verticesY = this.verticesY ?? e.verticesY, this.width = this.width ?? e.width, this.height = this.height ?? e.height;
     const t = this.verticesX * this.verticesY, r = [], i = [], n = [], o = this.verticesX - 1, a = this.verticesY - 1, u = this.width / o, l = this.height / a;
     for (let c = 0; c < t; c++) {
       const d = c % this.verticesX, f = c / this.verticesX | 0;
@@ -40323,14 +40323,14 @@ const G_ = class L_ extends Qt {
     this.buffers[0].data = new Float32Array(r), this.buffers[1].data = new Float32Array(i), this.indexBuffer.data = new Uint32Array(n), this.buffers[0].update(), this.buffers[1].update(), this.indexBuffer.update();
   }
 };
-G_.defaultOptions = {
+L_.defaultOptions = {
   width: 100,
   height: 100,
   verticesX: 10,
   verticesY: 10
 };
-let In = G_;
-function N_(s, e, t, r) {
+let In = L_;
+function H_(s, e, t, r) {
   const i = t.buffers[0], n = i.data, { verticesX: o, verticesY: a } = t, u = s / (o - 1), l = e / (a - 1);
   let h = 0;
   const c = r[0], d = r[1], f = r[2], g = r[3], b = r[4], p = r[5], x = r[6], y = r[7], S = r[8];
@@ -40340,39 +40340,39 @@ function N_(s, e, t, r) {
   }
   i.update();
 }
-function H_(s, e) {
+function W_(s, e) {
   const t = e[0], r = e[1], i = e[2], n = e[3], o = e[4], a = e[5], u = e[6], l = e[7], h = e[8];
   return s[0] = o * h - a * l, s[1] = i * l - r * h, s[2] = r * a - i * o, s[3] = a * u - n * h, s[4] = t * h - i * u, s[5] = i * n - t * a, s[6] = n * l - o * u, s[7] = r * u - t * l, s[8] = t * o - r * n, s;
 }
-function W_(s, e, t) {
+function z_(s, e, t) {
   const r = e[0], i = e[1], n = e[2], o = e[3], a = e[4], u = e[5], l = e[6], h = e[7], c = e[8], d = t[0], f = t[1], g = t[2], b = t[3], p = t[4], x = t[5], y = t[6], S = t[7], T = t[8];
   return s[0] = d * r + f * o + g * l, s[1] = d * i + f * a + g * h, s[2] = d * n + f * u + g * c, s[3] = b * r + p * o + x * l, s[4] = b * i + p * a + x * h, s[5] = b * n + p * u + x * c, s[6] = y * r + S * o + T * l, s[7] = y * i + S * a + T * h, s[8] = y * n + S * u + T * c, s;
 }
-function Gv(s, e, t) {
+function Lv(s, e, t) {
   const r = t[0], i = t[1], n = t[2];
   return s[0] = e[0] * r + e[1] * i + e[2] * n, s[1] = e[3] * r + e[4] * i + e[5] * n, s[2] = e[6] * r + e[7] * i + e[8] * n, s;
 }
-const Lv = [0, 0, 0, 0, 0, 0, 0, 0, 0], Nv = [0, 0, 0], Si = [0, 0, 0];
-function Wc(s, e, t, r, i, n, o, a, u) {
-  const l = Lv;
+const Nv = [0, 0, 0, 0, 0, 0, 0, 0, 0], Hv = [0, 0, 0], wi = [0, 0, 0];
+function Hc(s, e, t, r, i, n, o, a, u) {
+  const l = Nv;
   l[0] = e, l[1] = r, l[2] = n, l[3] = t, l[4] = i, l[5] = o, l[6] = 1, l[7] = 1, l[8] = 1;
-  const h = H_(
+  const h = W_(
     s,
     // reusing out as adjugateM is only used once
     l
   );
-  Si[0] = a, Si[1] = u, Si[2] = 1;
-  const c = Gv(
-    Nv,
-    h,
-    Si
-  ), d = s;
-  return s[0] = c[0], s[1] = 0, s[2] = 0, s[3] = 0, s[4] = c[1], s[5] = 0, s[6] = 0, s[7] = 0, s[8] = c[2], W_(s, d, l);
-}
-const Hv = [0, 0, 0, 0, 0, 0, 0, 0, 0], Wv = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-function z_(s, e, t, r, i, n, o, a, u, l, h, c, d, f, g, b, p) {
-  const x = Wc(
+  wi[0] = a, wi[1] = u, wi[2] = 1;
+  const c = Lv(
     Hv,
+    h,
+    wi
+  ), d = s;
+  return s[0] = c[0], s[1] = 0, s[2] = 0, s[3] = 0, s[4] = c[1], s[5] = 0, s[6] = 0, s[7] = 0, s[8] = c[2], z_(s, d, l);
+}
+const Wv = [0, 0, 0, 0, 0, 0, 0, 0, 0], zv = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+function V_(s, e, t, r, i, n, o, a, u, l, h, c, d, f, g, b, p) {
+  const x = Hc(
+    Wv,
     e,
     t,
     n,
@@ -40381,8 +40381,8 @@ function z_(s, e, t, r, i, n, o, a, u, l, h, c, d, f, g, b, p) {
     h,
     f,
     g
-  ), y = Wc(
-    Wv,
+  ), y = Hc(
+    zv,
     r,
     i,
     a,
@@ -40392,13 +40392,13 @@ function z_(s, e, t, r, i, n, o, a, u, l, h, c, d, f, g, b, p) {
     b,
     p
   );
-  return W_(
+  return z_(
     s,
-    H_(x, x),
+    W_(x, x),
     y
   );
 }
-class V_ extends In {
+class X_ extends In {
   /**
    * @param options - Options to be applied to MeshPlane
    * @param options.width - The width of the plane
@@ -40429,7 +40429,7 @@ class V_ extends In {
   }
   /** Update the projection matrix based on the corners */
   updateProjection() {
-    const { width: e, height: t } = this, r = this.corners, i = z_(
+    const { width: e, height: t } = this, r = this.corners, i = V_(
       this._projectionMatrix,
       0,
       0,
@@ -40456,7 +40456,7 @@ class V_ extends In {
       r[7]
       // bottom-left dest
     );
-    N_(
+    H_(
       e,
       t,
       this,
@@ -40464,13 +40464,13 @@ class V_ extends In {
     );
   }
 }
-const X_ = class Y_ extends Jr {
+const Y_ = class $_ extends Jr {
   /**
    * @param options - Options to be applied to PerspectiveMesh
    */
   constructor(e) {
-    e = { ...Y_.defaultOptions, ...e };
-    const { texture: t, verticesX: r, verticesY: i, ...n } = e, o = new V_(gt({
+    e = { ...$_.defaultOptions, ...e };
+    const { texture: t, verticesX: r, verticesY: i, ...n } = e, o = new X_(gt({
       width: t.width,
       height: t.height,
       verticesX: r,
@@ -40571,7 +40571,7 @@ const X_ = class Y_ extends Jr {
     this.geometry.setCorners(e, t, r, i, n, o, a, u);
   }
 };
-X_.defaultOptions = {
+Y_.defaultOptions = {
   texture: O.WHITE,
   verticesX: 10,
   verticesY: 10,
@@ -40584,8 +40584,8 @@ X_.defaultOptions = {
   x3: 0,
   y3: 100
 };
-let zv = X_;
-class Vv extends Jr {
+let Vv = Y_;
+class Xv extends Jr {
   /**
    * @param options - Options to be applied to MeshPlane
    */
@@ -40644,12 +40644,12 @@ class Vv extends Jr {
     this.texture.off("update", this.textureUpdated, this), super.destroy(e);
   }
 }
-const $_ = class j_ extends Qt {
+const j_ = class q_ extends Qt {
   /**
    * @param options - Options to be applied to rope geometry
    */
   constructor(e) {
-    const { width: t, points: r, textureScale: i } = { ...j_.defaultOptions, ...e };
+    const { width: t, points: r, textureScale: i } = { ...q_.defaultOptions, ...e };
     super({
       positions: new Float32Array(r.length * 4),
       uvs: new Float32Array(r.length * 4),
@@ -40712,7 +40712,7 @@ const $_ = class j_ extends Qt {
     this.textureScale > 0 ? this._build() : this.updateVertices();
   }
 };
-$_.defaultOptions = {
+j_.defaultOptions = {
   /** The width (i.e., thickness) of the rope. */
   width: 200,
   /** An array of points that determine the rope. */
@@ -40720,8 +40720,8 @@ $_.defaultOptions = {
   /** Rope texture scale, if zero then the rope texture is stretched. */
   textureScale: 0
 };
-let q_ = $_;
-const K_ = class Z_ extends Jr {
+let K_ = j_;
+const Z_ = class Q_ extends Jr {
   /**
    * Note: The wrap mode of the texture is set to REPEAT if `textureScale` is positive.
    * @param options
@@ -40732,7 +40732,7 @@ const K_ = class Z_ extends Jr {
    * and downsampling here. If set to zero, texture will be stretched instead.
    */
   constructor(e) {
-    const { texture: t, points: r, textureScale: i, ...n } = { ...Z_.defaultOptions, ...e }, o = new q_(gt({ width: t.height, points: r, textureScale: i }));
+    const { texture: t, points: r, textureScale: i, ...n } = { ...Q_.defaultOptions, ...e }, o = new K_(gt({ width: t.height, points: r, textureScale: i }));
     i > 0 && (t.source.style.addressMode = "repeat"), super(gt({
       ...n,
       texture: t,
@@ -40744,11 +40744,11 @@ const K_ = class Z_ extends Jr {
     (this.autoUpdate || e._width !== this.texture.height) && (e._width = this.texture.height, e.update());
   }
 };
-K_.defaultOptions = {
+Z_.defaultOptions = {
   textureScale: 0
 };
-let Xv = K_;
-class Yv extends Jr {
+let Yv = Z_;
+class $v extends Jr {
   /**
    * @param options - Options to be used for construction
    */
@@ -40852,15 +40852,15 @@ class kn {
     return this.geometry.indices.length;
   }
 }
-function $v(s, e) {
+function jv(s, e) {
   const { width: t, height: r } = s.frame;
   return e.scale(1 / t, 1 / r), e;
 }
-class Sa {
+class wa {
   destroy() {
   }
 }
-class Xl {
+class Vl {
   constructor(e, t) {
     this.localUniforms = new we({
       uTransformMatrix: { value: new W(), type: "mat3x3<f32>" },
@@ -40913,7 +40913,7 @@ class Xl {
   }
   _getMeshData(e) {
     var t, r;
-    return (t = e._gpuData)[r = this.renderer.uid] || (t[r] = new Sa()), e._gpuData[this.renderer.uid].meshData || this._initMeshData(e);
+    return (t = e._gpuData)[r = this.renderer.uid] || (t[r] = new wa()), e._gpuData[this.renderer.uid].meshData || this._initMeshData(e);
   }
   _initMeshData(e) {
     return e._gpuData[this.renderer.uid].meshData = {
@@ -40924,7 +40924,7 @@ class Xl {
   }
   _getBatchableMesh(e) {
     var t, r;
-    return (t = e._gpuData)[r = this.renderer.uid] || (t[r] = new Sa()), e._gpuData[this.renderer.uid].batchableMesh || this._initBatchableMesh(e);
+    return (t = e._gpuData)[r = this.renderer.uid] || (t[r] = new wa()), e._gpuData[this.renderer.uid].batchableMesh || this._initBatchableMesh(e);
   }
   _initBatchableMesh(e) {
     const t = new kn();
@@ -40934,7 +40934,7 @@ class Xl {
     this.localUniforms = null, this.localUniformsBindGroup = null, this._adaptor.destroy(), this._adaptor = null, this.renderer = null;
   }
 }
-Xl.extension = {
+Vl.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -40942,7 +40942,7 @@ Xl.extension = {
   ],
   name: "mesh"
 };
-class Q_ {
+class J_ {
   execute(e, t) {
     const r = e.state, i = e.renderer, n = t.shader || e.defaultShader;
     n.resources.uTexture = t.texture._source, n.resources.uniforms = e.localUniforms;
@@ -40952,7 +40952,7 @@ class Q_ {
     o.drawElements(o.TRIANGLES, t.particleChildren.length * 6, l, 0);
   }
 }
-class J_ {
+class eb {
   execute(e, t) {
     const r = e.renderer, i = t.shader || e.defaultShader;
     i.groups[0] = r.renderPipes.uniformBatch.getUniformBindGroup(e.localUniforms, !0), i.groups[1] = r.texture.getTextureBindGroup(t.texture);
@@ -40965,7 +40965,7 @@ class J_ {
     });
   }
 }
-function wa(s, e = null) {
+function Ta(s, e = null) {
   const t = s * 6;
   if (t > 65535 ? e || (e = new Uint32Array(t)) : e || (e = new Uint16Array(t)), e.length !== t)
     throw new Error(`Out buffer length is incorrect, got ${e.length} and expected ${t}`);
@@ -40973,13 +40973,13 @@ function wa(s, e = null) {
     e[r + 0] = i + 0, e[r + 1] = i + 1, e[r + 2] = i + 2, e[r + 3] = i + 0, e[r + 4] = i + 2, e[r + 5] = i + 3;
   return e;
 }
-function eb(s) {
+function tb(s) {
   return {
-    dynamicUpdate: zc(s, !0),
-    staticUpdate: zc(s, !1)
+    dynamicUpdate: Wc(s, !0),
+    staticUpdate: Wc(s, !1)
   };
 }
-function zc(s, e) {
+function Wc(s, e) {
   const t = [];
   t.push(`
 
@@ -41009,7 +41009,7 @@ function zc(s, e) {
 `);
   return new Function("ps", "f32v", "u32v", i);
 }
-class tb {
+class rb {
   constructor(e) {
     this._size = 0, this._generateParticleUpdateCache = {};
     const t = this._size = e.size ?? 1e3, r = e.properties;
@@ -41018,7 +41018,7 @@ class tb {
       const c = r[h], d = Gt(c.format);
       c.dynamic ? n += d.stride : i += d.stride;
     }
-    this._dynamicStride = n / 4, this._staticStride = i / 4, this.staticAttributeBuffer = new dr(t * 4 * i), this.dynamicAttributeBuffer = new dr(t * 4 * n), this.indexBuffer = wa(t);
+    this._dynamicStride = n / 4, this._staticStride = i / 4, this.staticAttributeBuffer = new dr(t * 4 * i), this.dynamicAttributeBuffer = new dr(t * 4 * n), this.indexBuffer = Ta(t);
     const o = new _r();
     let a = 0, u = 0;
     this._staticBuffer = new Ke({
@@ -41051,14 +41051,14 @@ class tb {
     this._dynamicUpload = l.dynamicUpdate, this._staticUpload = l.staticUpdate, this.geometry = o;
   }
   getParticleUpdate(e) {
-    const t = jv(e);
+    const t = qv(e);
     return this._generateParticleUpdateCache[t] ? this._generateParticleUpdateCache[t] : (this._generateParticleUpdateCache[t] = this.generateParticleUpdate(e), this._generateParticleUpdateCache[t]);
   }
   generateParticleUpdate(e) {
-    return eb(e);
+    return tb(e);
   }
   update(e, t) {
-    e.length > this._size && (t = !0, this._size = Math.max(e.length, this._size * 1.5 | 0), this.staticAttributeBuffer = new dr(this._size * this._staticStride * 4 * 4), this.dynamicAttributeBuffer = new dr(this._size * this._dynamicStride * 4 * 4), this.indexBuffer = wa(this._size), this.geometry.indexBuffer.setDataWithSize(
+    e.length > this._size && (t = !0, this._size = Math.max(e.length, this._size * 1.5 | 0), this.staticAttributeBuffer = new dr(this._size * this._staticStride * 4 * 4), this.dynamicAttributeBuffer = new dr(this._size * this._dynamicStride * 4 * 4), this.indexBuffer = Ta(this._size), this.geometry.indexBuffer.setDataWithSize(
       this.indexBuffer,
       this.indexBuffer.byteLength,
       !0
@@ -41081,7 +41081,7 @@ class tb {
     this._staticBuffer.destroy(), this._dynamicBuffer.destroy(), this.geometry.destroy();
   }
 }
-function jv(s) {
+function qv(s) {
   const e = [];
   for (const t in s) {
     const r = s[t];
@@ -41089,7 +41089,7 @@ function jv(s) {
   }
   return e.join("_");
 }
-var rb = `varying vec2 vUV;
+var sb = `varying vec2 vUV;
 varying vec4 vColor;
 
 uniform sampler2D uTexture;
@@ -41097,7 +41097,7 @@ uniform sampler2D uTexture;
 void main(void){
     vec4 color = texture2D(uTexture, vUV) * vColor;
     gl_FragColor = color;
-}`, sb = `attribute vec2 aVertex;
+}`, ib = `attribute vec2 aVertex;
 attribute vec2 aUV;
 attribute vec4 aColor;
 
@@ -41136,7 +41136,7 @@ void main(void){
     vUV = aUV;
     vColor = vec4(aColor.rgb * aColor.a, aColor.a) * uColor;
 }
-`, Ta = `
+`, Ea = `
 struct ParticleUniforms {
   uTranslationMatrix:mat3x3<f32>,
   uColor:vec4<f32>,
@@ -41199,18 +41199,18 @@ fn mainFragment(
    
     return sample;
 }`;
-class ib extends nt {
+class nb extends nt {
   constructor() {
     const e = Je.from({
-      vertex: sb,
-      fragment: rb
-    }), t = We.from({
+      vertex: ib,
+      fragment: sb
+    }), t = He.from({
       fragment: {
-        source: Ta,
+        source: Ea,
         entryPoint: "mainFragment"
       },
       vertex: {
-        source: Ta,
+        source: Ea,
         entryPoint: "mainVertex"
       }
     });
@@ -41233,7 +41233,7 @@ class ib extends nt {
     });
   }
 }
-class Yl {
+class Xl {
   /**
    * @param renderer - The renderer this sprite batch works for.
    * @param adaptor
@@ -41244,7 +41244,7 @@ class Yl {
       uColor: { value: new Float32Array(4), type: "vec4<f32>" },
       uRound: { value: 1, type: "f32" },
       uResolution: { value: [0, 0], type: "vec2<f32>" }
-    }), this.renderer = e, this.adaptor = t, this.defaultShader = new ib(), this.state = rt.for2d();
+    }), this.renderer = e, this.adaptor = t, this.defaultShader = new nb(), this.state = rt.for2d();
   }
   validateRenderable(e) {
     return !1;
@@ -41256,7 +41256,7 @@ class Yl {
     return e._gpuData[this.renderer.uid] || this._initBuffer(e);
   }
   _initBuffer(e) {
-    return e._gpuData[this.renderer.uid] = new tb({
+    return e._gpuData[this.renderer.uid] = new rb({
       size: e.particleChildren.length,
       properties: e._properties
     }), e._gpuData[this.renderer.uid];
@@ -41283,34 +41283,34 @@ class Yl {
     this.renderer = null, this.defaultShader && (this.defaultShader.destroy(), this.defaultShader = null);
   }
 }
-class $l extends Yl {
+class Yl extends Xl {
   constructor(e) {
-    super(e, new Q_());
+    super(e, new J_());
   }
 }
-$l.extension = {
+Yl.extension = {
   type: [
     w.WebGLPipes
   ],
   name: "particle"
 };
-class jl extends Yl {
+class $l extends Xl {
   constructor(e) {
-    super(e, new J_());
+    super(e, new eb());
   }
 }
-jl.extension = {
+$l.extension = {
   type: [
     w.WebGPUPipes
   ],
   name: "particle"
 };
-const nb = class Ea {
+const ob = class Aa {
   constructor(e) {
     if (e instanceof O)
-      this.texture = e, Gi(this, Ea.defaultOptions, {});
+      this.texture = e, Gi(this, Aa.defaultOptions, {});
     else {
-      const t = { ...Ea.defaultOptions, ...e };
+      const t = { ...Aa.defaultOptions, ...e };
       Gi(this, t, {});
     }
   }
@@ -41394,7 +41394,7 @@ const nb = class Ea {
     this.color = this._tint + ((this._alpha * 255 | 0) << 24);
   }
 };
-nb.defaultOptions = {
+ob.defaultOptions = {
   anchorX: 0,
   anchorY: 0,
   x: 0,
@@ -41405,8 +41405,8 @@ nb.defaultOptions = {
   tint: 16777215,
   alpha: 1
 };
-let qv = nb;
-const Aa = {
+let Kv = ob;
+const Ca = {
   vertex: {
     attributeName: "aVertex",
     format: "float32x2",
@@ -41521,16 +41521,16 @@ const Aa = {
         `,
     dynamic: !1
   }
-}, Kv = new Be(0, 0, 0, 0), ob = class Ca extends Bt {
+}, Zv = new Be(0, 0, 0, 0), ab = class Pa extends Bt {
   /**
    * @param options - The options for creating the sprite.
    */
   constructor(e = {}) {
     e = {
-      ...Ca.defaultOptions,
+      ...Pa.defaultOptions,
       ...e,
       dynamicProperties: {
-        ...Ca.defaultOptions.dynamicProperties,
+        ...Pa.defaultOptions.dynamicProperties,
         ...e?.dynamicProperties
       }
     };
@@ -41539,8 +41539,8 @@ const Aa = {
       label: "ParticleContainer",
       ...a
     }), this.renderPipeId = "particle", this.batched = !1, this._childrenDirty = !1, this.texture = n || null, this.shader = r, this._properties = {};
-    for (const u in Aa) {
-      const l = Aa[u], h = t[u];
+    for (const u in Ca) {
+      const l = Ca[u], h = t[u];
       this._properties[u] = {
         ...l,
         dynamic: h
@@ -41656,7 +41656,7 @@ const Aa = {
    * @see {@link Bounds} For bounds object structure
    */
   get bounds() {
-    return Kv;
+    return Zv;
   }
   /** @private */
   updateBounds() {
@@ -41853,7 +41853,7 @@ const Aa = {
     throw new Error("ParticleContainer.reparentChildAt() is not available with the particle container");
   }
 };
-ob.defaultOptions = {
+ab.defaultOptions = {
   /** Specifies which properties are dynamic. */
   dynamicProperties: {
     /** Indicates if vertex positions are dynamic. */
@@ -41870,10 +41870,10 @@ ob.defaultOptions = {
   /** Indicates if pixels should be rounded for rendering. */
   roundPixels: !1
 };
-let Zv = ob;
-const ab = class ub extends In {
+let Qv = ab;
+const ub = class lb extends In {
   constructor(e = {}) {
-    e = { ...ub.defaultOptions, ...e }, super({
+    e = { ...lb.defaultOptions, ...e }, super({
       width: e.width,
       height: e.height,
       verticesX: 4,
@@ -41909,7 +41909,7 @@ const ab = class ub extends In {
     e[2] = e[10] = e[18] = e[26] = t * this._leftWidth, e[9] = e[11] = e[13] = e[15] = r * this._topHeight, e[4] = e[12] = e[20] = e[28] = 1 - t * this._rightWidth, e[17] = e[19] = e[21] = e[23] = 1 - r * this._bottomHeight, this.getBuffer("aUV").update();
   }
 };
-ab.defaultOptions = {
+ub.defaultOptions = {
   /** The width of the NineSlicePlane, setting this will actually modify the vertices and UV's of this plane. */
   width: 100,
   /** The height of the NineSlicePlane, setting this will actually modify the vertices and UV's of this plane. */
@@ -41927,8 +41927,8 @@ ab.defaultOptions = {
   /** The original height of the texture */
   originalHeight: 100
 };
-let Vt = ab;
-const lb = class hb extends Bt {
+let Xt = ub;
+const hb = class cb extends Bt {
   constructor(e) {
     e instanceof O && (e = { texture: e });
     const {
@@ -41946,7 +41946,7 @@ const lb = class hb extends Bt {
     super({
       label: "NineSliceSprite",
       ...c
-    }), this.renderPipeId = "nineSliceSprite", this.batched = !0, this._leftWidth = n ?? l?.defaultBorders?.left ?? Vt.defaultOptions.leftWidth, this._topHeight = a ?? l?.defaultBorders?.top ?? Vt.defaultOptions.topHeight, this._rightWidth = o ?? l?.defaultBorders?.right ?? Vt.defaultOptions.rightWidth, this._bottomHeight = u ?? l?.defaultBorders?.bottom ?? Vt.defaultOptions.bottomHeight, this._width = t ?? l.width ?? Vt.defaultOptions.width, this._height = r ?? l.height ?? Vt.defaultOptions.height, this.allowChildren = !1, this.texture = l ?? hb.defaultOptions.texture, this.roundPixels = h ?? !1, this._anchor = new ce(
+    }), this.renderPipeId = "nineSliceSprite", this.batched = !0, this._leftWidth = n ?? l?.defaultBorders?.left ?? Xt.defaultOptions.leftWidth, this._topHeight = a ?? l?.defaultBorders?.top ?? Xt.defaultOptions.topHeight, this._rightWidth = o ?? l?.defaultBorders?.right ?? Xt.defaultOptions.rightWidth, this._bottomHeight = u ?? l?.defaultBorders?.bottom ?? Xt.defaultOptions.bottomHeight, this._width = t ?? l.width ?? Xt.defaultOptions.width, this._height = r ?? l.height ?? Xt.defaultOptions.height, this.allowChildren = !1, this.texture = l ?? cb.defaultOptions.texture, this.roundPixels = h ?? !1, this._anchor = new ce(
       {
         _onUpdate: () => {
           this.onViewUpdate();
@@ -42246,12 +42246,12 @@ const lb = class hb extends Bt {
     e.minX = -t._x * r, e.maxX = e.minX + r, e.minY = -t._y * i, e.maxY = e.minY + i;
   }
 };
-lb.defaultOptions = {
+hb.defaultOptions = {
   /** @default Texture.EMPTY */
   texture: O.EMPTY
 };
-let cb = lb;
-class Qv extends cb {
+let db = hb;
+class Jv extends db {
   constructor(...e) {
     let t = e[0];
     t instanceof O && (N(Z, "NineSlicePlane now uses the options object {texture, leftWidth, rightWidth, topHeight, bottomHeight}"), t = {
@@ -42263,15 +42263,15 @@ class Qv extends cb {
     }), N(Z, "NineSlicePlane is deprecated. Use NineSliceSprite instead."), super(t);
   }
 }
-class db extends kn {
+class fb extends kn {
   constructor() {
-    super(), this.geometry = new Vt();
+    super(), this.geometry = new Xt();
   }
   destroy() {
     this.geometry.destroy();
   }
 }
-class ql {
+class jl {
   constructor(e) {
     this._renderer = e;
   }
@@ -42297,14 +42297,14 @@ class ql {
     return e._gpuData[this._renderer.uid] || this._initGPUSprite(e);
   }
   _initGPUSprite(e) {
-    const t = e._gpuData[this._renderer.uid] = new db(), r = t;
+    const t = e._gpuData[this._renderer.uid] = new fb(), r = t;
     return r.renderable = e, r.transform = e.groupTransform, r.texture = e._texture, r.roundPixels = this._renderer._roundPixels | e._roundPixels, e.didViewUpdate || this._updateBatchableSprite(e, r), t;
   }
   destroy() {
     this._renderer = null;
   }
 }
-ql.extension = {
+jl.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -42312,7 +42312,7 @@ ql.extension = {
   ],
   name: "nineSliceSprite"
 };
-const fb = {
+const pb = {
   name: "tiling-bit",
   vertex: {
     header: (
@@ -42377,7 +42377,7 @@ const fb = {
         `
     )
   }
-}, pb = {
+}, mb = {
   name: "tiling-bit",
   vertex: {
     header: (
@@ -42423,20 +42423,20 @@ const fb = {
   }
 };
 let Eo, Ao;
-class mb extends nt {
+class gb extends nt {
   constructor() {
     Eo ?? (Eo = jr({
       name: "tiling-sprite-shader",
       bits: [
         Lr,
-        fb,
+        pb,
         Kr
       ]
     })), Ao ?? (Ao = qr({
       name: "tiling-sprite-shader",
       bits: [
         Bn,
-        pb,
+        mb,
         Zr
       ]
     }));
@@ -42474,7 +42474,7 @@ class mb extends nt {
     ), c.invert(), a.uniforms.uMapCoord = h.mapCoord, a.uniforms.uClampFrame = h.uClampFrame, a.uniforms.uClampOffset = h.uClampOffset, a.uniforms.uTextureTransform = c, a.uniforms.uSizeAnchor[0] = e, a.uniforms.uSizeAnchor[1] = t, a.uniforms.uSizeAnchor[2] = i, a.uniforms.uSizeAnchor[3] = n, o && (this.resources.uTexture = o.source, this.resources.uSampler = o.source.style);
   }
 }
-class gb extends Qt {
+class _b extends Qt {
   constructor() {
     super({
       positions: new Float32Array([0, 0, 1, 0, 1, 1, 0, 1]),
@@ -42483,11 +42483,11 @@ class gb extends Qt {
     });
   }
 }
-function _b(s, e) {
+function bb(s, e) {
   const t = s.anchor.x, r = s.anchor.y;
   e[0] = -t * s.width, e[1] = -r * s.height, e[2] = (1 - t) * s.width, e[3] = -r * s.height, e[4] = (1 - t) * s.width, e[5] = (1 - r) * s.height, e[6] = -t * s.width, e[7] = (1 - r) * s.height;
 }
-function bb(s, e, t, r) {
+function xb(s, e, t, r) {
   let i = 0;
   const n = s.length / (e || 2), o = r.a, a = r.b, u = r.c, l = r.d, h = r.tx, c = r.ty;
   for (t *= e; i < n; ) {
@@ -42495,15 +42495,15 @@ function bb(s, e, t, r) {
     s[t] = o * d + u * f + h, s[t + 1] = a * d + l * f + c, t += e, i++;
   }
 }
-function xb(s, e) {
+function yb(s, e) {
   const t = s.texture, r = t.frame.width, i = t.frame.height;
   let n = 0, o = 0;
   s.applyAnchorToTexture && (n = s.anchor.x, o = s.anchor.y), e[0] = e[6] = -n, e[2] = e[4] = 1 - n, e[1] = e[3] = -o, e[5] = e[7] = 1 - o;
   const a = W.shared;
-  a.copyFrom(s._tileTransform.matrix), a.tx /= s.width, a.ty /= s.height, a.invert(), a.scale(s.width / r, s.height / i), bb(e, 2, 0, a);
+  a.copyFrom(s._tileTransform.matrix), a.tx /= s.width, a.ty /= s.height, a.invert(), a.scale(s.width / r, s.height / i), xb(e, 2, 0, a);
 }
-const Mi = new gb();
-class yb {
+const Mi = new _b();
+class vb {
   constructor() {
     this.canBatch = !0, this.geometry = new Qt({
       indices: Mi.indices.slice(),
@@ -42515,7 +42515,7 @@ class yb {
     this.geometry.destroy(), this.shader?.destroy();
   }
 }
-class Kl {
+class ql {
   constructor(e) {
     this._state = rt.default2d, this._renderer = e;
   }
@@ -42541,7 +42541,7 @@ class Kl {
       const a = i.batchableMesh;
       e.didViewUpdate && (this._updateBatchableMesh(e), a.geometry = n, a.renderable = e, a.transform = e.groupTransform, a.setTexture(e._texture)), a.roundPixels = this._renderer._roundPixels | e._roundPixels, r.addToBatch(a, t);
     } else
-      r.break(t), i.shader || (i.shader = new mb()), this.updateRenderable(e), t.add(e);
+      r.break(t), i.shader || (i.shader = new gb()), this.updateRenderable(e), t.add(e);
   }
   execute(e) {
     const { shader: t } = this._getTilingSpriteData(e);
@@ -42578,12 +42578,12 @@ class Kl {
     return e._gpuData[this._renderer.uid] || this._initTilingSpriteData(e);
   }
   _initTilingSpriteData(e) {
-    const t = new yb();
+    const t = new vb();
     return t.renderable = e, e._gpuData[this._renderer.uid] = t, t;
   }
   _updateBatchableMesh(e) {
     const t = this._getTilingSpriteData(e), { geometry: r } = t, i = e.texture.source.style;
-    i.addressMode !== "repeat" && (i.addressMode = "repeat", i.update()), xb(e, r.uvs), _b(e, r.positions);
+    i.addressMode !== "repeat" && (i.addressMode = "repeat", i.update()), yb(e, r.uvs), bb(e, r.positions);
   }
   destroy() {
     this._renderer = null;
@@ -42594,7 +42594,7 @@ class Kl {
     return this._renderer.type === Ze.WEBGL && (i = this._renderer.context.supports.nonPowOf2wrapping), t.canBatch = r.textureMatrix.isSimple && (i || r.source.isPowerOfTwo), t.canBatch;
   }
 }
-Kl.extension = {
+ql.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -42602,7 +42602,7 @@ Kl.extension = {
   ],
   name: "tilingSprite"
 };
-const vb = {
+const Sb = {
   name: "local-uniform-msdf-bit",
   vertex: {
     header: (
@@ -42655,7 +42655,7 @@ const vb = {
         `
     )
   }
-}, Sb = {
+}, wb = {
   name: "local-uniform-msdf-bit",
   vertex: {
     header: (
@@ -42697,7 +42697,7 @@ const vb = {
         `
     )
   }
-}, wb = {
+}, Tb = {
   name: "msdf-bit",
   fragment: {
     header: (
@@ -42732,7 +42732,7 @@ const vb = {
         `
     )
   }
-}, Tb = {
+}, Eb = {
   name: "msdf-bit",
   fragment: {
     header: (
@@ -42769,7 +42769,7 @@ const vb = {
   }
 };
 let Co, Po;
-class Eb extends nt {
+class Ab extends nt {
   constructor(e) {
     const t = new we({
       uColor: { value: new Float32Array([1, 1, 1, 1]), type: "vec4<f32>" },
@@ -42782,8 +42782,8 @@ class Eb extends nt {
       bits: [
         fn,
         mn(e),
-        vb,
-        wb,
+        Sb,
+        Tb,
         Kr
       ]
     })), Po ?? (Po = qr({
@@ -42791,8 +42791,8 @@ class Eb extends nt {
       bits: [
         pn,
         gn(e),
-        Sb,
-        Tb,
+        wb,
+        Eb,
         Zr
       ]
     })), super({
@@ -42805,12 +42805,12 @@ class Eb extends nt {
     });
   }
 }
-class Ab extends qt {
+class Cb extends Lt {
   destroy() {
     this.context.customShader && this.context.customShader.destroy(), super.destroy();
   }
 }
-class Zl {
+class Kl {
   constructor(e) {
     this._renderer = e;
   }
@@ -42820,15 +42820,15 @@ class Zl {
   }
   addRenderable(e, t) {
     const r = this._getGpuBitmapText(e);
-    Vc(e, r), e._didTextUpdate && (e._didTextUpdate = !1, this._updateContext(e, r)), this._renderer.renderPipes.graphics.addRenderable(r, t), r.context.customShader && this._updateDistanceField(e);
+    zc(e, r), e._didTextUpdate && (e._didTextUpdate = !1, this._updateContext(e, r)), this._renderer.renderPipes.graphics.addRenderable(r, t), r.context.customShader && this._updateDistanceField(e);
   }
   updateRenderable(e) {
     const t = this._getGpuBitmapText(e);
-    Vc(e, t), this._renderer.renderPipes.graphics.updateRenderable(t), t.context.customShader && this._updateDistanceField(e);
+    zc(e, t), this._renderer.renderPipes.graphics.updateRenderable(t), t.context.customShader && this._updateDistanceField(e);
   }
   _updateContext(e, t) {
     const { context: r } = t, i = Yr.getFont(e.text, e._style);
-    r.clear(), i.distanceField.type !== "none" && (r.customShader || (r.customShader = new Eb(this._renderer.limits.maxBatchableTextures)));
+    r.clear(), i.distanceField.type !== "none" && (r.customShader || (r.customShader = new Ab(this._renderer.limits.maxBatchableTextures)));
     const n = Ue.graphemeSegmenter(e.text), o = e._style;
     let a = i.baseLineOffset;
     const u = Sn(n, o, i, !0), l = o.padding, h = u.scale;
@@ -42862,7 +42862,7 @@ class Zl {
     return e._gpuData[this._renderer.uid] || this.initGpuText(e);
   }
   initGpuText(e) {
-    const t = new Ab();
+    const t = new Cb();
     return e._gpuData[this._renderer.uid] = t, this._updateContext(e, t), t;
   }
   _updateDistanceField(e) {
@@ -42873,7 +42873,7 @@ class Zl {
     this._renderer = null;
   }
 }
-Zl.extension = {
+Kl.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -42881,10 +42881,10 @@ Zl.extension = {
   ],
   name: "bitmapText"
 };
-function Vc(s, e) {
+function zc(s, e) {
   e.groupTransform = s.groupTransform, e.groupColorAlpha = s.groupColorAlpha, e.groupColor = s.groupColor, e.groupBlendMode = s.groupBlendMode, e.globalDisplayStatus = s.globalDisplayStatus, e.groupTransform = s.groupTransform, e.localDisplayStatus = s.localDisplayStatus, e.groupAlpha = s.groupAlpha, e._roundPixels = s._roundPixels;
 }
-function Cb(s) {
+function Pb(s) {
   const { text: e, style: t, chars: r } = s, i = t, n = Yr.getFont(e, i), o = Ue.graphemeSegmenter(e), a = Sn(o, i, n, !0), u = a.scale, l = [], h = [], c = [], d = t.lineHeight ? t.lineHeight : n.lineHeight * u;
   let f = 0;
   for (const g of a.lines) {
@@ -42899,7 +42899,7 @@ function Cb(s) {
         continue;
       const R = S === " ", B = y === g.chars.length - 1;
       let A;
-      r.length > 0 ? (A = r.shift(), A.text = S, A.style = i, A.label = `char-${S}`, A.x = g.charPositions[y] * u - g.charPositions[x] * u) : A = new Pu({
+      r.length > 0 ? (A = r.shift(), A.text = S, A.style = i, A.label = `char-${S}`, A.x = g.charPositions[y] * u - g.charPositions[x] * u) : A = new Cu({
         text: S,
         style: i,
         label: `char-${S}`,
@@ -42910,7 +42910,7 @@ function Cb(s) {
   }
   return { chars: l, lines: c, words: h };
 }
-class Pb extends qs {
+class Bb extends Ks {
   /**
    * Creates an instance of BatchableHTMLText.
    * @param renderer - The renderer instance to be used.
@@ -42935,7 +42935,7 @@ function Qi(s, e) {
   const n = e._anchor._x * i * 2, o = e._anchor._y * i * 2;
   r.minX -= i - n, r.minY -= i - o, r.maxX -= i - n, r.maxY -= i - o;
 }
-class Ql {
+class Zl {
   constructor(e) {
     this._renderer = e;
   }
@@ -42975,14 +42975,14 @@ class Ql {
     return e._gpuData[this._renderer.uid] || this.initGpuText(e);
   }
   initGpuText(e) {
-    const t = new Pb(this._renderer);
+    const t = new Bb(this._renderer);
     return t.renderable = e, t.transform = e.groupTransform, t.texture = O.EMPTY, t.bounds = { minX: 0, maxX: 1, minY: 0, maxY: 0 }, t.roundPixels = this._renderer._roundPixels | e._roundPixels, e._resolution = e._autoResolution ? this._renderer.resolution : e.resolution, e._gpuData[this._renderer.uid] = t, t;
   }
   destroy() {
     this._renderer = null;
   }
 }
-Ql.extension = {
+Zl.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -42990,13 +42990,13 @@ Ql.extension = {
   ],
   name: "htmlText"
 };
-function Bb() {
+function Rb() {
   const { userAgent: s } = J.get().getNavigator();
   return /^((?!chrome|android).)*safari/i.test(s);
 }
-const Jv = new Be();
-function Jl(s, e, t, r) {
-  const i = Jv;
+const e1 = new Be();
+function Ql(s, e, t, r) {
+  const i = e1;
   i.minX = 0, i.minY = 0, i.maxX = s.width / r | 0, i.maxY = s.height / r | 0;
   const n = be.getOptimalTexture(
     i.width,
@@ -43006,7 +43006,7 @@ function Jl(s, e, t, r) {
   );
   return n.source.uploadMethodId = "image", n.source.resource = s, n.source.alphaMode = "premultiply-alpha-on-upload", n.frame.width = e / r, n.frame.height = t / r, n.source.emit("update", n.source), n.updateUvs(), n;
 }
-function Rb(s, e) {
+function Mb(s, e) {
   const t = e.fontFamily, r = [], i = {}, n = /font-family:([^;"\s]+)/g, o = s.match(n);
   function a(u) {
     i[u] || (r.push(u), i[u] = !0);
@@ -43026,14 +43026,14 @@ function Rb(s, e) {
   }
   return r;
 }
-async function Mb(s) {
+async function Db(s) {
   const t = await (await J.get().fetch(s)).blob(), r = new FileReader();
   return await new Promise((n, o) => {
     r.onloadend = () => n(r.result), r.onerror = o, r.readAsDataURL(t);
   });
 }
-async function Db(s, e) {
-  const t = await Mb(e);
+async function Fb(s, e) {
+  const t = await Db(e);
   return `@font-face {
         font-family: "${s.fontFamily}";
         font-weight: ${s.fontWeight};
@@ -43042,7 +43042,7 @@ async function Db(s, e) {
     }`;
 }
 const Di = /* @__PURE__ */ new Map();
-async function Fb(s) {
+async function Ib(s) {
   const e = s.filter((t) => ne.has(`${t}-and-url`)).map((t) => {
     if (!Di.has(t)) {
       const { entries: r } = ne.get(`${t}-and-url`), i = [];
@@ -43050,7 +43050,7 @@ async function Fb(s) {
         const o = n.url, u = n.faces.map((l) => ({ weight: l.weight, style: l.style }));
         i.push(
           ...u.map(
-            (l) => Db(
+            (l) => Fb(
               {
                 fontWeight: l.weight,
                 fontStyle: l.style,
@@ -43071,13 +43071,13 @@ async function Fb(s) {
   return (await Promise.all(e)).join(`
 `);
 }
-function Ib(s, e, t, r, i) {
+function kb(s, e, t, r, i) {
   const { domElement: n, styleElement: o, svgRoot: a } = i;
   n.innerHTML = `<style>${e.cssStyle}</style><div style='padding:0;'>${s}</div>`, n.setAttribute("style", `transform: scale(${t});transform-origin: top left; display: inline-block`), o.textContent = r;
   const { width: u, height: l } = i.image;
   return a.setAttribute("width", u.toString()), a.setAttribute("height", l.toString()), new XMLSerializer().serializeToString(a);
 }
-function kb(s, e) {
+function Ub(s, e) {
   const t = Pt.getOptimalCanvasAndContext(
     s.width,
     s.height,
@@ -43085,14 +43085,14 @@ function kb(s, e) {
   ), { context: r } = t;
   return r.clearRect(0, 0, s.width, s.height), r.drawImage(s, 0, 0), t;
 }
-function Ub(s, e, t) {
+function Ob(s, e, t) {
   return new Promise(async (r) => {
     t && await new Promise((i) => setTimeout(i, 100)), s.onload = () => {
       r();
     }, s.src = `data:image/svg+xml;charset=utf8,${encodeURIComponent(e)}`, s.crossOrigin = "anonymous";
   });
 }
-class eh {
+class Jl {
   constructor(e) {
     this._activeTextures = {}, this._renderer = e, this._createCanvas = e.type === Ze.WEBGPU;
   }
@@ -43151,14 +43151,14 @@ class eh {
     return this._buildTexturePromise(e);
   }
   async _buildTexturePromise(e) {
-    const { text: t, style: r, resolution: i, textureStyle: n } = e, o = Se.get(Bu), a = Rb(t, r), u = await Fb(a), l = Ru(t, r, u, o), h = Math.ceil(Math.ceil(Math.max(1, l.width) + r.padding * 2) * i), c = Math.ceil(Math.ceil(Math.max(1, l.height) + r.padding * 2) * i), d = o.image, f = 2;
+    const { text: t, style: r, resolution: i, textureStyle: n } = e, o = Se.get(Pu), a = Mb(t, r), u = await Ib(a), l = Bu(t, r, u, o), h = Math.ceil(Math.ceil(Math.max(1, l.width) + r.padding * 2) * i), c = Math.ceil(Math.ceil(Math.max(1, l.height) + r.padding * 2) * i), d = o.image, f = 2;
     d.width = (h | 0) + f, d.height = (c | 0) + f;
-    const g = Ib(t, r, i, u, o);
-    await Ub(d, g, Bb() && a.length > 0);
+    const g = kb(t, r, i, u, o);
+    await Ob(d, g, Rb() && a.length > 0);
     const b = d;
     let p;
-    this._createCanvas && (p = kb(d, i));
-    const x = Jl(
+    this._createCanvas && (p = Ub(d, i));
+    const x = Ql(
       p ? p.canvas : b,
       d.width - f,
       d.height - f,
@@ -43183,7 +43183,7 @@ class eh {
     this._activeTextures = null;
   }
 }
-eh.extension = {
+Jl.extension = {
   type: [
     w.WebGLSystem,
     w.WebGPUSystem,
@@ -43191,7 +43191,7 @@ eh.extension = {
   ],
   name: "htmlText"
 };
-class th extends le {
+class eh extends le {
   constructor(e) {
     const {
       text: t,
@@ -43392,7 +43392,7 @@ class th extends le {
     super.destroy(e), this.chars = [], this.words = [], this.lines = [], (typeof e == "boolean" ? e : e?.style) && this._style.destroy(e), this._style = null, this._originalText = "";
   }
 }
-const Ob = class Fi extends th {
+const Gb = class Fi extends eh {
   constructor(e) {
     const t = {
       ...Fi.defaultOptions,
@@ -43435,14 +43435,14 @@ const Ob = class Fi extends th {
     });
   }
   splitFn() {
-    return Cb({
+    return Pb({
       text: this._originalText,
       style: this._style,
       chars: this._canReuseChars ? this.chars : []
     });
   }
 };
-Ob.defaultOptions = {
+Gb.defaultOptions = {
   autoSplit: !0,
   // Auto-update on text/style changes
   lineAnchor: 0,
@@ -43452,8 +43452,8 @@ Ob.defaultOptions = {
   charAnchor: 0
   // Top-left alignment
 };
-let e1 = Ob;
-function t1(s, e, t) {
+let t1 = Gb;
+function r1(s, e, t) {
   switch (s) {
     case "center":
       return (t - e) / 2;
@@ -43464,16 +43464,16 @@ function t1(s, e, t) {
       return 0;
   }
 }
-function Gb(s) {
+function Lb(s) {
   return s === "\r" || s === `
 ` || s === `\r
 `;
 }
-function r1(s, e, t) {
+function s1(s, e, t) {
   const r = [];
   let i = e.lines[0], n = "", o = [], a = 0;
   return t.wordWrap = !1, s.forEach((u) => {
-    const l = /^\s*$/.test(u), h = Gb(u), c = n.length === 0 && l;
+    const l = /^\s*$/.test(u), h = Lb(u), c = n.length === 0 && l;
     if (l && !h && c)
       return;
     h || (n += u);
@@ -43485,18 +43485,18 @@ function r1(s, e, t) {
     }), o = [], n = "", a++, i = e.lines[a]);
   }), r;
 }
-function Lb(s) {
-  const { text: e, style: t, chars: r } = s, i = t, n = Ue.measureText(e, i), o = Ue.graphemeSegmenter(e), a = r1(o, n, i.clone()), u = i.align, l = n.lineWidths.reduce((p, x) => Math.max(p, x), 0), h = [], c = [], d = [];
+function Nb(s) {
+  const { text: e, style: t, chars: r } = s, i = t, n = Ue.measureText(e, i), o = Ue.graphemeSegmenter(e), a = s1(o, n, i.clone()), u = i.align, l = n.lineWidths.reduce((p, x) => Math.max(p, x), 0), h = [], c = [], d = [];
   let f = 0;
   const g = i.stroke?.width || 0, b = i.dropShadow?.distance || 0;
   return a.forEach((p, x) => {
     const y = new le({ label: `line-${x}` });
     y.y = f, c.push(y);
     const S = n.lineWidths[x];
-    let T = t1(u, S, l), R = new le({ label: "word" });
+    let T = r1(u, S, l), R = new le({ label: "word" });
     R.x = T, p.chars.forEach((B, A) => {
       if (B.metric.width !== 0) {
-        if (Gb(B.char)) {
+        if (Lb(B.char)) {
           T += B.metric.width - g;
           return;
         }
@@ -43514,7 +43514,7 @@ function Lb(s) {
     }), R.children.length > 0 && (d.push(R), y.addChild(R)), f += n.lineHeight;
   }), { chars: h, lines: c, words: d };
 }
-const Nb = class Ii extends th {
+const Hb = class Ii extends eh {
   constructor(e) {
     const t = {
       ...Ii.defaultOptions,
@@ -43557,14 +43557,14 @@ const Nb = class Ii extends th {
     });
   }
   splitFn() {
-    return Lb({
+    return Nb({
       text: this._originalText,
       style: this._style,
       chars: this._canReuseChars ? this.chars : []
     });
   }
 };
-Nb.defaultOptions = {
+Hb.defaultOptions = {
   autoSplit: !0,
   // Auto-update on text/style changes
   lineAnchor: 0,
@@ -43574,8 +43574,8 @@ Nb.defaultOptions = {
   charAnchor: 0
   // Top-left alignment
 };
-let s1 = Nb;
-class Hb extends qs {
+let i1 = Hb;
+class Wb extends Ks {
   constructor(e) {
     super(), this._renderer = e, e.runners.resolutionChange.add(this);
   }
@@ -43588,7 +43588,7 @@ class Hb extends qs {
     e.getReferenceCount(this.currentKey) > 0 ? e.decreaseReferenceCount(this.currentKey) : this.texture && e.returnTexture(this.texture), this._renderer.runners.resolutionChange.remove(this), this._renderer = null;
   }
 }
-class rh {
+class th {
   constructor(e) {
     this._renderer = e;
   }
@@ -43616,14 +43616,14 @@ class rh {
     return e._gpuData[this._renderer.uid] || this.initGpuText(e);
   }
   initGpuText(e) {
-    const t = new Hb(this._renderer);
+    const t = new Wb(this._renderer);
     return t.currentKey = "--", t.renderable = e, t.transform = e.groupTransform, t.bounds = { minX: 0, maxX: 1, minY: 0, maxY: 0 }, t.roundPixels = this._renderer._roundPixels | e._roundPixels, e._gpuData[this._renderer.uid] = t, t;
   }
   destroy() {
     this._renderer = null;
   }
 }
-rh.extension = {
+th.extension = {
   type: [
     w.WebGLPipes,
     w.WebGPUPipes,
@@ -43631,7 +43631,7 @@ rh.extension = {
   ],
   name: "text"
 };
-class sh {
+class rh {
   constructor(e) {
     this._activeTextures = {}, this._renderer = e;
   }
@@ -43645,7 +43645,7 @@ class sh {
       text: n,
       style: o,
       resolution: u
-    }), c = Jl(h.canvas, l.width, l.height, u);
+    }), c = Ql(h.canvas, l.width, l.height, u);
     if (a && (c.source.style = a), o.trim && (l.pad(o.padding), c.frame.copyFrom(l), c.frame.scale(1 / u), c.updateUvs()), o.filters) {
       const d = this._applyFilters(c, o.filters);
       return this.returnTexture(c), Gr.returnCanvasAndContext(h), d;
@@ -43745,7 +43745,7 @@ class sh {
     this._activeTextures = null;
   }
 }
-sh.extension = {
+rh.extension = {
   type: [
     w.WebGLSystem,
     w.WebGPUSystem,
@@ -43753,7 +43753,7 @@ sh.extension = {
   ],
   name: "canvasText"
 };
-const Xc = [
+const Vc = [
   "align",
   "breakWords",
   "cssOverrides",
@@ -43772,32 +43772,32 @@ const Xc = [
   "fontStyle",
   "fontSize"
 ];
-function i1(s) {
+function n1(s) {
   const e = [];
   let t = 0;
-  for (let r = 0; r < Xc.length; r++) {
-    const i = `_${Xc[r]}`;
+  for (let r = 0; r < Vc.length; r++) {
+    const i = `_${Vc[r]}`;
     e[t++] = s[i];
   }
-  return t = Wb(s._fill, e, t), t = o1(s._stroke, e, t), t = a1(s.dropShadow, e, t), t = n1(s.filters, e, t), e.join("-");
+  return t = zb(s._fill, e, t), t = a1(s._stroke, e, t), t = u1(s.dropShadow, e, t), t = o1(s.filters, e, t), e.join("-");
 }
-function n1(s, e, t) {
+function o1(s, e, t) {
   if (!s)
     return t;
   for (const r of s)
     e[t++] = r.uid;
   return t;
 }
-function Wb(s, e, t) {
+function zb(s, e, t) {
   return s && (e[t++] = s.color, e[t++] = s.alpha, e[t++] = s.fill?.styleKey), t;
 }
-function o1(s, e, t) {
-  return s && (t = Wb(s, e, t), e[t++] = s.width, e[t++] = s.alignment, e[t++] = s.cap, e[t++] = s.join, e[t++] = s.miterLimit), t;
-}
 function a1(s, e, t) {
+  return s && (t = zb(s, e, t), e[t++] = s.width, e[t++] = s.alignment, e[t++] = s.cap, e[t++] = s.join, e[t++] = s.miterLimit), t;
+}
+function u1(s, e, t) {
   return s && (e[t++] = s.alpha, e[t++] = s.angle, e[t++] = s.blur, e[t++] = s.distance, e[t++] = se.shared.setValue(s.color).toNumber()), t;
 }
-async function u1(s, e, t = 200) {
+async function l1(s, e, t = 200) {
   const r = await e.extract.base64(s);
   await e.encoder.commandFinished;
   const i = t;
@@ -43810,7 +43810,7 @@ async function u1(s, e, t = 200) {
   ].join(" ");
   console.log("%c ", n);
 }
-const l1 = [
+const h1 = [
   "#000080",
   // Navy Blue
   "#228B22",
@@ -43832,22 +43832,22 @@ const l1 = [
   "#8B008B"
   // Dark Magenta
 ];
-let h1 = 0;
-function zb(s, e = 0, t = { color: "#000000" }) {
-  s.renderGroup && (t.color = l1[h1++]);
+let c1 = 0;
+function Vb(s, e = 0, t = { color: "#000000" }) {
+  s.renderGroup && (t.color = h1[c1++]);
   let r = "";
   for (let o = 0; o < e; o++)
     r += "    ";
   let i = s.label;
-  !i && s instanceof Ne && (i = `sprite:${s.texture.label}`);
+  !i && s instanceof je && (i = `sprite:${s.texture.label}`);
   let n = `%c ${r}|- ${i} (worldX:${s.worldTransform.tx}, relativeRenderX:${s.relativeGroupTransform.tx}, renderX:${s.groupTransform.tx}, localX:${s.x})`;
   s.renderGroup && (n += " (RenderGroup)"), s.filters && (n += "(*filters)"), console.log(n, `color:${t.color}; font-weight:bold;`), e++;
   for (let o = 0; o < s.children.length; o++) {
     const a = s.children[o];
-    zb(a, e, { ...t });
+    Vb(a, e, { ...t });
   }
 }
-function Vb(s, e = 0, t = { index: 0, color: "#000000" }) {
+function Xb(s, e = 0, t = { index: 0, color: "#000000" }) {
   let r = "";
   for (let n = 0; n < e; n++)
     r += "    ";
@@ -43855,20 +43855,20 @@ function Vb(s, e = 0, t = { index: 0, color: "#000000" }) {
   console.log(i, `color:${t.color}; font-weight:bold;`), e++;
   for (let n = 0; n < s.renderGroupChildren.length; n++) {
     const o = s.renderGroupChildren[n];
-    Vb(o, e, { ...t, index: n });
+    Xb(o, e, { ...t, index: n });
   }
 }
 Y.add($c, jc);
-const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const d1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   AbstractBitmapFont: Ja,
-  AbstractRenderer: Hs,
-  AbstractSplitText: th,
+  AbstractRenderer: Ws,
+  AbstractSplitText: eh,
   AbstractText: En,
   AccessibilitySystem: Nd,
-  AlphaFilter: T2,
+  AlphaFilter: E2,
   AlphaMask: Ua,
-  AlphaMaskPipe: ku,
+  AlphaMaskPipe: Iu,
   AnimatedSprite: Ls,
   Application: Ka,
   ApplicationInitHook: ja,
@@ -43877,27 +43877,27 @@ const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   BLEND_TO_NPM: Wf,
   BUFFER_TYPE: Ts,
   BackgroundLoader: Hp,
-  BackgroundSystem: n_,
+  BackgroundSystem: o_,
   Batch: Xf,
   BatchGeometry: Kf,
   BatchTextureArray: Vf,
   BatchableGraphics: yn,
-  BatchableHTMLText: Pb,
+  BatchableHTMLText: Bb,
   BatchableMesh: kn,
-  BatchableSprite: qs,
-  BatchableText: Hb,
+  BatchableSprite: Ks,
+  BatchableText: Wb,
   Batcher: jf,
-  BatcherPipe: Iu,
+  BatcherPipe: Fu,
   BigPool: Se,
   BindGroup: Et,
-  BindGroupSystem: Cl,
+  BindGroupSystem: Al,
   BitmapFont: fu,
   BitmapFontManager: Yr,
-  BitmapText: Pu,
-  BitmapTextGraphics: Ab,
-  BitmapTextPipe: Zl,
+  BitmapText: Cu,
+  BitmapTextGraphics: Cb,
+  BitmapTextPipe: Kl,
   BlendModeFilter: ye,
-  BlendModePipe: _l,
+  BlendModePipe: gl,
   BlurFilter: Gm,
   BlurFilterPass: Pi,
   Bounds: Be,
@@ -43906,7 +43906,7 @@ const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   BufferImageSource: Ji,
   BufferResource: Rn,
   BufferUsage: re,
-  CLEAR: je,
+  CLEAR: $e,
   Cache: ne,
   CanvasObserver: Ha,
   CanvasPool: Pt,
@@ -43914,41 +43914,41 @@ const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   CanvasSource: Tt,
   CanvasTextGenerator: Gr,
   CanvasTextMetrics: Ue,
-  CanvasTextPipe: rh,
-  CanvasTextSystem: sh,
+  CanvasTextPipe: th,
+  CanvasTextSystem: rh,
   Circle: ln,
   Color: se,
   ColorBlend: lf,
   ColorBurnBlend: hf,
   ColorDodgeBlend: cf,
   ColorMask: Oa,
-  ColorMaskPipe: Uu,
-  ColorMatrixFilter: C2,
-  CompressedSource: Ys,
+  ColorMaskPipe: ku,
+  ColorMatrixFilter: P2,
+  CompressedSource: $s,
   Container: le,
   Culler: wm,
   CullerPlugin: Tm,
-  CustomRenderPipe: hl,
+  CustomRenderPipe: ll,
   D3D10_RESOURCE_DIMENSION: xu,
-  D3DFMT: Ye,
-  DATA_URI: Zx,
+  D3DFMT: Xe,
+  DATA_URI: Qx,
   DDS: K,
   DEG_TO_RAD: Qc,
   DEPRECATED_SCALE_MODES: Ki,
   DEPRECATED_WRAP_MODES: qi,
   DOMAdapter: J,
-  DOMContainer: d2,
+  DOMContainer: f2,
   DOMPipe: yu,
-  DRAW_MODES: Cv,
+  DRAW_MODES: Pv,
   DXGI_FORMAT: bu,
-  DXGI_TO_TEXTURE_FORMAT: $e,
+  DXGI_TO_TEXTURE_FORMAT: Ye,
   DarkenBlend: df,
   DefaultBatcher: bn,
   DefaultShader: up,
   DifferenceBlend: ff,
-  DisplacementFilter: P2,
+  DisplacementFilter: B2,
   DivideBlend: pf,
-  DynamicBitmapFont: ta,
+  DynamicBitmapFont: ra,
   Ellipse: hn,
   EventBoundary: Am,
   EventEmitter: Qe,
@@ -43956,15 +43956,15 @@ const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   EventsTicker: St,
   ExclusionBlend: mf,
   ExtensionType: w,
-  ExtractSystem: a_,
-  FOURCC_TO_TEXTURE_FORMAT: ua,
+  ExtractSystem: u_,
+  FOURCC_TO_TEXTURE_FORMAT: la,
   FederatedContainer: Cm,
   FederatedEvent: $r,
   FederatedMouseEvent: Gs,
   FederatedPointerEvent: ot,
   FederatedWheelEvent: mr,
   FillGradient: Ct,
-  FillPattern: Vs,
+  FillPattern: Xs,
   Filter: Rt,
   FilterEffect: Cs,
   FilterPipe: Tu,
@@ -43973,79 +43973,79 @@ const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   GAUSSIAN_VALUES: wu,
   GL_FORMATS: Xi,
   GL_INTERNAL_FORMAT: gm,
-  GL_TARGETS: Hu,
+  GL_TARGETS: Nu,
   GL_TYPES: ie,
-  GL_WRAP_MODES: xg,
-  GenerateTextureSystem: xl,
+  GL_WRAP_MODES: yg,
+  GenerateTextureSystem: bl,
   Geometry: _r,
-  GlBackBufferSystem: Sg,
-  GlBatchAdaptor: Mu,
-  GlBuffer: gg,
-  GlBufferSystem: Gu,
-  GlColorMaskSystem: Vu,
-  GlContextSystem: bg,
-  GlEncoderSystem: Xu,
-  GlGeometrySystem: Wu,
-  GlGraphicsAdaptor: ul,
-  GlLimitsSystem: Yu,
-  GlMeshAdaptor: ll,
-  GlParticleContainerAdaptor: Q_,
-  GlParticleContainerPipe: $l,
+  GlBackBufferSystem: wg,
+  GlBatchAdaptor: Ru,
+  GlBuffer: _g,
+  GlBufferSystem: Ou,
+  GlColorMaskSystem: zu,
+  GlContextSystem: xg,
+  GlEncoderSystem: Vu,
+  GlGeometrySystem: Hu,
+  GlGraphicsAdaptor: al,
+  GlLimitsSystem: Xu,
+  GlMeshAdaptor: ul,
+  GlParticleContainerAdaptor: J_,
+  GlParticleContainerPipe: Yl,
   GlProgram: Je,
-  GlProgramData: Ig,
-  GlRenderTarget: wg,
-  GlRenderTargetAdaptor: Pg,
-  GlRenderTargetSystem: tl,
-  GlShaderSystem: il,
-  GlStateSystem: Yg,
-  GlStencilSystem: $u,
-  GlTexture: $g,
-  GlTextureSystem: al,
-  GlUboSystem: Qu,
-  GlUniformGroupSystem: nl,
+  GlProgramData: kg,
+  GlRenderTarget: Tg,
+  GlRenderTargetAdaptor: Bg,
+  GlRenderTargetSystem: el,
+  GlShaderSystem: sl,
+  GlStateSystem: $g,
+  GlStencilSystem: Yu,
+  GlTexture: jg,
+  GlTextureSystem: ol,
+  GlUboSystem: Zu,
+  GlUniformGroupSystem: il,
   GlobalResourceRegistry: gr,
-  GlobalUniformSystem: yl,
-  GpuBatchAdaptor: Du,
-  GpuBlendModesToPixi: He,
-  GpuBufferSystem: Pl,
-  GpuColorMaskSystem: Bl,
+  GlobalUniformSystem: xl,
+  GpuBatchAdaptor: Mu,
+  GpuBlendModesToPixi: Ne,
+  GpuBufferSystem: Cl,
+  GpuColorMaskSystem: Pl,
   GpuDeviceSystem: Fn,
-  GpuEncoderSystem: Rl,
-  GpuGraphicsAdaptor: Wl,
+  GpuEncoderSystem: Bl,
+  GpuGraphicsAdaptor: Hl,
   GpuGraphicsContext: vp,
-  GpuLimitsSystem: Ml,
-  GpuMeshAdapter: zl,
-  GpuMipmapGenerator: R_,
-  GpuParticleContainerAdaptor: J_,
-  GpuParticleContainerPipe: jl,
-  GpuProgram: We,
-  GpuRenderTarget: E_,
-  GpuRenderTargetAdaptor: A_,
-  GpuRenderTargetSystem: Ul,
-  GpuShaderSystem: Ol,
-  GpuStateSystem: Gl,
-  GpuStencilModesToPixi: Lt,
-  GpuStencilSystem: Dl,
-  GpuTextureSystem: Hl,
-  GpuUboSystem: Fl,
-  GpuUniformBatchPipe: Il,
-  Graphics: qt,
+  GpuLimitsSystem: Rl,
+  GpuMeshAdapter: Wl,
+  GpuMipmapGenerator: M_,
+  GpuParticleContainerAdaptor: eb,
+  GpuParticleContainerPipe: $l,
+  GpuProgram: He,
+  GpuRenderTarget: A_,
+  GpuRenderTargetAdaptor: C_,
+  GpuRenderTargetSystem: kl,
+  GpuShaderSystem: Ul,
+  GpuStateSystem: Ol,
+  GpuStencilModesToPixi: Nt,
+  GpuStencilSystem: Ml,
+  GpuTextureSystem: Nl,
+  GpuUboSystem: Dl,
+  GpuUniformBatchPipe: Fl,
+  Graphics: Lt,
   GraphicsContext: Le,
   GraphicsContextRenderData: Sp,
   GraphicsContextSystem: vn,
-  GraphicsGpuData: k_,
+  GraphicsGpuData: U_,
   GraphicsPath: mt,
-  GraphicsPipe: Vl,
-  HTMLText: lg,
-  HTMLTextPipe: Ql,
-  HTMLTextRenderData: Bu,
+  GraphicsPipe: zl,
+  HTMLText: hg,
+  HTMLTextPipe: Zl,
+  HTMLTextRenderData: Pu,
   HTMLTextStyle: Pn,
-  HTMLTextSystem: eh,
+  HTMLTextSystem: Jl,
   HardLightBlend: gf,
   HardMixBlend: _f,
   HelloSystem: Dn,
-  IGLUniformData: Y2,
-  ImageSource: jt,
+  IGLUniformData: $2,
+  ImageSource: qt,
   InstructionSet: ka,
   KTX: _e,
   LightenBlend: bf,
@@ -44061,153 +44061,153 @@ const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   Matrix: W,
   Mesh: Jr,
   MeshGeometry: Qt,
-  MeshGpuData: Sa,
-  MeshPipe: Xl,
-  MeshPlane: Vv,
-  MeshRope: Xv,
-  MeshSimple: Yv,
+  MeshGpuData: wa,
+  MeshPipe: Vl,
+  MeshPlane: Xv,
+  MeshRope: Yv,
+  MeshSimple: $v,
   NOOP: Ba,
   NegationBlend: wf,
-  NineSliceGeometry: Vt,
-  NineSlicePlane: Qv,
-  NineSliceSprite: cb,
-  NineSliceSpriteGpuData: db,
-  NineSliceSpritePipe: ql,
-  NoiseFilter: B2,
+  NineSliceGeometry: Xt,
+  NineSlicePlane: Jv,
+  NineSliceSprite: db,
+  NineSliceSpriteGpuData: fb,
+  NineSliceSpritePipe: jl,
+  NoiseFilter: R2,
   ObservablePoint: ce,
   OverlayBlend: Tf,
   PI_2: Kc,
-  Particle: qv,
-  ParticleBuffer: tb,
-  ParticleContainer: Zv,
-  ParticleContainerPipe: Yl,
-  ParticleShader: ib,
+  Particle: Kv,
+  ParticleBuffer: rb,
+  ParticleContainer: Qv,
+  ParticleContainerPipe: Xl,
+  ParticleShader: nb,
   PassthroughFilter: Ym,
-  PerspectiveMesh: zv,
-  PerspectivePlaneGeometry: V_,
+  PerspectiveMesh: Vv,
+  PerspectivePlaneGeometry: X_,
   PinLightBlend: Ef,
-  PipelineSystem: kl,
+  PipelineSystem: Il,
   PlaneGeometry: In,
   Point: $,
   Polygon: Fr,
   Pool: ld,
   PoolGroupClass: hd,
   PrepareBase: Jm,
-  PrepareQueue: ng,
-  PrepareSystem: cg,
-  PrepareUpload: hg,
-  QuadGeometry: gb,
+  PrepareQueue: og,
+  PrepareSystem: dg,
+  PrepareUpload: cg,
+  QuadGeometry: _b,
   RAD_TO_DEG: Zc,
   Rectangle: te,
-  RenderContainer: Fv,
+  RenderContainer: Iv,
   RenderGroup: Oi,
-  RenderGroupPipe: cl,
-  RenderGroupSystem: pl,
+  RenderGroupPipe: hl,
+  RenderGroupSystem: fl,
   RenderLayer: Zi,
   RenderTarget: Yi,
-  RenderTargetSystem: el,
+  RenderTargetSystem: Ju,
   RenderTexture: Mn,
-  RenderableGCSystem: d_,
+  RenderableGCSystem: f_,
   RendererInitHook: qa,
   RendererType: Ze,
   ResizePlugin: Za,
   Resolver: Kt,
-  RopeGeometry: q_,
+  RopeGeometry: K_,
   RoundedRectangle: cn,
-  SCALE_MODES: Bv,
+  SCALE_MODES: Rv,
   STENCIL_MODES: xe,
   SVGParser: Fp,
   SaturationBlend: Af,
-  SchedulerSystem: vl,
-  ScissorMask: H2,
-  SdfShader: Eb,
+  SchedulerSystem: yl,
+  ScissorMask: W2,
+  SdfShader: Ab,
   Shader: nt,
   ShaderStage: Pr,
   ShapePath: Pp,
-  SharedRenderPipes: Al,
-  SharedSystems: El,
+  SharedRenderPipes: El,
+  SharedSystems: Tl,
   SoftLightBlend: Cf,
-  SplitBitmapText: e1,
-  SplitText: s1,
-  Sprite: Ne,
-  SpritePipe: ml,
-  Spritesheet: ko,
+  SplitBitmapText: t1,
+  SplitText: i1,
+  Sprite: je,
+  SpritePipe: pl,
+  Spritesheet: Uo,
   State: rt,
   StencilMask: Ga,
-  StencilMaskPipe: Ou,
+  StencilMaskPipe: Uu,
   SubtractBlend: Pf,
   SystemRunner: $a,
   TEXTURE_FORMAT_BLOCK_SIZE: pm,
   Text: Cn,
   TextStyle: st,
   Texture: O,
-  TextureGCSystem: p_,
+  TextureGCSystem: m_,
   TextureMatrix: Ra,
   TexturePool: be,
   TexturePoolClass: Ed,
   TextureSource: ge,
   TextureStyle: tt,
-  TextureUvs: Rv,
+  TextureUvs: Mv,
   Ticker: Ce,
   TickerListener: Ti,
   TickerPlugin: Qa,
-  TilingSprite: Cu,
-  TilingSpriteGpuData: yb,
-  TilingSpritePipe: Kl,
-  TilingSpriteShader: mb,
+  TilingSprite: ig,
+  TilingSpriteGpuData: vb,
+  TilingSpritePipe: ql,
+  TilingSpriteShader: gb,
   Transform: rg,
   Triangle: Eu,
-  UNIFORM_TO_ARRAY_SETTERS: Wg,
-  UNIFORM_TO_SINGLE_SETTERS: Hg,
+  UNIFORM_TO_ARRAY_SETTERS: zg,
+  UNIFORM_TO_SINGLE_SETTERS: Wg,
   UNIFORM_TYPES_MAP: Jd,
   UNIFORM_TYPES_VALUES: Va,
   UPDATE_BLEND: rn,
   UPDATE_COLOR: Bs,
   UPDATE_PRIORITY: At,
-  UPDATE_TRANSFORM: fx,
+  UPDATE_TRANSFORM: px,
   UPDATE_VISIBLE: Mr,
-  UboBatch: v_,
-  UboSystem: ju,
+  UboBatch: S_,
+  UboSystem: $u,
   UniformGroup: we,
   VERSION: Is,
   VideoSource: Dr,
   ViewContainer: Bt,
-  ViewSystem: g_,
+  ViewSystem: __,
   ViewableBuffer: dr,
   VividLightBlend: Bf,
   WGSL_ALIGN_SIZE_DATA: As,
-  WGSL_TO_STD40_SIZE: qu,
-  WRAP_MODES: Pv,
-  WebGLRenderer: y_,
-  WebGPURenderer: I_,
-  WebWorkerAdapter: b2,
-  WorkerManager: na,
+  WGSL_TO_STD40_SIZE: ju,
+  WRAP_MODES: Bv,
+  WebGLRenderer: v_,
+  WebGPURenderer: k_,
+  WebWorkerAdapter: x2,
+  WorkerManager: oa,
   accessibilityTarget: Hd,
-  addBits: Vo,
+  addBits: Xo,
   addMaskBounds: sn,
   addMaskLocalBounds: nn,
   addProgramDefines: zd,
   alphaFrag: Pm,
-  alphaWgsl: ca,
-  appendSVGPath: ea,
-  applyMatrix: bb,
-  applyProjectiveTransformationToPlane: N_,
-  applyStyleParams: va,
+  alphaWgsl: da,
+  appendSVGPath: ta,
+  applyMatrix: xb,
+  applyProjectiveTransformationToPlane: H_,
+  applyStyleParams: Sa,
   assignWithIgnore: Gi,
-  autoDetectEnvironment: Fx,
+  autoDetectEnvironment: Ix,
   autoDetectRenderer: Of,
-  autoDetectSource: gx,
+  autoDetectSource: _x,
   basisTranscoderUrls: Wi,
   bgr2rgb: Rr,
   bitmapFontCachePlugin: Lp,
   bitmapFontTextParser: Ai,
-  bitmapFontXMLParser: ra,
-  bitmapFontXMLStringParser: sa,
-  bitmapTextSplit: Cb,
+  bitmapFontXMLParser: sa,
+  bitmapFontXMLStringParser: ia,
+  bitmapTextSplit: Pb,
   blendTemplateFrag: of,
   blendTemplateVert: af,
   blendTemplateWgsl: uf,
-  blockDataMap: Ll,
+  blockDataMap: Gl,
   blurTemplateWgsl: Im,
   boundsPool: wt,
   browserExt: $c,
@@ -44219,7 +44219,7 @@ const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   buildCircle: Xr,
   buildContextBatches: yp,
   buildEllipse: cp,
-  buildGeometryFromPath: Ov,
+  buildGeometryFromPath: Gv,
   buildLine: pp,
   buildPixelLine: mp,
   buildPolygon: gp,
@@ -44231,60 +44231,60 @@ const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   cacheAsTextureMixin: cd,
   cacheTextureArray: Wp,
   calculatePathArea: Dp,
-  calculateProjection: Bg,
-  canvasTextSplit: Lb,
+  calculateProjection: Rg,
+  canvasTextSplit: Nb,
   checkChildrenDidChange: Ia,
   checkDataUrl: br,
   checkExtension: lt,
   checkForNestedPattern: Rp,
   checkMaxIfStatementsInShader: tu,
   childrenHelperMixin: dd,
-  cleanArray: h_,
-  cleanHash: l_,
+  cleanArray: c_,
+  cleanHash: h_,
   clearList: ji,
   closePointEps: nu,
-  collectAllRenderables: Iv,
+  collectAllRenderables: kv,
   collectRenderablesMixin: fd,
   color32BitToUniform: es,
   colorBit: fn,
   colorBitGl: pn,
   colorMatrixFilterFrag: Lm,
-  colorMatrixFilterWgsl: da,
-  colorToUniform: dv,
-  compareModeToGlCompare: Qg,
+  colorMatrixFilterWgsl: fa,
+  colorToUniform: fv,
+  compareModeToGlCompare: Jg,
   compileHighShader: Qf,
   compileHighShaderGl: Jf,
   compileHighShaderGlProgram: qr,
   compileHighShaderGpuProgram: jr,
-  compileHooks: Xo,
-  compileInputs: Yo,
+  compileHooks: Yo,
+  compileInputs: $o,
   compileOutputs: Zf,
-  compileShader: ba,
-  compute2DProjection: z_,
-  convertFormatIfRequired: t2,
+  compileShader: xa,
+  compute2DProjection: V_,
+  convertFormatIfRequired: r2,
   convertToList: at,
   copySearchParams: Li,
   createIdFromString: Wr,
-  createIndicesForQuads: wa,
-  createLevelBuffers: Cy,
-  createLevelBuffersFromKTX: r2,
+  createIndicesForQuads: Ta,
+  createLevelBuffers: Py,
+  createLevelBuffersFromKTX: s2,
   createStringVariations: Fd,
   createTexture: Zt,
-  createUboElementsSTD40: Tg,
-  createUboElementsWGSL: S_,
-  createUboSyncFunction: Ku,
-  createUboSyncFunctionSTD40: Cg,
-  createUboSyncFunctionWGSL: T_,
+  createUboElementsSTD40: Eg,
+  createUboElementsWGSL: w_,
+  createUboSyncFunction: qu,
+  createUboSyncFunctionSTD40: Pg,
+  createUboSyncFunctionWGSL: E_,
   crossOrigin: im,
   cullingMixin: ud,
-  curveEps: jo,
-  defaultFilterVert: js,
-  defaultValue: rl,
+  curveEps: qo,
+  defaultFilterVert: qs,
+  defaultValue: tl,
   definedProps: gt,
   deprecation: N,
   detectAvif: zp,
-  detectBasis: Sy,
-  detectCompressed: l2,
+  detectBasis: wy,
+  detectCompressed: h2,
   detectDefaults: Vp,
   detectMp4: Xp,
   detectOgv: Yp,
@@ -44294,124 +44294,124 @@ const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   determineCrossOrigin: om,
   displacementFrag: Nm,
   displacementVert: Hm,
-  displacementWgsl: fa,
+  displacementWgsl: pa,
   earcut: If,
   effectsMixin: md,
-  ensureAttributes: Nu,
+  ensureAttributes: Lu,
   ensureIsBuffer: ru,
   ensurePrecision: Vd,
   ensureTextOptions: An,
   executeInstructions: $i,
   extensions: Y,
-  extractAttributesFromGlProgram: Ug,
+  extractAttributesFromGlProgram: Og,
   extractAttributesFromGpuProgram: qd,
-  extractFontFamilies: Rb,
+  extractFontFamilies: Mb,
   extractStructAndGroups: Ei,
   extractSubpaths: Mp,
-  extractSvgUrlId: Qo,
+  extractSvgUrlId: Jo,
   fastCopy: Ni,
   findMixin: gd,
   fontStringFromTextStyle: ks,
-  formatShader: G2,
+  formatShader: L2,
   fragmentGPUTemplate: sp,
   fragmentGlTemplate: np,
-  generateArraySyncSTD40: Ag,
-  generateArraySyncWGSL: w_,
+  generateArraySyncSTD40: Cg,
+  generateArraySyncWGSL: T_,
   generateBlurFragSource: Mm,
   generateBlurGlProgram: Fm,
   generateBlurProgram: km,
   generateBlurVertSource: Dm,
-  generateGPULayout: U2,
+  generateGPULayout: O2,
   generateGpuLayoutGroups: Kd,
-  generateLayout: O2,
+  generateLayout: G2,
   generateLayoutHash: Zd,
-  generateParticleUpdateFunction: eb,
-  generateProgram: Ng,
-  generateShaderSyncCode: Fg,
-  generateTextStyleKey: i1,
+  generateParticleUpdateFunction: tb,
+  generateProgram: Hg,
+  generateShaderSyncCode: Ig,
+  generateTextStyleKey: n1,
   generateTextureBatchBit: mn,
   generateTextureBatchBitGl: gn,
   generateTextureMatrix: xp,
-  generateUniformsSync: zg,
+  generateUniformsSync: Vg,
   getAdjustedBlendModeBlend: Vr,
   getAttributeInfoFromFormat: Gt,
   getBatchSamplersUniformGroup: _n,
   getBitmapTextLayout: Sn,
-  getCanvasBoundingBox: ig,
+  getCanvasBoundingBox: ng,
   getCanvasFillStyle: Os,
-  getCanvasTexture: Ju,
+  getCanvasTexture: Qu,
   getDefaultUniformValue: ef,
-  getFastGlobalBounds: Dv,
+  getFastGlobalBounds: Fv,
   getFastGlobalBoundsMixin: _d,
-  getFillInstructionData: H0,
-  getFontCss: Fb,
+  getFillInstructionData: W0,
+  getFontCss: Ib,
   getFontFamilyName: Jp,
   getGeometryBounds: qf,
-  getGlTypeFromFormat: yg,
-  getGlobalBounds: Ns,
+  getGlTypeFromFormat: vg,
+  getGlobalBounds: Hs,
   getGlobalMixin: xd,
   getGlobalRenderableBounds: $m,
   getLocalBounds: tn,
   getMaxFragmentPrecision: Wd,
   getMaxTexturesPerBatch: zf,
   getOrientationOfPoints: fp,
-  getPo2TextureFromSource: Jl,
+  getPo2TextureFromSource: Ql,
   getResolutionOfUrl: wn,
-  getSVGUrl: Ib,
+  getSVGUrl: kb,
   getSupportedCompressedTextureFormats: _u,
-  getSupportedGPUCompressedTextureFormats: aa,
-  getSupportedGlCompressedTextureFormats: oa,
-  getSupportedTextureFormats: $s,
-  getTemporaryCanvasFromImage: kb,
+  getSupportedGPUCompressedTextureFormats: ua,
+  getSupportedGlCompressedTextureFormats: aa,
+  getSupportedTextureFormats: js,
+  getTemporaryCanvasFromImage: Ub,
   getTestContext: za,
   getTextureBatchBindGroup: dn,
-  getTextureDefaultMatrix: $v,
-  getTextureFormatFromKTXTexture: n2,
-  getUboData: Og,
-  getUniformData: Gg,
+  getTextureDefaultMatrix: jv,
+  getTextureFormatFromKTXTexture: o2,
+  getUboData: Gg,
+  getUniformData: Lg,
   getUrlExtension: Id,
   glFormatToGPUFormat: vm,
-  glUploadBufferImageResource: jg,
-  glUploadCompressedTextureResource: qg,
-  glUploadImageResource: ol,
-  glUploadVideoResource: Kg,
+  glUploadBufferImageResource: qg,
+  glUploadCompressedTextureResource: Kg,
+  glUploadImageResource: nl,
+  glUploadVideoResource: Zg,
   globalUniformsBit: op,
   globalUniformsBitGl: ap,
-  globalUniformsUBOBitGl: _0,
-  gpuFormatToBasisTranscoderFormat: By,
-  gpuFormatToKTXBasisTranscoderFormat: a2,
-  gpuUploadBufferImageResource: C_,
-  gpuUploadCompressedTextureResource: P_,
-  gpuUploadImageResource: Nl,
-  gpuUploadVideoResource: B_,
+  globalUniformsUBOBitGl: b0,
+  gpuFormatToBasisTranscoderFormat: Ry,
+  gpuFormatToKTXBasisTranscoderFormat: u2,
+  gpuUploadBufferImageResource: P_,
+  gpuUploadCompressedTextureResource: B_,
+  gpuUploadImageResource: Ll,
+  gpuUploadVideoResource: R_,
   groupD8: ee,
-  hasCachedCanvasTexture: X2,
-  hslWgsl: D2,
+  hasCachedCanvasTexture: Y2,
+  hslWgsl: F2,
   hslgl: an,
   hslgpu: un,
-  injectBits: $o,
+  injectBits: jo,
   insertVersion: Xd,
   isMobile: Gd,
-  isPow2: Mo,
-  isRenderingToScreen: Rg,
-  isSafari: Bb,
+  isPow2: Do,
+  isRenderingToScreen: Mg,
+  isSafari: Rb,
   isSingleItem: Rs,
-  isWebGLSupported: Ws,
-  isWebGPUSupported: zs,
+  isWebGLSupported: zs,
+  isWebGPUSupported: Vs,
   ktxTranscoderUrls: zi,
-  loadBasis: Ay,
+  loadBasis: Cy,
   loadBasisOnWorker: fm,
   loadBitmapFont: Np,
-  loadDDS: Uy,
+  loadDDS: Oy,
   loadEnvironmentExtensions: Xa,
-  loadFontAsBase64: Mb,
-  loadFontCSS: Db,
+  loadFontAsBase64: Db,
+  loadFontCSS: Fb,
   loadImageBitmap: sm,
   loadJson: Zp,
-  loadKTX: Ky,
-  loadKTX2: e2,
+  loadKTX: Zy,
+  loadKTX2: t2,
   loadKTX2onWorker: ym,
-  loadSVGImage: Ub,
+  loadSVGImage: Ob,
   loadSvg: tm,
   loadTextures: mu,
   loadTxt: Qp,
@@ -44419,60 +44419,60 @@ const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   loadWebFont: em,
   localUniformBit: Lr,
   localUniformBitGl: Bn,
-  localUniformBitGroup2: fg,
-  localUniformMSDFBit: vb,
-  localUniformMSDFBitGl: Sb,
-  log2: Qb,
-  logDebugTexture: u1,
-  logProgramError: Lg,
-  logRenderGroupScene: Vb,
-  logScene: zb,
-  mSDFBit: wb,
-  mSDFBitGl: Tb,
-  mapFormatToGlFormat: Jg,
-  mapFormatToGlInternalFormat: e_,
-  mapFormatToGlType: t_,
-  mapGlToVertexFormat: kg,
-  mapSize: K2,
-  mapType: sl,
-  mapWebGLBlendModesToPixi: Vg,
+  localUniformBitGroup2: pg,
+  localUniformMSDFBit: Sb,
+  localUniformMSDFBitGl: wb,
+  log2: Jb,
+  logDebugTexture: l1,
+  logProgramError: Ng,
+  logRenderGroupScene: Xb,
+  logScene: Vb,
+  mSDFBit: Tb,
+  mSDFBitGl: Eb,
+  mapFormatToGlFormat: e_,
+  mapFormatToGlInternalFormat: t_,
+  mapFormatToGlType: r_,
+  mapGlToVertexFormat: Ug,
+  mapSize: Z2,
+  mapType: rl,
+  mapWebGLBlendModesToPixi: Xg,
   maskFrag: jm,
   maskVert: qm,
-  maskWgsl: _a,
+  maskWgsl: ba,
   matrixPool: Oe,
-  measureHtmlText: Ru,
+  measureHtmlText: Bu,
   measureMixin: vd,
-  migrateFragmentFromV7toV8: j2,
-  mipmapScaleModeToGlFilter: Zg,
+  migrateFragmentFromV7toV8: q2,
+  mipmapScaleModeToGlFilter: Qg,
   multiplyColors: Ps,
   multiplyHexColors: Fa,
   nextPow2: fr,
   noiseFrag: Wm,
-  noiseWgsl: pa,
+  noiseWgsl: ma,
   nonCompressedFormats: hm,
   normalizeExtensionPriority: ms,
   onRenderMixin: Sd,
   parseDDS: mm,
-  parseFunctionBody: Mv,
+  parseFunctionBody: Dv,
   parseKTX: _m,
   parseSVGDefinitions: Bp,
   parseSVGFloatAttribute: pe,
   parseSVGPath: Nf,
   parseSVGStyle: hu,
-  particleData: Aa,
-  particlesFrag: rb,
-  particlesVert: sb,
-  particlesWgsl: Ta,
+  particleData: Ca,
+  particlesFrag: sb,
+  particlesVert: ib,
+  particlesWgsl: Ea,
   passthroughFrag: Xm,
-  passthroughWgsl: ma,
+  passthroughWgsl: ga,
   path: qe,
-  pointInTriangle: ga,
+  pointInTriangle: _a,
   preloadVideo: nm,
   removeItems: Da,
   removeStructAndGroupDuplicates: Qd,
-  resetUids: Zb,
+  resetUids: Qb,
   resolveCharacters: Gp,
-  resolveCompressedTextureUrl: u2,
+  resolveCompressedTextureUrl: l2,
   resolveJsonUrl: um,
   resolveTextureUrl: gu,
   resourceToTexture: Rd,
@@ -44480,50 +44480,50 @@ const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   roundPixelsBitGl: Zr,
   roundedShapeArc: Ap,
   roundedShapeQuadraticCurve: Cp,
-  sayHello: u_,
-  scaleModeToGlFilter: ya,
-  setBasisTranscoderPath: Ty,
-  setKTXTranscoderPath: Qy,
-  setPositions: _b,
+  sayHello: l_,
+  scaleModeToGlFilter: va,
+  setBasisTranscoderPath: Ey,
+  setKTXTranscoderPath: Jy,
+  setPositions: bb,
   setProgramName: Yd,
-  setUvs: xb,
+  setUvs: yb,
   shapeBuilders: Qr,
   sortMixin: wd,
   spritesheetAsset: Od,
   squaredDistanceToLineSegment: vs,
   stripVersion: $d,
-  styleAttributes: Jo,
+  styleAttributes: ea,
   testImageFormat: pu,
-  testVideoFormat: Xs,
-  textStyleToCSS: og,
-  textureBit: pg,
-  textureBitGl: mg,
+  testVideoFormat: Ys,
+  textStyleToCSS: ag,
+  textureBit: mg,
+  textureBitGl: gg,
   textureFrom: Md,
-  tilingBit: fb,
-  tilingBitGl: pb,
-  toFillStyle: Yt,
+  tilingBit: pb,
+  tilingBitGl: mb,
+  toFillStyle: $t,
   toLocalGlobalMixin: Td,
   toStrokeStyle: Us,
   transformVertices: xn,
   triangulateWithHoles: ou,
-  uboSyncFunctionsSTD40: Zu,
-  uboSyncFunctionsWGSL: Eg,
+  uboSyncFunctionsSTD40: Ku,
+  uboSyncFunctionsWGSL: Ag,
   uid: ae,
-  uniformParsers: $t,
-  unpremultiplyAlpha: iv,
+  uniformParsers: jt,
+  unpremultiplyAlpha: nv,
   unsafeEvalSupported: Ya,
-  updateLocalTransform: kv,
+  updateLocalTransform: Uv,
   updateQuadBounds: Ma,
-  updateRenderGroupTransform: r_,
-  updateRenderGroupTransforms: dl,
+  updateRenderGroupTransform: s_,
+  updateRenderGroupTransforms: cl,
   updateTextBounds: Qi,
-  updateTransformAndChildren: fl,
+  updateTransformAndChildren: dl,
   updateTransformBackwards: en,
-  updateWorldTransform: Uv,
+  updateWorldTransform: Ov,
   v8_0_0: Z,
   v8_3_4: ed,
   validFormats: Vi,
-  validateRenderables: s_,
+  validateRenderables: i_,
   vertexGPUTemplate: rp,
   vertexGlTemplate: ip,
   vkFormatToGPUFormat: Sm,
@@ -44531,13 +44531,13 @@ const c1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   webworkerExt: jc,
   wrapModeToGlAddress: Ri
 }, Symbol.toStringTag, { value: "Module" }));
-async function d1(s) {
+async function f1(s) {
   var e;
   const t = {
     importPixi: !1,
     ...s
   };
-  t.app && (t.renderer = t.app.renderer, t.stage = t.app.stage), t.importPixi && !t.pixi && (t.pixi = await Promise.resolve().then(() => c1)), window.__PIXI_DEVTOOLS__ = {
+  t.app && (t.renderer = t.app.renderer, t.stage = t.app.stage), t.importPixi && !t.pixi && (t.pixi = await Promise.resolve().then(() => d1)), window.__PIXI_DEVTOOLS__ = {
     ...window.__PIXI_DEVTOOLS__ || {},
     app: t.app,
     stage: t.stage,
@@ -44546,11 +44546,11 @@ async function d1(s) {
     plugins: {}
   };
 }
-var f1 = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
-function p1(s) {
+var p1 = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
+function m1(s) {
   return s && s.__esModule && Object.prototype.hasOwnProperty.call(s, "default") ? s.default : s;
 }
-var Xb = { exports: {} };
+var Yb = { exports: {} };
 (function(s, e) {
   (function() {
     var t, r;
@@ -44656,20 +44656,20 @@ var Xb = { exports: {} };
         return i < a / 2 ? (u = t.easeInBounce(i * 2, 0, o, a), u * 0.5 + n) : (u = t.easeOutBounce(i * 2 - a, 0, o, a), u * 0.5 + o * 0.5 + n);
       }
     }, r(t);
-  }).call(f1);
-})(Xb);
-var m1 = Xb.exports;
-const Yc = /* @__PURE__ */ p1(m1);
+  }).call(p1);
+})(Yb);
+var g1 = Yb.exports;
+const Xc = /* @__PURE__ */ m1(g1);
 function Un(s, e) {
   if (s) {
     if (typeof s == "function")
       return s;
     if (typeof s == "string")
-      return Yc[s];
+      return Xc[s];
   } else
-    return Yc[e];
+    return Xc[e];
 }
-class g1 {
+class _1 {
   constructor(e) {
     this.viewport = e, this.touches = [], this.addListeners();
   }
@@ -44791,7 +44791,7 @@ const ps = [
   "snap",
   "clamp"
 ];
-class _1 {
+class b1 {
   /** This is called by {@link Viewport} to initialize the {@link Viewport.plugins plugins}. */
   constructor(e) {
     this.viewport = e, this.list = [], this.plugins = {};
@@ -44985,12 +44985,12 @@ class ht {
     this.paused = !1;
   }
 }
-const b1 = {
+const x1 = {
   removeOnInterrupt: !1,
   ease: "linear",
   time: 1e3
 };
-class x1 extends ht {
+class y1 extends ht {
   /**
    * This is called by {@link Viewport.animate}.
    *
@@ -44998,7 +44998,7 @@ class x1 extends ht {
    * @param options
    */
   constructor(e, t = {}) {
-    super(e), this.startWidth = null, this.startHeight = null, this.deltaWidth = null, this.deltaHeight = null, this.width = null, this.height = null, this.time = 0, this.options = Object.assign({}, b1, t), this.options.ease = Un(this.options.ease), this.setupPosition(), this.setupZoom(), this.time = 0;
+    super(e), this.startWidth = null, this.startHeight = null, this.deltaWidth = null, this.deltaHeight = null, this.width = null, this.height = null, this.time = 0, this.options = Object.assign({}, x1, t), this.options.ease = Un(this.options.ease), this.setupPosition(), this.setupZoom(), this.time = 0;
   }
   /**
    * Setup `startX`, `startY`, `deltaX`, `deltaY`, `keepCenter`.
@@ -45056,7 +45056,7 @@ class x1 extends ht {
     }
   }
 }
-const y1 = {
+const v1 = {
   sides: "all",
   friction: 0.5,
   time: 150,
@@ -45064,12 +45064,12 @@ const y1 = {
   underflow: "center",
   bounceBox: null
 };
-class v1 extends ht {
+class S1 extends ht {
   /**
    * This is called by {@link Viewport.bounce}.
    */
   constructor(e, t = {}) {
-    super(e), this.options = Object.assign({}, y1, t), this.ease = Un(this.options.ease, "easeInOutSine"), this.options.sides ? this.options.sides === "all" ? this.top = this.bottom = this.left = this.right = !0 : this.options.sides === "horizontal" ? (this.right = this.left = !0, this.top = this.bottom = !1) : this.options.sides === "vertical" ? (this.left = this.right = !1, this.top = this.bottom = !0) : (this.top = this.options.sides.indexOf("top") !== -1, this.bottom = this.options.sides.indexOf("bottom") !== -1, this.left = this.options.sides.indexOf("left") !== -1, this.right = this.options.sides.indexOf("right") !== -1) : this.left = this.top = this.right = this.bottom = !1;
+    super(e), this.options = Object.assign({}, v1, t), this.ease = Un(this.options.ease, "easeInOutSine"), this.options.sides ? this.options.sides === "all" ? this.top = this.bottom = this.left = this.right = !0 : this.options.sides === "horizontal" ? (this.right = this.left = !0, this.top = this.bottom = !1) : this.options.sides === "vertical" ? (this.left = this.right = !1, this.top = this.bottom = !0) : (this.top = this.options.sides.indexOf("top") !== -1, this.bottom = this.options.sides.indexOf("bottom") !== -1, this.left = this.options.sides.indexOf("left") !== -1, this.right = this.options.sides.indexOf("right") !== -1) : this.left = this.top = this.right = this.bottom = !1;
     const r = this.options.underflow.toLowerCase();
     r === "center" ? (this.underflowX = 0, this.underflowY = 0) : (this.underflowX = r.indexOf("left") !== -1 ? -1 : r.indexOf("right") !== -1 ? 1 : 0, this.underflowY = r.indexOf("top") !== -1 ? -1 : r.indexOf("bottom") !== -1 ? 1 : 0), this.reset();
   }
@@ -45179,7 +45179,7 @@ class v1 extends ht {
     this.toX = this.toY = null, this.bounce();
   }
 }
-const S1 = {
+const w1 = {
   left: !1,
   right: !1,
   top: !1,
@@ -45187,12 +45187,12 @@ const S1 = {
   direction: null,
   underflow: "center"
 };
-class w1 extends ht {
+class T1 extends ht {
   /**
   * This is called by {@link Viewport.clamp}.
   */
   constructor(e, t = {}) {
-    super(e), this.options = Object.assign({}, S1, t), this.options.direction && (this.options.left = this.options.direction === "x" || this.options.direction === "all" ? !0 : null, this.options.right = this.options.direction === "x" || this.options.direction === "all" ? !0 : null, this.options.top = this.options.direction === "y" || this.options.direction === "all" ? !0 : null, this.options.bottom = this.options.direction === "y" || this.options.direction === "all" ? !0 : null), this.parseUnderflow(), this.last = { x: null, y: null, scaleX: null, scaleY: null }, this.update();
+    super(e), this.options = Object.assign({}, w1, t), this.options.direction && (this.options.left = this.options.direction === "x" || this.options.direction === "all" ? !0 : null, this.options.right = this.options.direction === "x" || this.options.direction === "all" ? !0 : null, this.options.top = this.options.direction === "y" || this.options.direction === "all" ? !0 : null, this.options.bottom = this.options.direction === "y" || this.options.direction === "all" ? !0 : null), this.parseUnderflow(), this.last = { x: null, y: null, scaleX: null, scaleY: null }, this.update();
   }
   parseUnderflow() {
     const e = this.options.underflow.toLowerCase();
@@ -45253,7 +45253,7 @@ class w1 extends ht {
     this.update();
   }
 }
-const T1 = {
+const E1 = {
   minWidth: null,
   minHeight: null,
   maxWidth: null,
@@ -45261,12 +45261,12 @@ const T1 = {
   minScale: null,
   maxScale: null
 };
-class E1 extends ht {
+class A1 extends ht {
   /**
    * This is called by {@link Viewport.clampZoom}.
    */
   constructor(e, t = {}) {
-    super(e), this.options = Object.assign({}, T1, t), this.clamp();
+    super(e), this.options = Object.assign({}, E1, t), this.clamp();
   }
   resize() {
     this.clamp();
@@ -45315,17 +45315,17 @@ class E1 extends ht {
     this.clamp();
   }
 }
-const A1 = {
+const C1 = {
   friction: 0.98,
   bounce: 0.8,
   minSpeed: 0.01
-}, zt = 16;
-class C1 extends ht {
+}, Vt = 16;
+class P1 extends ht {
   /**
    * This is called by {@link Viewport.decelerate}.
    */
   constructor(e, t = {}) {
-    super(e), this.options = Object.assign({}, A1, t), this.saved = [], this.timeSinceRelease = 0, this.reset(), this.parent.on("moved", (r) => this.handleMoved(r));
+    super(e), this.options = Object.assign({}, C1, t), this.saved = [], this.timeSinceRelease = 0, this.reset(), this.parent.on("moved", (r) => this.handleMoved(r));
   }
   down() {
     return this.saved = [], this.x = this.y = null, !1;
@@ -45374,11 +45374,11 @@ class C1 extends ht {
     const t = this.x || this.y, r = this.timeSinceRelease, i = this.timeSinceRelease + e;
     if (this.x) {
       const n = this.percentChangeX, o = Math.log(n);
-      this.parent.x += this.x * zt / o * (Math.pow(n, i / zt) - Math.pow(n, r / zt)), this.x *= Math.pow(this.percentChangeX, e / zt);
+      this.parent.x += this.x * Vt / o * (Math.pow(n, i / Vt) - Math.pow(n, r / Vt)), this.x *= Math.pow(this.percentChangeX, e / Vt);
     }
     if (this.y) {
       const n = this.percentChangeY, o = Math.log(n);
-      this.parent.y += this.y * zt / o * (Math.pow(n, i / zt) - Math.pow(n, r / zt)), this.y *= Math.pow(this.percentChangeY, e / zt);
+      this.parent.y += this.y * Vt / o * (Math.pow(n, i / Vt) - Math.pow(n, r / Vt)), this.y *= Math.pow(this.percentChangeY, e / Vt);
     }
     this.timeSinceRelease += e, this.x && this.y ? Math.abs(this.x) < this.options.minSpeed && Math.abs(this.y) < this.options.minSpeed && (this.x = 0, this.y = 0) : (Math.abs(this.x || 0) < this.options.minSpeed && (this.x = 0), Math.abs(this.y || 0) < this.options.minSpeed && (this.y = 0)), t && this.parent.emit("moved", { viewport: this.parent, type: "decelerate" });
   }
@@ -45386,7 +45386,7 @@ class C1 extends ht {
     this.x = this.y = null;
   }
 }
-const P1 = {
+const B1 = {
   direction: "all",
   pressDrag: !0,
   wheel: !0,
@@ -45401,12 +45401,12 @@ const P1 = {
   lineHeight: 20,
   wheelSwapAxes: !1
 };
-class B1 extends ht {
+class R1 extends ht {
   /**
   * This is called by {@link Viewport.drag}.
   */
   constructor(e, t = {}) {
-    super(e), this.windowEventHandlers = [], this.options = Object.assign({}, P1, t), this.moved = !1, this.reverse = this.options.reverse ? 1 : -1, this.xDirection = !this.options.direction || this.options.direction === "all" || this.options.direction === "x", this.yDirection = !this.options.direction || this.options.direction === "all" || this.options.direction === "y", this.keyIsPressed = !1, this.parseUnderflow(), this.mouseButtons(this.options.mouseButtons), this.options.keyToPress && this.handleKeyPresses(this.options.keyToPress);
+    super(e), this.windowEventHandlers = [], this.options = Object.assign({}, B1, t), this.moved = !1, this.reverse = this.options.reverse ? 1 : -1, this.xDirection = !this.options.direction || this.options.direction === "all" || this.options.direction === "x", this.yDirection = !this.options.direction || this.options.direction === "all" || this.options.direction === "y", this.keyIsPressed = !1, this.parseUnderflow(), this.mouseButtons(this.options.mouseButtons), this.options.keyToPress && this.handleKeyPresses(this.options.keyToPress);
   }
   /**
   * Handles keypress events and set the keyIsPressed boolean accordingly
@@ -45559,12 +45559,12 @@ class B1 extends ht {
         this.parent.top < 0 && (this.parent.y = 0, e.y = 0), this.parent.bottom > this.parent.worldHeight && (this.parent.y = -this.parent.worldHeight * this.parent.scale.y + this.parent.screenHeight, e.y = 0);
   }
 }
-const R1 = {
+const M1 = {
   speed: 0,
   acceleration: null,
   radius: null
 };
-class M1 extends ht {
+class D1 extends ht {
   /**
    * This is called by {@link Viewport.follow}.
    *
@@ -45573,7 +45573,7 @@ class M1 extends ht {
    * @param options
    */
   constructor(e, t, r = {}) {
-    super(e), this.target = t, this.options = Object.assign({}, R1, r), this.velocity = { x: 0, y: 0 };
+    super(e), this.target = t, this.options = Object.assign({}, M1, r), this.velocity = { x: 0, y: 0 };
   }
   update(e) {
     if (this.paused)
@@ -45611,7 +45611,7 @@ class M1 extends ht {
         this.parent.moveCenter(r, i), this.parent.emit("moved", { viewport: this.parent, type: "follow" });
   }
 }
-const D1 = {
+const F1 = {
   radius: null,
   distance: null,
   top: null,
@@ -45624,12 +45624,12 @@ const D1 = {
   linear: !1,
   allowButtons: !1
 };
-class F1 extends ht {
+class I1 extends ht {
   /**
    * This is called by {@link Viewport.mouseEdges}.
    */
   constructor(e, t = {}) {
-    super(e), this.options = Object.assign({}, D1, t), this.reverse = this.options.reverse ? 1 : -1, this.radiusSquared = typeof this.options.radius == "number" ? Math.pow(this.options.radius, 2) : null, this.resize();
+    super(e), this.options = Object.assign({}, F1, t), this.reverse = this.options.reverse ? 1 : -1, this.radiusSquared = typeof this.options.radius == "number" ? Math.pow(this.options.radius, 2) : null, this.resize();
   }
   resize() {
     const e = this.options.distance;
@@ -45671,19 +45671,19 @@ class F1 extends ht {
     }
   }
 }
-const I1 = {
+const k1 = {
   noDrag: !1,
   percent: 1,
   center: null,
   factor: 1,
   axis: "all"
-}, k1 = new $();
-class U1 extends ht {
+}, U1 = new $();
+class O1 extends ht {
   /**
   * This is called by {@link Viewport.pinch}.
   */
   constructor(e, t = {}) {
-    super(e), this.active = !1, this.pinching = !1, this.moved = !1, this.options = Object.assign({}, I1, t);
+    super(e), this.active = !1, this.pinching = !1, this.moved = !1, this.options = Object.assign({}, k1, t);
   }
   down() {
     return this.parent.input.count() >= 2 ? (this.active = !0, !0) : !1;
@@ -45700,7 +45700,7 @@ class U1 extends ht {
     const { x: t, y: r } = (this.parent.parent || this.parent).toLocal(
       e.global,
       void 0,
-      k1
+      U1
     ), i = this.parent.input.touches;
     if (i.length >= 2) {
       const n = i[0], o = i[1], a = n.last && o.last ? Math.sqrt(
@@ -45753,7 +45753,7 @@ class U1 extends ht {
     return this.pinching && this.parent.input.touches.length <= 1 ? (this.active = !1, this.lastCenter = null, this.pinching = !1, this.moved = !1, this.parent.emit("pinch-end", this.parent), !0) : !1;
   }
 }
-const O1 = {
+const G1 = {
   topLeft: !1,
   friction: 0.8,
   time: 1e3,
@@ -45763,12 +45763,12 @@ const O1 = {
   removeOnInterrupt: !1,
   forceStart: !1
 };
-class G1 extends ht {
+class L1 extends ht {
   /**
    * This is called by {@link Viewport.snap}.
    */
   constructor(e, t, r, i = {}) {
-    super(e), this.options = Object.assign({}, O1, i), this.ease = Un(i.ease, "easeInOutSine"), this.x = t, this.y = r, this.options.forceStart && this.snapStart();
+    super(e), this.options = Object.assign({}, G1, i), this.ease = Un(i.ease, "easeInOutSine"), this.x = t, this.y = r, this.options.forceStart && this.snapStart();
   }
   snapStart() {
     this.percent = 0, this.snapping = { time: 0 };
@@ -45808,7 +45808,7 @@ class G1 extends ht {
       }
   }
 }
-const L1 = {
+const N1 = {
   width: 0,
   height: 0,
   time: 1e3,
@@ -45820,12 +45820,12 @@ const L1 = {
   forceStart: !1,
   noMove: !1
 };
-class N1 extends ht {
+class H1 extends ht {
   /**
    * This is called by {@link Viewport.snapZoom}.
    */
   constructor(e, t = {}) {
-    super(e), this.options = Object.assign({}, L1, t), this.ease = Un(this.options.ease), this.xIndependent = !1, this.yIndependent = !1, this.xScale = 0, this.yScale = 0, this.options.width > 0 && (this.xScale = e.screenWidth / this.options.width, this.xIndependent = !0), this.options.height > 0 && (this.yScale = e.screenHeight / this.options.height, this.yIndependent = !0), this.xScale = this.xIndependent ? this.xScale : this.yScale, this.yScale = this.yIndependent ? this.yScale : this.xScale, this.options.time === 0 ? (e.container.scale.x = this.xScale, e.container.scale.y = this.yScale, this.options.removeOnComplete && this.parent.plugins.remove("snap-zoom")) : t.forceStart && this.createSnapping();
+    super(e), this.options = Object.assign({}, N1, t), this.ease = Un(this.options.ease), this.xIndependent = !1, this.yIndependent = !1, this.xScale = 0, this.yScale = 0, this.options.width > 0 && (this.xScale = e.screenWidth / this.options.width, this.xIndependent = !0), this.options.height > 0 && (this.yScale = e.screenHeight / this.options.height, this.yIndependent = !0), this.xScale = this.xIndependent ? this.xScale : this.yScale, this.yScale = this.yIndependent ? this.yScale : this.xScale, this.options.time === 0 ? (e.container.scale.x = this.xScale, e.container.scale.y = this.yScale, this.options.removeOnComplete && this.parent.plugins.remove("snap-zoom")) : t.forceStart && this.createSnapping();
   }
   createSnapping() {
     const e = this.parent.worldScreenWidth, t = this.parent.worldScreenHeight, r = this.parent.screenWidth / this.xScale, i = this.parent.screenHeight / this.yScale;
@@ -45868,7 +45868,7 @@ class N1 extends ht {
     this.snapping = null, super.resume();
   }
 }
-const H1 = {
+const W1 = {
   percent: 0.1,
   smooth: !1,
   interrupt: !0,
@@ -45880,12 +45880,12 @@ const H1 = {
   trackpadPinch: !1,
   wheelZoom: !0
 };
-class W1 extends ht {
+class z1 extends ht {
   /**
   * This is called by {@link Viewport.wheel}.
   */
   constructor(e, t = {}) {
-    super(e), this.options = Object.assign({}, H1, t), this.keyIsPressed = !1, this.options.keyToPress && this.handleKeyPresses(this.options.keyToPress);
+    super(e), this.options = Object.assign({}, W1, t), this.keyIsPressed = !1, this.options.keyToPress && this.handleKeyPresses(this.options.keyToPress);
   }
   /**
   * Handles keypress events and set the keyIsPressed boolean accordingly
@@ -45979,7 +45979,7 @@ class W1 extends ht {
     return !this.parent.options.passiveWheel;
   }
 }
-const z1 = {
+const V1 = {
   screenWidth: typeof window > "u" ? 0 : window.innerWidth,
   screenHeight: typeof window > "u" ? 0 : window.innerHeight,
   worldWidth: null,
@@ -45993,7 +45993,7 @@ const z1 = {
   ticker: Ce.shared,
   allowPreserveDragOutside: !1
 };
-class V1 extends le {
+class X1 extends le {
   /**
    * @param {IViewportOptions} ViewportOptions
    * @param {number} [options.screenWidth=window.innerWidth]
@@ -46015,9 +46015,9 @@ class V1 extends le {
    */
   constructor(e) {
     super(), this._disableOnContextMenu = (t) => t.preventDefault(), this.options = {
-      ...z1,
+      ...V1,
       ...e
-    }, this.screenWidth = this.options.screenWidth, this.screenHeight = this.options.screenHeight, this._worldWidth = this.options.worldWidth, this._worldHeight = this.options.worldHeight, this.forceHitArea = this.options.forceHitArea, this.threshold = this.options.threshold, this.options.disableOnContextMenu && this.options.events.domElement.addEventListener("contextmenu", this._disableOnContextMenu), this.options.noTicker || (this.tickerFunction = () => this.update(this.options.ticker.elapsedMS), this.options.ticker.add(this.tickerFunction)), this.input = new g1(this), this.plugins = new _1(this);
+    }, this.screenWidth = this.options.screenWidth, this.screenHeight = this.options.screenHeight, this._worldWidth = this.options.worldWidth, this._worldHeight = this.options.worldHeight, this.forceHitArea = this.options.forceHitArea, this.threshold = this.options.threshold, this.options.disableOnContextMenu && this.options.events.domElement.addEventListener("contextmenu", this._disableOnContextMenu), this.options.noTicker || (this.tickerFunction = () => this.update(this.options.ticker.elapsedMS), this.options.ticker.add(this.tickerFunction)), this.input = new _1(this), this.plugins = new b1(this);
   }
   /** Overrides PIXI.Container's destroy to also remove the 'wheel' and PIXI.Ticker listeners */
   destroy(e) {
@@ -46306,7 +46306,7 @@ class V1 extends le {
    * @param {boolean} [options.noMove] - zoom but do not move
    */
   snapZoom(e) {
-    return this.plugins.add("snap-zoom", new N1(this, e)), this;
+    return this.plugins.add("snap-zoom", new H1(this, e)), this;
   }
   /** Is container out of world bounds */
   OOB() {
@@ -46396,7 +46396,7 @@ class V1 extends le {
    * @returns {Viewport} this
    */
   drag(e) {
-    return this.plugins.add("drag", new B1(this, e)), this;
+    return this.plugins.add("drag", new R1(this, e)), this;
   }
   /**
    * Clamp to world boundaries or other provided boundaries
@@ -46429,7 +46429,7 @@ class V1 extends le {
    *  none, bottomLeft)     * @returns {Viewport} this
    */
   clamp(e) {
-    return this.plugins.add("clamp", new w1(this, e)), this;
+    return this.plugins.add("clamp", new T1(this, e)), this;
   }
   /**
    * Decelerate after a move
@@ -46444,7 +46444,7 @@ class V1 extends le {
    * @return {Viewport} this
    */
   decelerate(e) {
-    return this.plugins.add("decelerate", new C1(this, e)), this;
+    return this.plugins.add("decelerate", new P1(this, e)), this;
   }
   /**
    * Bounce on borders
@@ -46468,7 +46468,7 @@ class V1 extends le {
    * @return {Viewport} this
    */
   bounce(e) {
-    return this.plugins.add("bounce", new v1(this, e)), this;
+    return this.plugins.add("bounce", new S1(this, e)), this;
   }
   /**
    * Enable pinch to zoom and two-finger touch to drag
@@ -46482,7 +46482,7 @@ class V1 extends le {
    * @return {Viewport} this
    */
   pinch(e) {
-    return this.plugins.add("pinch", new U1(this, e)), this;
+    return this.plugins.add("pinch", new O1(this, e)), this;
   }
   /**
    * Snap to a point
@@ -46503,7 +46503,7 @@ class V1 extends le {
    * @return {Viewport} this
    */
   snap(e, t, r) {
-    return this.plugins.add("snap", new G1(this, e, t, r)), this;
+    return this.plugins.add("snap", new L1(this, e, t, r)), this;
   }
   /**
    * Follow a target
@@ -46526,7 +46526,7 @@ class V1 extends le {
    * @returns {Viewport} this
    */
   follow(e, t) {
-    return this.plugins.add("follow", new M1(this, e, t)), this;
+    return this.plugins.add("follow", new D1(this, e, t)), this;
   }
   /**
    * Zoom using mouse wheel
@@ -46544,7 +46544,7 @@ class V1 extends le {
    * @return {Viewport} this
    */
   wheel(e) {
-    return this.plugins.add("wheel", new W1(this, e)), this;
+    return this.plugins.add("wheel", new z1(this, e)), this;
   }
   /**
    * Animate the position and/or scale of the viewport
@@ -46565,7 +46565,7 @@ class V1 extends le {
    * @returns {Viewport} this
    */
   animate(e) {
-    return this.plugins.add("animate", new x1(this, e)), this;
+    return this.plugins.add("animate", new y1(this, e)), this;
   }
   /**
    * Enable clamping of zoom to constraints
@@ -46590,7 +46590,7 @@ class V1 extends le {
    * @return {Viewport} this
    */
   clampZoom(e) {
-    return this.plugins.add("clamp-zoom", new E1(this, e)), this;
+    return this.plugins.add("clamp-zoom", new A1(this, e)), this;
   }
   /**
    * Scroll viewport when mouse hovers near one of the edges or radius-distance from center of screen.
@@ -46612,7 +46612,7 @@ class V1 extends le {
    * @param {boolean} [options.allowButtons] allows plugin to continue working even when there's a mousedown event
    */
   mouseEdges(e) {
-    return this.plugins.add("mouse-edges", new F1(this, e)), this;
+    return this.plugins.add("mouse-edges", new I1(this, e)), this;
   }
   /** Pause viewport (including animation updates such as decelerate) */
   get pause() {
@@ -46636,63 +46636,84 @@ class V1 extends le {
     e < this.left ? (this.left = e, o = !0) : e + r > this.right && (this.right = e + r, o = !0), t < this.top ? (this.top = t, o = !0) : t + i > this.bottom && (this.bottom = t + i, o = !0), o && this.emit("moved", { viewport: this, type: "ensureVisible" });
   }
 }
-const pt = "./assets/textures/furniture", Pa = {
+const pt = "./assets/textures/furniture", Ns = {
   "bench-pink": {
     textureUrl: `${pt}/bench-pink.png`,
-    name: "Скамейка (розовая)"
+    name: "Скамейка (розовая)",
+    width: 90,
+    height: 36
   },
   "desk-chair-manager": {
     textureUrl: `${pt}/desk-chair-manager.png`,
-    name: "Стол менеджера"
+    name: "Стол менеджера",
+    width: 80,
+    height: 120
   },
   "desk-chair-warehouse": {
     textureUrl: `${pt}/desk-chair-warehouse.png`,
-    name: "Стол на складе"
+    name: "Стол на складе",
+    width: 80,
+    height: 100
+    // тут был указан только стол, а нужен еще стул. указал примерно
   },
   "desk-checkout-2": {
     textureUrl: `${pt}/desk-checkout-2.png`,
-    name: "Стол выдачи (2 ячейки)"
+    name: "Стол выдачи (2 ячейки)",
+    width: 96,
+    height: 70
   },
   "desk-checkout-3": {
     textureUrl: `${pt}/desk-checkout-3.png`,
-    name: "Стол выдачи (3 ячейки)"
+    name: "Стол выдачи (3 ячейки)",
+    width: 140,
+    height: 70
   },
   "desk-self-service-small": {
     textureUrl: `${pt}/desk-self-service-small.png`,
-    name: "Стол самообслуживания (маленький)"
+    name: "Стол самообслуживания (маленький)",
+    width: 80,
+    height: 53
   },
   "desk-self-service-big": {
     textureUrl: `${pt}/desk-self-service-big.png`,
-    name: "Стол самообслуживания (большой)"
+    name: "Стол самообслуживания (большой)",
+    width: 93,
+    height: 75
   },
   "fitting-room": {
     textureUrl: `${pt}/fitting-room.png`,
-    name: "Примерочная"
+    name: "Примерочная",
+    width: 120,
+    height: 120
   },
   "shelving-unit": {
     textureUrl: `${pt}/shelving-unit.png`,
-    name: "Стеллаж"
+    name: "Стеллаж",
+    width: 100,
+    height: 51
   },
   pallet: {
     textureUrl: `${pt}/pallet.png`,
-    name: "Поддон"
+    name: "Поддон",
+    width: 120,
+    height: 80
   },
   trashcan: {
     textureUrl: `${pt}/trashcan.png`,
-    name: "Урна"
+    name: "Урна",
+    width: 68,
+    height: 48
   }
-}, wi = "./assets";
-class X1 {
+}, Yc = "./assets";
+class Y1 {
   files = {
-    grid: `${wi}/textures/grid.png`,
-    bunny: `${wi}/textures/bunny.png`,
-    rotateIcon: `${wi}/icons/rotate.png`,
-    deleteIcon: `${wi}/icons/delete.png`
+    rotateIcon: `${Yc}/icons/rotate.png`,
+    deleteIcon: `${Yc}/icons/delete.png`
   };
   textures = {};
   constructor(e) {
-    this.planner = e, Object.keys(Pa).forEach((t) => {
-      this.files[t] = Pa[t].textureUrl;
+    this.planner = e, Object.keys(Ns).forEach((t) => {
+      this.files[t] = Ns[t].textureUrl;
     });
   }
   async load() {
@@ -46708,7 +46729,7 @@ class X1 {
 function Nr(s, e) {
   return e.toWorld(s.x, s.y);
 }
-class Y1 {
+class $1 {
   isEnabled = !1;
   points = [];
   pointsSprites = /* @__PURE__ */ new Map();
@@ -46737,10 +46758,10 @@ class Y1 {
     this.isEnabled = !1, this.cursorSprite.visible = !1, this.cursorWall.visible = !1;
   }
   initPointSprite() {
-    this.pointSprite = new qt().circle(0, 0, 8).fill({ color: 16777215 }).stroke({ color: 1118481, alpha: 0.87, width: 1 }), this.pointsLayer.attach(this.pointSprite), this.cursorSprite = this.pointSprite, this.cursorSprite.eventMode = "none", this.viewport.addChild(this.cursorSprite), this.pointsLayer.attach(this.cursorSprite);
+    this.pointSprite = new Lt().circle(0, 0, 8).fill({ color: 16777215 }).stroke({ color: 1118481, alpha: 0.87, width: 1 }), this.pointsLayer.attach(this.pointSprite), this.cursorSprite = this.pointSprite, this.cursorSprite.eventMode = "none", this.viewport.addChild(this.cursorSprite), this.pointsLayer.attach(this.cursorSprite);
   }
   addWall(e, t) {
-    const r = new qt().setStrokeStyle({
+    const r = new Lt().setStrokeStyle({
       width: this.wallWidth,
       color: 0
     }).setFillStyle({
@@ -46796,7 +46817,7 @@ class Y1 {
     this.isEnabled ? this.endDraw(t) : this.pointDragTarget && (this.pointDragTarget = null, this.planner.enableCameraDragging());
   }
 }
-class $1 {
+class j1 {
   furnitures = [];
   dragTarget = null;
   constructor(e) {
@@ -46833,18 +46854,21 @@ class $1 {
     e.code === "Backspace" && this.dragTarget && this.dragTarget.dispose();
   }
 }
-class j1 extends Ne {
+class q1 extends je {
   rotationStartingPoint = null;
   constructor(e, t) {
-    super(e.assets.textures[t]), this.planner = e, this.type = t, this.anchor.set(0.5), this.scale.set(0.2, 0.2);
+    super(e.assets.textures[t]), this.planner = e, this.type = t, this.anchor.set(0.5), this.setSize(
+      Ns[t].width,
+      Ns[t].height
+    );
     const { viewport: r } = e, i = e.furnitureTool;
-    this.tool = i, i.layer.attach(this), r.addChild(this), this.eventMode = "static", this.cursor = "pointer", this.on("pointerdown", this.onMouseDown.bind(this)), this.on("pointerup", this.onMouseUp.bind(this)), e.furnitureTool.furnitures.push(this), this.initIcons();
+    this.tool = i, i.layer.attach(this), r.addChild(this), this.eventMode = "static", this.cursor = "pointer", this.on("pointerenter", this.onMouseEnter.bind(this)), this.on("pointerleave", this.onMouseLeave.bind(this)), this.on("pointerdown", this.onMouseDown.bind(this)), this.on("pointerup", this.onMouseUp.bind(this)), e.furnitureTool.furnitures.push(this), this.initIcons();
   }
   initIcons() {
-    const e = new Ne(this.planner.assets.textures.rotateIcon);
-    e.anchor.set(0.5), e.scale.set(0.5), e.position.set(this.width * 3, this.height * -3), this.addChild(e), e.eventMode = "static", e.cursor = "pointer", e.on("pointerdown", this.onRotateDown.bind(this)), e.on("pointerup", this.onRotateUp.bind(this)), e.on("pointerupoutside", this.onRotateUp.bind(this)), e.on("globalpointermove", this.onRotateMove.bind(this)), this.rotateIcon = e;
-    const t = new Ne(this.planner.assets.textures.deleteIcon);
-    t.anchor.set(0.5), t.scale.set(0.5), t.position.set(this.width * 3 + 150, this.height * -3), this.addChild(t), t.eventMode = "static", t.cursor = "pointer", t.on("pointerup", this.onDeleteUp.bind(this)), this.deleteIcon = t;
+    const e = new je(this.planner.assets.textures.rotateIcon);
+    e.anchor.set(0.5), e.scale.set(0.5), e.position.set(this.width * 5, this.height * -5), this.addChild(e), e.visible = !1, e.eventMode = "static", e.cursor = "pointer", e.on("pointerdown", this.onRotateDown.bind(this)), e.on("pointerup", this.onRotateUp.bind(this)), e.on("pointerupoutside", this.onRotateUp.bind(this)), e.on("globalpointermove", this.onRotateMove.bind(this)), this.rotateIcon = e;
+    const t = new je(this.planner.assets.textures.deleteIcon);
+    t.anchor.set(0.5), t.scale.set(0.5), t.position.set(this.width * 5 + 150, this.height * -5), this.addChild(t), t.visible = !1, t.eventMode = "static", t.cursor = "pointer", t.on("pointerup", this.onDeleteUp.bind(this)), this.deleteIcon = t;
   }
   onRotateDown() {
     this.rotationStartingPoint = Nr(this.position, this.planner.viewport);
@@ -46880,53 +46904,60 @@ class j1 extends Ne {
   onMouseUp() {
     this.tool.removeDragTarget(), this.planner.enableCameraDragging(), this.rotationStartingPoint = null;
   }
+  onMouseEnter() {
+    this.rotateIcon.visible = !0, this.deleteIcon.visible = !0;
+  }
+  onMouseLeave() {
+    this.rotateIcon.visible = !1, this.deleteIcon.visible = !1;
+  }
 }
-let ki, ih;
-function q1(s) {
+let ki, sh;
+function K1(s) {
   const e = document.getElementById("furniture-list");
   window.addEventListener("pointerup", (t) => {
-    ki = null, ih = null;
-  }), Object.entries(Pa).forEach((t) => {
+    ki = null, sh = null;
+  }), Object.entries(Ns).forEach((t) => {
     const r = t[0], i = t[1], n = document.createElement("div");
-    n.classList.add("furniture"), n.addEventListener("pointerdown", K1), n.addEventListener("pointermove", Z1.bind(null, r, s));
+    n.classList.add("furniture"), n.addEventListener("pointerdown", Z1), n.addEventListener("pointermove", Q1.bind(null, r, s));
     const o = document.createElement("img");
     o.src = i.textureUrl, o.setAttribute("draggable", !1);
     const a = document.createElement("p");
     a.textContent = i.name, n.append(o, a), e.append(n);
   });
 }
-function K1(s) {
-  ih = s.currentTarget;
+function Z1(s) {
+  sh = s.currentTarget;
 }
-function Z1(s, e, t) {
-  t.buttons === 1 && !ki && ih === t.currentTarget && (e.enableFurnitureTool(), ki = new j1(e, s), ki.onMouseDown(null, !0));
+function Q1(s, e, t) {
+  t.buttons === 1 && !ki && sh === t.currentTarget && (e.enableFurnitureTool(), ki = new q1(e, s), ki.onMouseDown(null, !0));
 }
-const Q1 = "#e5e6e8";
-class nS {
+const J1 = "#e5e6e8", Bo = 100;
+class oS {
   div2d = null;
   div2dBounds = null;
   app = null;
   viewport = null;
-  worldSize = 5e3;
+  // 50 метров
+  worldSize = 50 * Bo;
   isDragging = !1;
   wallTool = null;
   furnitureTool = null;
   constructor(e) {
-    this.div2d = e, this.assets = new X1(this), this.assets.load().then(this.onLoad.bind(this)), window.addEventListener("resize", this.resize.bind(this)), this.disablePinchToZoomGestureInChrome(), window.addEventListener("keypress", (t) => {
+    this.div2d = e, this.assets = new Y1(this), this.assets.load().then(this.onLoad.bind(this)), window.addEventListener("resize", this.resize.bind(this)), this.disablePinchToZoomGestureInChrome(), window.addEventListener("keyup", (t) => {
       const r = t.code;
-      r === "Digit1" && this.enableFurnitureTool(), r === "Digit2" && this.enableWallTool();
+      r === "Escape" && this.enableFurnitureTool(), r === "Digit1" && this.enableWallTool();
     });
   }
   async onLoad() {
-    await this.init2D(), this.wallTool = new Y1(this), this.furnitureTool = new $1(this), q1(this);
+    await this.init2D(), this.wallTool = new $1(this), this.furnitureTool = new j1(this), K1(this);
   }
   async init2D() {
     this.app = new Ka(), await this.app.init({
       antialias: !0,
-      background: Q1,
+      background: J1,
       resolution: window.devicePixelRatio,
       resizeTo: this.div2d
-    }), this.div2d.appendChild(this.app.canvas), await d1({ app: this.app }), this.viewport = new V1({
+    }), this.div2d.appendChild(this.app.canvas), await f1({ app: this.app }), this.viewport = new X1({
       screenWidth: window.innerWidth,
       screenHeight: window.innerHeight,
       worldWidth: this.worldSize,
@@ -46946,12 +46977,7 @@ class nS {
     }).clampZoom({
       minScale: 0.5,
       maxScale: 2.5
-    }), this.viewport.addEventListener("drag-start", this.onDragStart.bind(this)), this.viewport.addEventListener("drag-end", this.onDragEnd.bind(this)), this.app.stage.eventMode = "static", this.app.stage.hitArea = this.app.screen;
-    for (let e = 0; e < 25; e++) {
-      const t = new Ne(this.assets.textures.bunny);
-      t.x = e % 5 * 40, t.y = Math.floor(e / 5) * 40, this.viewport.addChild(t);
-    }
-    this.app.ticker.add(this.update.bind(this)), this.initGrid();
+    }), this.viewport.addEventListener("drag-start", this.onDragStart.bind(this)), this.viewport.addEventListener("drag-end", this.onDragEnd.bind(this)), this.app.stage.eventMode = "static", this.app.stage.hitArea = this.app.screen, this.app.ticker.add(this.update.bind(this)), this.initGrid();
   }
   update(e) {
   }
@@ -46988,17 +47014,17 @@ class nS {
   enableFurnitureTool() {
     this.wallTool.disable(), this.furnitureTool.enable();
   }
-  // TODO?: https://pixijs.com/8.x/guides/components/scene-objects/graphics/graphics-pixel-line
   initGrid() {
-    const e = new Cu({
-      texture: this.assets.textures.grid,
-      width: this.worldSize * 2,
-      height: this.worldSize * 2,
-      tileScale: 0.5,
-      roundPixels: !0,
-      applyAnchorToTexture: !0
-    });
-    e.x = -this.worldSize, e.y = -this.worldSize, e.alpha = 0.15, this.viewport.addChild(e);
+    const e = {
+      color: 0,
+      alpha: 0.15,
+      pixelLine: !0
+    }, t = new Lt(), r = this.worldSize, i = r / Bo;
+    for (let n = 0; n < i * 2; n++) {
+      const o = -r + n * Bo;
+      t.moveTo(-r, o).lineTo(r, o).stroke(e), t.moveTo(o, -r).lineTo(o, r).stroke(e);
+    }
+    this.viewport.addChild(t);
   }
 }
 Y.add(Nd);
@@ -47008,25 +47034,26 @@ Y.add(Qa);
 Y.add(Su);
 Y.mixin(le, Cm);
 Y.add(yu);
-Y.add(Vl);
+Y.add(zl);
 Y.add(vn);
-Y.add(Xl);
+Y.add(Vl);
+Y.add(Yl);
 Y.add($l);
-Y.add(jl);
-Y.add(sh);
 Y.add(rh);
-Y.add(Zl);
-Y.add(eh);
-Y.add(Ql);
+Y.add(th);
 Y.add(Kl);
+Y.add(Jl);
+Y.add(Zl);
 Y.add(ql);
+Y.add(jl);
 Y.add(Au);
 Y.add(Tu);
-const J1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const eS = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null
-}, Symbol.toStringTag, { value: "Module" })), eS = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Symbol.toStringTag, { value: "Module" })), tS = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null
 }, Symbol.toStringTag, { value: "Module" }));
 export {
-  nS as default
+  Bo as METER,
+  oS as default
 };

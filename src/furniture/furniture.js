@@ -1,5 +1,7 @@
 import { Sprite } from 'pixi.js';
 import pointScreenToWorld from '../utils/screen-to-world.js';
+import { furnitureList } from './list.js';
+import { METER } from '../planner.js';
 
 class Furniture extends Sprite {
   rotationStartingPoint = null;
@@ -12,8 +14,11 @@ class Furniture extends Sprite {
 
     this.anchor.set(0.5);
 
-    // TODO: выставить реальные размеры в метрах, привязанные к сетке
-    this.scale.set(0.2, 0.2);
+    // указываем реальные размеры мебели
+    this.setSize(
+      furnitureList[type].width,
+      furnitureList[type].height
+    );
 
     const { viewport } = planner;
     const tool = planner.furnitureTool;
@@ -24,6 +29,8 @@ class Furniture extends Sprite {
 
     this.eventMode = 'static';
     this.cursor = 'pointer';
+    this.on('pointerenter', this.onMouseEnter.bind(this));
+    this.on('pointerleave', this.onMouseLeave.bind(this));
     this.on('pointerdown', this.onMouseDown.bind(this));
     this.on('pointerup', this.onMouseUp.bind(this));
     // window.addEventListener('pointerup', this.onWindowMouseUp.bind(this));
@@ -39,9 +46,10 @@ class Furniture extends Sprite {
     const rotate = new Sprite(this.planner.assets.textures.rotateIcon);
     rotate.anchor.set(0.5);
     rotate.scale.set(0.5);
-    rotate.position.set(this.width * 3, this.height * -3);
+    rotate.position.set(this.width * 5, this.height * -5);
     this.addChild(rotate);
 
+    rotate.visible = false;
     rotate.eventMode = 'static';
     rotate.cursor = 'pointer';
     rotate.on('pointerdown', this.onRotateDown.bind(this));
@@ -55,9 +63,10 @@ class Furniture extends Sprite {
     const deleteIcon = new Sprite(this.planner.assets.textures.deleteIcon);
     deleteIcon.anchor.set(0.5);
     deleteIcon.scale.set(0.5);
-    deleteIcon.position.set(this.width * 3 + 150, this.height * -3);
+    deleteIcon.position.set(this.width * 5 + 150, this.height * -5);
     this.addChild(deleteIcon);
 
+    deleteIcon.visible = false;
     deleteIcon.eventMode = 'static';
     deleteIcon.cursor = 'pointer';
     deleteIcon.on('pointerup', this.onDeleteUp.bind(this));
@@ -132,6 +141,16 @@ class Furniture extends Sprite {
     this.planner.enableCameraDragging();
 
     this.rotationStartingPoint = null;
+  }
+
+  onMouseEnter() {
+    this.rotateIcon.visible = true;
+    this.deleteIcon.visible = true;
+  }
+
+  onMouseLeave() {
+    this.rotateIcon.visible = false;
+    this.deleteIcon.visible = false;
   }
 }
 
