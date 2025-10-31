@@ -27,15 +27,15 @@ variables:
   # list of services for build & deploy
   # go-tmpl, go-tmpl-2, go-tmpl-common will be deployed with common-deploy chart because this is default chart
   # go-tmpl-job will be deployed with common-job chart because of explicit chart definition using @ character
-  CI_TMPL_HELM_RELEASE_NAMES: "assessflow-fe-separate@oci://harbor.wildberries.ru/devops/helm/charts/common-deploy"
-  CI_TMPL_HELM_RELEASE_NAMESPACE: pvz-audit
+  CI_TMPL_HELM_RELEASE_NAMES: "pvz-plan@oci://harbor.wildberries.ru/devops/helm/charts/common-deploy"
+  CI_TMPL_HELM_RELEASE_NAMESPACE: dpa
   # List of clusters for deploy
   CI_TMPL_KUBE_CLUSTERS_DEV: "k8s.dev-el"
   CI_TMPL_KUBE_CLUSTERS_STAGE: "k8s.stage-dm"
   CI_TMPL_KUBE_CLUSTERS_PROD: "k8s.prod-xc,k8s.prod-el,k8s.prod-dm"
 
   # Harbor project name
-  REGISTRY_PROJECT: "pvz-checker"
+  REGISTRY_PROJECT: "design-wb"
 
   #
   # Optional example vars
