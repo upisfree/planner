@@ -1,0 +1,52 @@
+# https://gitlab.wildberries.ru/devops/ci/templates/-/blob/master/README.md
+.template_repo: &repo
+  project: &ci_tmpl "devops/ci/templates"
+  ref: &ci_tmpl_vers "v3.25.0"
+
+variables:
+  # Mandatory vars. Do not change this
+  CI_TMPL_PROJECT: *ci_tmpl
+  CI_TMPL_PROJECT_VERSION: *ci_tmpl_vers
+
+  #
+  # Language specific vars. Most likly need to specify
+  #
+  DOCKERFILE_DIR: ./docker
+  ENABLE_OWNERS: false
+  #
+  # Mandatory vars. Specify them
+  #
+
+  # Helm chart name. List of chart can be found here https://gitlab.wildberries.ru/devops/helm/charts
+  # common-deploy is default chart
+  # common-job is additional chart, his version is specified using CI_TMPL_HELM_CHART_COMMON_JOB_VERSION
+  CI_TMPL_HELM_CHARTS: "oci://harbor.wildberries.ru/devops/helm/charts/common-deploy@v8.2.0"
+  # You can specify chart version using special variable
+  # Setting common-job version to v1.0.1
+  #  CI_TMPL_HELM_CHART_COMMON_JOB_VERSION: 1.0.1
+  # list of services for build & deploy
+  # go-tmpl, go-tmpl-2, go-tmpl-common will be deployed with common-deploy chart because this is default chart
+  # go-tmpl-job will be deployed with common-job chart because of explicit chart definition using @ character
+  CI_TMPL_HELM_RELEASE_NAMES: "assessflow-fe-separate@oci://harbor.wildberries.ru/devops/helm/charts/common-deploy"
+  CI_TMPL_HELM_RELEASE_NAMESPACE: pvz-audit
+  # List of clusters for deploy
+  CI_TMPL_KUBE_CLUSTERS_DEV: "k8s.dev-el"
+  CI_TMPL_KUBE_CLUSTERS_STAGE: "k8s.stage-dm"
+  CI_TMPL_KUBE_CLUSTERS_PROD: "k8s.prod-xc,k8s.prod-el,k8s.prod-dm"
+
+  # Harbor project name
+  REGISTRY_PROJECT: "pvz-checker"
+
+  #
+  # Optional example vars
+  #
+  BUILD_CUSTOM_ARGS: "COMMIT_BRANCH=$CI_COMMIT_BRANCH"
+
+  # HHX custom var example
+  # see deploy/go-tmpl/common-go-tmpl-values.yml#L4
+  #  CI_TMPL_HELM_CUSTOM_MY_VAR1: "myvalue"
+  # Change deploy jobs appearance in pipeline
+  CI_TMPL_DEPLOY_GROUPING: per-cluster
+
+include:
+  - { <<: *repo, file: /pipelines/universal.yml }
