@@ -1,18 +1,23 @@
 # https://gitlab.wildberries.ru/devops/ci/templates/-/blob/master/README.md
 .template_repo: &repo
   project: &ci_tmpl "devops/ci/templates"
-  ref: &ci_tmpl_vers "v3.25.0"
+  ref: &ci_tmpl_vers "v3.26.1"
 
 variables:
   # Mandatory vars. Do not change this
   CI_TMPL_PROJECT: *ci_tmpl
   CI_TMPL_PROJECT_VERSION: *ci_tmpl_vers
-
+  CI_TMPL_CHECK_SOURCE_BRANCH_TAG: "false"
+  CI_TMPL_REPO_HASH_CHECK: "false"
+  CI_CHECK_CHART_VERSION: "false"
   #
   # Language specific vars. Most likly need to specify
   #
   DOCKERFILE_DIR: ./docker
+  UNIVERSAL_IMAGE: harbor.wildberries.ru/devops/ci/base-images/node
+  UNIVERSAL_VER: 22.16
   ENABLE_OWNERS: false
+
   #
   # Mandatory vars. Specify them
   #
@@ -51,7 +56,7 @@ variables:
   # see deploy/go-tmpl/common-go-tmpl-values.yml#L4
   #  CI_TMPL_HELM_CUSTOM_MY_VAR1: "myvalue"
   # Change deploy jobs appearance in pipeline
-  CI_TMPL_DEPLOY_GROUPING: per-cluster
+#  CI_TMPL_DEPLOY_GROUPING: per-cluster
 
 include:
   - { <<: *repo, file: /pipelines/universal.yml }

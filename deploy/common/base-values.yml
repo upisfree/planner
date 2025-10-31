@@ -1,4 +1,7 @@
 # This file contains default values for all services. Despite chart used for deploy
+chartMeta:
+  owner: "bezrukov.denis4"
+  maintainers: [ "bezrukov.denis4" ]
 
 replicaCount: 1
 

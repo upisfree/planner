@@ -1,7 +1,9 @@
 ARG UNIVERSAL_IMAGE
 ARG UNIVERSAL_VER
+ARG NODE_VERSION=22.16
+ARG CI_JOB_TOKEN
 
-FROM harbor.wildberries.ru/devops/ci/base-images/node:22.16 as build-stage
+FROM harbor.wildberries.ru/devops/ci/base-images/node:${NODE_VERSION} as build-stage
 
 WORKDIR /app
 
@@ -9,6 +11,12 @@ WORKDIR /app
 COPY package.json /app/
 COPY package-lock.json /app/
 COPY . /app
+
+#RUN printf "@geoservice:registry=https://gitlab.wildberries.ru/api/v4/packages/npm/\n \
+#    @pvz-checker:registry=https://gitlab.wildberries.ru/api/v4/packages/npm/\n\n \
+#    //gitlab.wildberries.ru/api/v4/packages/npm/:_authToken=%s" "${CI_JOB_TOKEN}" > .npmrc && \
+#    npm ci --include=dev && \
+#    npm cache clean --force
 
 # install all depencies and build the project
 RUN npm install && npm run build
