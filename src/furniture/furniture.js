@@ -1,10 +1,14 @@
-import { Sprite } from 'pixi.js';
+import { ColorMatrixFilter, Sprite } from 'pixi.js';
 import pointScreenToWorld from '../utils/screen-to-world.js';
 import { furnitureList } from './list.js';
-import { METER } from '../planner.js';
+import SAT from 'sat';
 
 class Furniture extends Sprite {
   rotationStartingPoint = null;
+
+  collisionPolygon = null;
+
+  invalidFilter = null;
 
   constructor(planner, type) {
     super(planner.assets.textures[type]);
@@ -39,6 +43,36 @@ class Furniture extends Sprite {
     planner.furnitureTool.furnitures.push(this);
 
     this.initIcons();
+    this.initCollisionPolygon();
+
+    // invalid filter
+    this.invalidFilter = new ColorMatrixFilter();
+    this.invalidFilter.tint(0xff0000);
+  }
+
+  dispose() {
+    const { viewport } = planner;
+
+    this.tool.layer.detach(this);
+    viewport.removeChild(this);
+    this.tool.removeFurniture(this);
+
+    if (this.tool.dragTarget === this) {
+      this.tool.removeDragTarget();
+    }
+  }
+
+  initCollisionPolygon() {
+    // init collision math
+    const box = new SAT.Box(
+      new SAT.Vector(0, 0),
+      // TODO: здесь будут учитываться ограничения у каждого типа мебели. например, если в области 1 метра от мебели нельзя ничего ставить,
+      //       тут будут использованы width & height safe zone внутри furnitureList
+      furnitureList[this.type].width,
+      furnitureList[this.type].height
+    );
+
+    this.collisionPolygon = box.toPolygon();
   }
 
   initIcons() {
@@ -46,7 +80,7 @@ class Furniture extends Sprite {
     const rotate = new Sprite(this.planner.assets.textures.rotateIcon);
     rotate.anchor.set(0.5);
     rotate.scale.set(0.5);
-    rotate.position.set(this.width * 5, this.height * -5);
+    rotate.position.set(this.width * 3, this.height * -3);
     this.addChild(rotate);
 
     rotate.visible = false;
@@ -63,7 +97,7 @@ class Furniture extends Sprite {
     const deleteIcon = new Sprite(this.planner.assets.textures.deleteIcon);
     deleteIcon.anchor.set(0.5);
     deleteIcon.scale.set(0.5);
-    deleteIcon.position.set(this.width * 5 + 150, this.height * -5);
+    deleteIcon.position.set(this.width * 3 + 150, this.height * -3);
     this.addChild(deleteIcon);
 
     deleteIcon.visible = false;
@@ -72,6 +106,20 @@ class Furniture extends Sprite {
     deleteIcon.on('pointerup', this.onDeleteUp.bind(this));
 
     this.deleteIcon = deleteIcon;
+  }
+
+  updateCollisionPolygon() {
+    this.collisionPolygon.pos.x = this.position.x;
+    this.collisionPolygon.pos.y = this.position.y;
+    this.collisionPolygon.setAngle(this.rotation);
+  }
+
+  enableInvalidFilter() {
+    this.filters = [this.invalidFilter];
+  }
+
+  disableInvalidFilter() {
+    this.filters = null;
   }
 
   onRotateDown() {
@@ -89,8 +137,6 @@ class Furniture extends Sprite {
       return;
     }
 
-    console.log(event);
-
     const rotationEndPoint = pointScreenToWorld(event.global, this.planner.viewport);
     const angle = Math.atan2(
       this.rotationStartingPoint.y - rotationEndPoint.y,
@@ -102,29 +148,16 @@ class Furniture extends Sprite {
     // неправильные коорды у rotationEndPoint
     // мб просто использовать экранные коорды и не ебать себе мозги
 
-    console.log(
-      this.rotationStartingPoint.x, rotationEndPoint.x,
-      this.rotationStartingPoint.y, rotationEndPoint.y,
-    )
-
     this.rotation = angle - Math.PI / 1.15;
     // this.rotation = angle - Math.PI / 1.15;
+
+    this.tool.validate();
   }
 
   onDeleteUp() {
     this.dispose();
-  }
 
-  dispose() {
-    const { viewport } = planner;
-
-    this.tool.layer.detach(this);
-    viewport.removeChild(this);
-    this.tool.removeFurniture(this);
-
-    if (this.tool.dragTarget === this) {
-      this.tool.removeDragTarget();
-    }
+    this.tool.validate();
   }
 
   onMouseDown(event, setDragTarget = false) {
@@ -141,6 +174,9 @@ class Furniture extends Sprite {
     this.planner.enableCameraDragging();
 
     this.rotationStartingPoint = null;
+
+    this.rotateIcon.visible = false;
+    this.deleteIcon.visible = false;
   }
 
   onMouseEnter() {
@@ -149,8 +185,20 @@ class Furniture extends Sprite {
   }
 
   onMouseLeave() {
+    if (this.rotationStartingPoint) {
+      return;
+    }
+
     this.rotateIcon.visible = false;
     this.deleteIcon.visible = false;
+  }
+
+  toJSON() {
+    return {
+      type: this.type,
+      rotation: this.rotation,
+      position: { x: this.position.x, y: this.position.y }
+    };
   }
 }
 

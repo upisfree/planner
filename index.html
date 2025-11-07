@@ -15,6 +15,10 @@ body {
   overscroll-behavior-x: none;
 }
 
+.hidden {
+  display: none !important;
+}
+
 #container-2d {
   width: 100vw;
   height: 100vh;
@@ -56,10 +60,66 @@ body {
   margin: 0;
   margin-top: 10px;
 }
+
+#plans-list {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  z-index: 1;
+}
+
+.plan {
+  width: 33vw;
+}
+
+.plan img {
+  width: 100%;
+  cursor: pointer;
+}
+
+.plan img:hover {
+  background: #f0f0f0;
+}
+
+.new-plan {
+  position: absolute;
+  bottom: 20px;
+  font-family: Helvetica, sans-serif;
+  font-weight: normal;
+  border: 3px solid #000;
+  padding: 8px 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.new-plan:hover {
+  background: #f0f0f0;
+}
     </style>
   </head>
 
   <body>
+    <div id="plans-list">
+      <div class="plan" data-plan-id="1">
+        <img src="./assets/plans/1.png">
+      </div>
+
+      <div class="plan" data-plan-id="2">
+        <img src="./assets/plans/2.png">
+      </div>
+
+      <div class="plan" data-plan-id="3">
+        <img src="./assets/plans/3.png">
+      </div>
+
+      <h2 class="new-plan" onclick="document.getElementById('plans-list').classList.add('hidden')">новая планировка</h2>
+    </div>
+
     <div id="container-2d"></div>
     <div id="furniture-list"></div>
 
