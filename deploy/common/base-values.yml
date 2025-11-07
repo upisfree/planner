@@ -1,0 +1,79 @@
+# This file contains default values for all services. Despite chart used for deploy
+chartMeta:
+  owner: "bezrukov.denis4"
+  maintainers: [ "bezrukov.denis4" ]
+
+replicaCount: 1
+
+image:
+  repository: {{.Helm.Release.Image}}
+  tag: {{.Helm.Release.Tag}}
+  pullPolicy: IfNotPresent
+
+ports:
+  - name: http
+    containerPort: 8080
+    protocol: TCP
+
+persistence:
+  enabled: true
+  version: v2
+  ###################
+  # v2 ONLY OPTIONS #
+  ###################
+
+  # This structure provides support for multiple different emptyDir volumes with their own name, mountPath and configuration for medium and sizeLimit.
+  # Please note that when a pod is removed from a node for any reason, the data in the emptyDir is permanently deleted.
+
+  emptyDir:
+    volumes:
+      - name: nginx-cache
+        mountPath: /var/cache/nginx
+      - name: nginx-pid
+        mountPath: /var/run
+      - name: nginx-log
+        mountPath: /var/log/nginx/
+      - name: nginx-lib
+        mountPath: /var/lib/nginx/
+
+volumes:
+  - name: nginx-cache
+    emptyDir: {}
+  - name: nginx-pid
+    emptyDir: {}
+  - name: nginx-log
+    emptyDir: {}
+  - name: nginx-lib
+    emptyDir: {}
+
+imagePullSecrets:
+  - name: harbor-registry-secret
+
+resources:
+  requests:
+    memory: "10Mi"
+    cpu: "10m"
+  limits:
+    memory: "50Mi"
+    cpu: "50m"
+    
+service:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+
+ingress:
+  enabled: true
+  objects:
+    - servicePort: 80
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /$2
+      hosts:
+        - name: {{ .Helm.Release.Namespace }}-ingress-controller.{{ .Helm.Release.Namespace }}.{{ .Helm.Release.Cluster }}
+          path: /pvz-plan(/|$)(.*)
+
+env:
+  APP_BASE_URL: /{{ .Helm.Release.Name }}/
