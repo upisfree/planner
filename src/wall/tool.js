@@ -3,6 +3,8 @@ import pointScreenToWorld from '../utils/screen-to-world.js';
 import WallMeterage from './meterage.js';
 import { WALL_POSITION_STEP, WALL_ROTATION_STEP } from '../config.js';
 import SAT from 'sat';
+import { BoxGeometry, Mesh, MeshBasicMaterial, MeshStandardMaterial, Vector3 } from 'three';
+import { pixiToThreeCoords } from '../utils/pixi-to-three-coords.js';
 
 function snapToAngle(dx, dy) {
   const angle = Math.atan2(dy, dx);
@@ -29,6 +31,12 @@ function getSnappedEnd(x1, y1, x2, y2) {
 
 let _lastSnappedPoint = null;
 
+// 3d
+const geometry = new BoxGeometry(1, 1, 1);
+const material = new MeshStandardMaterial({
+  // color: Math.random() * 0xffffff,
+});
+
 // инструмент создания стен
 class WallTool {
   isEnabled = false;
@@ -38,6 +46,7 @@ class WallTool {
   spritesPoints = new Map(); // Map<PointSprite, Point>
   wallPoints = new Map(); // Map<WallSprite, [Point, Point]>
   wallsPolygons = [];
+  wallMeshes = [];
 
   pointSprite = null;
 
@@ -66,7 +75,7 @@ class WallTool {
     stage.addChild(this.pointsLayer);
 
     this.initPointSprite();
-    this.cursorWall = this.addWall(new Point(), new Point());
+    this.cursorWall = this.addWall(new Point(), new Point(), false);
     // чтобы кликать по настоящей точке, а не по курсорной
     this.cursorWall.eventMode = 'none';
 
@@ -116,7 +125,7 @@ class WallTool {
     this.pointsLayer.attach(this.cursorSprite);
   }
 
-  addWall(point1, point2) {
+  addWall(point1, point2, addMesh3D = true) {
     const wall = new Graphics()
       .setStrokeStyle({
         width: this.wallWidth,
@@ -138,6 +147,10 @@ class WallTool {
     this.wallsLayer.attach(wall);
 
     this.wallPoints.set(wall, [point1, point2]);
+
+    if (addMesh3D) {
+      this.addMesh3D(point1, point2);
+    }
 
     return wall;
   }
@@ -226,6 +239,9 @@ class WallTool {
     });
 
     this.wallPoints.clear();
+
+    this.wallMeshes.forEach(mesh => mesh.removeFromParent());
+    this.wallMeshes = [];
 
     for (let i = 0; i < this.points.length; i++) {
       const point1 = this.points[i];
@@ -373,6 +389,32 @@ class WallTool {
 
   onWallMouseLeave(event) {
     this.meterage.disable();
+  }
+
+  // 3d
+  addMesh3D(pixiPoint1, pixiPoint2) {
+    const mesh = new Mesh(
+      geometry,
+      material
+    );
+
+    const point1 = pixiToThreeCoords(pixiPoint1);
+    const point2 = pixiToThreeCoords(pixiPoint2);
+    const distance = point1.distanceTo(point2);
+
+    mesh.scale.x = 0.5;
+    mesh.scale.y = 0.5;
+    mesh.scale.z = distance + 0.5; // прибавляем один метр чтобы не было углов между стенками
+    mesh.position.copy(point1);
+    mesh.lookAt(point2);
+
+    // сдвигаем стены вперед по направлению движения
+    const direction = new Vector3();
+    mesh.getWorldDirection(direction);
+    mesh.position.add(direction.multiplyScalar(distance / 2));
+
+    this.wallMeshes.push(mesh);
+    this.planner.scene.add(mesh);
   }
 }
 

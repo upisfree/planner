@@ -1,4 +1,4 @@
-import { Application, Graphics, Point, Rectangle, Sprite, TilingSprite } from 'pixi.js';
+import { Application, Graphics, Point, Rectangle } from 'pixi.js';
 import { initDevtools } from '@pixi/devtools';
 import { Viewport } from 'pixi-viewport';
 import Assets from './assets.js';
@@ -9,15 +9,40 @@ import { METER } from './config.js';
 import { download } from './utils/download.js';
 import Furniture from './furniture/furniture.js';
 import initPlansList from './ui/plans-list.js';
+import {
+  AmbientLight, Box3,
+  BoxGeometry,
+  Color,
+  DirectionalLight,
+  GridHelper,
+  Mesh,
+  MeshBasicMaterial,
+  PerspectiveCamera,
+  Scene, Vector3,
+  WebGLRenderer
+} from 'three';
+import { OrbitControls } from 'three/addons';
 
 const BACKGROUND_COLOR = '#e5e6e8';
 
 class Planner {
   div2d = null;
+  div3d = null;
   div2dBounds = null;
+  div3dBounds = null;
 
+  // 2d
   app = null;
   viewport = null;
+
+  // 3d
+  renderer = null;
+  scene = null;
+  camera = null;
+  controls = null;
+
+  // для ортографической камеры, сейчас не используется
+  frustumSize = 10;
 
   // 50 метров
   worldSize = 50 * METER;
@@ -27,8 +52,13 @@ class Planner {
   wallTool = null;
   furnitureTool = null;
 
-  constructor(div2d) {
+  constructor(div2d, div3d) {
     this.div2d = div2d;
+    this.div3d = div3d;
+
+    this.updateDomBounds();
+
+    this.init3D();
 
     this.assets = new Assets(this);
     this.assets
@@ -72,6 +102,8 @@ class Planner {
 
     // TODO: переделать это в реакте
     initPlansList(this);
+
+    this.resize();
   }
 
   async init2D() {
@@ -123,6 +155,9 @@ class Planner {
     this.viewport.addEventListener('drag-start', this.onDragStart.bind(this));
     this.viewport.addEventListener('drag-end', this.onDragEnd.bind(this));
 
+    this.viewport.x = this.div2dBounds.width / 2;
+    this.viewport.y = this.div2dBounds.height / 2;
+
     // enable interactivity!
     this.app.stage.eventMode = 'static';
 
@@ -134,14 +169,98 @@ class Planner {
     this.initGrid();
   }
 
-  update(time) {
+  init3D() {
+    this.scene = new Scene();
+    this.scene.background = new Color(BACKGROUND_COLOR);
 
+    this.camera = new PerspectiveCamera(45, 1, 0.1, 1000);
+    // this.camera = new OrthographicCamera(1, 1, 1, 1, 0.01, 2000);
+
+    this.renderer = new WebGLRenderer({
+      antialias: true,
+    });
+    this.div3d.appendChild(this.renderer.domElement);
+
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+
+    // this.controls.addEventListener('change', this.update.bind(this));
+
+    this.controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+    this.controls.dampingFactor = 0.05;
+    this.controls.screenSpacePanning = true;
+    this.controls.minDistance = 1;
+    this.controls.maxDistance = 500;
+    this.controls.maxPolarAngle = Math.PI / 2;
+
+    // lights
+    this.ambientLight = new AmbientLight(0xffffff, 1);
+    this.scene.add(this.ambientLight);
+
+    this.directionalLight = new DirectionalLight(0xffffff, 1);
+    this.scene.add(this.directionalLight);
+
+    // debug meshes
+    // debug grid
+    const size = 50;
+    const divisions = 10;
+    const gridHelper = new GridHelper(size, divisions);
+    // this.scene.add( gridHelper );
+
+    const geometry = new BoxGeometry( 1, 1, 1 );
+    const material = new MeshBasicMaterial( { color: 0x00ff00 } );
+    const cube = new Mesh( geometry, material );
+    // this.scene.add( cube );
+
+    // this.camera.position.z = 5;
+    this.camera.position.set(
+      -5.4664433123064855,
+      4.573384471789495,
+      7.014424565602972
+    );
+
+    this.camera.quaternion.set(
+      0.9191707671606021,
+      -0.22250238225887725,
+      -0.31586620839997415,
+      -0.07646129136719314
+    );
+  }
+
+  update(timestamp) {
+    // TODO: рендирить только при изменении позиции камеры в контроле
+    this.renderer.render(this.scene, this.camera);
+
+    this.controls.update();
+  }
+
+  updateDomBounds() {
+    this.div2dBounds = this.div2d.getBoundingClientRect();
+    this.div3dBounds = this.div3d.getBoundingClientRect();
   }
 
   resize() {
-    this.div2dBounds = this.div2d.getBoundingClientRect();
+    this.updateDomBounds();
 
+    // 2d
     this.viewport.resize(this.div2dBounds.width, this.div2dBounds.height, this.worldSize, this.worldSize);
+
+    // 3d
+    const { width, height } = this.div3dBounds;
+    const aspect = width / height;
+
+    if (this.camera.isPerspectiveCamera) {
+      this.camera.aspect = aspect;
+      this.camera.updateProjectionMatrix();
+    } else if (this.camera.isOrthographicCamera) {
+      this.camera.left = - 0.5 * this.frustumSize * aspect / 2;
+      this.camera.right = 0.5 * this.frustumSize * aspect / 2;
+      this.camera.top = this.frustumSize / 2;
+      this.camera.bottom = -this.frustumSize / 2;
+      this.camera.updateProjectionMatrix();
+    }
+
+    this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.renderer.setSize(width, height);
   }
 
   onDragStart() {
@@ -156,7 +275,7 @@ class Planner {
   // но никакие другие методы не сработали
   // https://stackoverflow.com/a/61133028
   disablePinchToZoomGestureInChrome() {
-    this.div2d.addEventListener('wheel', event => {
+    const handler = event => {
       const { ctrlKey } = event
 
       if (ctrlKey) {
@@ -164,7 +283,30 @@ class Planner {
 
         return;
       }
-    }, { passive: false });
+    };
+
+    this.div2d.addEventListener('wheel', handler, { passive: false });
+    this.div3d.addEventListener('wheel', handler, { passive: false });
+  }
+
+  centerCameraOnObject(object) {
+    object.updateMatrixWorld();
+
+    const box = new Box3().setFromObject(object);
+    const size = box.getSize(new Vector3()).length();
+    const center = box.getCenter(new Vector3());
+
+    this.camera.near = size / 100;
+    this.camera.far = size * 100;
+    this.camera.updateProjectionMatrix();
+
+    this.camera.position.copy(center);
+    this.camera.position.x += size;
+    this.camera.position.y += size / 2.0;
+    this.camera.position.z += size;
+    this.camera.lookAt(center);
+
+    this.controls.target.copy(center);
   }
 
   enableCameraDragging() {
@@ -233,9 +375,19 @@ class Planner {
 
     data.furnitures.forEach(furData => {
       const furniture = new Furniture(this, furData.type);
-      furniture.rotation = furData.rotation;
-      furniture.position.set(furData.position.x, furData.position.y);
+
+      furniture.setRotation(furData.rotation);
+      furniture.setPosition(furData.position.x, furData.position.y);
     });
+
+    this.centerCameraOnObject(this.scene);
+
+    // я добавил это для уже созданных трех планировок, после того как сдвинул вьюпорт на половину экрана,
+    // чтобы центр вьюпорта совпадал с 3д и мне не пришлось переделывать уже готовые планировки
+    if (data.camera) {
+      this.viewport.x = data.camera.x;
+      this.viewport.y = data.camera.y;
+    }
   }
 
   // тут всё в пикселях, а не в метрах. если понадобится, переведу в метры

@@ -1,1 +1,250 @@
-{"wallsPoints":[{"x":201.16796875,"y":100.3046875},{"x":1001.16796875,"y":100.3046875},{"x":1001.1679687500001,"y":1100.3046875},{"x":201.1679687500001,"y":1100.3046875}],"furnitures":[{"type":"trashcan","rotation":0,"position":{"x":243.09765625,"y":1050.83984375}},{"type":"desk-self-service-big","rotation":-1.5684556211567053,"position":{"x":246.12890625,"y":951.8125}},{"type":"desk-self-service-big","rotation":-1.5976432305504369,"position":{"x":248.484375,"y":849.625}},{"type":"bench-pink","rotation":-4.746446409380045,"position":{"x":571.41796875,"y":907.23828125}},{"type":"bench-pink","rotation":-4.7208579710162315,"position":{"x":571.07421875,"y":802.7890625}},{"type":"fitting-room","rotation":-4.731112131076397,"position":{"x":926.26171875,"y":771.3515625}},{"type":"fitting-room","rotation":-4.711828778691739,"position":{"x":925.16796875,"y":900.48046875}},{"type":"fitting-room","rotation":-4.702031415342174,"position":{"x":922.73046875,"y":1027.5859375}},{"type":"desk-chair-manager","rotation":0,"position":{"x":256.375,"y":577.54296875}},{"type":"desk-checkout-2","rotation":0,"position":{"x":345.73828125,"y":594.28515625}},{"type":"shelving-unit","rotation":0,"position":{"x":264.125,"y":138.765625}},{"type":"shelving-unit","rotation":0,"position":{"x":373.87890625,"y":142.359375}},{"type":"shelving-unit","rotation":0,"position":{"x":480.7265625,"y":140.62890625}},{"type":"shelving-unit","rotation":-1.5832876755385965,"position":{"x":508.01171875,"y":229.36328125}},{"type":"shelving-unit","rotation":0,"position":{"x":593.47265625,"y":142.23046875}},{"type":"shelving-unit","rotation":-1.6014218261288928,"position":{"x":237.91015625,"y":331.0625}},{"type":"shelving-unit","rotation":-1.5897314089903267,"position":{"x":507.578125,"y":336.421875}},{"type":"shelving-unit","rotation":-1.5859221096486402,"position":{"x":514.26171875,"y":447.15625}},{"type":"shelving-unit","rotation":-1.557446268703998,"position":{"x":238.625,"y":437.4921875}},{"type":"shelving-unit","rotation":-1.5836096354218328,"position":{"x":241.34375,"y":220.3359375}},{"type":"shelving-unit","rotation":0,"position":{"x":712.24609375,"y":143.5234375}},{"type":"shelving-unit","rotation":0,"position":{"x":832.171875,"y":146.21875}},{"type":"shelving-unit","rotation":0,"position":{"x":936.0234375,"y":143.8046875}},{"type":"shelving-unit","rotation":0,"position":{"x":602.78515625,"y":471.859375}},{"type":"shelving-unit","rotation":0,"position":{"x":728.18359375,"y":474.734375}},{"type":"shelving-unit","rotation":-1.5795002868373726,"position":{"x":955.39453125,"y":448.9921875}},{"type":"shelving-unit","rotation":-1.55007632614733,"position":{"x":960.14453125,"y":342.8671875}},{"type":"shelving-unit","rotation":-1.5815967430773408,"position":{"x":956.8046875,"y":229.28515625}}]}
+{
+  "camera": {
+    "x": -62,
+    "y": -75
+  },
+  "wallsPoints": [
+    {
+      "x": 201.16796875,
+      "y": 100.3046875
+    },
+    {
+      "x": 1001.16796875,
+      "y": 100.3046875
+    },
+    {
+      "x": 1001.1679687500001,
+      "y": 1100.3046875
+    },
+    {
+      "x": 201.1679687500001,
+      "y": 1100.3046875
+    }
+  ],
+  "furnitures": [
+    {
+      "type": "trashcan",
+      "rotation": 0,
+      "position": {
+        "x": 243.09765625,
+        "y": 1050.83984375
+      }
+    },
+    {
+      "type": "desk-self-service-big",
+      "rotation": -1.5684556211567053,
+      "position": {
+        "x": 246.12890625,
+        "y": 951.8125
+      }
+    },
+    {
+      "type": "desk-self-service-big",
+      "rotation": -1.5976432305504369,
+      "position": {
+        "x": 248.484375,
+        "y": 849.625
+      }
+    },
+    {
+      "type": "bench-pink",
+      "rotation": -4.746446409380045,
+      "position": {
+        "x": 571.41796875,
+        "y": 907.23828125
+      }
+    },
+    {
+      "type": "bench-pink",
+      "rotation": -4.7208579710162315,
+      "position": {
+        "x": 571.07421875,
+        "y": 802.7890625
+      }
+    },
+    {
+      "type": "fitting-room",
+      "rotation": -4.731112131076397,
+      "position": {
+        "x": 926.26171875,
+        "y": 771.3515625
+      }
+    },
+    {
+      "type": "fitting-room",
+      "rotation": -4.711828778691739,
+      "position": {
+        "x": 925.16796875,
+        "y": 900.48046875
+      }
+    },
+    {
+      "type": "fitting-room",
+      "rotation": -4.702031415342174,
+      "position": {
+        "x": 922.73046875,
+        "y": 1027.5859375
+      }
+    },
+    {
+      "type": "desk-chair-manager",
+      "rotation": 0,
+      "position": {
+        "x": 256.375,
+        "y": 577.54296875
+      }
+    },
+    {
+      "type": "desk-checkout-2",
+      "rotation": 0,
+      "position": {
+        "x": 345.73828125,
+        "y": 594.28515625
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": 0,
+      "position": {
+        "x": 264.125,
+        "y": 138.765625
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": 0,
+      "position": {
+        "x": 373.87890625,
+        "y": 142.359375
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": 0,
+      "position": {
+        "x": 480.7265625,
+        "y": 140.62890625
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": -1.5832876755385965,
+      "position": {
+        "x": 508.01171875,
+        "y": 229.36328125
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": 0,
+      "position": {
+        "x": 593.47265625,
+        "y": 142.23046875
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": -1.6014218261288928,
+      "position": {
+        "x": 237.91015625,
+        "y": 331.0625
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": -1.5897314089903267,
+      "position": {
+        "x": 507.578125,
+        "y": 336.421875
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": -1.5859221096486402,
+      "position": {
+        "x": 514.26171875,
+        "y": 447.15625
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": -1.557446268703998,
+      "position": {
+        "x": 238.625,
+        "y": 437.4921875
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": -1.5836096354218328,
+      "position": {
+        "x": 241.34375,
+        "y": 220.3359375
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": 0,
+      "position": {
+        "x": 712.24609375,
+        "y": 143.5234375
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": 0,
+      "position": {
+        "x": 832.171875,
+        "y": 146.21875
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": 0,
+      "position": {
+        "x": 936.0234375,
+        "y": 143.8046875
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": 0,
+      "position": {
+        "x": 602.78515625,
+        "y": 471.859375
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": 0,
+      "position": {
+        "x": 728.18359375,
+        "y": 474.734375
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": -1.5795002868373726,
+      "position": {
+        "x": 955.39453125,
+        "y": 448.9921875
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": -1.55007632614733,
+      "position": {
+        "x": 960.14453125,
+        "y": 342.8671875
+      }
+    },
+    {
+      "type": "shelving-unit",
+      "rotation": -1.5815967430773408,
+      "position": {
+        "x": 956.8046875,
+        "y": 229.28515625
+      }
+    }
+  ]
+}

@@ -1,7 +1,9 @@
-import { ColorMatrixFilter, Sprite } from 'pixi.js';
+import { ColorMatrixFilter, Point, Sprite } from 'pixi.js';
 import pointScreenToWorld from '../utils/screen-to-world.js';
 import { furnitureList } from './list.js';
 import SAT from 'sat';
+import { pixiToThreeCoords } from '../utils/pixi-to-three-coords.js';
+import { BoxGeometry, Mesh, MeshBasicMaterial } from 'three';
 
 class Furniture extends Sprite {
   rotationStartingPoint = null;
@@ -11,7 +13,7 @@ class Furniture extends Sprite {
   invalidFilter = null;
 
   constructor(planner, type) {
-    super(planner.assets.textures[type]);
+    super(planner.assets.textures2D[type]);
 
     this.planner = planner;
     this.type = type;
@@ -45,6 +47,8 @@ class Furniture extends Sprite {
     this.initIcons();
     this.initCollisionPolygon();
 
+    this.addMesh3D();
+
     // invalid filter
     this.invalidFilter = new ColorMatrixFilter();
     this.invalidFilter.tint(0xff0000);
@@ -52,6 +56,8 @@ class Furniture extends Sprite {
 
   dispose() {
     const { viewport } = planner;
+
+    this.mesh.removeFromParent();
 
     this.tool.layer.detach(this);
     viewport.removeChild(this);
@@ -77,7 +83,7 @@ class Furniture extends Sprite {
 
   initIcons() {
     // rotate
-    const rotate = new Sprite(this.planner.assets.textures.rotateIcon);
+    const rotate = new Sprite(this.planner.assets.textures2D.rotateIcon);
     rotate.anchor.set(0.5);
     rotate.scale.set(0.5);
     rotate.position.set(this.width * 3, this.height * -3);
@@ -94,7 +100,7 @@ class Furniture extends Sprite {
     this.rotateIcon = rotate;
 
     // delete
-    const deleteIcon = new Sprite(this.planner.assets.textures.deleteIcon);
+    const deleteIcon = new Sprite(this.planner.assets.textures2D.deleteIcon);
     deleteIcon.anchor.set(0.5);
     deleteIcon.scale.set(0.5);
     deleteIcon.position.set(this.width * 3 + 150, this.height * -3);
@@ -106,6 +112,25 @@ class Furniture extends Sprite {
     deleteIcon.on('pointerup', this.onDeleteUp.bind(this));
 
     this.deleteIcon = deleteIcon;
+  }
+
+  setPosition(x, y) {
+    this.position.set(x, y);
+
+    this.mesh.position.copy(
+      pixiToThreeCoords(
+        new Point(x, y)
+      )
+    );
+  }
+
+  setRotation(rotation) {
+    this.rotation = rotation;
+
+    this.mesh.rotation.y = rotation;
+    // this.mesh.rotation.y = -rotation + Math.PI / 2;
+
+    // console.log(rotation)
   }
 
   updateCollisionPolygon() {
@@ -148,8 +173,7 @@ class Furniture extends Sprite {
     // неправильные коорды у rotationEndPoint
     // мб просто использовать экранные коорды и не ебать себе мозги
 
-    this.rotation = angle - Math.PI / 1.15;
-    // this.rotation = angle - Math.PI / 1.15;
+    this.setRotation(angle - Math.PI / 1.15);
 
     this.tool.validate();
   }
@@ -199,6 +223,15 @@ class Furniture extends Sprite {
       rotation: this.rotation,
       position: { x: this.position.x, y: this.position.y }
     };
+  }
+
+  // 3d
+  addMesh3D() {
+    const gltf = this.planner.assets.model;
+    const modelName = furnitureList[this.type].modelName;
+    this.mesh = gltf.getObjectByName(modelName).clone();
+
+    this.planner.scene.add(this.mesh);
   }
 }
 

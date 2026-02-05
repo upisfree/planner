@@ -75,7 +75,7 @@ class FurnitureTool {
     }
 
     // обновляем спрайт таскаемой мебели
-    this.dragTarget.position.copyFrom(mousePoint);
+    this.dragTarget.setPosition(mousePoint.x, mousePoint.y);
     _lastMousePoint.copyFrom(mousePoint);
 
     this.validate();

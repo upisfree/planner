@@ -19,14 +19,22 @@ body {
   display: none !important;
 }
 
-#container-2d {
-  width: 100vw;
+#container-2d,
+#container-3d {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50vw;
   height: 100vh;
+}
+
+#container-2d {
+  left: 50vw;
 }
 
 #furniture-list {
   position: absolute;
-  width: 400px;
+  width: 200px;
   top: 0;
   right: 0;
   height: 100vh;
@@ -120,6 +128,7 @@ body {
       <h2 class="new-plan" onclick="document.getElementById('plans-list').classList.add('hidden')">новая планировка</h2>
     </div>
 
+    <div id="container-3d"></div>
     <div id="container-2d"></div>
     <div id="furniture-list"></div>
 
@@ -140,7 +149,8 @@ import(/* @vite-ignore */ url).then(module => {
   const Planner = module.default;
 
   const container2d = document.querySelector('#container-2d');
-  const planner = new Planner(container2d);
+  const container3d = document.querySelector('#container-3d');
+  const planner = new Planner(container2d, container3d);
   window.planner = planner; // for debug
 });
     </script>
