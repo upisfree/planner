@@ -22,4 +22,4 @@ gltf-transform uastc objects_meshopt.glb objects.glb
 # если важно максимально сжать, то можно сконвертить в ktx2 etc1, но визуально будет похуже
 # disk 4 mb, vram 34 mb 
 gltf-transform etc1 objects_meshopt.glb objects.glb
-```
+``` 
